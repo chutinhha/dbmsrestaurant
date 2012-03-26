@@ -3,36 +3,3 @@ Vu: BanAn,MonAn,DatBan
 Ngoc: NhaHang,ChiTietMonAn,LoaiMonAn
 Tan:QLNguoiDung,NguyenLieu,NhaCungCap,DatHang
 
-
-Vu-BanAn,MonAn,DatBan
-
-
-create table MonAn
-(
-	MaMon int ,
-	TenMon nvarchar(50),
-	LoaiMon int,
-	Gia float,
-	DonViTinh nvarchar(30),
-	MaNV int,
-	primary key(MaMon)
-)
-create table BanAn
-(
-	MaBan int,
-	ViTri nvarchar(50),
-	SucChua int,
-	TrangThai int,
-	MaNH int,
-	primary key(MaBan)
-)
-create table DatBan
-(
-	MaNH int,
-	MaBan int,
-	sdtKhachHang int,
-	ThoiGianDat datetime,
-	TrangThai int,
-	ThoiGianDen datetime,
-	primary key(MaNH,MaBan,ThoiGianDat,TrangThai)
-)
