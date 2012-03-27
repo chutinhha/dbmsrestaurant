@@ -1,5 +1,0 @@
-Nghia: ChiTietHoaDon,HoaDon,LoaiNV,NhanVien
-Vu: BanAn,MonAn,DatBan
-Ngoc: NhaHang,ChiTietMonAn,LoaiMonAn
-Tan:QLNguoiDung,NguyenLieu,NhaCungCap,DatHang
-

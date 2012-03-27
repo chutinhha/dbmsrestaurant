@@ -1,18 +1,1 @@
-﻿cos
-MinhVũ - BT: có 1 vấn đề quan trọng 
-MinhVũ - BT: là lúc mình làm
-MinhVũ - BT: phải thể hiện cho thầy biết
-MinhVũ - BT: là mình xử lý tranh chấp đồng thời như thế nào
-MinhVũ - BT: thầy nói đơn giản có 2 cách xử lý
-MinhVũ - BT: là
-MinhVũ - BT: viết 2 chương trình
-MinhVũ - BT: 1 cái
-MinhVũ - BT: ko xử lý
-MinhVũ - BT: để cho nó bị lỗi
-MinhVũ - BT: 1 cái xử lý cho hết lỗi
-MinhVũ - BT: thứ 2
-MinhVũ - BT: có 2 nút cùng chức năng trên 1 chương trình
-MinhVũ - BT: 1 cái xài store bị lỗi
-MinhVũ - BT: 1 cái xài cái store đã xử lý tranh chấp
-MinhVũ - BT: ngoài ra
-MinhVũ - BT: còn có thể tự nghỉ ra những cách khác để trình bài trong đồ án
+﻿
