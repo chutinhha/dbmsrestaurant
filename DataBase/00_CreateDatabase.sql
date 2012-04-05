@@ -8,7 +8,7 @@ create table NhanVien
 (
 MaNV int identity,
 TenNV nvarchar(50),
-MaNH int,
+MaNH nchar(10),
 Maloai nchar(10),
 primary key(MaNV)
 )
@@ -29,7 +29,7 @@ primary key(MaLoai)
 GO
 create table NhaHang
 (
-MaNH int identity,
+MaNH nchar(10),
 TenNH nvarchar(30),
 DiaChi nvarchar(50),
 sdt int,
@@ -62,12 +62,13 @@ primary key(MaHD,MaMon)
 GO
 create table KhuVuc
 (
-MaKhuVuc nchar(10),
+MaKhuVuc int identity,
 TenKhuVuc nvarchar(30),
-ViTri nchar(10),
+ViTri nvarchar(30),
+MaNH nchar(10),
 primary key (MaKhuVuc)
 )
-GO --drop table loaiban
+GO --drop table khuvuc
 create table LoaiBan
 (
 Maloai nchar(10),
@@ -78,11 +79,18 @@ GO
 create table BanAn
 (
 MaBan int identity,
-MaKhuVuc nchar(10),
+MaKhuVuc int,
 LoaiBan nchar(10),
-TrangThai bit,
-MaNH int,
+TrangThai bit default 0,
 primary key (MaBan)
+)
+
+GO
+create table LoaiMonAn
+(
+MaLoai nchar(10),
+TenLoai nvarchar(50),
+primary key(MaLoai)
 )
 
 GO--drop table BanAn
@@ -90,39 +98,11 @@ create table MonAn
 (
 MaMon int identity,
 TenMon nvarchar(30),
-LoaiMon int,
+LoaiMon nchar(10),
 Gia money,
 DonViTinh nchar(10),
-MaNH int,
+MaNH nchar(10),
 primary key (MaMon)
-)
-
-GO
-create table LoaiMonAn
-(
-MaLoai int identity,
-TenLoai nvarchar(50),
-primary key(MaLoai)
-)
-GO
-create table ChiTietMonAn
-(
-MaMon int,
-MaNguyenLieu int,
-SoLuong int,
-primary key(MaMon,MaNguyenLieu)
-)
-
-GO
-create table DatBan
-(
-MaNH int,
-MaBan int,
-sdtKhachHang int,
-ThoiGianDat datetime,
-TrangThai int,
-ThoiGianDen datetime,
-primary key(MaNH,MaBan,ThoiGianDen)
 )
 
 GO
@@ -142,11 +122,35 @@ MaNL int identity,
 TenNL nvarchar(50),
 Gia money,
 SoLuongTon int,
-MaNH int,
+MaNH nchar(10),
 MaNCC int,
 SucChua int,
+DonVi nchar(10),
 primary key (MaNL)
 )
+
+GO
+create table ChiTietMonAn
+(
+MaMon int,
+MaNguyenLieu int,
+SoLuong int,
+primary key(MaMon,MaNguyenLieu)
+)
+
+GO
+create table DatBan
+(
+MaNH nchar(10),
+MaBan int,
+sdtKhachHang int,
+maKhachHang int,--cokhi khach wen dat
+ThoiGianDat datetime,
+TrangThai int,
+ThoiGianDen datetime,
+primary key(MaNH,MaBan,ThoiGianDen)
+)
+
 
 GO
 create table DatHang
@@ -155,7 +159,7 @@ MaHoaDonDat int identity,
 ThanhTien int,
 ThoiGianDat datetime,
 ThoiGianGiao nchar(10),
-MaNH int,
+MaNH nchar(10),
 primary key(MaHoaDonDat)
 )
 
@@ -180,6 +184,16 @@ Email nvarchar(50),
 primary key(UserName)
 )
 GO
+create table KhachHang
+(
+cmnd int,
+TenKhachHang nvarchar(30),
+sdt int,
+loai nchar(10),
+primary key(cmnd)
+)
+GO
+alter table KhuVuc add constraint FK_KhuVuc_NhaHang foreign key (MaNH) references NhaHang(MaNH)
 
 alter table NhanVien add constraint FK_NhanVien_LoaiNV foreign key(MaLoai) references LoaiNV(Maloai)
 alter table NhanVien add constraint FK_NhanVien_MaNH foreign key(MaNH) references NhaHang(MaNH)
@@ -193,8 +207,8 @@ alter table DatHang  add constraint FK_DatHang_NhaHang foreign key (MaNH)  refer
 alter table NguyenLieu  add constraint FK_NguyenLieu_NhaHang foreign key(MaNH)  references NhaHang(MaNH)
 alter table NguyenLieu   add constraint FK_NguyenLieu_NhaCungCap foreign key(MaNCC)  references NhaCungCap(MaNCC)
 
-alter table DatBan add constraint FK_DatBan_NhaHang foreign key (MaNH) references NhaHang(MaNH)
 alter table DatBan add constraint FK_DatBan_BanAn foreign key (MaBan) references BanAn(MaBan)
+alter table DatBan add constraint FK_DatBan_NhaHang foreign key (MaNH)  references NhaHang(MaNH)
 
 alter table ChiTietMonAn add constraint FK_ChiTietMonAn_MonAn foreign key(MaMon) references MonAn(MaMon)
 alter table ChiTietMonAn add constraint FK_ChiTietMonAn_NguyenLieu foreign key(MaNguyenLieu) references NguyenLieu(MaNL)
@@ -204,8 +218,6 @@ alter table MonAn add constraint FK_MonAn_NhaHang foreign key (MaNH) references 
 
 alter table BanAn add constraint FK_BanAn_KhuVuc foreign key(MaKhuVuc) references KhuVuc(MaKhuVuc)
 alter table BanAn add constraint FK_BanAn_LoaiBan foreign key(LoaiBan) references LoaiBan(MaLoai)
-alter table BanAn add constraint FK_BanAn_NhaHang foreign key(MaNH) references NhaHang(MaNH)
-
 
 alter table ChiTietHoaDon add constraint FK_ChiTietHoaDon_HoaDon foreign key(MaHD) references HoaDon(MaHD)
 alter table ChiTietHoaDon add constraint FK_ChiTietHoaDon_MonAn foreign key(MaMOn) references MonAn(MaMon)
