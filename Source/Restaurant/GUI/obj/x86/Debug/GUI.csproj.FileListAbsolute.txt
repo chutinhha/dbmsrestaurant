@@ -21,3 +21,5 @@ C:\Users\MinhVu\Desktop\Restaurant\GUI\bin\Debug\DTO.dll
 C:\Users\MinhVu\Desktop\Restaurant\GUI\bin\Debug\BUS.pdb
 C:\Users\MinhVu\Desktop\Restaurant\GUI\bin\Debug\DTO.pdb
 C:\Users\MinhVu\Desktop\Restaurant\GUI\obj\x86\Debug\GUI.frm_Main.resources
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.exe
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.pdb
