@@ -10,6 +10,8 @@ MaNV int identity,
 TenNV nvarchar(50),
 MaNH nchar(10),
 Maloai nchar(10),
+int cmnd;
+int sdt;
 primary key(MaNV)
 )
 --insert into NhanVien(TenNV,MaNH,Maloai) values('sdf',1,'sd')
