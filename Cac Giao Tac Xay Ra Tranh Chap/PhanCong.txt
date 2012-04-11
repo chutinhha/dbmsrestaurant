@@ -2,7 +2,9 @@
 
 - phan tich va khac phuc loi trong tung van de
 
-- tim tu 3->5 van de trong 1 Nghiep vu
+- tim tu 5->10 tranh chap,trong do co 5 TH:Dirty Read,LostUpdate,Unrepeatable Read,Phantom,Dealock
+				-moi TH phai tim dc tu 1->2 tranh chap trong 1 nghiep vu
+				- moi thanh vien dc nhan 2 nghiep vu
 
 - Phan cong:
 	+ Vu: Hoan thanh giao dien & nghiep vu QLNhaHang
