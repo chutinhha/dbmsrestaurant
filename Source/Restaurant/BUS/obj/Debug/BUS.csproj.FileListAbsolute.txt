@@ -7,3 +7,12 @@ C:\Users\MinhVu\Desktop\Restaurant\BUS\bin\Debug\DTO.pdb
 C:\Users\MinhVu\Desktop\Restaurant\BUS\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MinhVu\Desktop\Restaurant\BUS\obj\Debug\BUS.dll
 C:\Users\MinhVu\Desktop\Restaurant\BUS\obj\Debug\BUS.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\bin\Debug\BUS.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\bin\Debug\BUS.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\bin\Debug\DAO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\bin\Debug\DTO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\bin\Debug\DAO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\bin\Debug\DTO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\obj\Debug\ResolveAssemblyReference.cache
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\obj\Debug\BUS.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\BUS\obj\Debug\BUS.pdb

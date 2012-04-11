@@ -5,3 +5,10 @@ C:\Users\MinhVu\Desktop\Restaurant\DAO\bin\Debug\DTO.pdb
 C:\Users\MinhVu\Desktop\Restaurant\DAO\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MinhVu\Desktop\Restaurant\DAO\obj\Debug\DAO.dll
 C:\Users\MinhVu\Desktop\Restaurant\DAO\obj\Debug\DAO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\bin\Debug\DAO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\bin\Debug\DAO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\bin\Debug\DTO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\bin\Debug\DTO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\obj\Debug\ResolveAssemblyReference.cache
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\obj\Debug\DAO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\DAO\obj\Debug\DAO.pdb
