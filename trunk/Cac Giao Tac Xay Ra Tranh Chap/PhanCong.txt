@@ -11,7 +11,7 @@
 
 	+ Nghia: QLNhapHang, QLKhoHang 	
 
-	+ Ngoc: QLNhanVien,QL
+	+ Ngoc: QLNhanVien,QLThucDon
 	
 	...bo sung sau
 
