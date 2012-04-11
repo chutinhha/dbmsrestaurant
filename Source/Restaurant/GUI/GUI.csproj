@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -69,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UCtrl_TiepTan_ThuNgan_DatBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_TiepTan_ThuNgan_DatBan.Designer.cs">
+      <DependentUpon>UCtrl_TiepTan_ThuNgan_DatBan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frm_Main.resx">
       <DependentUpon>frm_Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +92,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UCtrl_TiepTan_ThuNgan_DatBan.resx">
+      <DependentUpon>UCtrl_TiepTan_ThuNgan_DatBan.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +117,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\Perspective Button - Stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="QuanLyKho\" />
+    <Folder Include="QuanLyNhanHang\" />
+    <Folder Include="QuanTriHeThong\" />
+    <Folder Include="TiepTan&amp;ThuNgan\" />
+    <Folder Include="TuyChon\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
