@@ -20,8 +20,6 @@ namespace DAO
             cm.CommandText = sql;
             return cm;
         }
-
-
-        
+     
     }
 }
