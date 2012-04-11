@@ -3,3 +3,8 @@ C:\Users\MinhVu\Desktop\Restaurant\DTO\bin\Debug\DTO.pdb
 C:\Users\MinhVu\Desktop\Restaurant\DTO\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\MinhVu\Desktop\Restaurant\DTO\obj\Debug\DTO.dll
 C:\Users\MinhVu\Desktop\Restaurant\DTO\obj\Debug\DTO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\DTO\bin\Debug\DTO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\DTO\bin\Debug\DTO.pdb
+E:\SVN\Restaurant_Project\Source\Restaurant\DTO\obj\Debug\ResolveAssemblyReference.cache
+E:\SVN\Restaurant_Project\Source\Restaurant\DTO\obj\Debug\DTO.dll
+E:\SVN\Restaurant_Project\Source\Restaurant\DTO\obj\Debug\DTO.pdb
