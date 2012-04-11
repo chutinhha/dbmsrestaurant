@@ -1,0 +1,20 @@
+- Phan tich cac tranh chap co the xay ra trong tung Nghiep VU
+
+- phan tich va khac phuc loi trong tung van de
+
+- tim tu 3->5 van de trong 1 Nghiep vu
+
+- Phan cong:
+	+ Vu: Hoan thanh giao dien & nghiep vu QLNhaHang
+	
+	+ Tan: QLDatCho & QLNDoanhThu
+
+	+ Nghia: QLNhapHang, QLKhoHang 	
+
+	+ Ngoc: QLNhanVien,QL
+	
+	...bo sung sau
+
+- Lam theo muc 2.1 cua file Report.docx
+
+- Cac Ban lam cuoi tuan nay xong.
