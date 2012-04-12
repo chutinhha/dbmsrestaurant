@@ -24,8 +24,8 @@ namespace GUI
         }
         private void frm_Main_Load(object sender, EventArgs e)
         {
-            UCtrl_TiepTan_DatBan UCtrl = new UCtrl_TiepTan_DatBan();
-            Add_UserControl(panelCtrl_Main, UCtrl);
+           UCtrl_TiepTan_XepBan UCtrl = new UCtrl_TiepTan_XepBan();
+           Add_UserControl(panelCtrl_Main, UCtrl);
         }
         private void Add_UserControl(Control Panel, Control UCtrl)
         {
@@ -37,7 +37,7 @@ namespace GUI
         #region " Tiep Tan "
         private void barBtn_TiepTan_DanhMucKhachHang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UCtrl_TiepTan_DanhMucKhachHang UCtrl = new UCtrl_TiepTan_DanhMucKhachHang();
+            UCtrl_TiepTan_DSKhachHang UCtrl = new UCtrl_TiepTan_DSKhachHang();
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
         private void barBtn_TiepTan_DatBan_ItemClick(object sender, ItemClickEventArgs e)
@@ -45,6 +45,12 @@ namespace GUI
             UCtrl_TiepTan_DatBan UCtrl = new UCtrl_TiepTan_DatBan();
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
+        private void barBtn_TiepTan_XepBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UCtrl_TiepTan_XepBan UCtrl = new UCtrl_TiepTan_XepBan();
+            Add_UserControl(panelCtrl_Main, UCtrl);
+        }
+
         #endregion
 
         #region " Thu Ngan "
@@ -81,8 +87,6 @@ namespace GUI
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
 
-
-    
         #endregion
 
         #region " Tong Quan Ly "
@@ -108,6 +112,10 @@ namespace GUI
         }
         #endregion
 
+   
+
+
+ 
 
 
      

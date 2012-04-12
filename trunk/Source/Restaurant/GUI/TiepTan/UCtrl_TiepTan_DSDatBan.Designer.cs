@@ -1,4 +1,4 @@
-﻿namespace GUI.TiepTan
+﻿namespace GUI
 {
     partial class UCtrl_TiepTan_DSDatBan
     {

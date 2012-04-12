@@ -30,6 +30,7 @@ namespace GUI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Main));
             this.rbControl_Main = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.MybarAndDockingController = new DevExpress.XtraBars.BarAndDockingController(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -63,7 +64,6 @@ namespace GUI
             this.barBtn_QLNhaHang_DSBanAn = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_DSDatBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_XepBan = new DevExpress.XtraBars.BarButtonItem();
-            this.barBtn_TiepTan_SoDoBanAn = new DevExpress.XtraBars.BarButtonItem();
             this.rbPage_TiepTan_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -94,7 +94,7 @@ namespace GUI
             // rbControl_Main
             // 
             this.rbControl_Main.ApplicationButtonText = null;
-            this.rbControl_Main.ApplicationIcon = global::GUI.Properties.Resources.Icon_KHTN_512x512;
+            this.rbControl_Main.ApplicationIcon = ((System.Drawing.Bitmap)(resources.GetObject("rbControl_Main.ApplicationIcon")));
             this.rbControl_Main.Controller = this.MybarAndDockingController;
             // 
             // 
@@ -133,8 +133,7 @@ namespace GUI
             this.barBtn_TongQL_DanhSachNhaHang,
             this.barBtn_QLNhaHang_DSBanAn,
             this.barBtn_TiepTan_DSDatBan,
-            this.barBtn_TiepTan_XepBan,
-            this.barBtn_TiepTan_SoDoBanAn});
+            this.barBtn_TiepTan_XepBan});
             this.rbControl_Main.Location = new System.Drawing.Point(0, 0);
             this.rbControl_Main.MaxItemId = 43;
             this.rbControl_Main.Name = "rbControl_Main";
@@ -146,7 +145,7 @@ namespace GUI
             this.rbPage_TongQuanLy,
             this.rbPage_QuanTri,
             this.rbPage_TuyChon});
-            this.rbControl_Main.Size = new System.Drawing.Size(1014, 159);
+            this.rbControl_Main.Size = new System.Drawing.Size(890, 159);
             // 
             // MybarAndDockingController
             // 
@@ -159,22 +158,22 @@ namespace GUI
             // 
             this.barButtonItem1.Caption = "barButtonItem1";
             this.barButtonItem1.Id = 1;
-            this.barButtonItem1.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
             this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "barButtonItem2";
             this.barButtonItem2.Id = 2;
-            this.barButtonItem2.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barBtn_QLKho_QLNCC
             // 
             this.barBtn_QLKho_QLNCC.Caption = "Nhà Cung Cấp";
             this.barBtn_QLKho_QLNCC.Id = 3;
-            this.barBtn_QLKho_QLNCC.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
-            this.barBtn_QLKho_QLNCC.LargeGlyphDisabled = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLKho_QLNCC.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLKho_QLNCC.LargeGlyph")));
+            this.barBtn_QLKho_QLNCC.LargeGlyphDisabled = ((System.Drawing.Image)(resources.GetObject("barBtn_QLKho_QLNCC.LargeGlyphDisabled")));
             this.barBtn_QLKho_QLNCC.LargeWidth = 120;
             this.barBtn_QLKho_QLNCC.Name = "barBtn_QLKho_QLNCC";
             // 
@@ -182,7 +181,7 @@ namespace GUI
             // 
             this.barBtn_TiepTan_DatBan.Caption = "Đặt Bàn";
             this.barBtn_TiepTan_DatBan.Id = 4;
-            this.barBtn_TiepTan_DatBan.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TiepTan_DatBan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TiepTan_DatBan.LargeGlyph")));
             this.barBtn_TiepTan_DatBan.LargeWidth = 120;
             this.barBtn_TiepTan_DatBan.Name = "barBtn_TiepTan_DatBan";
             this.barBtn_TiepTan_DatBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TiepTan_DatBan_ItemClick);
@@ -191,7 +190,7 @@ namespace GUI
             // 
             this.barBtn_TiepTan_DanhMucKhachHang.Caption = "Danh Mục Khách Hàng";
             this.barBtn_TiepTan_DanhMucKhachHang.Id = 7;
-            this.barBtn_TiepTan_DanhMucKhachHang.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TiepTan_DanhMucKhachHang.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TiepTan_DanhMucKhachHang.LargeGlyph")));
             this.barBtn_TiepTan_DanhMucKhachHang.LargeWidth = 120;
             this.barBtn_TiepTan_DanhMucKhachHang.Name = "barBtn_TiepTan_DanhMucKhachHang";
             this.barBtn_TiepTan_DanhMucKhachHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TiepTan_DanhMucKhachHang_ItemClick);
@@ -200,7 +199,7 @@ namespace GUI
             // 
             this.barBtn_ThuNgan_QLBanAn.Caption = "Quản Lý Bàn Ăn";
             this.barBtn_ThuNgan_QLBanAn.Id = 8;
-            this.barBtn_ThuNgan_QLBanAn.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_ThuNgan_QLBanAn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_ThuNgan_QLBanAn.LargeGlyph")));
             this.barBtn_ThuNgan_QLBanAn.LargeWidth = 120;
             this.barBtn_ThuNgan_QLBanAn.Name = "barBtn_ThuNgan_QLBanAn";
             // 
@@ -208,7 +207,7 @@ namespace GUI
             // 
             this.barBtn_ThuNgan_ChuyenBan.Caption = "Chuyển Bàn";
             this.barBtn_ThuNgan_ChuyenBan.Id = 9;
-            this.barBtn_ThuNgan_ChuyenBan.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_ThuNgan_ChuyenBan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_ThuNgan_ChuyenBan.LargeGlyph")));
             this.barBtn_ThuNgan_ChuyenBan.LargeWidth = 120;
             this.barBtn_ThuNgan_ChuyenBan.Name = "barBtn_ThuNgan_ChuyenBan";
             // 
@@ -216,7 +215,7 @@ namespace GUI
             // 
             this.barBtn_ThuNgan_GhepBan.Caption = "Ghép Bàn";
             this.barBtn_ThuNgan_GhepBan.Id = 10;
-            this.barBtn_ThuNgan_GhepBan.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_ThuNgan_GhepBan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_ThuNgan_GhepBan.LargeGlyph")));
             this.barBtn_ThuNgan_GhepBan.LargeWidth = 120;
             this.barBtn_ThuNgan_GhepBan.Name = "barBtn_ThuNgan_GhepBan";
             // 
@@ -224,7 +223,7 @@ namespace GUI
             // 
             this.barBtn_ThuNgan_ThongKe.Caption = "Thống Kê";
             this.barBtn_ThuNgan_ThongKe.Id = 11;
-            this.barBtn_ThuNgan_ThongKe.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_ThuNgan_ThongKe.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_ThuNgan_ThongKe.LargeGlyph")));
             this.barBtn_ThuNgan_ThongKe.LargeWidth = 120;
             this.barBtn_ThuNgan_ThongKe.Name = "barBtn_ThuNgan_ThongKe";
             // 
@@ -232,7 +231,7 @@ namespace GUI
             // 
             this.barBtn_QLKho_QLNguyenLieuTon.Caption = "Nguyên Liệu Tồn";
             this.barBtn_QLKho_QLNguyenLieuTon.Id = 12;
-            this.barBtn_QLKho_QLNguyenLieuTon.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLKho_QLNguyenLieuTon.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLKho_QLNguyenLieuTon.LargeGlyph")));
             this.barBtn_QLKho_QLNguyenLieuTon.LargeWidth = 120;
             this.barBtn_QLKho_QLNguyenLieuTon.Name = "barBtn_QLKho_QLNguyenLieuTon";
             this.barBtn_QLKho_QLNguyenLieuTon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNguyenLieu_ItemClick);
@@ -241,7 +240,7 @@ namespace GUI
             // 
             this.barBtn_QLKho_DatHang.Caption = "Đặt Hàng";
             this.barBtn_QLKho_DatHang.Id = 13;
-            this.barBtn_QLKho_DatHang.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLKho_DatHang.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLKho_DatHang.LargeGlyph")));
             this.barBtn_QLKho_DatHang.LargeWidth = 120;
             this.barBtn_QLKho_DatHang.Name = "barBtn_QLKho_DatHang";
             // 
@@ -249,7 +248,7 @@ namespace GUI
             // 
             this.barBtn_QLKho_NhapKho.Caption = "Nhập Kho";
             this.barBtn_QLKho_NhapKho.Id = 14;
-            this.barBtn_QLKho_NhapKho.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLKho_NhapKho.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLKho_NhapKho.LargeGlyph")));
             this.barBtn_QLKho_NhapKho.LargeWidth = 120;
             this.barBtn_QLKho_NhapKho.Name = "barBtn_QLKho_NhapKho";
             this.barBtn_QLKho_NhapKho.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_NhapKho_ItemClick);
@@ -258,7 +257,7 @@ namespace GUI
             // 
             this.barBtn_QLNhaHang_ThucDon.Caption = "Thực Đơn";
             this.barBtn_QLNhaHang_ThucDon.Id = 16;
-            this.barBtn_QLNhaHang_ThucDon.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLNhaHang_ThucDon.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLNhaHang_ThucDon.LargeGlyph")));
             this.barBtn_QLNhaHang_ThucDon.LargeWidth = 120;
             this.barBtn_QLNhaHang_ThucDon.Name = "barBtn_QLNhaHang_ThucDon";
             this.barBtn_QLNhaHang_ThucDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNhaHang_ThucDon_ItemClick);
@@ -267,7 +266,7 @@ namespace GUI
             // 
             this.barBtn_QLNhaHang_DSNhanVien.Caption = "Danh Sách Nhân Viên";
             this.barBtn_QLNhaHang_DSNhanVien.Id = 17;
-            this.barBtn_QLNhaHang_DSNhanVien.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLNhaHang_DSNhanVien.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLNhaHang_DSNhanVien.LargeGlyph")));
             this.barBtn_QLNhaHang_DSNhanVien.LargeWidth = 120;
             this.barBtn_QLNhaHang_DSNhanVien.Name = "barBtn_QLNhaHang_DSNhanVien";
             this.barBtn_QLNhaHang_DSNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNhaHang_DSNhanVien_ItemClick);
@@ -276,7 +275,7 @@ namespace GUI
             // 
             this.barBtn_QLNhaHang_ThongKeDoanhThu.Caption = "Thống Kê Doanh Thu";
             this.barBtn_QLNhaHang_ThongKeDoanhThu.Id = 18;
-            this.barBtn_QLNhaHang_ThongKeDoanhThu.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLNhaHang_ThongKeDoanhThu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLNhaHang_ThongKeDoanhThu.LargeGlyph")));
             this.barBtn_QLNhaHang_ThongKeDoanhThu.LargeWidth = 120;
             this.barBtn_QLNhaHang_ThongKeDoanhThu.Name = "barBtn_QLNhaHang_ThongKeDoanhThu";
             // 
@@ -291,7 +290,7 @@ namespace GUI
             // 
             this.barBtn_TuyChon_DoiMatKhau.Caption = "Đổi Mật Khẩu";
             this.barBtn_TuyChon_DoiMatKhau.Id = 20;
-            this.barBtn_TuyChon_DoiMatKhau.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TuyChon_DoiMatKhau.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_DoiMatKhau.LargeGlyph")));
             this.barBtn_TuyChon_DoiMatKhau.LargeWidth = 120;
             this.barBtn_TuyChon_DoiMatKhau.Name = "barBtn_TuyChon_DoiMatKhau";
             // 
@@ -299,7 +298,7 @@ namespace GUI
             // 
             this.barBtn_TuyChon_Thoat.Caption = "Thoát Khỏi Hệ Thống";
             this.barBtn_TuyChon_Thoat.Id = 21;
-            this.barBtn_TuyChon_Thoat.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TuyChon_Thoat.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_Thoat.LargeGlyph")));
             this.barBtn_TuyChon_Thoat.LargeWidth = 120;
             this.barBtn_TuyChon_Thoat.Name = "barBtn_TuyChon_Thoat";
             this.barBtn_TuyChon_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Thoat_ItemClick);
@@ -308,7 +307,7 @@ namespace GUI
             // 
             this.barBrn_QuanTriNguoiDung.Caption = "Quản Trị Người Dùng";
             this.barBrn_QuanTriNguoiDung.Id = 22;
-            this.barBrn_QuanTriNguoiDung.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBrn_QuanTriNguoiDung.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBrn_QuanTriNguoiDung.LargeGlyph")));
             this.barBrn_QuanTriNguoiDung.LargeWidth = 115;
             this.barBrn_QuanTriNguoiDung.Name = "barBrn_QuanTriNguoiDung";
             this.barBrn_QuanTriNguoiDung.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBrn_QuanTriNguoiDung_ItemClick);
@@ -317,7 +316,7 @@ namespace GUI
             // 
             this.barBtn_QuanTri_QuantrCoSoDuLieu.Caption = "Cơ sở dử liệu";
             this.barBtn_QuanTri_QuantrCoSoDuLieu.Id = 23;
-            this.barBtn_QuanTri_QuantrCoSoDuLieu.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QuanTri_QuantrCoSoDuLieu.LargeGlyph = global::GUI.Properties.Resources.Database_32;
             this.barBtn_QuanTri_QuantrCoSoDuLieu.LargeWidth = 120;
             this.barBtn_QuanTri_QuantrCoSoDuLieu.Name = "barBtn_QuanTri_QuantrCoSoDuLieu";
             // 
@@ -325,7 +324,7 @@ namespace GUI
             // 
             this.barBtn_QuanTri_ThuVienAnh.Caption = "Thư Viện Ảnh";
             this.barBtn_QuanTri_ThuVienAnh.Id = 24;
-            this.barBtn_QuanTri_ThuVienAnh.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QuanTri_ThuVienAnh.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QuanTri_ThuVienAnh.LargeGlyph")));
             this.barBtn_QuanTri_ThuVienAnh.LargeWidth = 120;
             this.barBtn_QuanTri_ThuVienAnh.Name = "barBtn_QuanTri_ThuVienAnh";
             // 
@@ -333,7 +332,7 @@ namespace GUI
             // 
             this.barBtn_TuyChon_TroGiup.Caption = "Trợ Giúp";
             this.barBtn_TuyChon_TroGiup.Id = 25;
-            this.barBtn_TuyChon_TroGiup.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TuyChon_TroGiup.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_TroGiup.LargeGlyph")));
             this.barBtn_TuyChon_TroGiup.LargeWidth = 120;
             this.barBtn_TuyChon_TroGiup.Name = "barBtn_TuyChon_TroGiup";
             // 
@@ -341,7 +340,7 @@ namespace GUI
             // 
             this.barBtn_TuyChon_GioiThieu.Caption = "Giới Thiệu";
             this.barBtn_TuyChon_GioiThieu.Id = 26;
-            this.barBtn_TuyChon_GioiThieu.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TuyChon_GioiThieu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_GioiThieu.LargeGlyph")));
             this.barBtn_TuyChon_GioiThieu.LargeWidth = 120;
             this.barBtn_TuyChon_GioiThieu.Name = "barBtn_TuyChon_GioiThieu";
             // 
@@ -349,7 +348,7 @@ namespace GUI
             // 
             this.barBtn_QuanTri_PhanQuyen.Caption = "Phân Quyền";
             this.barBtn_QuanTri_PhanQuyen.Id = 28;
-            this.barBtn_QuanTri_PhanQuyen.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QuanTri_PhanQuyen.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QuanTri_PhanQuyen.LargeGlyph")));
             this.barBtn_QuanTri_PhanQuyen.LargeWidth = 120;
             this.barBtn_QuanTri_PhanQuyen.Name = "barBtn_QuanTri_PhanQuyen";
             // 
@@ -357,7 +356,7 @@ namespace GUI
             // 
             this.barBtn_TongQL_TongHopDoanhThu.Caption = "Tổng Hợp Doanh Thu";
             this.barBtn_TongQL_TongHopDoanhThu.Id = 29;
-            this.barBtn_TongQL_TongHopDoanhThu.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TongQL_TongHopDoanhThu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TongQL_TongHopDoanhThu.LargeGlyph")));
             this.barBtn_TongQL_TongHopDoanhThu.LargeWidth = 120;
             this.barBtn_TongQL_TongHopDoanhThu.Name = "barBtn_TongQL_TongHopDoanhThu";
             // 
@@ -365,7 +364,7 @@ namespace GUI
             // 
             this.barBtn_TongQL_QLNhanVien.Caption = "Quản Lý Nhân Viên";
             this.barBtn_TongQL_QLNhanVien.Id = 30;
-            this.barBtn_TongQL_QLNhanVien.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TongQL_QLNhanVien.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TongQL_QLNhanVien.LargeGlyph")));
             this.barBtn_TongQL_QLNhanVien.LargeWidth = 120;
             this.barBtn_TongQL_QLNhanVien.Name = "barBtn_TongQL_QLNhanVien";
             // 
@@ -373,7 +372,7 @@ namespace GUI
             // 
             this.barBtn_QuanTri_QuanTriNguoiDung.Caption = "Quản Trị Người Dùng";
             this.barBtn_QuanTri_QuanTriNguoiDung.Id = 33;
-            this.barBtn_QuanTri_QuanTriNguoiDung.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QuanTri_QuanTriNguoiDung.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QuanTri_QuanTriNguoiDung.LargeGlyph")));
             this.barBtn_QuanTri_QuanTriNguoiDung.LargeWidth = 120;
             this.barBtn_QuanTri_QuanTriNguoiDung.Name = "barBtn_QuanTri_QuanTriNguoiDung";
             // 
@@ -381,7 +380,7 @@ namespace GUI
             // 
             this.barBtn_TongQL_DanhSachNhaHang.Caption = "Danh Sách Nhà Hàng";
             this.barBtn_TongQL_DanhSachNhaHang.Id = 36;
-            this.barBtn_TongQL_DanhSachNhaHang.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TongQL_DanhSachNhaHang.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TongQL_DanhSachNhaHang.LargeGlyph")));
             this.barBtn_TongQL_DanhSachNhaHang.LargeWidth = 120;
             this.barBtn_TongQL_DanhSachNhaHang.Name = "barBtn_TongQL_DanhSachNhaHang";
             // 
@@ -389,7 +388,7 @@ namespace GUI
             // 
             this.barBtn_QLNhaHang_DSBanAn.Caption = "Danh Sách Bàn Ăn";
             this.barBtn_QLNhaHang_DSBanAn.Id = 37;
-            this.barBtn_QLNhaHang_DSBanAn.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_QLNhaHang_DSBanAn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLNhaHang_DSBanAn.LargeGlyph")));
             this.barBtn_QLNhaHang_DSBanAn.LargeWidth = 120;
             this.barBtn_QLNhaHang_DSBanAn.Name = "barBtn_QLNhaHang_DSBanAn";
             this.barBtn_QLNhaHang_DSBanAn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNhaHang_DSBanAn_ItemClick);
@@ -398,7 +397,7 @@ namespace GUI
             // 
             this.barBtn_TiepTan_DSDatBan.Caption = "Danh Sách Đặt Bàn";
             this.barBtn_TiepTan_DSDatBan.Id = 39;
-            this.barBtn_TiepTan_DSDatBan.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TiepTan_DSDatBan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TiepTan_DSDatBan.LargeGlyph")));
             this.barBtn_TiepTan_DSDatBan.LargeWidth = 120;
             this.barBtn_TiepTan_DSDatBan.Name = "barBtn_TiepTan_DSDatBan";
             // 
@@ -406,17 +405,10 @@ namespace GUI
             // 
             this.barBtn_TiepTan_XepBan.Caption = "Xếp Bàn";
             this.barBtn_TiepTan_XepBan.Id = 40;
-            this.barBtn_TiepTan_XepBan.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
+            this.barBtn_TiepTan_XepBan.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TiepTan_XepBan.LargeGlyph")));
             this.barBtn_TiepTan_XepBan.LargeWidth = 120;
             this.barBtn_TiepTan_XepBan.Name = "barBtn_TiepTan_XepBan";
-            // 
-            // barBtn_TiepTan_SoDoBanAn
-            // 
-            this.barBtn_TiepTan_SoDoBanAn.Caption = "Sơ Đồ Bàn Ăn";
-            this.barBtn_TiepTan_SoDoBanAn.Id = 42;
-            this.barBtn_TiepTan_SoDoBanAn.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
-            this.barBtn_TiepTan_SoDoBanAn.LargeWidth = 120;
-            this.barBtn_TiepTan_SoDoBanAn.Name = "barBtn_TiepTan_SoDoBanAn";
+            this.barBtn_TiepTan_XepBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TiepTan_XepBan_ItemClick);
             // 
             // rbPage_TiepTan_ThuNgan
             // 
@@ -429,7 +421,6 @@ namespace GUI
             // rbPageGroup_TiepTan1
             // 
             this.rbPageGroup_TiepTan1.ItemLinks.Add(this.barBtn_TiepTan_XepBan);
-            this.rbPageGroup_TiepTan1.ItemLinks.Add(this.barBtn_TiepTan_SoDoBanAn);
             this.rbPageGroup_TiepTan1.Name = "rbPageGroup_TiepTan1";
             // 
             // rbPageGroup_TiepTan2
@@ -556,18 +547,18 @@ namespace GUI
             this.panelCtrl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCtrl_Main.Location = new System.Drawing.Point(0, 159);
             this.panelCtrl_Main.Name = "panelCtrl_Main";
-            this.panelCtrl_Main.Size = new System.Drawing.Size(1014, 436);
+            this.panelCtrl_Main.Size = new System.Drawing.Size(890, 436);
             this.panelCtrl_Main.TabIndex = 2;
             // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1014, 595);
+            this.ClientSize = new System.Drawing.Size(890, 595);
             this.Controls.Add(this.panelCtrl_Main);
             this.Controls.Add(this.rbControl_Main);
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(808, 500);
+            this.MinimumSize = new System.Drawing.Size(900, 600);
             this.Name = "frm_Main";
             this.Ribbon = this.rbControl_Main;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -637,7 +628,6 @@ namespace GUI
         private DevExpress.XtraBars.BarButtonItem barBtn_TiepTan_XepBan;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TiepTan2;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_ThuNgan;
-        private DevExpress.XtraBars.BarButtonItem barBtn_TiepTan_SoDoBanAn;
     }
 }
 
