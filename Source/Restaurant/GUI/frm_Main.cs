@@ -24,16 +24,28 @@ namespace GUI
         }
         private void frm_Main_Load(object sender, EventArgs e)
         {
-            UCtrl_TiepTan_ThuNgan_DatBan UCtrl = new UCtrl_TiepTan_ThuNgan_DatBan();
+            UCtrl_TiepTan_DatBan UCtrl = new UCtrl_TiepTan_DatBan();
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
         private void Add_UserControl(Control Panel, Control UCtrl)
         {
+            panelCtrl_Main.Controls.Clear();
             UCtrl.Dock = DockStyle.Fill;
             Panel.Controls.Add(UCtrl);
         }
-        #region " Tiep Tan & Thu Ngan "
 
+        #region " Tiep Tan & Thu Ngan "
+        private void barBtn_QLKH_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UCtrl_TiepTan_QLKhachHang UCtrl = new UCtrl_TiepTan_QLKhachHang();
+            Add_UserControl(panelCtrl_Main, UCtrl);
+        }
+
+        private void barBtn_DatBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UCtrl_TiepTan_DatBan UCtrl = new UCtrl_TiepTan_DatBan();
+            Add_UserControl(panelCtrl_Main, UCtrl);
+        }
         #endregion
 
         #region " Quan Ly Kho "
@@ -49,7 +61,11 @@ namespace GUI
         #endregion
 
         #region " Quan Ly Nha Hang "
-
+        private void barBtn_QLThucDon_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UCtrl_QLNhaHang_QLThucDon UCtrl = new UCtrl_QLNhaHang_QLThucDon();
+            Add_UserControl(panelCtrl_Main,UCtrl);
+        }
         #endregion
 
         #region " Tong Quan Ly "
@@ -74,7 +90,11 @@ namespace GUI
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Item.Tag.ToString();
         }
         #endregion
-               
+
+     
+
+     
+    
        
        
         

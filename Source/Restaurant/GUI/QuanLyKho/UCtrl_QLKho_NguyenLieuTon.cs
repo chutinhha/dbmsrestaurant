@@ -9,9 +9,9 @@ using DevExpress.XtraEditors;
 
 namespace GUI
 {
-    public partial class UCtrl_TiepTan_ThuNgan_DatBan : DevExpress.XtraEditors.XtraUserControl
+    public partial class UCtrl_QLKho_NguyenLieuTon : DevExpress.XtraEditors.XtraUserControl
     {
-        public UCtrl_TiepTan_ThuNgan_DatBan()
+        public UCtrl_QLKho_NguyenLieuTon()
         {
             InitializeComponent();
         }

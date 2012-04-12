@@ -52,6 +52,7 @@
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,6 +63,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="vButton, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\vButton.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="frm_Main.cs">
@@ -72,11 +77,119 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UCtrl_TiepTan_ThuNgan_DatBan.cs">
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_TiepTan_QLKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_TiepTan_ThuNgan_DatBan.Designer.cs">
-      <DependentUpon>UCtrl_TiepTan_ThuNgan_DatBan.cs</DependentUpon>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_TiepTan_QLKhachHang.Designer.cs">
+      <DependentUpon>UCtrl_TiepTan_QLKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_TiepTan_DatBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_TiepTan_DatBan.Designer.cs">
+      <DependentUpon>UCtrl_TiepTan_DatBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_ChuyenBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_ChuyenBan.Designer.cs">
+      <DependentUpon>UCtrl_ThuNgan_ChuyenBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_GhepBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_GhepBan.Designer.cs">
+      <DependentUpon>UCtrl_ThuNgan_GhepBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_QLBanAn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_QLBanAn.Designer.cs">
+      <DependentUpon>UCtrl_ThuNgan_QLBanAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_ThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TiepTan&amp;ThuNgan\UCtrl_ThuNgan_ThongKe.Designer.cs">
+      <DependentUpon>UCtrl_ThuNgan_ThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_DatHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_DatHang.Designer.cs">
+      <DependentUpon>UCtrl_QLKho_DatHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_NguyenLieuTon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_NguyenLieuTon.Designer.cs">
+      <DependentUpon>UCtrl_QLKho_NguyenLieuTon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_NhaCungCap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_NhaCungCap.Designer.cs">
+      <DependentUpon>UCtrl_QLKho_NhaCungCap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_NhapKho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\UCtrl_QLKho_NhapKho.Designer.cs">
+      <DependentUpon>UCtrl_QLKho_NhapKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLNhanVien.Designer.cs">
+      <DependentUpon>UCtrl_QLNhaHang_QLNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.Designer.cs">
+      <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_ThongKeDoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_ThongKeDoanhThu.Designer.cs">
+      <DependentUpon>UCtrl_QLNhaHang_ThongKeDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TongQuanLy\UCtrl_TongQL_QLNhanVien.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TongQuanLy\UCtrl_TongQL_QLNhanVien.Designer.cs">
+      <DependentUpon>UCtrl_TongQL_QLNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TongQuanLy\UCtrl_TongQL_TongHopDoanhThu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TongQuanLy\UCtrl_TongQL_TongHopDoanhThu.Designer.cs">
+      <DependentUpon>UCtrl_TongQL_TongHopDoanhThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_CoSoDuLieu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_CoSoDuLieu.Designer.cs">
+      <DependentUpon>UCtrl_QuanTriHT_CoSoDuLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_PhanQuyen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_PhanQuyen.Designer.cs">
+      <DependentUpon>UCtrl_QuanTriHT_PhanQuyen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_QuanTriNguoiDung.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_QuanTriNguoiDung.Designer.cs">
+      <DependentUpon>UCtrl_QuanTriHT_QuanTriNguoiDung.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_ThuVienAnh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanTriHeThong\UCtrl_QuanTriHT_ThuVienAnh.Designer.cs">
+      <DependentUpon>UCtrl_QuanTriHT_ThuVienAnh.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frm_Main.resx">
       <DependentUpon>frm_Main.cs</DependentUpon>
@@ -92,8 +205,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UCtrl_TiepTan_ThuNgan_DatBan.resx">
-      <DependentUpon>UCtrl_TiepTan_ThuNgan_DatBan.cs</DependentUpon>
+    <EmbeddedResource Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.resx">
+      <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiepTan&amp;ThuNgan\UCtrl_TiepTan_DatBan.resx">
+      <DependentUpon>UCtrl_TiepTan_DatBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiepTan&amp;ThuNgan\UCtrl_TiepTan_QLKhachHang.resx">
+      <DependentUpon>UCtrl_TiepTan_QLKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -119,10 +238,6 @@
     <None Include="Image\Perspective Button - Stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="QuanLyKho\" />
-    <Folder Include="QuanLyNhanHang\" />
-    <Folder Include="QuanTriHeThong\" />
-    <Folder Include="TiepTan&amp;ThuNgan\" />
     <Folder Include="TuyChon\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
