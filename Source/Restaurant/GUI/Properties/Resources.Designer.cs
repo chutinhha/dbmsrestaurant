@@ -60,16 +60,114 @@ namespace GUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap BanDangSuDung_64 {
+            get {
+                object obj = ResourceManager.GetObject("BanDangSuDung_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap BanDuocDat_64 {
+            get {
+                object obj = ResourceManager.GetObject("BanDuocDat_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap BanTrong_128 {
+            get {
+                object obj = ResourceManager.GetObject("BanTrong_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap BuddyGreen_32 {
+            get {
+                object obj = ResourceManager.GetObject("BuddyGreen_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap close_32 {
+            get {
+                object obj = ResourceManager.GetObject("close_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Database_32 {
+            get {
+                object obj = ResourceManager.GetObject("Database_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete_32 {
+            get {
+                object obj = ResourceManager.GetObject("delete_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Icon_KHTN_512x512 {
             get {
-                object obj = ResourceManager.GetObject("Icon-KHTN-512x512", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_KHTN_512x512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap loainv_32 {
+            get {
+                object obj = ResourceManager.GetObject("loainv_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap money_32 {
+            get {
+                object obj = ResourceManager.GetObject("money_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         internal static System.Drawing.Bitmap Perspective_Button___Stop {
             get {
-                object obj = ResourceManager.GetObject("Perspective Button - Stop", resourceCulture);
+                object obj = ResourceManager.GetObject("Perspective_Button___Stop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap plus_32 {
+            get {
+                object obj = ResourceManager.GetObject("plus_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap print_32 {
+            get {
+                object obj = ResourceManager.GetObject("print_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Refresh_32 {
+            get {
+                object obj = ResourceManager.GetObject("Refresh_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap save_32 {
+            get {
+                object obj = ResourceManager.GetObject("save_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tick_32 {
+            get {
+                object obj = ResourceManager.GetObject("tick_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

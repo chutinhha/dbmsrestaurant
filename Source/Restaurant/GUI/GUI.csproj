@@ -83,11 +83,11 @@
     <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_DSBanAn.Designer.cs">
       <DependentUpon>UCtrl_QLNhaHang_DSBanAn.cs</DependentUpon>
     </Compile>
-    <Compile Include="TiepTan\UCtrl_TiepTan_DanhMucKhachHang.cs">
+    <Compile Include="TiepTan\UCtrl_TiepTan_DSKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TiepTan\UCtrl_TiepTan_DanhMucKhachHang.Designer.cs">
-      <DependentUpon>UCtrl_TiepTan_DanhMucKhachHang.cs</DependentUpon>
+    <Compile Include="TiepTan\UCtrl_TiepTan_DSKhachHang.Designer.cs">
+      <DependentUpon>UCtrl_TiepTan_DSKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="TiepTan\UCtrl_TiepTan_DatBan.cs">
       <SubType>UserControl</SubType>
@@ -167,12 +167,6 @@
     <Compile Include="TiepTan\UCtrl_TiepTan_DSDatBan.Designer.cs">
       <DependentUpon>UCtrl_TiepTan_DSDatBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="TiepTan\UCtrl_TiepTan_SoDoBanAn.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TiepTan\UCtrl_TiepTan_SoDoBanAn.Designer.cs">
-      <DependentUpon>UCtrl_TiepTan_SoDoBanAn.cs</DependentUpon>
-    </Compile>
     <Compile Include="TiepTan\UCtrl_TiepTan_XepBan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -247,8 +241,11 @@
     <EmbeddedResource Include="TiepTan\UCtrl_TiepTan_DatBan.resx">
       <DependentUpon>UCtrl_TiepTan_DatBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TiepTan\UCtrl_TiepTan_DanhMucKhachHang.resx">
-      <DependentUpon>UCtrl_TiepTan_DanhMucKhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="TiepTan\UCtrl_TiepTan_DSKhachHang.resx">
+      <DependentUpon>UCtrl_TiepTan_DSKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiepTan\UCtrl_TiepTan_XepBan.resx">
+      <DependentUpon>UCtrl_TiepTan_XepBan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -275,6 +272,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Image\Icon-KHTN-512x512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\tick_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\close_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\delete_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\loainv_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\money_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\plus_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\print_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Refresh_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\save_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\BanTrong_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\BanDangSuDung_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\BanDuocDat_64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\Database_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Image\BuddyGreen_32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

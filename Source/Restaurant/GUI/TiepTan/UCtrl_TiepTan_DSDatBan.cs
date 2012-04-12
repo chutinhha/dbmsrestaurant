@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace GUI.TiepTan
+namespace GUI
 {
     public partial class UCtrl_TiepTan_DSDatBan : DevExpress.XtraEditors.XtraUserControl
     {
