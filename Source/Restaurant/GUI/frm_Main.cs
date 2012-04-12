@@ -20,7 +20,7 @@ namespace GUI
             InitializeComponent();
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
-            SkinHelper.InitSkinGallery(rbGalleryBarItem);
+            SkinHelper.InitSkinGallery(rbGalleryBarItem_TuyChon_GiaoDien);
         }
         private void frm_Main_Load(object sender, EventArgs e)
         {
@@ -34,19 +34,21 @@ namespace GUI
             Panel.Controls.Add(UCtrl);
         }
 
-        #region " Tiep Tan & Thu Ngan "
-        private void barBtn_QLKH_ItemClick(object sender, ItemClickEventArgs e)
+        #region " Tiep Tan "
+        private void barBtn_TiepTan_DanhMucKhachHang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UCtrl_TiepTan_QLKhachHang UCtrl = new UCtrl_TiepTan_QLKhachHang();
+            UCtrl_TiepTan_DanhMucKhachHang UCtrl = new UCtrl_TiepTan_DanhMucKhachHang();
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
-
-        private void barBtn_DatBan_ItemClick(object sender, ItemClickEventArgs e)
+        private void barBtn_TiepTan_DatBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             UCtrl_TiepTan_DatBan UCtrl = new UCtrl_TiepTan_DatBan();
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
         #endregion
+
+        #region " Thu Ngan "
+#endregion
 
         #region " Quan Ly Kho "
         private void barBtn_NhapKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -61,11 +63,12 @@ namespace GUI
         #endregion
 
         #region " Quan Ly Nha Hang "
-        private void barBtn_QLThucDon_ItemClick(object sender, ItemClickEventArgs e)
+        private void barBtn_QLNhaHang_ThucDon_ItemClick(object sender, ItemClickEventArgs e)
         {
             UCtrl_QLNhaHang_QLThucDon UCtrl = new UCtrl_QLNhaHang_QLThucDon();
-            Add_UserControl(panelCtrl_Main,UCtrl);
+            Add_UserControl(panelCtrl_Main, UCtrl);
         }
+
         #endregion
 
         #region " Tong Quan Ly "
@@ -90,6 +93,9 @@ namespace GUI
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Item.Tag.ToString();
         }
         #endregion
+
+
+    
 
      
 

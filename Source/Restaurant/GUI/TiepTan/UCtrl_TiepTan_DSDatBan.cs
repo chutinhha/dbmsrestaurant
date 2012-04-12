@@ -7,11 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace GUI
+namespace GUI.TiepTan
 {
-    public partial class UCtrl_TiepTan_QLKhachHang : DevExpress.XtraEditors.XtraUserControl
+    public partial class UCtrl_TiepTan_DSDatBan : DevExpress.XtraEditors.XtraUserControl
     {
-        public UCtrl_TiepTan_QLKhachHang()
+        public UCtrl_TiepTan_DSDatBan()
         {
             InitializeComponent();
         }
