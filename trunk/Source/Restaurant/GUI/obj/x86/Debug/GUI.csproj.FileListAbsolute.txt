@@ -50,3 +50,5 @@ E:\SVN\Restaurant_Project\Source\Restaurant\GUI\bin\Debug\DevExpress.BonusSkins.
 E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_DatBan.resources
 E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_QLThucDon.resources
 E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_DanhMucKhachHang.resources
+E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_DSBanAn.resources
+E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_QLNhanVien.resources

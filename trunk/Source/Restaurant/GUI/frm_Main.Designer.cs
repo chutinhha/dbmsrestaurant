@@ -94,6 +94,7 @@ namespace GUI
             // rbControl_Main
             // 
             this.rbControl_Main.ApplicationButtonText = null;
+            this.rbControl_Main.ApplicationIcon = global::GUI.Properties.Resources.Icon_KHTN_512x512;
             this.rbControl_Main.Controller = this.MybarAndDockingController;
             // 
             // 
@@ -145,12 +146,12 @@ namespace GUI
             this.rbPage_TongQuanLy,
             this.rbPage_QuanTri,
             this.rbPage_TuyChon});
-            this.rbControl_Main.Size = new System.Drawing.Size(1022, 150);
+            this.rbControl_Main.Size = new System.Drawing.Size(1014, 159);
             // 
             // MybarAndDockingController
             // 
             this.MybarAndDockingController.AppearancesBar.ItemsFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-            this.MybarAndDockingController.LookAndFeel.SkinName = "McSkin";
+            this.MybarAndDockingController.LookAndFeel.SkinName = "Whiteprint";
             this.MybarAndDockingController.LookAndFeel.UseDefaultLookAndFeel = false;
             this.MybarAndDockingController.PropertiesBar.AllowLinkLighting = false;
             // 
@@ -269,6 +270,7 @@ namespace GUI
             this.barBtn_QLNhaHang_DSNhanVien.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
             this.barBtn_QLNhaHang_DSNhanVien.LargeWidth = 120;
             this.barBtn_QLNhaHang_DSNhanVien.Name = "barBtn_QLNhaHang_DSNhanVien";
+            this.barBtn_QLNhaHang_DSNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNhaHang_DSNhanVien_ItemClick);
             // 
             // barBtn_QLNhaHang_ThongKeDoanhThu
             // 
@@ -390,6 +392,7 @@ namespace GUI
             this.barBtn_QLNhaHang_DSBanAn.LargeGlyph = global::GUI.Properties.Resources.Perspective_Button___Stop;
             this.barBtn_QLNhaHang_DSBanAn.LargeWidth = 120;
             this.barBtn_QLNhaHang_DSBanAn.Name = "barBtn_QLNhaHang_DSBanAn";
+            this.barBtn_QLNhaHang_DSBanAn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNhaHang_DSBanAn_ItemClick);
             // 
             // barBtn_TiepTan_DSDatBan
             // 
@@ -551,21 +554,23 @@ namespace GUI
             // panelCtrl_Main
             // 
             this.panelCtrl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCtrl_Main.Location = new System.Drawing.Point(0, 150);
+            this.panelCtrl_Main.Location = new System.Drawing.Point(0, 159);
             this.panelCtrl_Main.Name = "panelCtrl_Main";
-            this.panelCtrl_Main.Size = new System.Drawing.Size(1022, 446);
+            this.panelCtrl_Main.Size = new System.Drawing.Size(1014, 436);
             this.panelCtrl_Main.TabIndex = 2;
             // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 596);
+            this.ClientSize = new System.Drawing.Size(1014, 595);
             this.Controls.Add(this.panelCtrl_Main);
             this.Controls.Add(this.rbControl_Main);
             this.IsMdiContainer = true;
+            this.MinimumSize = new System.Drawing.Size(808, 500);
             this.Name = "frm_Main";
             this.Ribbon = this.rbControl_Main;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Nhà Hàng";
             this.Load += new System.EventHandler(this.frm_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).EndInit();

@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class UCtrl_QLNhaHang_QLNhanVien
+    partial class UCtrl_QLNhaHang_DSBanAn
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_QLNhaHang_QLNhanVien));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_QLNhaHang_DSBanAn));
             this.vButton1 = new vButton.vButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -44,12 +44,17 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.SuspendLayout();
             // 
             // vButton1
@@ -167,37 +172,35 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(526, 47);
+            this.simpleButton3.Location = new System.Drawing.Point(505, 47);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(90, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
             this.simpleButton3.TabIndex = 13;
-            this.simpleButton3.Text = "Xóa Nhân Viên";
+            this.simpleButton3.Text = "Xóa Bàn Ăn";
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(410, 47);
+            this.simpleButton2.Location = new System.Drawing.Point(403, 47);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(110, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(96, 23);
             this.simpleButton2.TabIndex = 12;
-            this.simpleButton2.Text = "Cập Nhật Nhân Viên";
+            this.simpleButton2.Text = "Cập Nhật Bàn Ăn";
             // 
             // simpleButton1
             // 
             this.simpleButton1.Location = new System.Drawing.Point(309, 47);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(88, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 11;
-            this.simpleButton1.Text = "Thêm Nhân Viên";
+            this.simpleButton1.Text = "Thêm Bàn  Ăn";
             // 
             // groupControl2
             // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
             this.groupControl2.Location = new System.Drawing.Point(3, 76);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(300, 400);
+            this.groupControl2.Size = new System.Drawing.Size(300, 175);
             this.groupControl2.TabIndex = 10;
-            this.groupControl2.Text = "Loại Nhân Viên";
+            this.groupControl2.Text = "Loại Bàn Ăn";
             // 
             // groupControl1
             // 
@@ -208,12 +211,50 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(565, 400);
             this.groupControl1.TabIndex = 9;
-            this.groupControl1.Text = "Danh Sách NhânViên";
+            this.groupControl1.Text = "Danh Sách Bàn Ăn";
             // 
-            // UCtrl_QLNhaHang_QLNhanVien
+            // simpleButton7
+            // 
+            this.simpleButton7.Location = new System.Drawing.Point(97, 257);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(98, 23);
+            this.simpleButton7.TabIndex = 19;
+            this.simpleButton7.Text = "Cập Nhật KV";
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Location = new System.Drawing.Point(201, 257);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton8.TabIndex = 20;
+            this.simpleButton8.Text = "Xóa KV";
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.Location = new System.Drawing.Point(3, 257);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton9.TabIndex = 18;
+            this.simpleButton9.Text = "Thêm KV";
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupControl3.Location = new System.Drawing.Point(3, 286);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(302, 190);
+            this.groupControl3.TabIndex = 17;
+            this.groupControl3.Text = "Khu Vực";
+            // 
+            // UCtrl_QLNhaHang_DSBanAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.simpleButton7);
+            this.Controls.Add(this.simpleButton8);
+            this.Controls.Add(this.simpleButton9);
+            this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.simpleButton5);
             this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.panelControl1);
@@ -223,7 +264,7 @@
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
-            this.Name = "UCtrl_QLNhaHang_QLNhanVien";
+            this.Name = "UCtrl_QLNhaHang_DSBanAn";
             this.Size = new System.Drawing.Size(877, 483);
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -232,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -253,5 +295,9 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton simpleButton9;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
     }
 }

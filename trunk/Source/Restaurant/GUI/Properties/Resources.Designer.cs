@@ -60,6 +60,13 @@ namespace GUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Icon_KHTN_512x512 {
+            get {
+                object obj = ResourceManager.GetObject("Icon-KHTN-512x512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Perspective_Button___Stop {
             get {
                 object obj = ResourceManager.GetObject("Perspective Button - Stop", resourceCulture);

@@ -68,7 +68,21 @@ namespace GUI
             UCtrl_QLNhaHang_QLThucDon UCtrl = new UCtrl_QLNhaHang_QLThucDon();
             Add_UserControl(panelCtrl_Main, UCtrl);
         }
+        private void barBtn_QLNhaHang_DSNhanVien_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UCtrl_QLNhaHang_QLNhanVien UCtrl = new UCtrl_QLNhaHang_QLNhanVien();
+            Add_UserControl(panelCtrl_Main, UCtrl);
+           
+        }
 
+        private void barBtn_QLNhaHang_DSBanAn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UCtrl_QLNhaHang_DSBanAn UCtrl= new UCtrl_QLNhaHang_DSBanAn();
+            Add_UserControl(panelCtrl_Main, UCtrl);
+        }
+
+
+    
         #endregion
 
         #region " Tong Quan Ly "
@@ -95,7 +109,6 @@ namespace GUI
         #endregion
 
 
-    
 
      
 

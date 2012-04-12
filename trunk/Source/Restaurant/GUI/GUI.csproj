@@ -77,6 +77,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_DSBanAn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_DSBanAn.Designer.cs">
+      <DependentUpon>UCtrl_QLNhaHang_DSBanAn.cs</DependentUpon>
+    </Compile>
     <Compile Include="TiepTan\UCtrl_TiepTan_DanhMucKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +235,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuanLyNhanHang\UCtrl_QLNhaHang_DSBanAn.resx">
+      <DependentUpon>UCtrl_QLNhaHang_DSBanAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLNhanVien.resx">
+      <DependentUpon>UCtrl_QLNhaHang_QLNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.resx">
       <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,7 +273,9 @@
   <ItemGroup>
     <None Include="Image\Perspective Button - Stop.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Image\Icon-KHTN-512x512.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
