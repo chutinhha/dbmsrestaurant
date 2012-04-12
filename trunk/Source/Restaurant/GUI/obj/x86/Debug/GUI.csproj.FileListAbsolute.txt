@@ -47,4 +47,6 @@ E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GenerateResource.r
 E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.exe.licenses
 E:\SVN\Restaurant_Project\Source\Restaurant\GUI\bin\Debug\DevExpress.BonusSkins.v11.1.dll
-E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_ThuNgan_DatBan.resources
+E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_DatBan.resources
+E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_QLKhachHang.resources
+E:\SVN\Restaurant_Project\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_QLThucDon.resources
