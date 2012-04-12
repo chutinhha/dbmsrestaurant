@@ -1,6 +1,6 @@
 ﻿namespace GUI
 {
-    partial class UCtrl_TiepTan_QLKhachHang
+    partial class UCtrl_TiepTan_DanhMucKhachHang
     {
         /// <summary> 
         /// Required designer variable.
