@@ -46,6 +46,7 @@ create table HoaDon
 MaHD int identity,
 TongTien money,
 ThoiGianLap datetime,
+ThoiGianKetThuc datetime,
 MaNV int,
 MaBan int,
 primary key(MaHD)

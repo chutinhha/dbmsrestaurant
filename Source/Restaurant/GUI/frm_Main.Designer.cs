@@ -149,7 +149,6 @@ namespace GUI
             // 
             // MybarAndDockingController
             // 
-            this.MybarAndDockingController.AppearancesBar.ItemsFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.MybarAndDockingController.LookAndFeel.SkinName = "Whiteprint";
             this.MybarAndDockingController.LookAndFeel.UseDefaultLookAndFeel = false;
             this.MybarAndDockingController.PropertiesBar.AllowLinkLighting = false;
