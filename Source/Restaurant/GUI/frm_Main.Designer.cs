@@ -145,11 +145,11 @@ namespace GUI
             this.rbPage_TongQuanLy,
             this.rbPage_QuanTri,
             this.rbPage_TuyChon});
-            this.rbControl_Main.Size = new System.Drawing.Size(890, 159);
+            this.rbControl_Main.Size = new System.Drawing.Size(892, 148);
             // 
             // MybarAndDockingController
             // 
-            this.MybarAndDockingController.LookAndFeel.SkinName = "Whiteprint";
+            this.MybarAndDockingController.LookAndFeel.SkinName = "Black";
             this.MybarAndDockingController.LookAndFeel.UseDefaultLookAndFeel = false;
             this.MybarAndDockingController.PropertiesBar.AllowLinkLighting = false;
             // 
@@ -544,20 +544,20 @@ namespace GUI
             // panelCtrl_Main
             // 
             this.panelCtrl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelCtrl_Main.Location = new System.Drawing.Point(0, 159);
+            this.panelCtrl_Main.Location = new System.Drawing.Point(0, 148);
             this.panelCtrl_Main.Name = "panelCtrl_Main";
-            this.panelCtrl_Main.Size = new System.Drawing.Size(890, 436);
+            this.panelCtrl_Main.Size = new System.Drawing.Size(892, 448);
             this.panelCtrl_Main.TabIndex = 2;
             // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 595);
+            this.ClientSize = new System.Drawing.Size(892, 596);
             this.Controls.Add(this.panelCtrl_Main);
             this.Controls.Add(this.rbControl_Main);
             this.IsMdiContainer = true;
-            this.MinimumSize = new System.Drawing.Size(900, 600);
+            this.MinimumSize = new System.Drawing.Size(898, 599);
             this.Name = "frm_Main";
             this.Ribbon = this.rbControl_Main;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
