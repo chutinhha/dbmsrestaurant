@@ -52,6 +52,7 @@
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraGrid.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -82,6 +83,12 @@
     </Compile>
     <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_DSBanAn.Designer.cs">
       <DependentUpon>UCtrl_QLNhaHang_DSBanAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.Designer.cs">
+      <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
     </Compile>
     <Compile Include="TiepTan\UCtrl_TiepTan_DSKhachHang.cs">
       <SubType>UserControl</SubType>
@@ -148,12 +155,6 @@
     </Compile>
     <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLNhanVien.Designer.cs">
       <DependentUpon>UCtrl_QLNhaHang_QLNhanVien.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.Designer.cs">
-      <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_ThongKeDoanhThu.cs">
       <SubType>UserControl</SubType>
@@ -237,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.resx">
       <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhanHang\UCtrl_QLNhaHang_ThongKeDoanhThu.resx">
+      <DependentUpon>UCtrl_QLNhaHang_ThongKeDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TiepTan\UCtrl_TiepTan_DatBan.resx">
       <DependentUpon>UCtrl_TiepTan_DatBan.cs</DependentUpon>
