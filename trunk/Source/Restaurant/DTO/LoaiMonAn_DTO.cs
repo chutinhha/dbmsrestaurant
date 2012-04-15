@@ -9,13 +9,13 @@ namespace DTO
 {
    public class LoaiMonAn_DTO
     {
-        private DataTable tbLoaiMonAn;
+        //private DataTable tbLoaiMonAn;
 
-        public DataTable TbLoaiMonAn
-        {
-            get { return tbLoaiMonAn; }
-            set { tbLoaiMonAn = value; }
-        }
+        //public DataTable TbLoaiMonAn
+        //{
+        //    get { return tbLoaiMonAn; }
+        //    set { tbLoaiMonAn = value; }
+        //}
         private string maloai;
 
         public string Maloai

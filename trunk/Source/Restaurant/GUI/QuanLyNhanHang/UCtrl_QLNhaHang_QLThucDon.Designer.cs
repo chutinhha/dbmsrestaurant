@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_QLNhaHang_QLThucDon));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gcMonAn = new DevExpress.XtraGrid.GridControl();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gcLoaiMonAn = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -49,16 +56,11 @@
             this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.spbDocLoaiMonAn = new DevExpress.XtraEditors.SimpleButton();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.spbDocMonAn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcMonAn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcLoaiMonAn)).BeginInit();
@@ -67,8 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -76,12 +76,74 @@
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Controls.Add(this.gridControl1);
+            this.groupControl1.Controls.Add(this.gcMonAn);
             this.groupControl1.Location = new System.Drawing.Point(334, 76);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(540, 400);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Danh Sách Món Ăn";
+            // 
+            // gcMonAn
+            // 
+            this.gcMonAn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcMonAn.Location = new System.Drawing.Point(2, 22);
+            this.gcMonAn.MainView = this.gridView2;
+            this.gcMonAn.Name = "gcMonAn";
+            this.gcMonAn.Size = new System.Drawing.Size(536, 376);
+            this.gcMonAn.TabIndex = 0;
+            this.gcMonAn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn3,
+            this.gridColumn4,
+            this.gridColumn5,
+            this.gridColumn6,
+            this.gridColumn8});
+            this.gridView2.GridControl = this.gcMonAn;
+            this.gridView2.Name = "gridView2";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Tên Món";
+            this.gridColumn3.FieldName = "TenMon";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 0;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.Caption = "Loại Món";
+            this.gridColumn4.FieldName = "TenLoai";
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.VisibleIndex = 1;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Giá";
+            this.gridColumn5.FieldName = "Gia";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 2;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Đơn Vị Tính";
+            this.gridColumn6.FieldName = "DonViTinh";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 3;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Tên Nhà Hàng";
+            this.gridColumn8.FieldName = "TenNH";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 4;
             // 
             // groupControl2
             // 
@@ -132,7 +194,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(330, 47);
+            this.simpleButton1.Location = new System.Drawing.Point(422, 47);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 2;
@@ -140,7 +202,7 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(424, 47);
+            this.simpleButton2.Location = new System.Drawing.Point(509, 47);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(96, 23);
             this.simpleButton2.TabIndex = 3;
@@ -148,7 +210,7 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(526, 47);
+            this.simpleButton3.Location = new System.Drawing.Point(618, 47);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(75, 23);
             this.simpleButton3.TabIndex = 4;
@@ -156,15 +218,15 @@
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(248, 47);
+            this.simpleButton4.Location = new System.Drawing.Point(257, 47);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton4.Size = new System.Drawing.Size(66, 23);
             this.simpleButton4.TabIndex = 7;
             this.simpleButton4.Text = "Xóa Loại";
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(165, 47);
+            this.simpleButton5.Location = new System.Drawing.Point(171, 47);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(75, 23);
             this.simpleButton5.TabIndex = 6;
@@ -172,9 +234,9 @@
             // 
             // simpleButton6
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(84, 47);
+            this.simpleButton6.Location = new System.Drawing.Point(100, 47);
             this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton6.Size = new System.Drawing.Size(62, 23);
             this.simpleButton6.TabIndex = 5;
             this.simpleButton6.Text = "Thêm Loại";
             // 
@@ -271,81 +333,19 @@
             // 
             this.spbDocLoaiMonAn.Location = new System.Drawing.Point(4, 47);
             this.spbDocLoaiMonAn.Name = "spbDocLoaiMonAn";
-            this.spbDocLoaiMonAn.Size = new System.Drawing.Size(74, 23);
+            this.spbDocLoaiMonAn.Size = new System.Drawing.Size(87, 23);
             this.spbDocLoaiMonAn.TabIndex = 6;
-            this.spbDocLoaiMonAn.Text = "Đọc Dữ Liệu";
+            this.spbDocLoaiMonAn.Text = "Đọc Loại Món Ăn";
             this.spbDocLoaiMonAn.Click += new System.EventHandler(this.spbDocLoaiMonAn_Click);
             // 
-            // gridControl1
+            // spbDocMonAn
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(2, 22);
-            this.gridControl1.MainView = this.gridView2;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(536, 376);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn3,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn6,
-            this.gridColumn7,
-            this.gridColumn8});
-            this.gridView2.GridControl = this.gridControl1;
-            this.gridView2.Name = "gridView2";
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Tên Món";
-            this.gridColumn3.FieldName = "TenMon";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Loại Món";
-            this.gridColumn4.FieldName = "LoaiMon";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Giá";
-            this.gridColumn5.FieldName = "Gia";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 2;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Đơn Vị Tính";
-            this.gridColumn6.FieldName = "DonViTinh";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 3;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Loại";
-            this.gridColumn7.FieldName = "TenLoai";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Tên Nhà Hàng";
-            this.gridColumn8.FieldName = "TenNH";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 5;
+            this.spbDocMonAn.Location = new System.Drawing.Point(334, 47);
+            this.spbDocMonAn.Name = "spbDocMonAn";
+            this.spbDocMonAn.Size = new System.Drawing.Size(75, 23);
+            this.spbDocMonAn.TabIndex = 2;
+            this.spbDocMonAn.Text = "Đọc Món Ăn";
+            this.spbDocMonAn.Click += new System.EventHandler(this.spbDocMonAn_Click);
             // 
             // UCtrl_QLNhaHang_QLThucDon
             // 
@@ -358,13 +358,17 @@
             this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.simpleButton3);
             this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.spbDocMonAn);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "UCtrl_QLNhaHang_QLThucDon";
             this.Size = new System.Drawing.Size(877, 483);
+            this.Load += new System.EventHandler(this.UCtrl_QLNhaHang_QLThucDon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcMonAn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcLoaiMonAn)).EndInit();
@@ -374,8 +378,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -402,14 +404,14 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gcMonAn;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.SimpleButton spbDocMonAn;
 
     }
 }
