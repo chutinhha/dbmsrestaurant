@@ -48,7 +48,7 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbMode = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.vButton2 = new vButton.vButton();
             this.vButton1 = new vButton.vButton();
@@ -65,7 +65,7 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcLoaiMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
@@ -103,6 +103,8 @@
             this.gridColumn6,
             this.gridColumn8});
             this.gridView2.GridControl = this.gcMonAn;
+            this.gridView2.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "TenNhaHang", null, "")});
             this.gridView2.Name = "gridView2";
             // 
             // gridColumn3
@@ -240,14 +242,17 @@
             this.simpleButton6.TabIndex = 5;
             this.simpleButton6.Text = "Thêm Loại";
             // 
-            // comboBoxEdit1
+            // cmbMode
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(94, 7);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbMode.Location = new System.Drawing.Point(79, 7);
+            this.cmbMode.Name = "cmbMode";
+            this.cmbMode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(100, 20);
-            this.comboBoxEdit1.TabIndex = 8;
+            this.cmbMode.Properties.Items.AddRange(new object[] {
+            "Bình Thường",
+            "Xảy Ra Tranh Chấp"});
+            this.cmbMode.Size = new System.Drawing.Size(121, 20);
+            this.cmbMode.TabIndex = 8;
             // 
             // panelControl1
             // 
@@ -258,7 +263,7 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.comboBoxEdit2);
             this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.comboBoxEdit1);
+            this.panelControl1.Controls.Add(this.cmbMode);
             this.panelControl1.Location = new System.Drawing.Point(3, 7);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(871, 34);
@@ -318,7 +323,12 @@
             this.comboBoxEdit2.Name = "comboBoxEdit2";
             this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(100, 20);
+            this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
+            "Read Uncommitted",
+            "Read Committed",
+            "Repeatable Read",
+            "Serializable"});
+            this.comboBoxEdit2.Size = new System.Drawing.Size(116, 20);
             this.comboBoxEdit2.TabIndex = 10;
             // 
             // labelControl1
@@ -373,7 +383,7 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcLoaiMonAn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -392,7 +402,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbMode;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private vButton.vButton vButton2;
         private vButton.vButton vButton1;
