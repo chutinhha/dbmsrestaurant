@@ -15,6 +15,8 @@ namespace GUI
     {
         LoaiMonAn_BUS loaiMonAn;
         MonAn_BUS monAn;
+        bool flagMode;//flag:binh thường, true:xảy ra tranh chấp
+        IsolationLevel iso;
         
         public UCtrl_QLNhaHang_QLThucDon()
         {
@@ -34,9 +36,15 @@ namespace GUI
 
         private void UCtrl_QLNhaHang_QLThucDon_Load(object sender, EventArgs e)
         {
+            flagMode = false;
+            iso = IsolationLevel.ReadCommitted; //chế độ mặt định của SQLServer
             loaiMonAn = new LoaiMonAn_BUS();
             monAn = new MonAn_BUS();
         }
+
+      
+
+       
 
         
 
