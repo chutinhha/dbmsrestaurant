@@ -13,3 +13,8 @@ F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DTO\bin\
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DTO\obj\Debug\ResolveAssemblyReference.cache
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DTO\obj\Debug\DTO.dll
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DTO\obj\Debug\DTO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DTO\bin\Debug\DTO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DTO\bin\Debug\DTO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DTO\obj\Debug\ResolveAssemblyReference.cache
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DTO\obj\Debug\DTO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DTO\obj\Debug\DTO.pdb

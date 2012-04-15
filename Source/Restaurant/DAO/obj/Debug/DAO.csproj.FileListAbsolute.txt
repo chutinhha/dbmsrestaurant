@@ -19,3 +19,10 @@ F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DAO\bin\
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DAO\obj\Debug\ResolveAssemblyReference.cache
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DAO\obj\Debug\DAO.dll
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\DAO\obj\Debug\DAO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DAO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DAO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DTO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DTO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\obj\Debug\ResolveAssemblyReference.cache
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\obj\Debug\DAO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\DAO\obj\Debug\DAO.pdb
