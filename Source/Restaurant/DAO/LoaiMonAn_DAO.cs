@@ -9,10 +9,11 @@ namespace DAO
 {
    public class LoaiMonAn_DAO
     {
-        Provider provider = new Provider();
+       Provider provider;
 
         public DataTable DocLoaiMonAn()
         {
+            provider = new Provider();
             DataTable tbLoaiMonAn = new DataTable();
             string sql = "select MaLoai,TenLoai from LoaiMonAn";
             provider.cm = provider.CreateCommand(sql);

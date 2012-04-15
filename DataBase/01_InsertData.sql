@@ -46,7 +46,7 @@ GO
 --insert MonAn
 select * from LoaiMonAn
 insert into MonAn(TenMon,LoaiMon,Gia,DonViTinh,MaNH) values('bia 333','N',12000,'lon','NHA')
-insert into MonAn(TenMon,LoaiMon,Gia,DonViTinh,MaNH) values('tom hap bia','N',80000,'dia','NHA')
+insert into MonAn(TenMon,LoaiMon,Gia,DonViTinh,MaNH) values('tom hap bia','HS',80000,'dia','NHA')
 GO
 --insert NhaCungCap
 insert into NhaCungCap(TenNCC,sdt,DiaChi,DiemUuTien) values('Hai San PT',123456,'phan thiet',2)

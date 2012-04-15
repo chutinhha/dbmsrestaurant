@@ -81,6 +81,6 @@ F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GenerateResource.read.1.tlog
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GenerateResource.write.1.tlog
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.exe.licenses
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_ThongKeDoanhThu.resources
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\bin\Debug\DAO.dll
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\bin\Debug\DAO.pdb
-F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_ThongKeDoanhThu.resources
