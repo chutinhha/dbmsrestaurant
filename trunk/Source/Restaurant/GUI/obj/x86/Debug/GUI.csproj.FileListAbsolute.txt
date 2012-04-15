@@ -84,3 +84,36 @@ F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_ThongKeDoanhThu.resources
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\bin\Debug\DAO.dll
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\bin\Debug\DAO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.exe
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\GUI.exe
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\GUI.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\BUS.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.BonusSkins.v11.1.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.Data.v11.1.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.Printing.v11.1.Core.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.Utils.v11.1.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.XtraBars.v11.1.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.XtraEditors.v11.1.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DTO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DAO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\BUS.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DTO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.Data.v11.1.xml
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.Utils.v11.1.xml
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.XtraBars.v11.1.xml
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevExpress.XtraEditors.v11.1.xml
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DAO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.frm_Main.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.Properties.Resources.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_DSBanAn.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_QLNhanVien.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_QLThucDon.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_QLNhaHang_ThongKeDoanhThu.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_DatBan.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_DSKhachHang.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.UCtrl_TiepTan_XepBan.resources
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Study\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.exe.licenses

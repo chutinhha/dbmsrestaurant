@@ -25,3 +25,12 @@ F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\BUS\bin\
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\BUS\obj\Debug\ResolveAssemblyReference.cache
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\BUS\obj\Debug\BUS.dll
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\BUS\obj\Debug\BUS.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\BUS.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\BUS.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DAO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DTO.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DAO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DTO.pdb
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\obj\Debug\ResolveAssemblyReference.cache
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\obj\Debug\BUS.dll
+D:\Study\SVN\Project Restaurant\Source\Restaurant\BUS\obj\Debug\BUS.pdb
