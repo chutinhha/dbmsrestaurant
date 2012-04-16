@@ -42,18 +42,18 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.cmbMode = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.spbThemMonAn = new DevExpress.XtraEditors.SimpleButton();
+            this.smbCapNhatMonAn = new DevExpress.XtraEditors.SimpleButton();
+            this.spbXoaMonAn = new DevExpress.XtraEditors.SimpleButton();
+            this.spBXoaLoai = new DevExpress.XtraEditors.SimpleButton();
+            this.spbCapNhatLoai = new DevExpress.XtraEditors.SimpleButton();
+            this.spbThemLoai = new DevExpress.XtraEditors.SimpleButton();
+            this.cbbMode = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.vButton2 = new vButton.vButton();
-            this.vButton1 = new vButton.vButton();
+            this.btCommit = new vButton.vButton();
+            this.btRollBack = new vButton.vButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBoxEdit2 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbbIsolation = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.spbDocLoaiMonAn = new DevExpress.XtraEditors.SimpleButton();
             this.spbDocMonAn = new DevExpress.XtraEditors.SimpleButton();
@@ -65,10 +65,10 @@
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcLoaiMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbMode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbMode.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbIsolation.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -106,6 +106,7 @@
             this.gridView2.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "TenNhaHang", null, "")});
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn3
             // 
@@ -194,120 +195,121 @@
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
-            // simpleButton1
+            // spbThemMonAn
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(422, 47);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 2;
-            this.simpleButton1.Text = "Thêm Món Ăn";
+            this.spbThemMonAn.Location = new System.Drawing.Point(422, 47);
+            this.spbThemMonAn.Name = "spbThemMonAn";
+            this.spbThemMonAn.Size = new System.Drawing.Size(75, 23);
+            this.spbThemMonAn.TabIndex = 2;
+            this.spbThemMonAn.Text = "Thêm Món Ăn";
             // 
-            // simpleButton2
+            // smbCapNhatMonAn
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(509, 47);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(96, 23);
-            this.simpleButton2.TabIndex = 3;
-            this.simpleButton2.Text = "Cập Nhật Món Ăn";
+            this.smbCapNhatMonAn.Location = new System.Drawing.Point(509, 47);
+            this.smbCapNhatMonAn.Name = "smbCapNhatMonAn";
+            this.smbCapNhatMonAn.Size = new System.Drawing.Size(96, 23);
+            this.smbCapNhatMonAn.TabIndex = 3;
+            this.smbCapNhatMonAn.Text = "Cập Nhật Món Ăn";
             // 
-            // simpleButton3
+            // spbXoaMonAn
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(618, 47);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton3.TabIndex = 4;
-            this.simpleButton3.Text = "Xóa Món Ăn";
+            this.spbXoaMonAn.Location = new System.Drawing.Point(618, 47);
+            this.spbXoaMonAn.Name = "spbXoaMonAn";
+            this.spbXoaMonAn.Size = new System.Drawing.Size(75, 23);
+            this.spbXoaMonAn.TabIndex = 4;
+            this.spbXoaMonAn.Text = "Xóa Món Ăn";
             // 
-            // simpleButton4
+            // spBXoaLoai
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(257, 47);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(66, 23);
-            this.simpleButton4.TabIndex = 7;
-            this.simpleButton4.Text = "Xóa Loại";
+            this.spBXoaLoai.Location = new System.Drawing.Point(257, 47);
+            this.spBXoaLoai.Name = "spBXoaLoai";
+            this.spBXoaLoai.Size = new System.Drawing.Size(66, 23);
+            this.spBXoaLoai.TabIndex = 7;
+            this.spBXoaLoai.Text = "Xóa Loại";
             // 
-            // simpleButton5
+            // spbCapNhatLoai
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(171, 47);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton5.TabIndex = 6;
-            this.simpleButton5.Text = "Cập Nhật Loại";
+            this.spbCapNhatLoai.Location = new System.Drawing.Point(171, 47);
+            this.spbCapNhatLoai.Name = "spbCapNhatLoai";
+            this.spbCapNhatLoai.Size = new System.Drawing.Size(75, 23);
+            this.spbCapNhatLoai.TabIndex = 6;
+            this.spbCapNhatLoai.Text = "Cập Nhật Loại";
             // 
-            // simpleButton6
+            // spbThemLoai
             // 
-            this.simpleButton6.Location = new System.Drawing.Point(100, 47);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(62, 23);
-            this.simpleButton6.TabIndex = 5;
-            this.simpleButton6.Text = "Thêm Loại";
+            this.spbThemLoai.Location = new System.Drawing.Point(100, 47);
+            this.spbThemLoai.Name = "spbThemLoai";
+            this.spbThemLoai.Size = new System.Drawing.Size(62, 23);
+            this.spbThemLoai.TabIndex = 5;
+            this.spbThemLoai.Text = "Thêm Loại";
             // 
-            // cmbMode
+            // cbbMode
             // 
-            this.cmbMode.Location = new System.Drawing.Point(79, 7);
-            this.cmbMode.Name = "cmbMode";
-            this.cmbMode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbbMode.Location = new System.Drawing.Point(79, 7);
+            this.cbbMode.Name = "cbbMode";
+            this.cbbMode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbMode.Properties.Items.AddRange(new object[] {
+            this.cbbMode.Properties.Items.AddRange(new object[] {
             "Bình Thường",
             "Xảy Ra Tranh Chấp"});
-            this.cmbMode.Size = new System.Drawing.Size(121, 20);
-            this.cmbMode.TabIndex = 8;
+            this.cbbMode.Size = new System.Drawing.Size(121, 20);
+            this.cbbMode.TabIndex = 8;
+            this.cbbMode.SelectedIndexChanged += new System.EventHandler(this.cbbMode_SelectedIndexChanged);
             // 
             // panelControl1
             // 
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelControl1.Controls.Add(this.vButton2);
-            this.panelControl1.Controls.Add(this.vButton1);
+            this.panelControl1.Controls.Add(this.btCommit);
+            this.panelControl1.Controls.Add(this.btRollBack);
             this.panelControl1.Controls.Add(this.labelControl2);
-            this.panelControl1.Controls.Add(this.comboBoxEdit2);
+            this.panelControl1.Controls.Add(this.cbbIsolation);
             this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.cmbMode);
+            this.panelControl1.Controls.Add(this.cbbMode);
             this.panelControl1.Location = new System.Drawing.Point(3, 7);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(871, 34);
             this.panelControl1.TabIndex = 0;
             // 
-            // vButton2
+            // btCommit
             // 
-            this.vButton2.BackColor = System.Drawing.Color.Transparent;
-            this.vButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vButton2.BackgroundImage")));
-            this.vButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.vButton2.ButtonStyles = vButton.vButton.BtnType.Adobe;
-            this.vButton2.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.vButton2.FlatAppearance.BorderSize = 0;
-            this.vButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.vButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.vButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vButton2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vButton2.ForeColor = System.Drawing.Color.White;
-            this.vButton2.Location = new System.Drawing.Point(633, 6);
-            this.vButton2.Name = "vButton2";
-            this.vButton2.Size = new System.Drawing.Size(138, 23);
-            this.vButton2.TabIndex = 13;
-            this.vButton2.Text = "Commit";
-            this.vButton2.UseVisualStyleBackColor = false;
+            this.btCommit.BackColor = System.Drawing.Color.Transparent;
+            this.btCommit.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btCommit.BackgroundImage")));
+            this.btCommit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btCommit.ButtonStyles = vButton.vButton.BtnType.Adobe;
+            this.btCommit.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btCommit.FlatAppearance.BorderSize = 0;
+            this.btCommit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btCommit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btCommit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCommit.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCommit.ForeColor = System.Drawing.Color.White;
+            this.btCommit.Location = new System.Drawing.Point(633, 6);
+            this.btCommit.Name = "btCommit";
+            this.btCommit.Size = new System.Drawing.Size(138, 23);
+            this.btCommit.TabIndex = 13;
+            this.btCommit.Text = "Commit";
+            this.btCommit.UseVisualStyleBackColor = false;
             // 
-            // vButton1
+            // btRollBack
             // 
-            this.vButton1.BackColor = System.Drawing.Color.Transparent;
-            this.vButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("vButton1.BackgroundImage")));
-            this.vButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.vButton1.ButtonStyles = vButton.vButton.BtnType.Adobe;
-            this.vButton1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.vButton1.FlatAppearance.BorderSize = 0;
-            this.vButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.vButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.vButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.vButton1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vButton1.ForeColor = System.Drawing.Color.White;
-            this.vButton1.Location = new System.Drawing.Point(460, 6);
-            this.vButton1.Name = "vButton1";
-            this.vButton1.Size = new System.Drawing.Size(138, 23);
-            this.vButton1.TabIndex = 12;
-            this.vButton1.Text = "RollBack";
-            this.vButton1.UseVisualStyleBackColor = false;
+            this.btRollBack.BackColor = System.Drawing.Color.Transparent;
+            this.btRollBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btRollBack.BackgroundImage")));
+            this.btRollBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btRollBack.ButtonStyles = vButton.vButton.BtnType.Adobe;
+            this.btRollBack.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btRollBack.FlatAppearance.BorderSize = 0;
+            this.btRollBack.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btRollBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btRollBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btRollBack.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRollBack.ForeColor = System.Drawing.Color.White;
+            this.btRollBack.Location = new System.Drawing.Point(460, 6);
+            this.btRollBack.Name = "btRollBack";
+            this.btRollBack.Size = new System.Drawing.Size(138, 23);
+            this.btRollBack.TabIndex = 12;
+            this.btRollBack.Text = "RollBack";
+            this.btRollBack.UseVisualStyleBackColor = false;
             // 
             // labelControl2
             // 
@@ -317,19 +319,20 @@
             this.labelControl2.TabIndex = 11;
             this.labelControl2.Text = "Isolation :";
             // 
-            // comboBoxEdit2
+            // cbbIsolation
             // 
-            this.comboBoxEdit2.Location = new System.Drawing.Point(306, 7);
-            this.comboBoxEdit2.Name = "comboBoxEdit2";
-            this.comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbbIsolation.Location = new System.Drawing.Point(306, 7);
+            this.cbbIsolation.Name = "cbbIsolation";
+            this.cbbIsolation.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit2.Properties.Items.AddRange(new object[] {
+            this.cbbIsolation.Properties.Items.AddRange(new object[] {
             "Read Uncommitted",
             "Read Committed",
             "Repeatable Read",
             "Serializable"});
-            this.comboBoxEdit2.Size = new System.Drawing.Size(116, 20);
-            this.comboBoxEdit2.TabIndex = 10;
+            this.cbbIsolation.Size = new System.Drawing.Size(116, 20);
+            this.cbbIsolation.TabIndex = 10;
+            this.cbbIsolation.SelectedIndexChanged += new System.EventHandler(this.cbbIsolation_SelectedIndexChanged);
             // 
             // labelControl1
             // 
@@ -361,15 +364,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.simpleButton6);
+            this.Controls.Add(this.spbThemLoai);
             this.Controls.Add(this.spbDocLoaiMonAn);
-            this.Controls.Add(this.simpleButton5);
+            this.Controls.Add(this.spbCapNhatLoai);
             this.Controls.Add(this.panelControl1);
-            this.Controls.Add(this.simpleButton4);
-            this.Controls.Add(this.simpleButton3);
-            this.Controls.Add(this.simpleButton2);
+            this.Controls.Add(this.spBXoaLoai);
+            this.Controls.Add(this.spbXoaMonAn);
+            this.Controls.Add(this.smbCapNhatMonAn);
             this.Controls.Add(this.spbDocMonAn);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.spbThemMonAn);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.Name = "UCtrl_QLNhaHang_QLThucDon";
@@ -383,11 +386,11 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcLoaiMonAn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbMode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbMode.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbIsolation.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -396,18 +399,18 @@
 
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbMode;
+        private DevExpress.XtraEditors.SimpleButton spbThemMonAn;
+        private DevExpress.XtraEditors.SimpleButton smbCapNhatMonAn;
+        private DevExpress.XtraEditors.SimpleButton spbXoaMonAn;
+        private DevExpress.XtraEditors.SimpleButton spBXoaLoai;
+        private DevExpress.XtraEditors.SimpleButton spbCapNhatLoai;
+        private DevExpress.XtraEditors.SimpleButton spbThemLoai;
+        private DevExpress.XtraEditors.ComboBoxEdit cbbMode;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private vButton.vButton vButton2;
-        private vButton.vButton vButton1;
+        private vButton.vButton btCommit;
+        private vButton.vButton btRollBack;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit2;
+        private DevExpress.XtraEditors.ComboBoxEdit cbbIsolation;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton spbDocLoaiMonAn;
         private DevExpress.XtraGrid.GridControl gcLoaiMonAn;
