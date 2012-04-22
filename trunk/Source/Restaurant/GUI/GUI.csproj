@@ -87,7 +87,7 @@
     <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.Designer.cs">
+    <Compile Include="QuanLyNhanHang\UCtrl_QLNhaHang_QLThucDon.designer.cs">
       <DependentUpon>UCtrl_QLNhaHang_QLThucDon.cs</DependentUpon>
     </Compile>
     <Compile Include="TiepTan\UCtrl_TiepTan_DSKhachHang.cs">

@@ -16,10 +16,8 @@ namespace DAO
             provider = new Provider();
             DataTable tbLoaiMonAn = new DataTable();
             string sql = "select MaLoai,TenLoai from LoaiMonAn";
-            provider.cm = provider.CreateCommand(sql);
-            tbLoaiMonAn.Load(provider.cm.ExecuteReader());
-            provider.cnn.Close();
-            return tbLoaiMonAn;
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand(cm);
         }
     }
 }
