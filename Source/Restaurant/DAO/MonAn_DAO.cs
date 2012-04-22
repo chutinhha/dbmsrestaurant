@@ -18,11 +18,9 @@ namespace DAO
             str_sql+= " where m.LoaiMon=lm.MaLoai and m.MaNH=nh.MaNH";
 
             provider = new Provider();
-            provider.cm = provider.CreateCommand(str_sql);
+            SqlCommand cm = provider.CreateCommandStringSql(str_sql);
             DataTable tb = new DataTable();
-            tb.Load(provider.cm.ExecuteReader());
-            provider.cnn.Close();
-            return tb;
+            return provider.ExecSelectCommand(cm);
         }
     }
 }

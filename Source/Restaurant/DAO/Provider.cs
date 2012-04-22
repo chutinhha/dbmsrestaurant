@@ -9,31 +9,42 @@ namespace DAO
 {
     class Provider
     {
-        //public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
-        public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
+        public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
+       // public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
         public SqlConnection cnn;
-        public SqlTransaction trans;
-        public SqlCommand cm;
+        //public SqlTransaction trans;
 
-        public SqlCommand CreateCommand(string sql)
+        public SqlCommand CreateCommandStringSql(string sql)
         {
             cnn = new SqlConnection(str_connection);
             SqlCommand cm = cnn.CreateCommand();
-            cnn.Open();
+            //cnn.Open();
             cm.CommandType = System.Data.CommandType.Text;
             cm.CommandText = sql;
             return cm;
         }
-        public SqlCommand CreateCommand(ref SqlConnection cnn, ref SqlTransaction transaction, string sql, IsolationLevel iso)
+        public SqlCommand CreateCommandStoreName(string StoreName)
         {
             cnn = new SqlConnection(str_connection);
             SqlCommand cm = cnn.CreateCommand();
-            cnn.Open();
-            cnn.BeginTransaction(iso);
-            cm.CommandType = System.Data.CommandType.Text;
-            cm.CommandText = sql;
+            //cnn.Open();
+            cm.CommandType = System.Data.CommandType.StoredProcedure;
+            cm.CommandText = StoreName;
             return cm;
         }
+        public DataTable ExecSelectCommand(SqlCommand cm)
+        {
+            DataTable table = new DataTable();
+            cm.Connection.Open();
+            SqlDataReader read = cm.ExecuteReader();
+            table.Load(read);
+            read.Close();
+            cm.Connection.Close();
+            return table;
+        }
+
+        
+       
      
     }
 }
