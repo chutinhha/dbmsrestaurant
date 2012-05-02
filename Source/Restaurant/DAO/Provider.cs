@@ -9,7 +9,7 @@ namespace DAO
 {
     class Provider
     {
-        public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
+       public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
        // public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHanga ; Integrated Security=SSPI ";
         public SqlConnection cnn;
         //public SqlTransaction trans;
