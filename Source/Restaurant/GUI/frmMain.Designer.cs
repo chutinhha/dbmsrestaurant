@@ -187,6 +187,7 @@ namespace GUI
             this.barBtn_ThuNgan_QLBanAn.LargeGlyph = global::GUI.Properties.Resources.temp;
             this.barBtn_ThuNgan_QLBanAn.LargeWidth = 120;
             this.barBtn_ThuNgan_QLBanAn.Name = "barBtn_ThuNgan_QLBanAn";
+            this.barBtn_ThuNgan_QLBanAn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_ThuNgan_QLBanAn_ItemClick);
             // 
             // barBtn_ThuNgan_ChuyenBan
             // 
@@ -195,6 +196,7 @@ namespace GUI
             this.barBtn_ThuNgan_ChuyenBan.LargeGlyph = global::GUI.Properties.Resources.temp;
             this.barBtn_ThuNgan_ChuyenBan.LargeWidth = 120;
             this.barBtn_ThuNgan_ChuyenBan.Name = "barBtn_ThuNgan_ChuyenBan";
+            this.barBtn_ThuNgan_ChuyenBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_ThuNgan_ChuyenBan_ItemClick);
             // 
             // barBtn_ThuNgan_GhepBan
             // 
@@ -203,6 +205,7 @@ namespace GUI
             this.barBtn_ThuNgan_GhepBan.LargeGlyph = global::GUI.Properties.Resources.temp;
             this.barBtn_ThuNgan_GhepBan.LargeWidth = 120;
             this.barBtn_ThuNgan_GhepBan.Name = "barBtn_ThuNgan_GhepBan";
+            this.barBtn_ThuNgan_GhepBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_ThuNgan_GhepBan_ItemClick);
             // 
             // barBtn_ThuNgan_ThongKe
             // 
@@ -211,6 +214,7 @@ namespace GUI
             this.barBtn_ThuNgan_ThongKe.LargeGlyph = global::GUI.Properties.Resources.temp;
             this.barBtn_ThuNgan_ThongKe.LargeWidth = 120;
             this.barBtn_ThuNgan_ThongKe.Name = "barBtn_ThuNgan_ThongKe";
+            this.barBtn_ThuNgan_ThongKe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_ThuNgan_ThongKe_ItemClick);
             // 
             // barBtn_QLKho_QLNguyenLieu
             // 
@@ -385,6 +389,7 @@ namespace GUI
             this.barBtn_TiepTan_DSDatBan.LargeGlyph = global::GUI.Properties.Resources.temp;
             this.barBtn_TiepTan_DSDatBan.LargeWidth = 120;
             this.barBtn_TiepTan_DSDatBan.Name = "barBtn_TiepTan_DSDatBan";
+            this.barBtn_TiepTan_DSDatBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TiepTan_DSDatBan_ItemClick);
             // 
             // barBtn_TiepTan_XepBan
             // 
