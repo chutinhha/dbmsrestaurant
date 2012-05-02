@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 using DevExpress.XtraBars;
 using DevExpress.UserSkins;
@@ -16,6 +17,10 @@ namespace GUI
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         TiepTan.UCtrlXepBan UCtrl_TiepTan_XepBan;
+        TiepTan.UCtrlDSDatBan UCtrl_TiepTan_DSDatBan;
+        TiepTan.UctrlDatBan UCtrl_TiepTan_DatBan;
+        ThuNgan.UCtrlQLTBanAn UCtrl_ThuNgan_QLBanAn;
+        ThuNgan.UCtrlThongKe UCtrl_ThuNgan_ThongKe;
         QuanLyKho.UCtrlTTDatHang UCtrl_QLKho_DatHang;
         QuanLyKho.UCtrlNhapKho UCtrl_QLKho_NhapKho;
         QuanLyKho.UCtrlNhaCungCap UCtrl_QLKho_NCC;
@@ -60,8 +65,14 @@ namespace GUI
             MybarAndDockingController.LookAndFeel.SkinName = strGiaoDien;
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = strGiaoDien;
             //-------------
-            
+            //Thread UCtrl_TiepTan_XepBan = new Thread(new ThreadStart(ThreadRun));
+            //UCtrl_TiepTan_XepBan.Start(UCtrl_TiepTan_XepBan);
+            //Thread.Sleep(1000);
             UCtrl_TiepTan_XepBan = new TiepTan.UCtrlXepBan();
+            UCtrl_TiepTan_DSDatBan = new TiepTan.UCtrlDSDatBan();
+            UCtrl_TiepTan_DatBan = new TiepTan.UctrlDatBan();
+            UCtrl_ThuNgan_QLBanAn = new ThuNgan.UCtrlQLTBanAn();
+            UCtrl_ThuNgan_ThongKe = new ThuNgan.UCtrlThongKe();
             UCtrl_QLKho_DatHang = new QuanLyKho.UCtrlTTDatHang();
             UCtrl_QLKho_NhapKho = new QuanLyKho.UCtrlNhapKho();
             UCtrl_QLKho_NCC = new QuanLyKho.UCtrlNhaCungCap();
@@ -72,27 +83,61 @@ namespace GUI
         }
         private void frm_Main_Load(object sender, EventArgs e)
         {
-           Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
+            Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
         }
         private void Add_UserControl(Control Panel, Control UCtrl)
         {
             panelCtrl_Main.Controls.Clear();
             UCtrl.Dock = DockStyle.Fill;
-            
+
             Panel.Controls.Add(UCtrl);
         }
-        private void LoadUserControl()
+
+        private void ThreadRun(Object Uctrl)
         {
+            UCtrl_TiepTan_XepBan = new TiepTan.UCtrlXepBan();
         }
+
         #region " Tiep Tan "
         private void barBtn_TiepTan_XepBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
         }
+        private void barBtn_TiepTan_DatBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //TiepTan.frmDatBan _frmDatBan = new TiepTan.frmDatBan();
+            //_frmDatBan.Show();
+            Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DatBan);
+        }
+
+        private void barBtn_TiepTan_DSDatBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DSDatBan);
+        }
 
         #endregion
 
         #region " Thu Ngan "
+        private void barBtn_ThuNgan_QLBanAn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_ThuNgan_QLBanAn);
+        }
+
+        private void barBtn_ThuNgan_ChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barBtn_ThuNgan_GhepBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barBtn_ThuNgan_ThongKe_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_ThuNgan_ThongKe);
+        }
+
 #endregion
 
         #region " Quan Ly Kho "
@@ -154,12 +199,7 @@ namespace GUI
         }
         #endregion
 
-        private void barBtn_TiepTan_DatBan_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            TiepTan.frmDatBan _frmDatBan = new TiepTan.frmDatBan();
-            _frmDatBan.Show();
-        }
-
+      
 
 
       
