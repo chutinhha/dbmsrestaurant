@@ -42,7 +42,21 @@ namespace DAO
             cm.Connection.Close();
             return table;
         }
-
+        public int ExecuteInsertUpdateDelete(SqlCommand cm)
+        {
+            try
+            {
+                cm.Connection.Open();
+                int flag = cm.ExecuteNonQuery();
+                cm.Connection.Close();
+                return flag;
+            }
+            catch
+            {
+                return 0;
+            }
+            
+        }
         
        
      

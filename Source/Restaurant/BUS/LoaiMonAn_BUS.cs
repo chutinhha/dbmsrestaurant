@@ -10,10 +10,22 @@ namespace BUS
 {
     public class LoaiMonAn_BUS
     {
+        LoaiMonAn_DAO loaimonan = new LoaiMonAn_DAO();
         public DataTable DocLoaiMonAn()
         {
-            LoaiMonAn_DAO loaimonan = new LoaiMonAn_DAO();
             return loaimonan.DocLoaiMonAn();
+        }
+        public static int CapNhatLoaiMonAn(LoaiMonAn_DTO loaiMonAn)
+        {
+            return LoaiMonAn_DAO.CapNhatLoaiMonAn(loaiMonAn);
+        }
+        public static int XoaLoaiMonAn(string maLoai)
+        {
+            return LoaiMonAn_DAO.XoatLoaiMonAn(maLoai);
+        }
+        public static int ThemLoaiMonAn(LoaiMonAn_DTO loaiMonAn)
+        {
+            return LoaiMonAn_DAO.ThemLoaiMonAn(loaiMonAn);
         }
     }
 }

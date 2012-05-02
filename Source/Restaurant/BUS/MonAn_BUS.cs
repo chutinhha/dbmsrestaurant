@@ -12,10 +12,9 @@ namespace BUS
 {
     public class MonAn_BUS
     {
-        public DataTable DocMonAn()
+        public static DataTable DocMonAn()
         {
-            MonAn_DAO moan = new MonAn_DAO();
-            return moan.DocMonAn();
+            return MonAn_DAO.DocMonAn();
         }
     }
 }

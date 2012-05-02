@@ -168,3 +168,4 @@ F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.QuanLyNhaHang.UCtrlThongKeDoanhThu.resources
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.TiepTan.frmDatBan.resources
 F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.TiepTan.UCtrlXepBan.resources
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\dbmsrestaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.QuanLyNhaHang.Form_ThemLoaiMonAn.resources
