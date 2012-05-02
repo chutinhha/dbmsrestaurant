@@ -127,6 +127,7 @@
             // 
             // simpleButton2
             // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Image = global::GUI.Properties.Resources.ok_24;
             this.simpleButton2.Location = new System.Drawing.Point(666, 418);
             this.simpleButton2.Name = "simpleButton2";
@@ -136,6 +137,7 @@
             // 
             // simpleButton3
             // 
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton3.Image = global::GUI.Properties.Resources.close_24;
             this.simpleButton3.Location = new System.Drawing.Point(797, 418);
             this.simpleButton3.Name = "simpleButton3";
