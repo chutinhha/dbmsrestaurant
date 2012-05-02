@@ -10,17 +10,20 @@ namespace DAO
 {
     public class MonAn_DAO
     {
-        Provider provider;
-        public  DataTable DocMonAn()
+        
+        public static  DataTable DocMonAn()
         {
-            string str_sql = "select TenMon,TenLoai,Gia,DonViTinh,TenNH";
+            Provider provider=new Provider();
+            string str_sql = "select MaMon, TenMon,TenLoai,Gia,DonViTinh,TenNH";
             str_sql+= " from MonAn m,LoaiMonAn lm,NhaHang nh";
             str_sql+= " where m.LoaiMon=lm.MaLoai and m.MaNH=nh.MaNH";
-
-            provider = new Provider();
             SqlCommand cm = provider.CreateCommandStringSql(str_sql);
             DataTable tb = new DataTable();
             return provider.ExecSelectCommand(cm);
+        }
+        public static int XoaMonAn(string maMon)
+        {
+            return 0;
         }
     }
 }
