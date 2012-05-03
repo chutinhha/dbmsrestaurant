@@ -132,12 +132,14 @@ namespace GUI
 
         private void barBtn_ThuNgan_ChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            ThuNgan.frmChuyenBan _frmChuyenBan = new ThuNgan.frmChuyenBan();
+            _frmChuyenBan.Show();
         }
 
         private void barBtn_ThuNgan_GhepBan_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            ThuNgan.frmGhepBan _frmGhepBan = new ThuNgan.frmGhepBan();
+            _frmGhepBan.Show();
         }
 
         private void barBtn_ThuNgan_ThongKe_ItemClick(object sender, ItemClickEventArgs e)
@@ -206,29 +208,5 @@ namespace GUI
         }
         #endregion
 
-      
-
-
-      
-
-   
-
-
- 
-
-
-     
-
-     
-    
-       
-       
-        
-
-        
-
-      
-
-       
     }
 }
