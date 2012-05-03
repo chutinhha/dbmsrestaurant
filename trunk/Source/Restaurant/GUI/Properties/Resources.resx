@@ -202,4 +202,22 @@
   <data name="navigate_left48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\navigate-left48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BieuDo_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BieuDo_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="down_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\down_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="left_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\left_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="right_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\right_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="statistics_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statistics_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="statistics_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statistics_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
