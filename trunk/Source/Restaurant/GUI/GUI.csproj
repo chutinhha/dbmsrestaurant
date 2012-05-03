@@ -112,6 +112,24 @@
     <Compile Include="QuanLyNhaHang\UCtrlQLThucDon.designer.cs">
       <DependentUpon>UCtrlQLThucDon.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThuNgan\frmChuyenBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThuNgan\frmChuyenBan.Designer.cs">
+      <DependentUpon>frmChuyenBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThuNgan\frmGhepBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThuNgan\frmGhepBan.Designer.cs">
+      <DependentUpon>frmGhepBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThuNgan\frmThemMonAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThuNgan\frmThemMonAn.Designer.cs">
+      <DependentUpon>frmThemMonAn.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThuNgan\UCtrlQLTBanAn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -272,6 +290,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNhaHang\UCtrlThongKeDoanhThu.resx">
       <DependentUpon>UCtrlThongKeDoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThuNgan\frmChuyenBan.resx">
+      <DependentUpon>frmChuyenBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThuNgan\frmGhepBan.resx">
+      <DependentUpon>frmGhepBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThuNgan\frmThemMonAn.resx">
+      <DependentUpon>frmThemMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThuNgan\UCtrlThongKe.resx">
+      <DependentUpon>UCtrlThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TiepTan\frmDatBan.resx">
       <DependentUpon>frmDatBan.cs</DependentUpon>

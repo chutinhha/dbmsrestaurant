@@ -214,3 +214,7 @@ E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DevE
 E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\bin\Debug\DAO.pdb
 E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.TiepTan.UctrlDatBan.resources
 E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.TiepTan.UCtrlDSDatBan.resources
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.ThuNgan.frmChuyenBan.resources
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.ThuNgan.frmGhepBan.resources
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.ThuNgan.frmThemMonAn.resources
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\GUI\obj\x86\Debug\GUI.ThuNgan.UCtrlThongKe.resources

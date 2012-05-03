@@ -28,6 +28,7 @@ namespace GUI
         QuanLyNhaHang.UCtrlQLThucDon UCtrl_QLNH_QLThucDon;
         QuanLyNhaHang.UCtrlQLNhanVien UCtrl_QLNH_QLNhanVien;
         QuanLyNhaHang.UCtrlQLDanhSachBanAn UCtrl_QLNH_QLDSBanAn;
+        QuanLyNhaHang.UCtrlThongKeDoanhThu UCtrl_QLNH_ThongKeDoanhThu;
         QuanTri.UCtrlCoSoDuLieu UCtrl_QuanTri_CoSoDuLieu;
         QuanTri.UCtrlPhanQuyen UCtrl_QuanTtri_PhanQuyen;
         QuanTri.UCtrlQuanTriNguoiDung UCtrl_QuanTri_QTNguoiDung;
@@ -79,6 +80,7 @@ namespace GUI
             UCtrl_QLNH_QLThucDon = new QuanLyNhaHang.UCtrlQLThucDon();
             UCtrl_QLNH_QLNhanVien = new QuanLyNhaHang.UCtrlQLNhanVien();
             UCtrl_QLNH_QLDSBanAn = new QuanLyNhaHang.UCtrlQLDanhSachBanAn();
+            UCtrl_QLNH_ThongKeDoanhThu = new QuanLyNhaHang.UCtrlThongKeDoanhThu();
 
             //--------------------
             UCtrl_TiepTan_DSDatBan.DatBan = new TiepTan.UCtrlDSDatBan.deleDatBan(DatBan);
@@ -182,7 +184,10 @@ namespace GUI
         {
             Add_UserControl(panelCtrl_Main, UCtrl_QLNH_QLDSBanAn);
         }
-
+        private void barBtn_QLNhaHang_ThongKeDoanhThu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_QLNH_ThongKeDoanhThu);
+        }
         #endregion
 
         #region " Tong Quan Ly "
@@ -207,6 +212,8 @@ namespace GUI
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Item.Tag.ToString();
         }
         #endregion
+
+
 
     }
 }
