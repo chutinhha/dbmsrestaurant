@@ -50,7 +50,6 @@ namespace GUI
             this.rbGalleryBarItem_TuyChon_GiaoDien = new DevExpress.XtraBars.RibbonGalleryBarItem();
             this.barBtn_TuyChon_DoiMatKhau = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TuyChon_Thoat = new DevExpress.XtraBars.BarButtonItem();
-            this.barBrn_QuanTriNguoiDung = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_QuanTri_QuantrCoSoDuLieu = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TuyChon_TroGiup = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TuyChon_GioiThieu = new DevExpress.XtraBars.BarButtonItem();
@@ -62,6 +61,7 @@ namespace GUI
             this.barBtn_QLNhaHang_DSBanAn = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_DSDatBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_XepBan = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
             this.rbPage_TiepTan_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -81,7 +81,6 @@ namespace GUI
             this.rbPageGroup_TuyChon3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.panelCtrl_Main = new DevExpress.XtraEditors.PanelControl();
-            this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).BeginInit();
@@ -118,7 +117,6 @@ namespace GUI
             this.rbGalleryBarItem_TuyChon_GiaoDien,
             this.barBtn_TuyChon_DoiMatKhau,
             this.barBtn_TuyChon_Thoat,
-            this.barBrn_QuanTriNguoiDung,
             this.barBtn_QuanTri_QuantrCoSoDuLieu,
             this.barBtn_TuyChon_TroGiup,
             this.barBtn_TuyChon_GioiThieu,
@@ -284,6 +282,7 @@ namespace GUI
             this.barBtn_TuyChon_DoiMatKhau.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_DoiMatKhau.LargeGlyph")));
             this.barBtn_TuyChon_DoiMatKhau.LargeWidth = 120;
             this.barBtn_TuyChon_DoiMatKhau.Name = "barBtn_TuyChon_DoiMatKhau";
+            this.barBtn_TuyChon_DoiMatKhau.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TuyChon_DoiMatKhau_ItemClick);
             // 
             // barBtn_TuyChon_Thoat
             // 
@@ -294,14 +293,6 @@ namespace GUI
             this.barBtn_TuyChon_Thoat.Name = "barBtn_TuyChon_Thoat";
             this.barBtn_TuyChon_Thoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_Thoat_ItemClick);
             // 
-            // barBrn_QuanTriNguoiDung
-            // 
-            this.barBrn_QuanTriNguoiDung.Caption = "Quản Trị Người Dùng";
-            this.barBrn_QuanTriNguoiDung.Id = 22;
-            this.barBrn_QuanTriNguoiDung.LargeWidth = 115;
-            this.barBrn_QuanTriNguoiDung.Name = "barBrn_QuanTriNguoiDung";
-            this.barBrn_QuanTriNguoiDung.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBrn_QuanTriNguoiDung_ItemClick);
-            // 
             // barBtn_QuanTri_QuantrCoSoDuLieu
             // 
             this.barBtn_QuanTri_QuantrCoSoDuLieu.Caption = "Cơ sở dử liệu";
@@ -309,6 +300,7 @@ namespace GUI
             this.barBtn_QuanTri_QuantrCoSoDuLieu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QuanTri_QuantrCoSoDuLieu.LargeGlyph")));
             this.barBtn_QuanTri_QuantrCoSoDuLieu.LargeWidth = 120;
             this.barBtn_QuanTri_QuantrCoSoDuLieu.Name = "barBtn_QuanTri_QuantrCoSoDuLieu";
+            this.barBtn_QuanTri_QuantrCoSoDuLieu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QuanTri_QuantrCoSoDuLieu_ItemClick);
             // 
             // barBtn_TuyChon_TroGiup
             // 
@@ -317,6 +309,7 @@ namespace GUI
             this.barBtn_TuyChon_TroGiup.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_TroGiup.LargeGlyph")));
             this.barBtn_TuyChon_TroGiup.LargeWidth = 120;
             this.barBtn_TuyChon_TroGiup.Name = "barBtn_TuyChon_TroGiup";
+            this.barBtn_TuyChon_TroGiup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TuyChon_TroGiup_ItemClick);
             // 
             // barBtn_TuyChon_GioiThieu
             // 
@@ -325,6 +318,7 @@ namespace GUI
             this.barBtn_TuyChon_GioiThieu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TuyChon_GioiThieu.LargeGlyph")));
             this.barBtn_TuyChon_GioiThieu.LargeWidth = 120;
             this.barBtn_TuyChon_GioiThieu.Name = "barBtn_TuyChon_GioiThieu";
+            this.barBtn_TuyChon_GioiThieu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TuyChon_GioiThieu_ItemClick);
             // 
             // barBtn_QuanTri_PhanQuyen
             // 
@@ -333,6 +327,7 @@ namespace GUI
             this.barBtn_QuanTri_PhanQuyen.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QuanTri_PhanQuyen.LargeGlyph")));
             this.barBtn_QuanTri_PhanQuyen.LargeWidth = 120;
             this.barBtn_QuanTri_PhanQuyen.Name = "barBtn_QuanTri_PhanQuyen";
+            this.barBtn_QuanTri_PhanQuyen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QuanTri_PhanQuyen_ItemClick);
             // 
             // barBtn_TongQL_TongHopDoanhThu
             // 
@@ -341,6 +336,7 @@ namespace GUI
             this.barBtn_TongQL_TongHopDoanhThu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TongQL_TongHopDoanhThu.LargeGlyph")));
             this.barBtn_TongQL_TongHopDoanhThu.LargeWidth = 120;
             this.barBtn_TongQL_TongHopDoanhThu.Name = "barBtn_TongQL_TongHopDoanhThu";
+            this.barBtn_TongQL_TongHopDoanhThu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TongQL_TongHopDoanhThu_ItemClick);
             // 
             // barBtn_TongQL_QLNhanVien
             // 
@@ -349,6 +345,7 @@ namespace GUI
             this.barBtn_TongQL_QLNhanVien.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TongQL_QLNhanVien.LargeGlyph")));
             this.barBtn_TongQL_QLNhanVien.LargeWidth = 120;
             this.barBtn_TongQL_QLNhanVien.Name = "barBtn_TongQL_QLNhanVien";
+            this.barBtn_TongQL_QLNhanVien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TongQL_QLNhanVien_ItemClick);
             // 
             // barBtn_QuanTri_QuanTriNguoiDung
             // 
@@ -357,6 +354,7 @@ namespace GUI
             this.barBtn_QuanTri_QuanTriNguoiDung.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QuanTri_QuanTriNguoiDung.LargeGlyph")));
             this.barBtn_QuanTri_QuanTriNguoiDung.LargeWidth = 120;
             this.barBtn_QuanTri_QuanTriNguoiDung.Name = "barBtn_QuanTri_QuanTriNguoiDung";
+            this.barBtn_QuanTri_QuanTriNguoiDung.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QuanTri_QuanTriNguoiDung_ItemClick);
             // 
             // barBtn_TongQL_DanhSachNhaHang
             // 
@@ -365,6 +363,7 @@ namespace GUI
             this.barBtn_TongQL_DanhSachNhaHang.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_TongQL_DanhSachNhaHang.LargeGlyph")));
             this.barBtn_TongQL_DanhSachNhaHang.LargeWidth = 120;
             this.barBtn_TongQL_DanhSachNhaHang.Name = "barBtn_TongQL_DanhSachNhaHang";
+            this.barBtn_TongQL_DanhSachNhaHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TongQL_DanhSachNhaHang_ItemClick);
             // 
             // barBtn_QLNhaHang_DSBanAn
             // 
@@ -392,6 +391,14 @@ namespace GUI
             this.barBtn_TiepTan_XepBan.LargeWidth = 120;
             this.barBtn_TiepTan_XepBan.Name = "barBtn_TiepTan_XepBan";
             this.barBtn_TiepTan_XepBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_TiepTan_XepBan_ItemClick);
+            // 
+            // barBtnThongKeMonAn
+            // 
+            this.barBtnThongKeMonAn.Caption = "Thống Kê Món Ăn";
+            this.barBtnThongKeMonAn.Id = 43;
+            this.barBtnThongKeMonAn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnThongKeMonAn.LargeGlyph")));
+            this.barBtnThongKeMonAn.LargeWidth = 120;
+            this.barBtnThongKeMonAn.Name = "barBtnThongKeMonAn";
             // 
             // rbPage_TiepTan_ThuNgan
             // 
@@ -527,14 +534,6 @@ namespace GUI
             this.panelCtrl_Main.Size = new System.Drawing.Size(898, 456);
             this.panelCtrl_Main.TabIndex = 2;
             // 
-            // barBtnThongKeMonAn
-            // 
-            this.barBtnThongKeMonAn.Caption = "Thống Kê Món Ăn";
-            this.barBtnThongKeMonAn.Id = 43;
-            this.barBtnThongKeMonAn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnThongKeMonAn.LargeGlyph")));
-            this.barBtnThongKeMonAn.LargeWidth = 120;
-            this.barBtnThongKeMonAn.Name = "barBtnThongKeMonAn";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -592,7 +591,6 @@ namespace GUI
         private DevExpress.XtraBars.BarAndDockingController MybarAndDockingController;
         private DevExpress.XtraBars.BarButtonItem barBtn_TuyChon_DoiMatKhau;
         private DevExpress.XtraBars.BarButtonItem barBtn_TuyChon_Thoat;
-        private DevExpress.XtraBars.BarButtonItem barBrn_QuanTriNguoiDung;
         private DevExpress.XtraBars.BarButtonItem barBtn_QuanTri_QuantrCoSoDuLieu;
         private DevExpress.XtraBars.BarButtonItem barBtn_TuyChon_TroGiup;
         private DevExpress.XtraBars.BarButtonItem barBtn_TuyChon_GioiThieu;
