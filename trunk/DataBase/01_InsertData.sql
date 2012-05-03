@@ -36,8 +36,8 @@ insert into LoaiBan values('to',20)
 GO
 --insert BanAn
 select * from LoaiBan
-insert into BanAn(MaKhuVuc,LoaiBan) values(1,'VIP')
-insert into BanAn(MaKhuVuc,LoaiBan) values(2,'VIP')
+insert into BanAn(TenBan,MaKhuVuc,LoaiBan) values(N'Bàn 1',1,'VIP')
+insert into BanAn(TenBan,MaKhuVuc,LoaiBan) values(N'Bàn 2',2,'VIP')
 GO
 --insert LoaiMonAn
 insert into LoaiMonAn values ('N','Nuoc Uong')
