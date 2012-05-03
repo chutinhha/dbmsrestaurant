@@ -38,12 +38,12 @@
             this.cbB_MaBan = new System.Windows.Forms.ComboBox();
             this.lb_MaBan = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.btnThemNV = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCapNhatNV = new DevExpress.XtraEditors.SimpleButton();
-            this.btnXoaNV = new DevExpress.XtraEditors.SimpleButton();
-            this.btnInDSNV = new DevExpress.XtraEditors.SimpleButton();
             this.gridDSDatBan = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnDatBan = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCapNhat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
+            this.btnInDSNV = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -144,46 +144,6 @@
             this.groupControl1.TabIndex = 5;
             this.groupControl1.Text = "Danh Sách Đặt Bàn";
             // 
-            // btnThemNV
-            // 
-            this.btnThemNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThemNV.Image = global::GUI.Properties.Resources.add_16;
-            this.btnThemNV.Location = new System.Drawing.Point(413, 442);
-            this.btnThemNV.Name = "btnThemNV";
-            this.btnThemNV.Size = new System.Drawing.Size(190, 26);
-            this.btnThemNV.TabIndex = 16;
-            this.btnThemNV.Text = "Đặt Bàn";
-            // 
-            // btnCapNhatNV
-            // 
-            this.btnCapNhatNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCapNhatNV.Image = global::GUI.Properties.Resources.save_16;
-            this.btnCapNhatNV.Location = new System.Drawing.Point(609, 442);
-            this.btnCapNhatNV.Name = "btnCapNhatNV";
-            this.btnCapNhatNV.Size = new System.Drawing.Size(89, 26);
-            this.btnCapNhatNV.TabIndex = 17;
-            this.btnCapNhatNV.Text = "Cập Nhật";
-            // 
-            // btnXoaNV
-            // 
-            this.btnXoaNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXoaNV.Image = global::GUI.Properties.Resources.delete_16;
-            this.btnXoaNV.Location = new System.Drawing.Point(704, 442);
-            this.btnXoaNV.Name = "btnXoaNV";
-            this.btnXoaNV.Size = new System.Drawing.Size(61, 26);
-            this.btnXoaNV.TabIndex = 19;
-            this.btnXoaNV.Text = "Xóa";
-            // 
-            // btnInDSNV
-            // 
-            this.btnInDSNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInDSNV.Image = global::GUI.Properties.Resources.print_24;
-            this.btnInDSNV.Location = new System.Drawing.Point(771, 442);
-            this.btnInDSNV.Name = "btnInDSNV";
-            this.btnInDSNV.Size = new System.Drawing.Size(106, 26);
-            this.btnInDSNV.TabIndex = 18;
-            this.btnInDSNV.Text = "In Danh Sách";
-            // 
             // gridDSDatBan
             // 
             this.gridDSDatBan.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -200,15 +160,56 @@
             this.gridView1.GridControl = this.gridDSDatBan;
             this.gridView1.Name = "gridView1";
             // 
+            // btnDatBan
+            // 
+            this.btnDatBan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDatBan.Image = global::GUI.Properties.Resources.add_16;
+            this.btnDatBan.Location = new System.Drawing.Point(413, 442);
+            this.btnDatBan.Name = "btnDatBan";
+            this.btnDatBan.Size = new System.Drawing.Size(190, 26);
+            this.btnDatBan.TabIndex = 16;
+            this.btnDatBan.Text = "Đặt Bàn";
+            this.btnDatBan.Click += new System.EventHandler(this.btnDatBan_Click);
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCapNhat.Image = global::GUI.Properties.Resources.save_16;
+            this.btnCapNhat.Location = new System.Drawing.Point(609, 442);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(89, 26);
+            this.btnCapNhat.TabIndex = 17;
+            this.btnCapNhat.Text = "Cập Nhật";
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXoa.Image = global::GUI.Properties.Resources.delete_16;
+            this.btnXoa.Location = new System.Drawing.Point(704, 442);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(61, 26);
+            this.btnXoa.TabIndex = 19;
+            this.btnXoa.Text = "Xóa";
+            // 
+            // btnInDSNV
+            // 
+            this.btnInDSNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnInDSNV.Image = global::GUI.Properties.Resources.print_24;
+            this.btnInDSNV.Location = new System.Drawing.Point(771, 442);
+            this.btnInDSNV.Name = "btnInDSNV";
+            this.btnInDSNV.Size = new System.Drawing.Size(106, 26);
+            this.btnInDSNV.TabIndex = 18;
+            this.btnInDSNV.Text = "In Danh Sách";
+            // 
             // UCtrlDSDatBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnThemNV);
+            this.Controls.Add(this.btnDatBan);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.btnCapNhatNV);
+            this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.btnXoaNV);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnInDSNV);
             this.Name = "UCtrlDSDatBan";
             this.Size = new System.Drawing.Size(880, 480);
@@ -235,9 +236,9 @@
         private System.Windows.Forms.ComboBox cbB_MaBan;
         private DevExpress.XtraEditors.LabelControl lb_MaBan;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.SimpleButton btnThemNV;
-        private DevExpress.XtraEditors.SimpleButton btnCapNhatNV;
-        private DevExpress.XtraEditors.SimpleButton btnXoaNV;
+        private DevExpress.XtraEditors.SimpleButton btnDatBan;
+        private DevExpress.XtraEditors.SimpleButton btnCapNhat;
+        private DevExpress.XtraEditors.SimpleButton btnXoa;
         private DevExpress.XtraEditors.SimpleButton btnInDSNV;
         private DevExpress.XtraGrid.GridControl gridDSDatBan;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;

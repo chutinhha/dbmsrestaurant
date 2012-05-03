@@ -112,18 +112,6 @@
     <Compile Include="QuanLyNhaHang\UCtrlQLThucDon.designer.cs">
       <DependentUpon>UCtrlQLThucDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="ThuNgan\UCtrlChuyenBan.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ThuNgan\UCtrlChuyenBan.Designer.cs">
-      <DependentUpon>UCtrlChuyenBan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ThuNgan\UCtrlGhepBan.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ThuNgan\UCtrlGhepBan.Designer.cs">
-      <DependentUpon>UCtrlGhepBan.cs</DependentUpon>
-    </Compile>
     <Compile Include="ThuNgan\UCtrlQLTBanAn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -177,6 +165,12 @@
     </Compile>
     <Compile Include="TiepTan\frmDatBan.Designer.cs">
       <DependentUpon>frmDatBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiepTan\UctrlDatBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TiepTan\UctrlDatBan.Designer.cs">
+      <DependentUpon>UctrlDatBan.cs</DependentUpon>
     </Compile>
     <Compile Include="TiepTan\UCtrlDSDatBan.cs">
       <SubType>UserControl</SubType>
@@ -281,6 +275,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TiepTan\frmDatBan.resx">
       <DependentUpon>frmDatBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiepTan\UctrlDatBan.resx">
+      <DependentUpon>UctrlDatBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiepTan\UCtrlDSDatBan.resx">
+      <DependentUpon>UCtrlDSDatBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TiepTan\UCtrlXepBan.resx">
       <DependentUpon>UCtrlXepBan.cs</DependentUpon>
