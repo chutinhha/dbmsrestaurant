@@ -11,7 +11,7 @@ namespace DAO
    public class LoaiMonAn_DAO
     {
       
-        public DataTable DocLoaiMonAn()
+        public static DataTable DocLoaiMonAn()
         {
             Provider provider = new Provider();
             DataTable tbLoaiMonAn = new DataTable();

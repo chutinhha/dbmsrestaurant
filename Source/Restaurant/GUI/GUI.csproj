@@ -202,6 +202,12 @@
     <Compile Include="TiepTan\UCtrlXepBan.Designer.cs">
       <DependentUpon>UCtrlXepBan.cs</DependentUpon>
     </Compile>
+    <Compile Include="TongQuanLy\frmThemNhaHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TongQuanLy\frmThemNhaHang.Designer.cs">
+      <DependentUpon>frmThemNhaHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="TongQuanLy\UCtrlDSNhaHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -237,12 +243,6 @@
     </Compile>
     <Compile Include="QuanTri\UCtrlQuanTriNguoiDung.Designer.cs">
       <DependentUpon>UCtrlQuanTriNguoiDung.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanTri\UCtrlThuVienAnh.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuanTri\UCtrlThuVienAnh.Designer.cs">
-      <DependentUpon>UCtrlThuVienAnh.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -314,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TiepTan\UCtrlXepBan.resx">
       <DependentUpon>UCtrlXepBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TongQuanLy\frmThemNhaHang.resx">
+      <DependentUpon>frmThemNhaHang.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
