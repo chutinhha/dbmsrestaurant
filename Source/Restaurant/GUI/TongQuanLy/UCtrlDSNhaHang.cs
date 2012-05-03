@@ -15,5 +15,11 @@ namespace GUI.TongQuanLy
         {
             InitializeComponent();
         }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            frmThemNhaHang _frmThemNH = new frmThemNhaHang();
+            _frmThemNH.Show();
+        }
     }
 }
