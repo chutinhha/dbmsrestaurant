@@ -28,46 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnThemNhomNL = new DevExpress.XtraEditors.SimpleButton();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnThemNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.groupNhomNL = new DevExpress.XtraEditors.GroupControl();
-            this.gridNhomNL = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupNguyenLieu = new DevExpress.XtraEditors.GroupControl();
             this.gridNguyenLieu = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnCapNhatNhomNL = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoaNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
-            this.btnXoaNhomNL = new DevExpress.XtraEditors.SimpleButton();
             this.btnInDanhMucNL = new DevExpress.XtraEditors.SimpleButton();
             this.btnDatHang = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.groupNhomNL)).BeginInit();
-            this.groupNhomNL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridNhomNL)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupNguyenLieu)).BeginInit();
             this.groupNguyenLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnThemNhomNL
-            // 
-            this.btnThemNhomNL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnThemNhomNL.Image = global::GUI.Properties.Resources.add_16;
-            this.btnThemNhomNL.Location = new System.Drawing.Point(104, 442);
-            this.btnThemNhomNL.Name = "btnThemNhomNL";
-            this.btnThemNhomNL.Size = new System.Drawing.Size(60, 26);
-            this.btnThemNhomNL.TabIndex = 20;
-            this.btnThemNhomNL.Text = "Thêm";
             // 
             // gridColumn5
             // 
@@ -112,53 +92,6 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 4;
-            // 
-            // groupNhomNL
-            // 
-            this.groupNhomNL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupNhomNL.Controls.Add(this.gridNhomNL);
-            this.groupNhomNL.Location = new System.Drawing.Point(3, 12);
-            this.groupNhomNL.Name = "groupNhomNL";
-            this.groupNhomNL.Size = new System.Drawing.Size(325, 424);
-            this.groupNhomNL.TabIndex = 18;
-            this.groupNhomNL.Text = "Nhóm Nguyên Liệu";
-            // 
-            // gridNhomNL
-            // 
-            this.gridNhomNL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridNhomNL.Location = new System.Drawing.Point(2, 22);
-            this.gridNhomNL.MainView = this.gridView1;
-            this.gridNhomNL.Name = "gridNhomNL";
-            this.gridNhomNL.Size = new System.Drawing.Size(321, 400);
-            this.gridNhomNL.TabIndex = 0;
-            this.gridNhomNL.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2});
-            this.gridView1.GridControl = this.gridNhomNL;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Mã Loại";
-            this.gridColumn1.FieldName = "MaLoai";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Tên Loại";
-            this.gridColumn2.FieldName = "TenLoai";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
             // 
             // gridColumn4
             // 
@@ -213,16 +146,6 @@
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
             // 
-            // btnCapNhatNhomNL
-            // 
-            this.btnCapNhatNhomNL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCapNhatNhomNL.Image = global::GUI.Properties.Resources.save_16;
-            this.btnCapNhatNhomNL.Location = new System.Drawing.Point(170, 442);
-            this.btnCapNhatNhomNL.Name = "btnCapNhatNhomNL";
-            this.btnCapNhatNhomNL.Size = new System.Drawing.Size(89, 26);
-            this.btnCapNhatNhomNL.TabIndex = 21;
-            this.btnCapNhatNhomNL.Text = "Cập Nhật";
-            // 
             // btnXoaNguyenLieu
             // 
             this.btnXoaNguyenLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,16 +155,6 @@
             this.btnXoaNguyenLieu.Size = new System.Drawing.Size(61, 26);
             this.btnXoaNguyenLieu.TabIndex = 24;
             this.btnXoaNguyenLieu.Text = "Xóa";
-            // 
-            // btnXoaNhomNL
-            // 
-            this.btnXoaNhomNL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnXoaNhomNL.Image = global::GUI.Properties.Resources.delete_16;
-            this.btnXoaNhomNL.Location = new System.Drawing.Point(265, 442);
-            this.btnXoaNhomNL.Name = "btnXoaNhomNL";
-            this.btnXoaNhomNL.Size = new System.Drawing.Size(61, 26);
-            this.btnXoaNhomNL.TabIndex = 25;
-            this.btnXoaNhomNL.Text = "Xóa";
             // 
             // btnInDanhMucNL
             // 
@@ -262,56 +175,51 @@
             this.btnDatHang.TabIndex = 23;
             this.btnDatHang.Text = "Đặt Hàng";
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Location = new System.Drawing.Point(3, 12);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(327, 240);
+            this.groupControl1.TabIndex = 25;
+            this.groupControl1.Text = "Thông Tin Nguyên Liệu";
+            // 
             // UCtrlNguyenLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnThemNhomNL);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnThemNguyenLieu);
             this.Controls.Add(this.btnCapNhatNguyenLieu);
-            this.Controls.Add(this.groupNhomNL);
             this.Controls.Add(this.groupNguyenLieu);
-            this.Controls.Add(this.btnCapNhatNhomNL);
             this.Controls.Add(this.btnXoaNguyenLieu);
-            this.Controls.Add(this.btnXoaNhomNL);
             this.Controls.Add(this.btnDatHang);
             this.Controls.Add(this.btnInDanhMucNL);
             this.Name = "UCtrlNguyenLieu";
             this.Size = new System.Drawing.Size(880, 480);
-            ((System.ComponentModel.ISupportInitialize)(this.groupNhomNL)).EndInit();
-            this.groupNhomNL.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridNhomNL)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNguyenLieu)).EndInit();
             this.groupNguyenLieu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton btnThemNhomNL;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraEditors.SimpleButton btnThemNguyenLieu;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatNguyenLieu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraEditors.GroupControl groupNhomNL;
-        private DevExpress.XtraGrid.GridControl gridNhomNL;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.GroupControl groupNguyenLieu;
         private DevExpress.XtraGrid.GridControl gridNguyenLieu;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraEditors.SimpleButton btnCapNhatNhomNL;
         private DevExpress.XtraEditors.SimpleButton btnXoaNguyenLieu;
-        private DevExpress.XtraEditors.SimpleButton btnXoaNhomNL;
         private DevExpress.XtraEditors.SimpleButton btnInDanhMucNL;
         private DevExpress.XtraEditors.SimpleButton btnDatHang;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }
