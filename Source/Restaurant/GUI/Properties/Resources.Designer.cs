@@ -109,6 +109,13 @@ namespace GUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap BieuDo_64 {
+            get {
+                object obj = ResourceManager.GetObject("BieuDo_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap close_16 {
             get {
                 object obj = ResourceManager.GetObject("close_16", resourceCulture);
@@ -147,6 +154,20 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap delete_32 {
             get {
                 object obj = ResourceManager.GetObject("delete_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap down_32 {
+            get {
+                object obj = ResourceManager.GetObject("down_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap left_32 {
+            get {
+                object obj = ResourceManager.GetObject("left_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -228,6 +249,13 @@ namespace GUI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap right_32 {
+            get {
+                object obj = ResourceManager.GetObject("right_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap save_16 {
             get {
                 object obj = ResourceManager.GetObject("save_16", resourceCulture);
@@ -245,6 +273,20 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap save_32 {
             get {
                 object obj = ResourceManager.GetObject("save_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap statistics_16 {
+            get {
+                object obj = ResourceManager.GetObject("statistics_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap statistics_32 {
+            get {
+                object obj = ResourceManager.GetObject("statistics_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
