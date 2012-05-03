@@ -271,12 +271,12 @@ CREATE TABLE [dbo].[KhuVuc](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (1, N'Sảnh – tầng trệt', N'Giữa đại sảnh của nhà hang', NULL)
-INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (2, N'Góc – tầng trệt', N'Nằm ở góc', NULL)
-INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (3, N'Sát tường - tầng trệt', N'Sát tường, nhìn ra bên ngoài', NULL)
-INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (4, N'Lầu 1', N'Lầu 1', NULL)
-INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (5, N'Lầu 2', N'Lầu 2', NULL)
-INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (6, N'Sân thượng', N'Sân thượng', NULL)
+INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (1, N'Sảnh – tầng trệt', N'Giữa đại sảnh của nhà hang', 1)
+INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (2, N'Góc – tầng trệt', N'Nằm ở góc', 1)
+INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (3, N'Sát tường - tầng trệt', N'Sát tường, nhìn ra bên ngoài', 1)
+INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (4, N'Lầu 1', N'Lầu 1', 1)
+INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (5, N'Lầu 2', N'Lầu 2', 1)
+INSERT [dbo].[KhuVuc] ([MaKhuVuc], [TenKhuVuc], [ViTri], [MaNH]) VALUES (6, N'Sân thượng', N'Sân thượng', 1)
 /****** Object:  Table [dbo].[BanAn]    Script Date: 05/03/2012 19:30:16 ******/
 SET ANSI_NULLS ON
 GO
