@@ -13,17 +13,15 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlQLThucDon : DevExpress.XtraEditors.XtraUserControl
     {
-        LoaiMonAn_BUS loaiMonAn;
         
         public UCtrlQLThucDon()
         {
             InitializeComponent();
-            loaiMonAn = new LoaiMonAn_BUS();
         }
 
         private void UCtrl_QLNhaHang_QLThucDon_Load(object sender, EventArgs e)
         {
-            gridLoaiMonAn.DataSource = loaiMonAn.DocLoaiMonAn();
+            gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
             gridMonAn.DataSource = MonAn_BUS.DocMonAn();
         }
 
@@ -38,7 +36,7 @@ namespace GUI.QuanLyNhaHang
         private void btnXoaLoaiMA_Click(object sender, EventArgs e)
         {
             XoaLoaiMonAn();
-            gridLoaiMonAn.DataSource = loaiMonAn.DocLoaiMonAn();
+            gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
         }
         private void btnXoaMonAn_Click(object sender, EventArgs e)
         {
@@ -93,7 +91,7 @@ namespace GUI.QuanLyNhaHang
             if (openForm.ShowDialog() == DialogResult.OK)
             {
                 LoaiMonAn_BUS.ThemLoaiMonAn(openForm.loaiMonAn);
-                gridLoaiMonAn.DataSource = loaiMonAn.DocLoaiMonAn();
+                gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
             }
         }
         ////
