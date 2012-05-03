@@ -15,5 +15,11 @@ namespace GUI.ThuNgan
         {
             InitializeComponent();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            frmThemMonAn _frmThemMonAn = new frmThemMonAn();
+            _frmThemMonAn.Show();
+        }
     }
 }

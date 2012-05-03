@@ -62,8 +62,9 @@
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit8 = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnTru = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCong = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
@@ -416,29 +417,43 @@
             this.simpleButton1.Size = new System.Drawing.Size(145, 23);
             this.simpleButton1.TabIndex = 13;
             this.simpleButton1.Text = "Thêm Món Ăn";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.Location = new System.Drawing.Point(392, 42);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(85, 23);
-            this.simpleButton4.TabIndex = 14;
-            this.simpleButton4.Text = "Cập Nhật";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton5
             // 
-            this.simpleButton5.Location = new System.Drawing.Point(483, 43);
+            this.simpleButton5.Location = new System.Drawing.Point(392, 43);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(91, 23);
             this.simpleButton5.TabIndex = 14;
             this.simpleButton5.Text = "Xóa Món Ăn";
             // 
+            // btnTru
+            // 
+            this.btnTru.Appearance.Font = new System.Drawing.Font("Simplified Arabic", 20F);
+            this.btnTru.Appearance.Options.UseFont = true;
+            this.btnTru.Location = new System.Drawing.Point(564, 43);
+            this.btnTru.Name = "btnTru";
+            this.btnTru.Size = new System.Drawing.Size(58, 23);
+            this.btnTru.TabIndex = 31;
+            this.btnTru.Text = "-";
+            // 
+            // btnCong
+            // 
+            this.btnCong.Appearance.Font = new System.Drawing.Font("Simplified Arabic", 20F);
+            this.btnCong.Appearance.Options.UseFont = true;
+            this.btnCong.Location = new System.Drawing.Point(500, 43);
+            this.btnCong.Name = "btnCong";
+            this.btnCong.Size = new System.Drawing.Size(58, 23);
+            this.btnCong.TabIndex = 32;
+            this.btnCong.Text = "+";
+            // 
             // UCtrlQLTBanAn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnTru);
+            this.Controls.Add(this.btnCong);
             this.Controls.Add(this.simpleButton5);
-            this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.textEdit8);
             this.Controls.Add(this.labelControl15);
@@ -523,7 +538,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl15;
         private DevExpress.XtraEditors.TextEdit textEdit8;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton btnTru;
+        private DevExpress.XtraEditors.SimpleButton btnCong;
     }
 }
