@@ -221,7 +221,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(356, 411);
             this.groupControl1.TabIndex = 6;
-            this.groupControl1.Text = "Danh Sách Bàn";
+            this.groupControl1.Text = "Danh Sách Bàn Trống";
             // 
             // simpleButton1
             // 
