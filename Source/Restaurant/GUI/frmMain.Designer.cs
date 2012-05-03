@@ -81,6 +81,7 @@ namespace GUI
             this.rbPageGroup_TuyChon3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this.panelCtrl_Main = new DevExpress.XtraEditors.PanelControl();
+            this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).BeginInit();
@@ -128,9 +129,10 @@ namespace GUI
             this.barBtn_TongQL_DanhSachNhaHang,
             this.barBtn_QLNhaHang_DSBanAn,
             this.barBtn_TiepTan_DSDatBan,
-            this.barBtn_TiepTan_XepBan});
+            this.barBtn_TiepTan_XepBan,
+            this.barBtnThongKeMonAn});
             this.rbControl_Main.Location = new System.Drawing.Point(0, 0);
-            this.rbControl_Main.MaxItemId = 43;
+            this.rbControl_Main.MaxItemId = 44;
             this.rbControl_Main.Name = "rbControl_Main";
             this.rbControl_Main.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rbPage_TiepTan_ThuNgan,
@@ -266,6 +268,7 @@ namespace GUI
             this.barBtn_QLNhaHang_ThongKeDoanhThu.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtn_QLNhaHang_ThongKeDoanhThu.LargeGlyph")));
             this.barBtn_QLNhaHang_ThongKeDoanhThu.LargeWidth = 120;
             this.barBtn_QLNhaHang_ThongKeDoanhThu.Name = "barBtn_QLNhaHang_ThongKeDoanhThu";
+            this.barBtn_QLNhaHang_ThongKeDoanhThu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barBtn_QLNhaHang_ThongKeDoanhThu_ItemClick);
             // 
             // rbGalleryBarItem_TuyChon_GiaoDien
             // 
@@ -452,6 +455,7 @@ namespace GUI
             this.rbPageGroup_QuanLyNhaHang1.ItemLinks.Add(this.barBtn_QLNhaHang_DSNhanVien);
             this.rbPageGroup_QuanLyNhaHang1.ItemLinks.Add(this.barBtn_QLNhaHang_DSBanAn);
             this.rbPageGroup_QuanLyNhaHang1.ItemLinks.Add(this.barBtn_QLNhaHang_ThongKeDoanhThu);
+            this.rbPageGroup_QuanLyNhaHang1.ItemLinks.Add(this.barBtnThongKeMonAn);
             this.rbPageGroup_QuanLyNhaHang1.Name = "rbPageGroup_QuanLyNhaHang1";
             // 
             // rbPage_TongQuanLy
@@ -522,6 +526,14 @@ namespace GUI
             this.panelCtrl_Main.Name = "panelCtrl_Main";
             this.panelCtrl_Main.Size = new System.Drawing.Size(898, 456);
             this.panelCtrl_Main.TabIndex = 2;
+            // 
+            // barBtnThongKeMonAn
+            // 
+            this.barBtnThongKeMonAn.Caption = "Thống Kê Món Ăn";
+            this.barBtnThongKeMonAn.Id = 43;
+            this.barBtnThongKeMonAn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barBtnThongKeMonAn.LargeGlyph")));
+            this.barBtnThongKeMonAn.LargeWidth = 120;
+            this.barBtnThongKeMonAn.Name = "barBtnThongKeMonAn";
             // 
             // frmMain
             // 
@@ -598,6 +610,7 @@ namespace GUI
         private DevExpress.XtraBars.BarButtonItem barBtn_TiepTan_XepBan;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TiepTan2;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_ThuNgan;
+        private DevExpress.XtraBars.BarButtonItem barBtnThongKeMonAn;
     }
 }
 
