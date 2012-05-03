@@ -32,7 +32,9 @@ namespace GUI
         QuanTri.UCtrlCoSoDuLieu UCtrl_QuanTri_CoSoDuLieu;
         QuanTri.UCtrlPhanQuyen UCtrl_QuanTtri_PhanQuyen;
         QuanTri.UCtrlQuanTriNguoiDung UCtrl_QuanTri_QTNguoiDung;
-        QuanTri.UCtrlThuVienAnh UCtrl_QuanTri_QTThuVienAnh;
+        TongQuanLy.UCtrlDSNhaHang UCtrl_TongQL_DSNhaHang;
+        TongQuanLy.UCtrlQLNhanVien UCtrl_TongQL_DSNhanVien;
+        TongQuanLy.UCtrlTongHopDoanhThu UCtrl_TongQL_TongHopDoanhThu;
         String strGiaoDien = "";
         public frmMain()
         {
@@ -81,7 +83,13 @@ namespace GUI
             UCtrl_QLNH_QLNhanVien = new QuanLyNhaHang.UCtrlQLNhanVien();
             UCtrl_QLNH_QLDSBanAn = new QuanLyNhaHang.UCtrlQLDanhSachBanAn();
             UCtrl_QLNH_ThongKeDoanhThu = new QuanLyNhaHang.UCtrlThongKeDoanhThu();
-
+            UCtrl_TongQL_DSNhaHang = new TongQuanLy.UCtrlDSNhaHang();
+            UCtrl_TongQL_DSNhanVien = new TongQuanLy.UCtrlQLNhanVien();
+            UCtrl_TongQL_TongHopDoanhThu = new TongQuanLy.UCtrlTongHopDoanhThu();
+            UCtrl_QuanTri_QTNguoiDung = new QuanTri.UCtrlQuanTriNguoiDung();
+            UCtrl_QuanTtri_PhanQuyen = new QuanTri.UCtrlPhanQuyen();
+            UCtrl_QuanTri_CoSoDuLieu = new QuanTri.UCtrlCoSoDuLieu();
+            //--------------------
             //--------------------
             UCtrl_TiepTan_DSDatBan.DatBan = new TiepTan.UCtrlDSDatBan.deleDatBan(DatBan);
 
@@ -191,20 +199,58 @@ namespace GUI
         #endregion
 
         #region " Tong Quan Ly "
-
-        #endregion
-
-        #region " Quan Tri "
-        private void barBrn_QuanTriNguoiDung_ItemClick(object sender, ItemClickEventArgs e)
+        private void barBtn_TongQL_DanhSachNhaHang_ItemClick(object sender, ItemClickEventArgs e)
         {
+            Add_UserControl(panelCtrl_Main, UCtrl_TongQL_DSNhaHang);
+        }
 
+        private void barBtn_TongQL_QLNhanVien_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_TongQL_DSNhanVien);
+        }
+
+        private void barBtn_TongQL_TongHopDoanhThu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_TongQL_TongHopDoanhThu);
         }
         #endregion
 
+        #region " Quan Tri "
+        private void barBtn_QuanTri_QuanTriNguoiDung_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_QuanTri_QTNguoiDung);
+        }
+
+        private void barBtn_QuanTri_PhanQuyen_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_QuanTtri_PhanQuyen);
+        }
+
+        private void barBtn_QuanTri_QuantrCoSoDuLieu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_QuanTri_CoSoDuLieu);
+        }
+
+        #endregion
+
         #region " Tuy Chon "
-        private void barBtn_Thoat_ItemClick(object sender, ItemClickEventArgs e)
+        private void barBtn_TuyChon_DoiMatKhau_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void barBtn_TuyChon_TroGiup_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barBtn_TuyChon_GioiThieu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+        private void barBtn_Thoat_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            this.Close();
         }
         private void rbGalleryBarItem_GalleryItemClick(object sender, DevExpress.XtraBars.Ribbon.GalleryItemClickEventArgs e)
         {
@@ -212,7 +258,6 @@ namespace GUI
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Item.Tag.ToString();
         }
         #endregion
-
 
 
     }
