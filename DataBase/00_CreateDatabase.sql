@@ -82,6 +82,7 @@ GO
 create table BanAn
 (
 MaBan int identity,
+TenBan nvarchar(20),
 MaKhuVuc int,
 LoaiBan nchar(10),
 TrangThai bit default 0,
