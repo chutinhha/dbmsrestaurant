@@ -43,3 +43,12 @@ E:\MyProgram\Dropbox\BaiTap\Restaurant\BUS\bin\Debug\DTO.pdb
 E:\MyProgram\Dropbox\BaiTap\Restaurant\BUS\obj\Debug\ResolveAssemblyReference.cache
 E:\MyProgram\Dropbox\BaiTap\Restaurant\BUS\obj\Debug\BUS.dll
 E:\MyProgram\Dropbox\BaiTap\Restaurant\BUS\obj\Debug\BUS.pdb
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\BUS.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\BUS.pdb
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DAO.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DTO.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DAO.pdb
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\bin\Debug\DTO.pdb
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\obj\Debug\ResolveAssemblyReference.cache
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\obj\Debug\BUS.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\BUS\obj\Debug\BUS.pdb

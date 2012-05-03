@@ -32,7 +32,6 @@ namespace GUI
         QuanTri.UCtrlPhanQuyen UCtrl_QuanTtri_PhanQuyen;
         QuanTri.UCtrlQuanTriNguoiDung UCtrl_QuanTri_QTNguoiDung;
         QuanTri.UCtrlThuVienAnh UCtrl_QuanTri_QTThuVienAnh;
-   
         String strGiaoDien = "";
         public frmMain()
         {
@@ -80,6 +79,10 @@ namespace GUI
             UCtrl_QLNH_QLThucDon = new QuanLyNhaHang.UCtrlQLThucDon();
             UCtrl_QLNH_QLNhanVien = new QuanLyNhaHang.UCtrlQLNhanVien();
             UCtrl_QLNH_QLDSBanAn = new QuanLyNhaHang.UCtrlQLDanhSachBanAn();
+
+            //--------------------
+            UCtrl_TiepTan_DSDatBan.DatBan = new TiepTan.UCtrlDSDatBan.deleDatBan(DatBan);
+
         }
         private void frm_Main_Load(object sender, EventArgs e)
         {
@@ -114,7 +117,11 @@ namespace GUI
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DSDatBan);
         }
-
+        //------------
+        private void DatBan()
+        {
+            Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DatBan);
+        }
         #endregion
 
         #region " Thu Ngan "
