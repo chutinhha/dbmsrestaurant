@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UctrlDatBan));
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupTTDatBan = new DevExpress.XtraEditors.GroupControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -44,9 +42,10 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
@@ -59,10 +58,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // simpleButton3
@@ -101,15 +100,6 @@
             this.gridControl2.TabIndex = 1;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(378, 249);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(56, 56);
-            this.simpleButton1.TabIndex = 9;
             // 
             // groupTTDatBan
             // 
@@ -205,17 +195,6 @@
             this.groupControl2.TabIndex = 7;
             this.groupControl2.Text = "Danh Sách Bàn Đặt";
             // 
-            // groupControl1
-            // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupControl1.Controls.Add(this.gridControl1);
-            this.groupControl1.Location = new System.Drawing.Point(10, 21);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(356, 411);
-            this.groupControl1.TabIndex = 6;
-            this.groupControl1.Text = "Danh Sách Bàn";
-            // 
             // gridControl1
             // 
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -233,26 +212,46 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupControl1.Controls.Add(this.gridControl1);
+            this.groupControl1.Location = new System.Drawing.Point(10, 21);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(356, 411);
+            this.groupControl1.TabIndex = 6;
+            this.groupControl1.Text = "Danh Sách Bàn";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.simpleButton1.Image = global::GUI.Properties.Resources.right_32;
+            this.simpleButton1.Location = new System.Drawing.Point(383, 282);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(45, 42);
+            this.simpleButton1.TabIndex = 13;
+            // 
             // simpleButton4
             // 
             this.simpleButton4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.simpleButton4.Image = global::GUI.Properties.Resources.navigate_left48;
-            this.simpleButton4.Location = new System.Drawing.Point(378, 316);
+            this.simpleButton4.Image = global::GUI.Properties.Resources.left_32;
+            this.simpleButton4.Location = new System.Drawing.Point(383, 330);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(56, 56);
-            this.simpleButton4.TabIndex = 8;
+            this.simpleButton4.Size = new System.Drawing.Size(45, 42);
+            this.simpleButton4.TabIndex = 12;
             // 
             // UctrlDatBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.simpleButton3);
             this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.groupTTDatBan);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.simpleButton4);
             this.Name = "UctrlDatBan";
             this.Size = new System.Drawing.Size(880, 480);
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -267,10 +266,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -281,13 +280,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.GroupControl groupTTDatBan;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit textEdit1;
@@ -296,5 +290,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit textEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }
