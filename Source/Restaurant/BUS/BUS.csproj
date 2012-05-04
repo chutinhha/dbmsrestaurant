@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanAn_BUS.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DatBan_BUS.cs" />
     <Compile Include="LoaiMonAn_BUS.cs" />
     <Compile Include="MonAn_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
