@@ -13,7 +13,7 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlQLThucDon : DevExpress.XtraEditors.XtraUserControl
     {
-        
+        DatBan_DTO banDat = new DatBan_DTO();
         public UCtrlQLThucDon()
         {
             InitializeComponent();
