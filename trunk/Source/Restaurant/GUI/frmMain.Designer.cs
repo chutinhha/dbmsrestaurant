@@ -403,8 +403,8 @@ namespace GUI
             // rbPage_TiepTan_ThuNgan
             // 
             this.rbPage_TiepTan_ThuNgan.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.rbPageGroup_TiepTan1,
-            this.rbPageGroup_TiepTan2});
+            this.rbPageGroup_TiepTan2,
+            this.rbPageGroup_TiepTan1});
             this.rbPage_TiepTan_ThuNgan.Name = "rbPage_TiepTan_ThuNgan";
             this.rbPage_TiepTan_ThuNgan.Text = "Tiếp Tân ";
             // 
