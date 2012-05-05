@@ -50,5 +50,16 @@ namespace DTO
             get { return _MaNCC; }
             set { _MaNCC = value; }
         }
+
+        public NguyenLieu_DTO()
+        {
+            _MaNL = -1;
+            _MaNH = null;
+            _TenNL = null;
+            _Gia = 0;
+            _DonVi = null;
+            _SoLuongTon = 0;
+            _MaNCC = -1;
+        }
     }
 }

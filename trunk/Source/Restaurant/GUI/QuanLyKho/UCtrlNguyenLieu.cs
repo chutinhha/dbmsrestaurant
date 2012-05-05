@@ -15,11 +15,13 @@ namespace GUI.QuanLyKho
     {
         List<NguyenLieu_DTO> lsNguyenLieu;
         DataTable dtNguyenLieu ;
+        int indexNL;
         public UCtrlNguyenLieu()
         {
             InitializeComponent();
             lsNguyenLieu = new List<NguyenLieu_DTO>();
             dtNguyenLieu = new DataTable();
+            indexNL = -1;
         }
 
         private void UCtrlNguyenLieu_Load(object sender, EventArgs e)
@@ -40,6 +42,38 @@ namespace GUI.QuanLyKho
                 dtNguyenLieu.Rows.Add(row);
             }
             gridNguyenLieu.DataSource = dtNguyenLieu;
+        }
+        private void gvNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            indexNL = gvNguyenLieu.GetSelectedRows()[0];
+            if (indexNL != -1)
+            {
+                txtTenNguyenLieu.Text = lsNguyenLieu[indexNL].TenNL;
+                txtDonVi.Text = lsNguyenLieu[indexNL].DonVi;
+                txtGia.Text = lsNguyenLieu[indexNL].Gia.ToString();
+                txtSoLuongTon.Text = lsNguyenLieu[indexNL].SoLuongTon.ToString();
+            }
+        }
+
+        private void btnXoaNguyenLieu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThemNguyenLieu_Click(object sender, EventArgs e)
+        {
+            frmThemNguyenLieu _frmThemNL = new frmThemNguyenLieu();
+            if (_frmThemNL.ShowDialog() == DialogResult.OK)
+            {
+                DataRow row = dtNguyenLieu.NewRow();
+                row["TenNL"] = _frmThemNL.NguyenLieu.TenNL;
+                row["Gia"] = _frmThemNL.NguyenLieu.Gia;
+                row["DonVi"] = _frmThemNL.NguyenLieu.DonVi;
+                row["SoLuongTon"] = 0;
+                dtNguyenLieu.Rows.Add(row);
+            }
+            _frmThemNL.NguyenLieu.MaNH = "1";
+            lsNguyenLieu.Add(_frmThemNL.NguyenLieu);
         }
     }
 }

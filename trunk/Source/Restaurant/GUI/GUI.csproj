@@ -94,6 +94,12 @@
     <Compile Include="QuanLyKho\frmDatHang.Designer.cs">
       <DependentUpon>frmDatHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyKho\frmThemNguyenLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\frmThemNguyenLieu.Designer.cs">
+      <DependentUpon>frmThemNguyenLieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyNhaHang\Form_ThemLoaiMonAn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho\frmDatHang.resx">
       <DependentUpon>frmDatHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKho\frmThemNguyenLieu.resx">
+      <DependentUpon>frmThemNguyenLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho\UCtrlNhapKho.resx">
       <DependentUpon>UCtrlNhapKho.cs</DependentUpon>
