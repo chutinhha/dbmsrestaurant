@@ -5,12 +5,12 @@ using System.Text;
 
 namespace DTO
 {
-    class NguyenLieu_DTO
+    public class NguyenLieu_DTO
     {
         private int _MaNL;
         private String _MaNH;
         private String _TenNL;
-        private long _Gia;
+        private double _Gia;
         private String _DonVi;
         private int _SoLuongTon;
         private int _MaNCC;
@@ -30,7 +30,7 @@ namespace DTO
             get { return _TenNL; }
             set { _TenNL = value; }
         }
-        public long Gia
+        public double Gia
         {
             get { return _Gia; }
             set { _Gia = value; }

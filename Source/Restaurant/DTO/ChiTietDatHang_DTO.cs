@@ -8,35 +8,35 @@ namespace DTO
     class ChiTietDatHang_DTO
     {
         private int _MaHoaDon;
-        private int _ThanhTien;
-        private DateTime _ThoiGianDat;
-        private DateTime _ThoiGianGiao;
-        private String _MaNH;
+        private int _MaNCC;
+        private int _MaNguyenLieu;
+        private int _SoLuong;
+        private double _Gia;
 
         public int MaHoaDon
         {
             get { return _MaHoaDon; }
             set { _MaHoaDon = value; }
         }
-        public int ThanhTien
+        public int MaNCC
         {
-            get { return _ThanhTien; }
-            set { _ThanhTien = value; }
+            get { return _MaNCC; }
+            set { _MaNCC = value; }
         }
-        public DateTime ThoiGianDat
+        public int MaNguyenLieu
         {
-            get { return _ThoiGianDat; }
-            set { _ThoiGianDat = value; }
+            get { return _MaNguyenLieu; }
+            set { _MaNguyenLieu = value; }
         }
-        public DateTime ThoiGianGiao
+        public int SoLuong
         {
-            get { return _ThoiGianGiao; }
-            set { _ThoiGianGiao = value; }
+            get { return _SoLuong; }
+            set { _SoLuong = value; }
         }
-        public String MaNH
+        public double Gia
         {
-            get { return _MaNH;}
-            set { _MaNH = value; }
+            get { return _Gia; }
+            set { _Gia = value; }
         }
     }
 }
