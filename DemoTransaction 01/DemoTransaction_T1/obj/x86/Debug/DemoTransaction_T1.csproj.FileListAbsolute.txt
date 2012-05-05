@@ -1,0 +1,36 @@
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.exe
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.pdb
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Form1.resources
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Properties.Resources.resources
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.exe
+C:\Users\Cui\Desktop\DemoTransaction_T1\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.pdb
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.exe
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.pdb
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.exe
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.pdb
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Form1.resources
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Properties.Resources.resources
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Cui\Desktop\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.exe
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.pdb
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.exe
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.pdb
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Form1.resources
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Properties.Resources.resources
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction\DemoTransaction_T1\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.exe
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.pdb
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Form1.resources
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\DemoTransaction_T1.Properties.Resources.resources
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.exe
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\DemoTransaction 01\DemoTransaction_T1\bin\Debug\DemoTransaction_T1.pdb
