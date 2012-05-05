@@ -7,8 +7,12 @@ using DTO;
 
 namespace BUS
 {
-    class NguyenLieu_BUS
+    public class NguyenLieu_BUS
     {
-        
+        public static List<NguyenLieu_DTO> SelectNguyenLieu(String maNH)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.SelectNguyenLieu(maNH);
+        }
     }
 }

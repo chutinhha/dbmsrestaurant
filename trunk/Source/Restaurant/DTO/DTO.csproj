@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BanAn_DTO.cs" />
-    <Compile Include="ChiTietDatHang_DTO.cs" />
-    <Compile Include="DatBan_DTO.cs" />
     <Compile Include="DatHang_DTO.cs" />
+    <Compile Include="DatBan_DTO.cs" />
+    <Compile Include="ChiTietDatHang_DTO.cs" />
     <Compile Include="LoaiMonAn_DTO.cs" />
     <Compile Include="MonAn_DTO.cs" />
     <Compile Include="NguyenLieu_DTO.cs" />
