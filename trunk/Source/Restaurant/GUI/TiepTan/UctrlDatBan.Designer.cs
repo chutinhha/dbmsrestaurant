@@ -38,11 +38,11 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl_DatBan = new DevExpress.XtraGrid.GridControl();
             this.groupTTDatBan = new DevExpress.XtraEditors.GroupControl();
+            this.cbbTenKhachHang = new System.Windows.Forms.ComboBox();
             this.txtThoiGianDen = new DevExpress.XtraEditors.DateEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtSoDienThoai = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTenKhachHang = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl_BanTrong = new DevExpress.XtraGrid.GridControl();
@@ -61,7 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianDen.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianDen.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_BanTrong)).BeginInit();
@@ -157,17 +156,25 @@
             // 
             // groupTTDatBan
             // 
+            this.groupTTDatBan.Controls.Add(this.cbbTenKhachHang);
             this.groupTTDatBan.Controls.Add(this.txtThoiGianDen);
             this.groupTTDatBan.Controls.Add(this.labelControl3);
             this.groupTTDatBan.Controls.Add(this.txtSoDienThoai);
             this.groupTTDatBan.Controls.Add(this.labelControl2);
-            this.groupTTDatBan.Controls.Add(this.txtTenKhachHang);
             this.groupTTDatBan.Controls.Add(this.labelControl1);
             this.groupTTDatBan.Location = new System.Drawing.Point(446, 21);
             this.groupTTDatBan.Name = "groupTTDatBan";
             this.groupTTDatBan.Size = new System.Drawing.Size(350, 184);
             this.groupTTDatBan.TabIndex = 5;
             this.groupTTDatBan.Text = "Thông Tin Đặt Bàn";
+            // 
+            // cbbTenKhachHang
+            // 
+            this.cbbTenKhachHang.FormattingEnabled = true;
+            this.cbbTenKhachHang.Location = new System.Drawing.Point(108, 36);
+            this.cbbTenKhachHang.Name = "cbbTenKhachHang";
+            this.cbbTenKhachHang.Size = new System.Drawing.Size(217, 21);
+            this.cbbTenKhachHang.TabIndex = 3;
             // 
             // txtThoiGianDen
             // 
@@ -203,13 +210,6 @@
             this.labelControl2.Size = new System.Drawing.Size(66, 13);
             this.labelControl2.TabIndex = 0;
             this.labelControl2.Text = "Số Điện Thoại";
-            // 
-            // txtTenKhachHang
-            // 
-            this.txtTenKhachHang.Location = new System.Drawing.Point(108, 36);
-            this.txtTenKhachHang.Name = "txtTenKhachHang";
-            this.txtTenKhachHang.Size = new System.Drawing.Size(217, 20);
-            this.txtTenKhachHang.TabIndex = 1;
             // 
             // labelControl1
             // 
@@ -348,7 +348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianDen.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThoiGianDen.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoDienThoai.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_BanTrong)).EndInit();
@@ -369,7 +368,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.TextEdit txtSoDienThoai;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit txtTenKhachHang;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.DateEdit txtThoiGianDen;
         private DevExpress.XtraEditors.LabelControl labelControl3;
@@ -387,5 +385,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private System.Windows.Forms.ComboBox cbbTenKhachHang;
     }
 }

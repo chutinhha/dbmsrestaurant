@@ -33,18 +33,20 @@ namespace GUI.TiepTan
         {
             DocBanTrong();
             CreateStructTable();
+            DocKhachHang();
         }
         
 
         private void btnDatBan_Click(object sender, EventArgs e)
         {
-            if ( flag && txtTenKhachHang.Text != "" && txtSoDienThoai.Text != "" && txtThoiGianDen.Text != "" && maBanChon!=null)
+            if ( flag  && txtSoDienThoai.Text != "" && txtThoiGianDen.Text != "" && maBanChon!=null)
             {
                 if (DateTime.Parse(txtThoiGianDen.Text) >= DateTime.Now)
                 {
                     DatBan_DTO banDat = new DatBan_DTO();
                     banDat.MaBan = maBanChon;
-                    banDat.TenKhachHang = txtTenKhachHang.Text;
+                    banDat.MaKhachHang =cbbTenKhachHang.SelectedValue.ToString();
+                    banDat.TenKhachHang = cbbTenKhachHang.Text;
                     banDat.Sdt = txtSoDienThoai.Text;
                     banDat.ThoiGianDen =  txtThoiGianDen.Text;
                     banDat.Vitri  = gridView_BanTrong.GetRowCellValue(row, "ViTri").ToString();
@@ -70,39 +72,7 @@ namespace GUI.TiepTan
 
 
         //
-        #region Các Hàm xử lý
-        private void DocBanTrong()
-        {
-            tbBanTrong = DatBan_BUS.DocBanTrong(maNH);
-            gridControl_BanTrong.DataSource = tbBanTrong;
-        }
-        private void CreateStructTable()
-        {
-            tbBanDat.Columns.Add("MaBan", Type.GetType("System.String"));
-            tbBanDat.Columns.Add("TenKhachHang", Type.GetType("System.String"));
-            tbBanDat.Columns.Add("Sdt", Type.GetType("System.String"));
-            tbBanDat.Columns.Add("ThoiGianDen", Type.GetType("System.DateTime"));
-            tbBanDat.Columns.Add("ViTri", Type.GetType("System.String"));
-
-        }
-        private void Refest()
-        {
-            txtSoDienThoai.Text = "";
-            txtTenKhachHang.Text = "";
-            txtThoiGianDen.Text = "";
-            flag = false;
-        }
-        private void Them1BanDat(DatBan_DTO banDat)
-        {
-            DataRow newrow = tbBanDat.NewRow();
-            newrow["MaBan"] = banDat.MaBan;
-            newrow["TenKhachHang"] = banDat.TenKhachHang;
-            newrow["Sdt"] = banDat.Sdt;
-            newrow["ThoiGianDen"] = banDat.ThoiGianDen;
-            newrow["ViTri"] = banDat.Vitri;
-            tbBanDat.Rows.Add(newrow);
-        }
-        #endregion
+  
 
         private void gridView_BanTrong_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
@@ -132,6 +102,8 @@ namespace GUI.TiepTan
                     banDat.MaNH = maNH.ToString();
                     banDat.MaBan = dsBanDat[i].MaBan;
                     banDat.ThoiGianDen = dsBanDat[i].ThoiGianDen;
+                    banDat.Sdt = dsBanDat[i].Sdt;
+                    banDat.MaKhachHang = dsBanDat[i].MaKhachHang;
                     if( DatBan_BUS.ThemDatBan(banDat)>0)
                         DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số "+dsBanDat[i].MaBan+" đã được đặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -141,7 +113,8 @@ namespace GUI.TiepTan
             }
             else
                 DevExpress.XtraEditors.XtraMessageBox.Show("Chưa có bàn đặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            tbBanDat.Clear();
+            dsBanDat.Clear();
+            tbBanDat.Rows.Clear();
             gridControl_DatBan.DataSource = tbBanDat;
             Refest();
         }
@@ -149,13 +122,50 @@ namespace GUI.TiepTan
         private void btnHuyDatBan_Click(object sender, EventArgs e)
         {
             int[] index = gridView_BanDat.GetSelectedRows();
-            if (index.Length > 0)
+            if (index.Length > 0 && tbBanDat.Rows.Count>0)
             {
-                maBanChon = gridView_BanDat.GetRowCellValue(index[0], "MaBan").ToString();
-                //.....
+                tbBanDat.Rows.RemoveAt(index[0]);
+                gridControl_DatBan.DataSource = tbBanDat;
             }
         }
+        #region Các Hàm xử lý
+        private void DocBanTrong()
+        {
+            tbBanTrong = DatBan_BUS.DocBanTrong(maNH);
+            gridControl_BanTrong.DataSource = tbBanTrong;
+        }
+        private void CreateStructTable()
+        {
+            tbBanDat.Columns.Add("MaBan", Type.GetType("System.String"));
+            tbBanDat.Columns.Add("TenKhachHang", Type.GetType("System.String"));
+            tbBanDat.Columns.Add("Sdt", Type.GetType("System.String"));
+            tbBanDat.Columns.Add("ThoiGianDen", Type.GetType("System.DateTime"));
+            tbBanDat.Columns.Add("ViTri", Type.GetType("System.String"));
 
+        }
+        private void Refest()
+        {
+            txtSoDienThoai.Text = "";
+            txtThoiGianDen.Text = "";
+            flag = false;
+        }
+        private void Them1BanDat(DatBan_DTO banDat)
+        {
+            DataRow newrow = tbBanDat.NewRow();
+            newrow["MaBan"] = banDat.MaBan;
+            newrow["TenKhachHang"] = banDat.TenKhachHang;
+            newrow["Sdt"] = banDat.Sdt;
+            newrow["ThoiGianDen"] = banDat.ThoiGianDen;
+            newrow["ViTri"] = banDat.Vitri;
+            tbBanDat.Rows.Add(newrow);
+        }
+        private void DocKhachHang()
+        {
+            cbbTenKhachHang.DataSource = KhachHang_BUS.DocKhacHang();
+            cbbTenKhachHang.DisplayMember = "TenKhachHang";
+            cbbTenKhachHang.ValueMember = "cmnd";
+        }
+        #endregion
        
     }
 }
