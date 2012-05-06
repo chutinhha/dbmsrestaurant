@@ -100,6 +100,7 @@ namespace GUI
         private void frm_Main_Load(object sender, EventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
+
         }
         private void Add_UserControl(Control Panel, Control UCtrl)
         {

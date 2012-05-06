@@ -13,7 +13,6 @@ namespace DTO
         private double _Gia;
         private String _DonVi;
         private int _SoLuongTon;
-        private int _MaNCC;
 
         public int MaNL
         {
@@ -45,11 +44,6 @@ namespace DTO
             get { return _SoLuongTon; }
             set { _SoLuongTon = value; }
         }
-        public int MaNCC
-        {
-            get { return _MaNCC; }
-            set { _MaNCC = value; }
-        }
 
         public NguyenLieu_DTO()
         {
@@ -59,7 +53,6 @@ namespace DTO
             _Gia = 0;
             _DonVi = null;
             _SoLuongTon = 0;
-            _MaNCC = -1;
         }
     }
 }

@@ -43,6 +43,7 @@ namespace GUI.QuanLyKho
             }
             gridNguyenLieu.DataSource = dtNguyenLieu;
         }
+
         private void gvNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             indexNL = gvNguyenLieu.GetSelectedRows()[0];
