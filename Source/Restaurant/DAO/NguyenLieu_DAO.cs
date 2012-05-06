@@ -38,7 +38,6 @@ namespace DAO
                 nguyenlieu.Gia = (double)row.ItemArray[3];
                 nguyenlieu.DonVi = row.ItemArray[4].ToString();
                 nguyenlieu.SoLuongTon = (int)row.ItemArray[5];
-                nguyenlieu.MaNCC = (int)row.ItemArray[6];
                 ls.Add(nguyenlieu);
             }
             return ls;
