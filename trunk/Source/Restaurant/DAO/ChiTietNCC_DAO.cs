@@ -14,18 +14,6 @@ namespace DAO
         {
             provider = new Provider();
         }
-        //public List<ChiTietNCC_DTO> SelectNhaCungCap(int MaNCC,String MaNH)
-        //{
-        //    String store = "SelectChiTietNCC_MaNCC";
-        //    SqlCommand cm = provider.CreateCommandStoreName(store);
-        //    cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-        //    cm.Parameters.Add("@MaNH", SqlDbType.NChar);
-
-        //    cm.Parameters["@MaNCC"].Value = MaNCC;
-        //    cm.Parameters["@MaNH"].Value = MaNH;
-        //    return ConvertToList(provider.ExecSelectCommand(cm));
-        //}
-
         public int InsertChiTietNCC(int MaNL,int MaNCC)
         {
             String store = "InsertChiTietNCC";
@@ -37,6 +25,16 @@ namespace DAO
             cm.Parameters["@MaNCC"].Value = MaNCC;
 
             return  provider.ExecuteInsertUpdateDelete(cm);
+        }
+        public void DeleteChiTietNCC_fromNCC(int MaNCC)
+        {
+            String store = "DeleteChiTietNCC_fromNCC";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+
+            cm.Parameters["@MaNCC"].Value = MaNCC;
+
+            provider.ExecuteInsertUpdateDelete(cm);
         }
         private List<ChiTietNCC_DTO> ConvertToList(DataTable dt)
         {
