@@ -5,13 +5,15 @@ using System.Text;
 
 namespace DTO
 {
-    class NhaCungCap_DTO
+    public class NhaCungCap_DTO
     {
         private int _MaNCC;
         private String _TenNCC;
         private String _sdt;
         private String _DiaChi;
         private int _DiemUuTien;
+
+
         public int MaNCC
         {
             get { return _MaNCC; }

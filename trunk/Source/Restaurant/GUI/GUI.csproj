@@ -58,6 +58,15 @@
     <Reference Include="DevExpress.XtraLayout.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -80,6 +89,11 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintRibbonControllerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PrintRibbonControllerResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyKho\frmLapPhieuNhapKho.cs">
@@ -94,11 +108,17 @@
     <Compile Include="QuanLyKho\frmDatHang.Designer.cs">
       <DependentUpon>frmDatHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyKho\frmThemNguyenLieu.cs">
+    <Compile Include="QuanLyKho\frmNguyenLieu_ThemNL.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuanLyKho\frmThemNguyenLieu.Designer.cs">
-      <DependentUpon>frmThemNguyenLieu.cs</DependentUpon>
+    <Compile Include="QuanLyKho\frmNguyenLieu_ThemNL.Designer.cs">
+      <DependentUpon>frmNguyenLieu_ThemNL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKho\frmNhaCungCap_Them_CapNhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\frmNhaCungCap_Them_CapNhat.Designer.cs">
+      <DependentUpon>frmNhaCungCap_Them_CapNhat.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyNhaHang\Form_ThemLoaiMonAn.cs">
       <SubType>Form</SubType>
@@ -259,6 +279,10 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintRibbonControllerResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PrintRibbonControllerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -276,8 +300,11 @@
     <EmbeddedResource Include="QuanLyKho\frmDatHang.resx">
       <DependentUpon>frmDatHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyKho\frmThemNguyenLieu.resx">
-      <DependentUpon>frmThemNguyenLieu.cs</DependentUpon>
+    <EmbeddedResource Include="QuanLyKho\frmNguyenLieu_ThemNL.resx">
+      <DependentUpon>frmNguyenLieu_ThemNL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKho\frmNhaCungCap_Them_CapNhat.resx">
+      <DependentUpon>frmNhaCungCap_Them_CapNhat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho\UCtrlNhapKho.resx">
       <DependentUpon>UCtrlNhapKho.cs</DependentUpon>
