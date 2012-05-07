@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DTO;
-
+using BUS;
 namespace GUI.QuanLyKho
 {
     public partial class frmThemNguyenLieu : DevExpress.XtraEditors.XtraForm
@@ -26,9 +26,38 @@ namespace GUI.QuanLyKho
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            _nguyenlieu.TenNL = txtTenNguyenLieu.Text;
-            _nguyenlieu.Gia = Double.Parse(txtGia.Text);
-            _nguyenlieu.DonVi = txtDonVi.Text;
+            this.DialogResult = DialogResult.None;
+            if (txtTenNguyenLieu.Text.Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập Tên Nguyên Liệu !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenNguyenLieu.Focus();
+            } 
+            else
+                if (txtGia.Text.Length == 0)
+                {
+                    MessageBox.Show("Bạn chưa nhập Giá cho nguyên liệu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtGia.Focus();
+                }
+                else
+                    if (txtDonVi.Text.Length == 0)
+                    {
+                        MessageBox.Show("Bạn chưa nhập đơn vị nguyên liêu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtDonVi.Focus();
+                    }
+                    else
+                    {
+                        _nguyenlieu.TenNL = txtTenNguyenLieu.Text;
+                        _nguyenlieu.Gia = Double.Parse(txtGia.Text);
+                        _nguyenlieu.DonVi = txtDonVi.Text;
+                        if (BUS.NguyenLieu_BUS.InsertNguyenLieu(NguyenLieu) == 0)
+                        {
+                            MessageBox.Show("Tên nguyên liệu này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtTenNguyenLieu.Focus();
+                            this.DialogResult = DialogResult.None;
+                        }
+                        else
+                            this.DialogResult = DialogResult.OK;
+                    }          
         }
     }
 }

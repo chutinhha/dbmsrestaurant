@@ -35,9 +35,9 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtTenNguyenLieu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
@@ -66,7 +66,7 @@
             this.txtDonVi.Location = new System.Drawing.Point(117, 137);
             this.txtDonVi.Name = "txtDonVi";
             this.txtDonVi.Size = new System.Drawing.Size(173, 20);
-            this.txtDonVi.TabIndex = 1;
+            this.txtDonVi.TabIndex = 3;
             // 
             // labelControl3
             // 
@@ -81,7 +81,7 @@
             this.txtGia.Location = new System.Drawing.Point(117, 92);
             this.txtGia.Name = "txtGia";
             this.txtGia.Size = new System.Drawing.Size(173, 20);
-            this.txtGia.TabIndex = 1;
+            this.txtGia.TabIndex = 2;
             // 
             // labelControl2
             // 
@@ -106,6 +106,17 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Tên Nguyên Liệu";
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.btnHuy);
+            this.panelControl1.Controls.Add(this.groupControl1);
+            this.panelControl1.Controls.Add(this.btnDongY);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelControl1.Location = new System.Drawing.Point(0, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(371, 269);
+            this.panelControl1.TabIndex = 33;
+            // 
             // btnDongY
             // 
             this.btnDongY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -114,7 +125,7 @@
             this.btnDongY.Location = new System.Drawing.Point(185, 225);
             this.btnDongY.Name = "btnDongY";
             this.btnDongY.Size = new System.Drawing.Size(75, 32);
-            this.btnDongY.TabIndex = 32;
+            this.btnDongY.TabIndex = 4;
             this.btnDongY.Text = "Đồng Ý";
             this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
             // 
@@ -126,19 +137,8 @@
             this.btnHuy.Location = new System.Drawing.Point(274, 225);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 32);
-            this.btnHuy.TabIndex = 31;
+            this.btnHuy.TabIndex = 5;
             this.btnHuy.Text = "Hủy";
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.btnHuy);
-            this.panelControl1.Controls.Add(this.groupControl1);
-            this.panelControl1.Controls.Add(this.btnDongY);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(0, 0);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(371, 269);
-            this.panelControl1.TabIndex = 33;
             // 
             // frmThemNguyenLieu
             // 

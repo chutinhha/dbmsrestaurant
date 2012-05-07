@@ -19,12 +19,62 @@ namespace DAO
         }
         public List<NguyenLieu_DTO> SelectNguyenLieu(String maNH)
         {
-            string store = "SelectNguyenLieu";
+            String store = "SelectNguyenLieu";
             SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
             cm.Parameters["@maNH"].Value = maNH;
             return ConvertToList(provider.ExecSelectCommand(cm));
+        }
+        public int InsertNguyenLieu(NguyenLieu_DTO nl)
+        {
+            String store = "InsertNguyenLieu";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            cm.Parameters.Add("@TenNL", SqlDbType.NVarChar);
+            cm.Parameters.Add("@Gia", SqlDbType.Float);
+            cm.Parameters.Add("@DonVi", SqlDbType.NVarChar);
+            cm.Parameters.Add("@SoLuongTon", SqlDbType.Int);
+
+            cm.Parameters["@MaNH"].Value = nl.MaNH;
+            cm.Parameters["@TenNL"].Value = nl.TenNL;
+            cm.Parameters["@Gia"].Value = nl.Gia;
+            cm.Parameters["@DonVi"].Value = nl.DonVi;
+            cm.Parameters["@SoLuongTon"].Value = nl.SoLuongTon;
+            return provider.ExecuteInsertUpdateDelete(cm);
+        }
+        public void DeleteNguyenLieu(int MaNL,String MaNH)
+        {
+            String store = "DeleteNguyenLieu";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaNL",SqlDbType.Int);
+            cm.Parameters.Add("@MaNH",SqlDbType.NChar);
+
+            cm.Parameters["@MaNL"].Value = MaNL;
+            cm.Parameters["@MaNH"].Value = MaNH;
+            provider.ExecuteInsertUpdateDelete(cm);
+        }
+        public int UpdateNguyenLieu(String TenNL,NguyenLieu_DTO nl)
+        {
+            String store = "UpdateNguyenLieu";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@TenNL_old", SqlDbType.NVarChar);
+            cm.Parameters.Add("@MaNL", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            cm.Parameters.Add("@TenNL", SqlDbType.NVarChar);
+            cm.Parameters.Add("@Gia", SqlDbType.Float);
+            cm.Parameters.Add("@DonVi", SqlDbType.NVarChar);
+            cm.Parameters.Add("@SoLuongTon", SqlDbType.Int);
+
+            cm.Parameters["@TenNL_old"].Value = TenNL;
+            cm.Parameters["@MaNL"].Value = nl.MaNL;
+            cm.Parameters["@MaNH"].Value = nl.MaNH;
+            cm.Parameters["@TenNL"].Value = nl.TenNL;
+            cm.Parameters["@Gia"].Value = nl.Gia;
+            cm.Parameters["@DonVi"].Value = nl.DonVi;
+            cm.Parameters["@SoLuongTon"].Value = nl.SoLuongTon;
+
+           return provider.ExecuteInsertUpdateDelete(cm);
         }
         private List<NguyenLieu_DTO> ConvertToList(DataTable dt)
         {

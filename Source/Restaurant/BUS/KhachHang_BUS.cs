@@ -14,8 +14,7 @@ namespace BUS
     {
         public static DataTable DocKhacHang()
         {
-            ///return KhachHang_DAO.DocKhachHang();
-            return null;
+            return KhachHang_DAO.DocKhachHang();
         }
     }
 }

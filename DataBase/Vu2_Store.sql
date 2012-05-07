@@ -4,38 +4,44 @@
 use [QLNhaHang]
 GO
 ------------------- Table Nguyen Lieu -----------------------------------
-create proc SelectNguyenLieu @maNH nchar(10)
+create proc SelectNguyenLieu @MaNH nchar(10)
 as
 begin
 	select *
 	from NguyenLieu nl
-	where nl.MaNH = @maNH
+	where nl.MaNH = @MaNH
 end
 GO
-create  proc InsertNguyenLieu @maNH nchar(10),@tenNL nvarchar(50),@gia float,@donvi nvarchar(20),@soluongton int
+create  proc InsertNguyenLieu @MaNH nchar(10),@TenNL nvarchar(50),@Gia float,@DonVi nvarchar(20),@SoLuongTon int
 as
 begin
-	insert into NguyenLieu values (@maNH,@tenNL,@gia,@donvi,@soluongton)
+	if((select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH)=0)
+	begin
+		insert into NguyenLieu values (@MaNH,@TenNL,@Gia,@DonVi,@SoLuongTon)
+		return 1
+	end
+	else
+		return 0
 end
 GO
-create proc UpdateNguyenLieu @maNL int,@maNH nchar(10),@tenNL nvarchar(50),@gia float,@donvi nvarchar(20),@soluongton int
+alter proc UpdateNguyenLieu @TenNL_old nvarchar(50),@MaNL int,@MaNH nchar(10),@TenNL nvarchar(50),@Gia float,@DonVi nvarchar(20),@SoLuongTon int
 as
 begin
-	update NguyenLieu set TenNL=@tenNL,Gia=@gia,DonVi=@donvi,SoLuongTon=@soluongton
-	where MaNL=@maNL and MaNH=@maNH
+	if(@TenNL_old = @TenNL or(select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH)=0)
+	begin
+		update NguyenLieu set  MaNH=@MaNH,TenNL=@TenNL,Gia=@Gia,DonVi=@Donvi,SoLuongTon=@SoLuongTon
+			where MaNL=@MaNL
+		return 1
+	end
+	else
+		return 0
 end
 GO
-create proc DeleteNguyenLieu  @maNL int,@maNH nchar(10)
+create proc DeleteNguyenLieu  @MaNL int,@MaNH nchar(10)
 as
 begin
-delete from NguyenLieu where MaNL=@maNL and MaNH=@maNH
+delete from NguyenLieu where MaNL=@MaNL and MaNH=@MaNH
 end
-
---TEST 
---exec SelectNguyenLieu 2
---exec InsertNguyenLieu 2,N'Bánh Trángưqwqwq',30000,N'Chục',50,1
---exec UpdateNguyenLieu 100,2,N'Bánh Tráng',30000,N'Chục',50,1
---exec DeleteNguyenLieu 100,2
 
 ------------- table NhaCungCap --------------------------------------------
 GO
@@ -46,31 +52,25 @@ begin
 	from NhaCungCap
 end
 GO
-create proc InsertNhaCungCap @tenNCC nvarchar(50),@sdt nvarchar(50),@diachi nvarchar(50),@diemuutien int
+create proc InsertNhaCungCap @TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int
 as
 begin
-insert into NhaCungCap values(@tenNCC,@sdt,@diachi,@diemuutien)
+insert into NhaCungCap values(@TenNCC,@sdt,@DiaChi,@DiemUuTien)
 end
 GO
-create proc UpdateNhaCungCap @maNCC int,@tenNCC nvarchar(50),@sdt nvarchar(50),@diachi nvarchar(50),@diemuutien int
+create proc UpdateNhaCungCap @MaNCC int,@TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int
 as
 begin
-	update NhaCungCap set TenNCC=@tenNCC,sdt=@sdt,DiaChi=@diachi,DiemUuTien=@diemuutien
-	where MaNCC=@maNCC
+	update NhaCungCap set TenNCC=@TenNCC,sdt=@sdt,DiaChi=@DiaChi,DiemUuTien=@DiemUuTien
+	where MaNCC=@MaNCC
 end
 GO
-create proc DeleteNhaCungCap @maNCC int
+create proc DeleteNhaCungCap @MaNCC int
 as
 begin
 	delete NhaCungCap
-	where MaNCC=@maNCC
+	where MaNCC=@MaNCC
 end
------- TEST ---
---exec SelectNhaCungCap
---exec InsertNhaCungCap N'Minh Vũ','2323232','232424dfdsfds',2
---exec UpdateNhaCungCap 9,N'Minh Vũdfdslfsd','2323232','232424dfdsfds',2
---exec DeleteNhaCungCap 9
-
 ------------- table DatHang --------------------------------
 GO
 create proc SelectDatHang
@@ -127,12 +127,6 @@ begin
 	delete ChiTietDatHang
 	where MaHoaDonDat=@MaHoaDonDat and MaNCC=@MaNCC and MaNguyenLieu=@MaNguyenLIeu
 end
-
--------- TEST ----------
---exec SelectChiTietDatHang 
---exec InsertChiTietDatHang 1,5,1,50,32032
---exec UpdateChiTietDatHang 1,5,1,50,0
---exec DeleteChiTietDatHang 1,5,1
 
 GO
 ------------- table ChiTietNCC ---------
