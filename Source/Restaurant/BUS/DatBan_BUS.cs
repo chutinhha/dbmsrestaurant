@@ -19,6 +19,10 @@ namespace BUS
         {
             return DatBan_DAO.DocKhuVuc(maNH);
         }
+        public static DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
+        {
+            return DatBan_DAO.DSBanDatTrongNgay(maNH, timeNow);
+        }
         public static DataTable DocLoaiBan()
         {
             return DatBan_DAO.DocLoaiBan();
@@ -35,9 +39,18 @@ namespace BUS
         {
             return DatBan_DAO.UpdateDatBan(bandat,maBan,maNH,thoigianden);
         }
+        
         public static int XoaDatBan(DatBan_DTO bandat)
         {
             return DatBan_DAO.XoaDatBan(bandat);
+        }
+        public static int UpdateTrangThaiBanAn(int MaBan,int trangthai)
+        {
+            return DatBan_DAO.UpdateTrangThaiBanAn(MaBan,trangthai );
+        }
+        public static int UpdateTrangThaiDatBan(int maNH, int MaBan, int trangthai, DateTime thoigianden)
+        {
+            return DatBan_DAO.UpdateTrangThaiDatBan(maNH, MaBan, trangthai, thoigianden);
         }
     }
 }
