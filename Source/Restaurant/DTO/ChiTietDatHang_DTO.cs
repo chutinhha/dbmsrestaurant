@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DTO
 {
-    class ChiTietDatHang_DTO
+    public class ChiTietDatHang_DTO
     {
         private int _MaHoaDon;
         private int _MaNCC;
