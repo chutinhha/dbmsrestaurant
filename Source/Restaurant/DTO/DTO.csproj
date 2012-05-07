@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BanAn_DTO.cs" />
+    <Compile Include="ChiTietNCC_DTO.cs" />
     <Compile Include="DatHang_DTO.cs" />
     <Compile Include="DatBan_DTO.cs" />
     <Compile Include="ChiTietDatHang_DTO.cs" />

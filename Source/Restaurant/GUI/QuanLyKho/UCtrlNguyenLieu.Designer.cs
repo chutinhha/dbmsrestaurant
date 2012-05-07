@@ -136,9 +136,7 @@
             // 
             // gvNguyenLieu
             // 
-            this.gvNguyenLieu.Appearance.FocusedCell.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.gvNguyenLieu.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gvNguyenLieu.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.gvNguyenLieu.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.Highlight;
             this.gvNguyenLieu.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gvNguyenLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.clSTT,
@@ -195,6 +193,7 @@
             this.btnInDanhMucNL.Size = new System.Drawing.Size(106, 26);
             this.btnInDanhMucNL.TabIndex = 23;
             this.btnInDanhMucNL.Text = "In Danh Sách";
+            this.btnInDanhMucNL.Click += new System.EventHandler(this.btnInDanhMucNL_Click);
             // 
             // btnDatHang
             // 

@@ -38,9 +38,10 @@ namespace GUI
         //-----------------------------------------------------------
         String strGiaoDien = "";
         //-------------------------------------
-        int iMaNH;
+        String strMaNH ;
         public frmMain()
         {
+            strMaNH = "1";
             InitializeComponent();
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.BonusSkins.Register();
@@ -100,7 +101,6 @@ namespace GUI
         private void frm_Main_Load(object sender, EventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
-
         }
         private void Add_UserControl(Control Panel, Control UCtrl)
         {
@@ -176,11 +176,15 @@ namespace GUI
         }
         private void barBtn_QLKho_QLNCC_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UCtrl_QLKho_NCC.MaNH = strMaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NCC);
+            UCtrl_QLKho_NCC.LoadNhaCungCap();
         }
         private void barBtn_QLNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            UCtrl_QLKho_NguyenLieu.MaNH = strMaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NguyenLieu);
+            UCtrl_QLKho_NguyenLieu.LoadNguyenLieu();
         }
         #endregion
 

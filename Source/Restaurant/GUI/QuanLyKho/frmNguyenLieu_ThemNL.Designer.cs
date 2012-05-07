@@ -1,6 +1,6 @@
 ﻿namespace GUI.QuanLyKho
 {
-    partial class frmThemNguyenLieu
+    partial class frmNguyenLieu_ThemNL
     {
         /// <summary>
         /// Required designer variable.
@@ -36,8 +36,8 @@
             this.txtTenNguyenLieu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
@@ -117,6 +117,17 @@
             this.panelControl1.Size = new System.Drawing.Size(371, 269);
             this.panelControl1.TabIndex = 33;
             // 
+            // btnHuy
+            // 
+            this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnHuy.Image = global::GUI.Properties.Resources.close_24;
+            this.btnHuy.Location = new System.Drawing.Point(274, 225);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(75, 32);
+            this.btnHuy.TabIndex = 5;
+            this.btnHuy.Text = "Hủy";
+            // 
             // btnDongY
             // 
             this.btnDongY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -129,18 +140,7 @@
             this.btnDongY.Text = "Đồng Ý";
             this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
             // 
-            // btnHuy
-            // 
-            this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHuy.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnHuy.Image = global::GUI.Properties.Resources.close_24;
-            this.btnHuy.Location = new System.Drawing.Point(274, 225);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(75, 32);
-            this.btnHuy.TabIndex = 5;
-            this.btnHuy.Text = "Hủy";
-            // 
-            // frmThemNguyenLieu
+            // frmNguyenLieu_ThemNL
             // 
             this.AcceptButton = this.btnDongY;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,7 +148,9 @@
             this.CancelButton = this.btnHuy;
             this.ClientSize = new System.Drawing.Size(371, 269);
             this.Controls.Add(this.panelControl1);
-            this.Name = "frmThemNguyenLieu";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmNguyenLieu_ThemNL";
             this.Text = "Thêm Nguyên Liệu";
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);

@@ -14,6 +14,16 @@ namespace BUS
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
             return nguyenlieuDAO.SelectNguyenLieu(maNH);
         }
+        public static List<NguyenLieu_DTO> SelectNguyenLieu_fromNCC(int MaNCC, String MaNH)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.SelectNguyenLieu_fromNCC(MaNCC,MaNH);
+        }
+        public static List<NguyenLieu_DTO> SelectNguyenLieu_Free(int MaNCC,String maNH)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.SelectNguyenLieu_Free(MaNCC,maNH);
+        }
         public static int InsertNguyenLieu(NguyenLieu_DTO nl)
         {
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
