@@ -214,6 +214,7 @@
             this.txtDiemUuTien.Name = "txtDiemUuTien";
             this.txtDiemUuTien.Size = new System.Drawing.Size(125, 20);
             this.txtDiemUuTien.TabIndex = 1;
+            this.txtDiemUuTien.TextChanged += new System.EventHandler(this.txtDiemUuTien_TextChanged);
             // 
             // labelControl4
             // 
@@ -279,6 +280,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmNhaCungCap_Them_CapNhat";
+            this.Load += new System.EventHandler(this.frmNhaCungCap_Them_CapNhat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();

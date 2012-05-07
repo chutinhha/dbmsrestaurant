@@ -14,6 +14,7 @@ namespace GUI.QuanLyKho
     public partial class UCtrlNguyenLieu : DevExpress.XtraEditors.XtraUserControl
     {
         String _MaNH;
+        String TenNL;
         public String MaNH
         {
             get { return _MaNH; }
@@ -49,6 +50,8 @@ namespace GUI.QuanLyKho
             txtDonVi.Text = lsNguyenLieu[indexNL].DonVi;
             txtGia.Text = lsNguyenLieu[indexNL].Gia.ToString();
             txtSoLuongTon.Text = lsNguyenLieu[indexNL].SoLuongTon.ToString();
+
+            TenNL = lsNguyenLieu[indexNL].TenNL;
         }
 
         private void btnXoaNguyenLieu_Click(object sender, EventArgs e)
@@ -129,8 +132,8 @@ namespace GUI.QuanLyKho
         public void XoaNguyenLieu()
         {
             BUS.NguyenLieu_BUS.DeleteNguyenLieu(lsNguyenLieu[indexNL].MaNL, _MaNH);
-            dtNguyenLieu.Rows.RemoveAt(indexNL);
             lsNguyenLieu.RemoveAt(indexNL);
+            dtNguyenLieu.Rows.RemoveAt(indexNL);
         }
         public void CapNhatNguyenLieu()
         {
@@ -160,7 +163,6 @@ namespace GUI.QuanLyKho
                         else
                         {
 
-                            String TenNL = lsNguyenLieu[indexNL].TenNL;
                             NguyenLieu_DTO temp = new NguyenLieu_DTO();
                             temp.MaNL = lsNguyenLieu[indexNL].MaNL;
                             temp.MaNH = lsNguyenLieu[indexNL].MaNH;

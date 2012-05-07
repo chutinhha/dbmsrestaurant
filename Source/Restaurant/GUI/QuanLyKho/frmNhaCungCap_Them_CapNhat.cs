@@ -14,7 +14,7 @@ namespace GUI.QuanLyKho
     {
         private int _flag;   //flag = 1 :Them , flag =2 : Cap nhat
         private String _MaNH;
-        private int _MaNCC;
+        private String TenNCC_old;
         private NhaCungCap_DTO _NCC;
         private List<NguyenLieu_DTO> lsNguyenLieu;
         private List<NguyenLieu_DTO> _lsNguyenLieuChon;
@@ -30,11 +30,6 @@ namespace GUI.QuanLyKho
                 get { return _MaNH; }
                 set { _MaNH = value; }
             }
-            public int MaNCC
-            {
-                get { return _MaNCC; }
-                set { _MaNCC = value; }
-            }
             public NhaCungCap_DTO NCC
             {
                 get { return _NCC; }
@@ -45,26 +40,6 @@ namespace GUI.QuanLyKho
                 get { return _lsNguyenLieuChon; }
                 set { _lsNguyenLieuChon = value; }
             }
-            public String TenNCC
-            {
-                get { return txtTenNCC.Text; }
-                set { txtTenNCC.Text = value; }
-            }
-            public String DiaChi
-            {
-                get { return txtDiaChi.Text; }
-                set { txtDiaChi.Text = value; }
-            }
-            public String SDT
-            {
-                get { return txtSoDienThoai.Text; }
-                set { txtSoDienThoai.Text = value; }
-            }
-            public String DiemUuTien
-            {
-                get { return txtDiemUuTien.Text; }
-                set { txtDiemUuTien.Text = value; }
-            }
         #endregion
 
         public frmNhaCungCap_Them_CapNhat()
@@ -73,6 +48,20 @@ namespace GUI.QuanLyKho
             _NCC = new NhaCungCap_DTO();
         }
 
+        private void frmNhaCungCap_Them_CapNhat_Load(object sender, EventArgs e)
+        {
+            if (_flag == 1)
+            {
+                txtDiemUuTien.Text = "0";
+                txtDiemUuTien.Enabled = false;
+            }
+            else
+                txtDiemUuTien.Text = _NCC.DiemUuTien.ToString();
+            TenNCC_old=_NCC.TenNCC;
+            txtTenNCC.Text = _NCC.TenNCC;
+            txtDiaChi.Text = _NCC.DiaChi;
+            txtSoDienThoai.Text = _NCC.sdt;
+        }
         #region " Control Event "
             private void btnThemNL_Click(object sender, EventArgs e)
             {
@@ -86,7 +75,7 @@ namespace GUI.QuanLyKho
 
             private void btnDongY_Click(object sender, EventArgs e)
             {
-                ThemNCC();
+                Save();
             }
         #endregion
 
@@ -96,7 +85,7 @@ namespace GUI.QuanLyKho
                 if (flag == 1)
                     lsNguyenLieu =BUS.NguyenLieu_BUS.SelectNguyenLieu(_MaNH);
                 else
-                    lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_Free(_MaNCC,_MaNH);
+                    lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_Free(_NCC.MaNCC,_MaNH);
 
                 Load_lvNguyenLieu();
             }
@@ -152,7 +141,7 @@ namespace GUI.QuanLyKho
                 {
                 }
             }
-            public void ThemNCC()
+            public void Save()
             {
                 this.DialogResult = DialogResult.None;
                 if (txtTenNCC.Text.Trim().Length == 0)
@@ -177,23 +166,53 @@ namespace GUI.QuanLyKho
                             _NCC.TenNCC = txtTenNCC.Text.Trim();
                             _NCC.DiaChi = txtDiaChi.Text.Trim();
                             _NCC.sdt = txtSoDienThoai.Text.Trim();
-                            int iMaNCC = BUS.NhaCungCap_BUS.InsertNhaCungCap(_NCC);
-                            if (iMaNCC == 0)
+                            if (_flag == 1)
                             {
-                                MessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                txtTenNCC.Focus();
-                                this.DialogResult = DialogResult.None;
+                                _NCC.MaNCC = BUS.NhaCungCap_BUS.InsertNhaCungCap(_NCC);
+                                if (_NCC.MaNCC == 0)
+                                {
+                                    MessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtTenNCC.Focus();
+                                    this.DialogResult = DialogResult.None;
+                                }
+                                else
+                                {
+                                    for (int i = 0; i < lsNguyenLieuChon.Count; i++)
+                                    {
+                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC);
+                                    }
+                                    this.DialogResult = DialogResult.OK;
+                                }
                             }
                             else
                             {
-                                for (int i = 0; i < lsNguyenLieuChon.Count; i++)
+                                _NCC.DiemUuTien = int.Parse(txtDiemUuTien.Text);
+                                int flag = BUS.NhaCungCap_BUS.UpdatetNhaCungCap(TenNCC_old,_NCC);
+                                if (flag == 0)
                                 {
-                                    BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL,iMaNCC);
+                                    MessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    txtTenNCC.Focus();
+                                    this.DialogResult = DialogResult.None;
                                 }
-                                this.DialogResult = DialogResult.OK;
+                                else
+                                {
+                                    BUS.ChiTietNCC_BUS.DeleteChiTietNCC(_NCC.MaNCC);
+                                    for (int i = 0; i < lsNguyenLieuChon.Count; i++)
+                                    {
+                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC);
+                                    }
+                                    this.DialogResult = DialogResult.OK;
+                                }
                             }
                         }  
             }
         #endregion
+
+            private void txtDiemUuTien_TextChanged(object sender, EventArgs e)
+            {
+                if (txtDiemUuTien.Text.Trim().Length == 0)
+                    txtDiemUuTien.Text = "0";
+            }
+
     }
 }

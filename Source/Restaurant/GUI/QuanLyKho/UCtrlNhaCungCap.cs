@@ -121,8 +121,13 @@ namespace GUI.QuanLyKho
             {
                 DataRow row = dtNCC.NewRow();
                 row["STT"] = dtNCC.Rows.Count + 1;
+                row["TenNCC"] = _frm.NCC.TenNCC;
+                row["sdt"] = _frm.NCC.sdt;
+                row["DiaChi"] = _frm.NCC.DiaChi;
+                row["DiemUuTien"] = _frm.NCC.DiemUuTien;
                 dtNCC.Rows.Add(row);
-                //lsNguyenLieu.Add(_frm.NguyenLieu);
+                lsNCC.Add(_frm.NCC);
+                gvNCC.FocusedRowHandle = dtNCC.Rows.Count - 1;
             }
         }
         public void CapNhatNhaCungCap()
@@ -130,24 +135,22 @@ namespace GUI.QuanLyKho
             frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
             _frm.Flag = 2;
             _frm.MaNH = _MaNH;
-            _frm.MaNCC = lsNCC[indexNCC].MaNCC;
-            _frm.TenNCC = lsNCC[indexNCC].TenNCC;
-            _frm.DiaChi = lsNCC[indexNCC].DiaChi;
-            _frm.SDT = lsNCC[indexNCC].sdt;
-            _frm.DiemUuTien = lsNCC[indexNCC].DiemUuTien.ToString();
+            _frm.NCC = lsNCC[indexNCC];
             _frm.lsNguyenLieuChon = lsNguyenLieu;
             _frm.LoadNguyenLieuChon();
             _frm.LoadNguyenLieu(2);
             if (_frm.ShowDialog() == DialogResult.OK)
             {
-                DataRow row = dtNCC.NewRow();
-                row["STT"] = dtNCC.Rows.Count + 1;
-                dtNCC.Rows.Add(row);
-                //lsNguyenLieu.Add(_frm.NguyenLieu);
+                lsNCC[indexNCC] = _frm.NCC;
+                gvNCC.FocusedRowHandle = indexNCC-1;
+                gvNCC.FocusedRowHandle = indexNCC+1;
             }
         }
         public void XoaNhaCungCap()
         {
+           BUS.NhaCungCap_BUS.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
+           lsNCC.RemoveAt(indexNCC);
+           dtNCC.Rows.RemoveAt(indexNCC);
         }
         #endregion
     }
