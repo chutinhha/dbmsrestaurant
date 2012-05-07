@@ -168,7 +168,9 @@ namespace GUI
         #region " Quan Ly Kho "
         private void barBtn_QLKho_DatHang_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UCtrl_QLKho_DatHang.MaNH = strMaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_DatHang);
+            UCtrl_QLKho_DatHang.LoadDSDatHang();
         }
         private void barBtn_NhapKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

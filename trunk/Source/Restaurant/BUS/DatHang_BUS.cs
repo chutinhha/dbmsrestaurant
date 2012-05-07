@@ -8,10 +8,10 @@ namespace BUS
 {
     public class DatHang_BUS
     {
-        public void SelectDatHang(String MaNH)
+        public static List<DatHang_DTO> SelectDatHang(String MaNH)
         {
             DatHang_DAO dh = new DatHang_DAO();
-            dh.SelectDatHang(MaNH);
+            return  dh.SelectDatHang(MaNH);
         }
     }
 }

@@ -8,15 +8,23 @@ namespace DTO
     public class DatHang_DTO
     {
         private int _MaHoaDon;
+        private int _MaNCC;
+        private String _MaNH;
         private double _ThanhTien;
         private DateTime _ThoiGianDat;
         private DateTime _ThoiGianGiao;
-        private String _MaNH;
+        private String _TinhTrang;
+        private String _TenNCC;
 
         public int MaHoaDon
         {
             get { return _MaHoaDon; }
             set { _MaHoaDon = value; }
+        }
+        public int MaNCC
+        {
+            get { return _MaNCC; }
+            set { _MaNCC = value; }
         }
         public double ThanhTien
         {
@@ -37,6 +45,16 @@ namespace DTO
         {
             get { return _MaNH;}
             set { _MaNH = value; }
+        }
+        public String TinhTrang
+        {
+            get { return _TinhTrang; }
+            set { _TinhTrang = value; }
+        }
+        public String TenNCC
+        {
+            get { return _TenNCC; }
+            set { _TenNCC = value; }
         }
     }
 }

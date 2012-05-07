@@ -14,14 +14,14 @@ namespace DAO
         {
             provider = new Provider();
         }
-        public void SelectDatHang(String MaNH)
+        public List<DatHang_DTO> SelectDatHang(String MaNH)
         {
             String store = "SelectDatHang";
             SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
             cm.Parameters["@maNH"].Value = MaNH;
-            ConvertToList(provider.ExecSelectCommand(cm));
+            return  ConvertToList(provider.ExecSelectCommand(cm));
         }
         private List<DatHang_DTO> ConvertToList(DataTable dt)
         {
@@ -30,10 +30,27 @@ namespace DAO
             {
                 DatHang_DTO ttdh = new DatHang_DTO();
                 ttdh.MaHoaDon = (int)row.ItemArray[0];
-                ttdh.ThanhTien = (double)row.ItemArray[1];
-                ttdh.ThoiGianDat = (DateTime)row.ItemArray[2];
-                ttdh.ThoiGianGiao = (DateTime)row.ItemArray[3];
-                ttdh.MaNH = row.ItemArray[4].ToString();
+                ttdh.MaNCC = (int)row.ItemArray[1];
+                ttdh.MaNH = row.ItemArray[2].ToString();
+                ttdh.ThanhTien = (double)row.ItemArray[3];
+                try
+                {
+                    ttdh.ThoiGianDat = DateTime.Parse(row.ItemArray[4].ToString());
+                }
+                catch (Exception)
+                {
+                    ttdh.ThoiGianDat = new DateTime();
+                }
+                try
+                {
+                    ttdh.ThoiGianGiao =  DateTime.Parse(row.ItemArray[5].ToString());
+                }
+                catch (Exception)
+                {
+                    ttdh.ThoiGianGiao = new DateTime();
+                }
+                ttdh.TinhTrang = row.ItemArray[6].ToString();
+                ttdh.TenNCC = row.ItemArray[7].ToString();
                 ls.Add(ttdh);
             }
             return ls;
