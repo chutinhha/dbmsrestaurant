@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DTO
 {
-    class DatHang_DTO
+    public class DatHang_DTO
     {
         private int _MaHoaDon;
         private double _ThanhTien;
