@@ -41,8 +41,7 @@ namespace GUI.TiepTan
         {
             if ( flag  && txtSoDienThoai.Text != "" && txtThoiGianDen.Text != "" && maBanChon!=null)
             {
-                if (DateTime.Parse(txtThoiGianDen.Text) >= DateTime.Now)
-                {
+               
                     DatBan_DTO banDat = new DatBan_DTO();
                     banDat.MaBan = maBanChon;
                     banDat.MaKhachHang =cbbTenKhachHang.SelectedValue.ToString();
@@ -60,9 +59,9 @@ namespace GUI.TiepTan
                     //}
                     gridControl_DatBan.DataSource = tbBanDat;
                     Refest();
-                }
-                else
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Nhập dữ liệu không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+                //else
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("Nhập dữ liệu không hợp lệ", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                
             }
             else
@@ -104,8 +103,14 @@ namespace GUI.TiepTan
                     banDat.ThoiGianDen = dsBanDat[i].ThoiGianDen;
                     banDat.Sdt = dsBanDat[i].Sdt;
                     banDat.MaKhachHang = dsBanDat[i].MaKhachHang;
-                    if( DatBan_BUS.ThemDatBan(banDat)>0)
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số "+dsBanDat[i].MaBan+" đã được đặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (DatBan_BUS.ThemDatBan(banDat) > 0)
+                    {
+                        //Cập nhật Tình trạng bên bảng Bàn Ăn
+                        
+                       // DatBan_BUS.UpdateTrangThaiBanAn(int.Parse( banDat.MaBan));
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số " + dsBanDat[i].MaBan + " đã được đặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                    }
                     else
                         DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số " + dsBanDat[i].MaBan + " đặt không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
