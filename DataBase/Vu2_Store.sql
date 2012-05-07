@@ -10,6 +10,31 @@ begin
 	select *
 	from NguyenLieu nl
 	where nl.MaNH = @MaNH
+	order by nl.TenNL
+end
+GO
+create proc SelectNguyenLieu_fromNCC @MaNCC int,@MaNH int
+as
+begin
+	select nl.*
+	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
+	where ct.MaNCC = @MaNCC and nl.MaNH = @MaNH and ct.MaNL = nl.MaNL and ct.MaNCC = ncc.MaNCC
+	order by nl.TenNL
+end
+GO
+create proc SelectNguyenLieu_Free @MaNCC int ,@MaNH nchar(10) --Select danh sach nguyen lieu khong co trong chi tiet nha cung cap
+as
+begin
+	select * 
+	from NguyenLieu nl1
+	where nl1.MaNH = @MaNH and
+		nl1.MaNL not in
+		(
+			select nl.MaNL
+			from NguyenLieu nl,ChiTietNCC ct
+			where ct.MaNCC = @MaNCC and nl.MaNH = @MaNH and nl.MaNL =ct.MaNL
+		)
+	order by nl1.TenNL
 end
 GO
 create  proc InsertNguyenLieu @Flag int out,@MaNH nchar(10),@TenNL nvarchar(50),@Gia float,@DonVi nvarchar(20),@SoLuongTon int
@@ -23,9 +48,6 @@ begin
 	else
 		set @Flag =0
 end
-declare @a int
-exec InsertNguyenLieu @a out,'1',N'Bánh tráng',111,N'dsfds',0
-print @a
 GO
 create proc UpdateNguyenLieu @Flag int out,@TenNL_old nvarchar(50),@MaNL int,@MaNH nchar(10),@TenNL nvarchar(50),@Gia float,@DonVi nvarchar(20),@SoLuongTon int
 as
@@ -40,12 +62,6 @@ begin
 		set @Flag= 0
 end
 GO
-alter  proc demo @ReturnValue int
-as
-begin
-	set @ReturnValue = 10
-	return @ReturnValue
-end
 create proc DeleteNguyenLieu  @MaNL int,@MaNH nchar(10)
 as
 begin
@@ -53,19 +69,25 @@ delete from NguyenLieu where MaNL=@MaNL and MaNH=@MaNH
 end
 
 ------------- table NhaCungCap --------------------------------------------
---GO
---create proc SelectNhaCungCap
---as
---begin
---	select * 
---	from NhaCungCap
---end
---GO
---create proc InsertNhaCungCap @TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int
---as
---begin
---insert into NhaCungCap values(@TenNCC,@sdt,@DiaChi,@DiemUuTien)
---end
+GO
+create proc SelectNhaCungCap
+as
+begin
+	select * 
+	from NhaCungCap
+end
+GO
+alter proc InsertNhaCungCap @MaNCC int out,@TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int
+as
+begin
+	if((select count(*) from NhaCungCap where TenNCC = @TenNCC)=0)
+	begin
+		insert into NhaCungCap values(@TenNCC,@sdt,@DiaChi,@DiemUuTien)
+		set @MaNCC = (select MaNCC from NhaCungCap where TenNCC = @TenNCC)
+	end
+	else
+		set @MaNCC = 0
+end
 --GO
 --create proc UpdateNhaCungCap @MaNCC int,@TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int
 --as
@@ -80,6 +102,31 @@ end
 --	delete NhaCungCap
 --	where MaNCC=@MaNCC
 --end
+--------------- table ChiTietNCC -----------------------------
+--GO
+--create proc SelectChiTietNCC @MaNH int 
+--as
+--begin
+--	select ct.MaNL,ct.MaNCC,nl.TenNL,ncc.TenNCC
+--	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
+--	where nl.MaNH = @MaNH and ct.MaNL = nl.MaNL and ct.MaNCC = ncc.MaNCC
+--	order by nl.TenNL
+--end
+--GO
+--create proc SelectChiTietNCC_MaNL @MaNL int
+--as
+--begin
+--	select ct.MaNL,ct.MaNCC,ncc.TenNCC
+--	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
+--	where ct.MaNL = @MaNL and ct.MaNCC = ncc.MaNCC
+--	order by ncc.TenNCC
+--end
+GO
+create proc InsertChiTietNCC @MaNL int,@MaNCC int
+as
+begin
+	insert into ChiTietNCC values(@MaNL,@MaNCC)
+end
 --------------- table DatHang --------------------------------
 --GO
 --create proc SelectDatHang
