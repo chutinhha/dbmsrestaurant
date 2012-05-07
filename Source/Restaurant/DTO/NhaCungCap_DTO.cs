@@ -11,8 +11,7 @@ namespace DTO
         private String _TenNCC;
         private String _sdt;
         private String _DiaChi;
-        private int _DiemUuTien;
-
+        private int _DiemUuTien; 
 
         public int MaNCC
         {
