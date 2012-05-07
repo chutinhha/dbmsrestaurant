@@ -36,29 +36,30 @@
             this.groupNguyenLieu = new DevExpress.XtraEditors.GroupControl();
             this.gridNguyenLieu = new DevExpress.XtraGrid.GridControl();
             this.gvNguyenLieu = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.clSTT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clSoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXoaNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.btnInDanhMucNL = new DevExpress.XtraEditors.SimpleButton();
             this.btnDatHang = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.txtSoLuongTon = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDonVi = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txtGia = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTenNguyenLieu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTenNguyenLieu = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txtGia = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtDonVi = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtSoLuongTon = new DevExpress.XtraEditors.TextEdit();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupNguyenLieu)).BeginInit();
             this.groupNguyenLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvNguyenLieu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenNguyenLieu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTon.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenNguyenLieu.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // clTenNL
@@ -67,7 +68,8 @@
             this.clTenNL.FieldName = "TenNL";
             this.clTenNL.Name = "clTenNL";
             this.clTenNL.Visible = true;
-            this.clTenNL.VisibleIndex = 0;
+            this.clTenNL.VisibleIndex = 1;
+            this.clTenNL.Width = 122;
             // 
             // clGia
             // 
@@ -75,7 +77,8 @@
             this.clGia.FieldName = "Gia";
             this.clGia.Name = "clGia";
             this.clGia.Visible = true;
-            this.clGia.VisibleIndex = 1;
+            this.clGia.VisibleIndex = 2;
+            this.clGia.Width = 122;
             // 
             // btnThemNguyenLieu
             // 
@@ -97,6 +100,7 @@
             this.btnCapNhatNguyenLieu.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatNguyenLieu.TabIndex = 22;
             this.btnCapNhatNguyenLieu.Text = "Cập Nhật";
+            this.btnCapNhatNguyenLieu.Click += new System.EventHandler(this.btnCapNhatNguyenLieu_Click);
             // 
             // clDonVi
             // 
@@ -104,7 +108,8 @@
             this.clDonVi.FieldName = "DonVi";
             this.clDonVi.Name = "clDonVi";
             this.clDonVi.Visible = true;
-            this.clDonVi.VisibleIndex = 2;
+            this.clDonVi.VisibleIndex = 3;
+            this.clDonVi.Width = 122;
             // 
             // groupNguyenLieu
             // 
@@ -136,6 +141,7 @@
             this.gvNguyenLieu.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.gvNguyenLieu.Appearance.FocusedRow.Options.UseBackColor = true;
             this.gvNguyenLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.clSTT,
             this.clTenNL,
             this.clGia,
             this.clDonVi,
@@ -150,13 +156,24 @@
             this.gvNguyenLieu.OptionsView.ShowGroupPanel = false;
             this.gvNguyenLieu.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvNguyenLieu_FocusedRowChanged);
             // 
+            // clSTT
+            // 
+            this.clSTT.Caption = "STT";
+            this.clSTT.FieldName = "STT";
+            this.clSTT.MaxWidth = 30;
+            this.clSTT.Name = "clSTT";
+            this.clSTT.Visible = true;
+            this.clSTT.VisibleIndex = 0;
+            this.clSTT.Width = 30;
+            // 
             // clSoLuongTon
             // 
             this.clSoLuongTon.Caption = "Số Lượng Tồn";
             this.clSoLuongTon.FieldName = "SoLuongTon";
             this.clSoLuongTon.Name = "clSoLuongTon";
             this.clSoLuongTon.Visible = true;
-            this.clSoLuongTon.VisibleIndex = 3;
+            this.clSoLuongTon.VisibleIndex = 4;
+            this.clSoLuongTon.Width = 125;
             // 
             // btnXoaNguyenLieu
             // 
@@ -188,6 +205,66 @@
             this.btnDatHang.TabIndex = 23;
             this.btnDatHang.Text = "Đặt Hàng";
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(26, 50);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(80, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Tên Nguyên Liệu";
+            // 
+            // txtTenNguyenLieu
+            // 
+            this.txtTenNguyenLieu.Location = new System.Drawing.Point(117, 47);
+            this.txtTenNguyenLieu.Name = "txtTenNguyenLieu";
+            this.txtTenNguyenLieu.Size = new System.Drawing.Size(173, 20);
+            this.txtTenNguyenLieu.TabIndex = 1;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(26, 95);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(15, 13);
+            this.labelControl2.TabIndex = 0;
+            this.labelControl2.Text = "Giá";
+            // 
+            // txtGia
+            // 
+            this.txtGia.Location = new System.Drawing.Point(117, 92);
+            this.txtGia.Name = "txtGia";
+            this.txtGia.Size = new System.Drawing.Size(173, 20);
+            this.txtGia.TabIndex = 1;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(26, 140);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(31, 13);
+            this.labelControl3.TabIndex = 0;
+            this.labelControl3.Text = "Đơn Vị";
+            // 
+            // txtDonVi
+            // 
+            this.txtDonVi.Location = new System.Drawing.Point(117, 137);
+            this.txtDonVi.Name = "txtDonVi";
+            this.txtDonVi.Size = new System.Drawing.Size(173, 20);
+            this.txtDonVi.TabIndex = 1;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(26, 185);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(69, 13);
+            this.labelControl4.TabIndex = 0;
+            this.labelControl4.Text = "Số Lượng  Tồn";
+            // 
+            // txtSoLuongTon
+            // 
+            this.txtSoLuongTon.Location = new System.Drawing.Point(117, 182);
+            this.txtSoLuongTon.Name = "txtSoLuongTon";
+            this.txtSoLuongTon.Size = new System.Drawing.Size(173, 20);
+            this.txtSoLuongTon.TabIndex = 1;
+            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.txtSoLuongTon);
@@ -203,66 +280,6 @@
             this.groupControl1.Size = new System.Drawing.Size(327, 240);
             this.groupControl1.TabIndex = 25;
             this.groupControl1.Text = "Thông Tin Nguyên Liệu";
-            // 
-            // txtSoLuongTon
-            // 
-            this.txtSoLuongTon.Location = new System.Drawing.Point(117, 182);
-            this.txtSoLuongTon.Name = "txtSoLuongTon";
-            this.txtSoLuongTon.Size = new System.Drawing.Size(173, 20);
-            this.txtSoLuongTon.TabIndex = 1;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(26, 185);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(69, 13);
-            this.labelControl4.TabIndex = 0;
-            this.labelControl4.Text = "Số Lượng  Tồn";
-            // 
-            // txtDonVi
-            // 
-            this.txtDonVi.Location = new System.Drawing.Point(117, 137);
-            this.txtDonVi.Name = "txtDonVi";
-            this.txtDonVi.Size = new System.Drawing.Size(173, 20);
-            this.txtDonVi.TabIndex = 1;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(26, 140);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(31, 13);
-            this.labelControl3.TabIndex = 0;
-            this.labelControl3.Text = "Đơn Vị";
-            // 
-            // txtGia
-            // 
-            this.txtGia.Location = new System.Drawing.Point(117, 92);
-            this.txtGia.Name = "txtGia";
-            this.txtGia.Size = new System.Drawing.Size(173, 20);
-            this.txtGia.TabIndex = 1;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(26, 95);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(15, 13);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "Giá";
-            // 
-            // txtTenNguyenLieu
-            // 
-            this.txtTenNguyenLieu.Location = new System.Drawing.Point(117, 47);
-            this.txtTenNguyenLieu.Name = "txtTenNguyenLieu";
-            this.txtTenNguyenLieu.Size = new System.Drawing.Size(173, 20);
-            this.txtTenNguyenLieu.TabIndex = 1;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(26, 50);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(80, 13);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Tên Nguyên Liệu";
             // 
             // UCtrlNguyenLieu
             // 
@@ -282,13 +299,13 @@
             this.groupNguyenLieu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvNguyenLieu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTenNguyenLieu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTon.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenNguyenLieu.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,15 +323,16 @@
         private DevExpress.XtraEditors.SimpleButton btnXoaNguyenLieu;
         private DevExpress.XtraEditors.SimpleButton btnInDanhMucNL;
         private DevExpress.XtraEditors.SimpleButton btnDatHang;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraGrid.Columns.GridColumn clSoLuongTon;
-        private DevExpress.XtraEditors.TextEdit txtSoLuongTon;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit txtDonVi;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit txtGia;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit txtTenNguyenLieu;
+        private DevExpress.XtraGrid.Columns.GridColumn clSTT;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.TextEdit txtTenNguyenLieu;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit txtGia;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit txtDonVi;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.TextEdit txtSoLuongTon;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }

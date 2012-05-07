@@ -184,6 +184,12 @@
     <Compile Include="QuanLyNhaHang\UCtrlThongKeDoanhThu.Designer.cs">
       <DependentUpon>UCtrlThongKeDoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="TiepTan\FrmCapNhatBanDat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TiepTan\FrmCapNhatBanDat.Designer.cs">
+      <DependentUpon>FrmCapNhatBanDat.cs</DependentUpon>
+    </Compile>
     <Compile Include="TiepTan\frmDatBan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ThuNgan\UCtrlThongKe.resx">
       <DependentUpon>UCtrlThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiepTan\FrmCapNhatBanDat.resx">
+      <DependentUpon>FrmCapNhatBanDat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TiepTan\frmDatBan.resx">
       <DependentUpon>frmDatBan.cs</DependentUpon>

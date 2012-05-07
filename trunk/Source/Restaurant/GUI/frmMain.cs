@@ -104,7 +104,7 @@ namespace GUI
         }
         private void Add_UserControl(Control Panel, Control UCtrl)
         {
-            panelCtrl_Main.Controls.Clear();
+            Panel.Controls.Clear();
             UCtrl.Dock = DockStyle.Fill;
 
             Panel.Controls.Add(UCtrl);

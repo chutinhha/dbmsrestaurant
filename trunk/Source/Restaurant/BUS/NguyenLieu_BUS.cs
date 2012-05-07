@@ -14,5 +14,20 @@ namespace BUS
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
             return nguyenlieuDAO.SelectNguyenLieu(maNH);
         }
+        public static int InsertNguyenLieu(NguyenLieu_DTO nl)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.InsertNguyenLieu(nl);
+        }
+        public static void DeleteNguyenLieu(int MaNL, String MaNH)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            nguyenlieuDAO.DeleteNguyenLieu(MaNL, MaNH);
+        }
+        public static int UpdateNguyenLieu(String TenNL,NguyenLieu_DTO nl)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.UpdateNguyenLieu(TenNL,nl);
+        }
     }
 }

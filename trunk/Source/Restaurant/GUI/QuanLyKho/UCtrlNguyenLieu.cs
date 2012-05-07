@@ -16,6 +16,7 @@ namespace GUI.QuanLyKho
         List<NguyenLieu_DTO> lsNguyenLieu;
         DataTable dtNguyenLieu ;
         int indexNL;
+
         public UCtrlNguyenLieu()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace GUI.QuanLyKho
 
         private void UCtrlNguyenLieu_Load(object sender, EventArgs e)
         {
+            dtNguyenLieu.Columns.Add("STT", System.Type.GetType("System.Int16"));
             dtNguyenLieu.Columns.Add("TenNL",System.Type.GetType("System.String"));
             dtNguyenLieu.Columns.Add("Gia", System.Type.GetType("System.Double"));
             dtNguyenLieu.Columns.Add("DonVi",System.Type.GetType("System.String"));
@@ -35,6 +37,7 @@ namespace GUI.QuanLyKho
             for (int i = 0; i < lsNguyenLieu.Count; i++)
             {
                 DataRow row = dtNguyenLieu.NewRow();
+                row["Stt"] = i + 1;
                 row["TenNL"] = lsNguyenLieu[i].TenNL;
                 row["Gia"] = lsNguyenLieu[i].Gia;
                 row["DonVi"] = lsNguyenLieu[i].DonVi;
@@ -58,7 +61,9 @@ namespace GUI.QuanLyKho
 
         private void btnXoaNguyenLieu_Click(object sender, EventArgs e)
         {
-
+            BUS.NguyenLieu_BUS.DeleteNguyenLieu(lsNguyenLieu[indexNL].MaNL,"1");
+            dtNguyenLieu.Rows.RemoveAt(indexNL);
+            lsNguyenLieu.RemoveAt(indexNL);
         }
 
         private void btnThemNguyenLieu_Click(object sender, EventArgs e)
@@ -67,6 +72,7 @@ namespace GUI.QuanLyKho
             if (_frmThemNL.ShowDialog() == DialogResult.OK)
             {
                 DataRow row = dtNguyenLieu.NewRow();
+                row["STT"] = dtNguyenLieu.Rows.Count + 1;
                 row["TenNL"] = _frmThemNL.NguyenLieu.TenNL;
                 row["Gia"] = _frmThemNL.NguyenLieu.Gia;
                 row["DonVi"] = _frmThemNL.NguyenLieu.DonVi;
@@ -75,6 +81,62 @@ namespace GUI.QuanLyKho
             }
             _frmThemNL.NguyenLieu.MaNH = "1";
             lsNguyenLieu.Add(_frmThemNL.NguyenLieu);
+        }
+
+        private void btnCapNhatNguyenLieu_Click(object sender, EventArgs e)
+        {
+            if (txtTenNguyenLieu.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn chưa nhập Tên Nguyên Liệu !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtTenNguyenLieu.Focus();
+            } 
+            else
+                if (txtGia.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Bạn chưa nhập Giá cho nguyên liệu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtGia.Focus();
+                }
+                else
+                    if (txtDonVi.Text.Trim().Length == 0)
+                    {
+                        MessageBox.Show("Bạn chưa nhập đơn vị nguyên liêu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtDonVi.Focus();
+                    }
+                    else
+                        if (txtSoLuongTon.Text.Trim().Length == 0)
+                        {
+                            MessageBox.Show("Bạn chưa nhập số lượng tồn!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            txtSoLuongTon.Focus();
+                        }
+                        else
+                        {
+                            
+                            String TenNL = lsNguyenLieu[indexNL].TenNL;
+                            NguyenLieu_DTO temp = new NguyenLieu_DTO();
+                            temp.MaNL = lsNguyenLieu[indexNL].MaNL;
+                            temp.MaNH = lsNguyenLieu[indexNL].MaNH;
+                            temp.TenNL = txtTenNguyenLieu.Text.Trim();
+                            temp.Gia = Double.Parse(txtGia.Text.Trim());
+                            temp.DonVi = txtDonVi.Text.Trim();
+                            temp.SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
+                            if (BUS.NguyenLieu_BUS.UpdateNguyenLieu(TenNL,temp)== 0)
+                            {
+                                MessageBox.Show("Tên nguyên liệu này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                txtTenNguyenLieu.Focus();
+                            }
+                            else
+                            {
+                                dtNguyenLieu.Rows[indexNL]["TenNL"] = txtTenNguyenLieu.Text.Trim();
+                                dtNguyenLieu.Rows[indexNL]["Gia"] = Double.Parse(txtGia.Text.Trim());
+                                dtNguyenLieu.Rows[indexNL]["DonVi"] = txtDonVi.Text.Trim();
+                                dtNguyenLieu.Rows[indexNL]["SoLuongTon"] = int.Parse(txtSoLuongTon.Text.Trim());
+                                lsNguyenLieu[indexNL].TenNL = txtTenNguyenLieu.Text.Trim();
+                                lsNguyenLieu[indexNL].Gia = Double.Parse(txtGia.Text.Trim());
+                                lsNguyenLieu[indexNL].DonVi = txtDonVi.Text.Trim();
+                                lsNguyenLieu[indexNL].SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
+                            }
+                        }  
+
         }
     }
 }
