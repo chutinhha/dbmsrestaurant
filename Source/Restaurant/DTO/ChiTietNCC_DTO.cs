@@ -11,7 +11,13 @@ namespace DTO
         private int _MaNCC;
         private String _TenNL;
         private String _TenNCC;
+        private double _Gia;
 
+        public double Gia
+        {
+            get { return _Gia; }
+            set { _Gia = value; }
+        }
         public int MaNL
         {
             get { return _MaNL; }

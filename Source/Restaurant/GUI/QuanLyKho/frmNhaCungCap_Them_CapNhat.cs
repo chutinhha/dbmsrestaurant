@@ -77,6 +77,12 @@ namespace GUI.QuanLyKho
             {
                 Save();
             }
+
+            private void txtDiemUuTien_TextChanged(object sender, EventArgs e)
+            {
+                if (txtDiemUuTien.Text.Trim().Length == 0)
+                    txtDiemUuTien.Text = "0";
+            }
         #endregion
 
         #region "Cac ham xu ly"
@@ -92,6 +98,7 @@ namespace GUI.QuanLyKho
             public void LoadNguyenLieuChon()
             {
                 lvNguyenLieuChon.Items.Clear();
+                lsNguyenLieuChon = BUS.NguyenLieu_BUS.SelectNguyenLieu_fromNCC(_NCC.MaNCC, _MaNH);
                 for (int i = 0; i < lsNguyenLieuChon.Count; i++)
                 {
                     ListViewItem lvItem = new ListViewItem(new String[] { (i + 1).ToString(), lsNguyenLieuChon[i].TenNL });
@@ -179,7 +186,7 @@ namespace GUI.QuanLyKho
                                 {
                                     for (int i = 0; i < lsNguyenLieuChon.Count; i++)
                                     {
-                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC);
+                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC,0);
                                     }
                                     this.DialogResult = DialogResult.OK;
                                 }
@@ -199,7 +206,7 @@ namespace GUI.QuanLyKho
                                     BUS.ChiTietNCC_BUS.DeleteChiTietNCC(_NCC.MaNCC);
                                     for (int i = 0; i < lsNguyenLieuChon.Count; i++)
                                     {
-                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC);
+                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, lsNguyenLieuChon[i].Gia);
                                     }
                                     this.DialogResult = DialogResult.OK;
                                 }
@@ -208,11 +215,6 @@ namespace GUI.QuanLyKho
             }
         #endregion
 
-            private void txtDiemUuTien_TextChanged(object sender, EventArgs e)
-            {
-                if (txtDiemUuTien.Text.Trim().Length == 0)
-                    txtDiemUuTien.Text = "0";
-            }
 
     }
 }

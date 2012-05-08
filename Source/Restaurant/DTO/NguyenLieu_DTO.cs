@@ -10,10 +10,15 @@ namespace DTO
         private int _MaNL;
         private String _MaNH;
         private String _TenNL;
-        private double _Gia;
         private String _DonVi;
         private int _SoLuongTon;
+        private double _Gia;
 
+        public double Gia
+        {
+            get { return _Gia; }
+            set { _Gia = value; }
+        }
         public int MaNL
         {
             get { return _MaNL; }
@@ -28,11 +33,6 @@ namespace DTO
         {
             get { return _TenNL; }
             set { _TenNL = value; }
-        }
-        public double Gia
-        {
-            get { return _Gia; }
-            set { _Gia = value; }
         }
         public String DonVi
         {
@@ -50,9 +50,9 @@ namespace DTO
             _MaNL = -1;
             _MaNH = null;
             _TenNL = null;
-            _Gia = 0;
             _DonVi = null;
             _SoLuongTon = 0;
+            _Gia = 0;
         }
     }
 }

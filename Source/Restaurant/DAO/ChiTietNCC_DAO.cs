@@ -14,16 +14,17 @@ namespace DAO
         {
             provider = new Provider();
         }
-        public int InsertChiTietNCC(int MaNL,int MaNCC)
+        public int InsertChiTietNCC(int MaNL,int MaNCC,double Gia)
         {
             String store = "InsertChiTietNCC";
             SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@Gia", SqlDbType.Float);
 
             cm.Parameters["@MaNL"].Value = MaNL;
             cm.Parameters["@MaNCC"].Value = MaNCC;
-
+            cm.Parameters["@Gia"].Value = Gia;
             return  provider.ExecuteInsertUpdateDelete(cm);
         }
         public void DeleteChiTietNCC_fromNCC(int MaNCC)
@@ -44,7 +45,9 @@ namespace DAO
                 ChiTietNCC_DTO ct = new ChiTietNCC_DTO();
                 ct.MaNL= (int)row.ItemArray[0];
                 ct.MaNCC = (int)row.ItemArray[1];
-                ct.TenNL = row.ItemArray[2].ToString();
+                ct.Gia = (Double)row.ItemArray[2];
+                ct.TenNL = row.ItemArray[3].ToString();
+                ct.TenNCC = row.ItemArray[4].ToString();
                 ls.Add(ct);
             }
             return ls;
