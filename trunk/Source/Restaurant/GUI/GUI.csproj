@@ -388,7 +388,6 @@
     <None Include="Resources\add_16.png" />
     <Content Include="Resources\BanDangSuDung_64.png" />
     <Content Include="Resources\BanDuocDat_64.png" />
-    <Content Include="Resources\BanTrong_128.png" />
     <None Include="Resources\close_32.png" />
     <None Include="Resources\delete_32.png" />
     <None Include="Resources\delete_24.png" />
@@ -397,6 +396,8 @@
     <None Include="Resources\close_24.png" />
     <None Include="Resources\BieuDo_16.png" />
     <None Include="Resources\BanTrong_64.png" />
+    <Content Include="Resources\BieuDo_64.png" />
+    <Content Include="Resources\down_32.png" />
     <Content Include="Resources\HCMUS.ico" />
     <None Include="Resources\ok_32.png" />
     <None Include="Resources\add_32.png" />
@@ -413,6 +414,10 @@
     <None Include="Resources\navigate-right48.png" />
     <None Include="Resources\navigate-left32.png" />
     <None Include="Resources\navigate-left48.png" />
+    <Content Include="Resources\left_32.png" />
+    <Content Include="Resources\right_32.png" />
+    <Content Include="Resources\statistics_16.png" />
+    <Content Include="Resources\statistics_32.png" />
     <Content Include="Resources\temp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
