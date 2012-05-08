@@ -53,13 +53,11 @@ namespace DAO
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
             cm.Parameters.Add("@TenNL", SqlDbType.NVarChar);
-            cm.Parameters.Add("@Gia", SqlDbType.Float);
             cm.Parameters.Add("@DonVi", SqlDbType.NVarChar);
             cm.Parameters.Add("@SoLuongTon", SqlDbType.Int);
 
             cm.Parameters["@MaNH"].Value = nl.MaNH;
             cm.Parameters["@TenNL"].Value = nl.TenNL;
-            cm.Parameters["@Gia"].Value = nl.Gia;
             cm.Parameters["@DonVi"].Value = nl.DonVi;
             cm.Parameters["@SoLuongTon"].Value = nl.SoLuongTon;
 
@@ -86,7 +84,6 @@ namespace DAO
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
             cm.Parameters.Add("@TenNL", SqlDbType.NVarChar);
-            cm.Parameters.Add("@Gia", SqlDbType.Float);
             cm.Parameters.Add("@DonVi", SqlDbType.NVarChar);
             cm.Parameters.Add("@SoLuongTon", SqlDbType.Int);
 
@@ -94,7 +91,6 @@ namespace DAO
             cm.Parameters["@MaNL"].Value = nl.MaNL;
             cm.Parameters["@MaNH"].Value = nl.MaNH;
             cm.Parameters["@TenNL"].Value = nl.TenNL;
-            cm.Parameters["@Gia"].Value = nl.Gia;
             cm.Parameters["@DonVi"].Value = nl.DonVi;
             cm.Parameters["@SoLuongTon"].Value = nl.SoLuongTon;
 
@@ -110,9 +106,16 @@ namespace DAO
                 nguyenlieu.MaNL = (int)row.ItemArray[0];
                 nguyenlieu.MaNH = row.ItemArray[1].ToString();
                 nguyenlieu.TenNL = row.ItemArray[2].ToString();
-                nguyenlieu.Gia = (double)row.ItemArray[3];
-                nguyenlieu.DonVi = row.ItemArray[4].ToString();
-                nguyenlieu.SoLuongTon = (int)row.ItemArray[5];
+                nguyenlieu.DonVi = row.ItemArray[3].ToString();
+                nguyenlieu.SoLuongTon = (int)row.ItemArray[4];
+                try
+                {
+                    nguyenlieu.Gia = (double)row.ItemArray[5];
+                }
+                catch (Exception)
+                {
+                    nguyenlieu.Gia = 0;
+                }
                 ls.Add(nguyenlieu);
             }
             return ls;

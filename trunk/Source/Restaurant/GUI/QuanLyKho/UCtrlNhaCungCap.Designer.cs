@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
-            "1",
-            "aa"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
-            "2",
-            "bb"}, -1);
             this.btnThemNCC = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatNCC = new DevExpress.XtraEditors.SimpleButton();
             this.groupNhaCungCap = new DevExpress.XtraEditors.GroupControl();
@@ -47,15 +41,22 @@
             this.btnXoaNCC = new DevExpress.XtraEditors.SimpleButton();
             this.btnInDSNCC = new DevExpress.XtraEditors.SimpleButton();
             this.groupNL = new DevExpress.XtraEditors.GroupControl();
-            this.lvNguyenLieu = new System.Windows.Forms.ListView();
-            this.cl_STT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cl_nguyenlieu = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gridNguyenLieu = new DevExpress.XtraGrid.GridControl();
+            this.gvNguyenLieu = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TeNL = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Gia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtGia = new DevExpress.XtraEditors.TextEdit();
+            this.btnCapNhatGia = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupNhaCungCap)).BeginInit();
             this.groupNhaCungCap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNCC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvNCC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNL)).BeginInit();
             this.groupNL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvNguyenLieu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnThemNCC
@@ -197,46 +198,99 @@
             // 
             this.groupNL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupNL.Controls.Add(this.lvNguyenLieu);
+            this.groupNL.Controls.Add(this.gridNguyenLieu);
             this.groupNL.Location = new System.Drawing.Point(3, 12);
             this.groupNL.Name = "groupNL";
             this.groupNL.Size = new System.Drawing.Size(325, 424);
             this.groupNL.TabIndex = 25;
             this.groupNL.Text = "Nguyên Liệu Từ Nhà Cung Cấp";
             // 
-            // lvNguyenLieu
+            // gridNguyenLieu
             // 
-            this.lvNguyenLieu.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cl_STT,
-            this.cl_nguyenlieu});
-            this.lvNguyenLieu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvNguyenLieu.FullRowSelect = true;
-            this.lvNguyenLieu.GridLines = true;
-            this.lvNguyenLieu.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12});
-            this.lvNguyenLieu.Location = new System.Drawing.Point(2, 22);
-            this.lvNguyenLieu.MultiSelect = false;
-            this.lvNguyenLieu.Name = "lvNguyenLieu";
-            this.lvNguyenLieu.Size = new System.Drawing.Size(321, 400);
-            this.lvNguyenLieu.TabIndex = 0;
-            this.lvNguyenLieu.UseCompatibleStateImageBehavior = false;
-            this.lvNguyenLieu.View = System.Windows.Forms.View.Details;
+            this.gridNguyenLieu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridNguyenLieu.Location = new System.Drawing.Point(2, 22);
+            this.gridNguyenLieu.MainView = this.gvNguyenLieu;
+            this.gridNguyenLieu.Name = "gridNguyenLieu";
+            this.gridNguyenLieu.Size = new System.Drawing.Size(321, 400);
+            this.gridNguyenLieu.TabIndex = 2;
+            this.gridNguyenLieu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvNguyenLieu});
             // 
-            // cl_STT
+            // gvNguyenLieu
             // 
-            this.cl_STT.Text = "STT";
-            this.cl_STT.Width = 30;
+            this.gvNguyenLieu.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.Highlight;
+            this.gvNguyenLieu.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gvNguyenLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.STT,
+            this.TeNL,
+            this.Gia});
+            this.gvNguyenLieu.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gvNguyenLieu.GridControl = this.gridNguyenLieu;
+            this.gvNguyenLieu.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "TenNhaHang", null, "")});
+            this.gvNguyenLieu.Name = "gvNguyenLieu";
+            this.gvNguyenLieu.OptionsBehavior.Editable = false;
+            this.gvNguyenLieu.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvNguyenLieu.OptionsView.ShowGroupPanel = false;
+            this.gvNguyenLieu.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvNguyenLieu_FocusedRowChanged);
             // 
-            // cl_nguyenlieu
+            // STT
             // 
-            this.cl_nguyenlieu.Text = "Nguyên Liệu";
-            this.cl_nguyenlieu.Width = 284;
+            this.STT.Caption = "STT";
+            this.STT.FieldName = "STT";
+            this.STT.MaxWidth = 30;
+            this.STT.Name = "STT";
+            this.STT.Visible = true;
+            this.STT.VisibleIndex = 0;
+            this.STT.Width = 30;
+            // 
+            // TeNL
+            // 
+            this.TeNL.Caption = "Nguyên Liệu";
+            this.TeNL.FieldName = "TenNL";
+            this.TeNL.Name = "TeNL";
+            this.TeNL.Visible = true;
+            this.TeNL.VisibleIndex = 1;
+            this.TeNL.Width = 122;
+            // 
+            // Gia
+            // 
+            this.Gia.Caption = "Giá";
+            this.Gia.FieldName = "Gia";
+            this.Gia.MaxWidth = 160;
+            this.Gia.Name = "Gia";
+            this.Gia.Visible = true;
+            this.Gia.VisibleIndex = 2;
+            this.Gia.Width = 145;
+            // 
+            // txtGia
+            // 
+            this.txtGia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtGia.Location = new System.Drawing.Point(131, 444);
+            this.txtGia.Name = "txtGia";
+            this.txtGia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.txtGia.Properties.Appearance.Options.UseFont = true;
+            this.txtGia.Size = new System.Drawing.Size(195, 24);
+            this.txtGia.TabIndex = 26;
+            this.txtGia.EditValueChanged += new System.EventHandler(this.txtGia_EditValueChanged);
+            // 
+            // btnCapNhatGia
+            // 
+            this.btnCapNhatGia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCapNhatGia.Image = global::GUI.Properties.Resources.save_16;
+            this.btnCapNhatGia.Location = new System.Drawing.Point(5, 442);
+            this.btnCapNhatGia.Name = "btnCapNhatGia";
+            this.btnCapNhatGia.Size = new System.Drawing.Size(120, 26);
+            this.btnCapNhatGia.TabIndex = 27;
+            this.btnCapNhatGia.Text = "Cập Nhật Giá";
+            this.btnCapNhatGia.Click += new System.EventHandler(this.btnCapNhatGia_Click);
             // 
             // UCtrlNhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnCapNhatGia);
+            this.Controls.Add(this.txtGia);
             this.Controls.Add(this.groupNL);
             this.Controls.Add(this.btnThemNCC);
             this.Controls.Add(this.btnCapNhatNCC);
@@ -251,6 +305,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvNCC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNL)).EndInit();
             this.groupNL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvNguyenLieu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,8 +327,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn clDiaChi;
         private DevExpress.XtraGrid.Columns.GridColumn clDiemUuTien;
         private DevExpress.XtraEditors.GroupControl groupNL;
-        private System.Windows.Forms.ListView lvNguyenLieu;
-        private System.Windows.Forms.ColumnHeader cl_STT;
-        private System.Windows.Forms.ColumnHeader cl_nguyenlieu;
+        private DevExpress.XtraEditors.TextEdit txtGia;
+        private DevExpress.XtraEditors.SimpleButton btnCapNhatGia;
+        private DevExpress.XtraGrid.GridControl gridNguyenLieu;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvNguyenLieu;
+        private DevExpress.XtraGrid.Columns.GridColumn STT;
+        private DevExpress.XtraGrid.Columns.GridColumn TeNL;
+        private DevExpress.XtraGrid.Columns.GridColumn Gia;
     }
 }

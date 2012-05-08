@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.clTenNL = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnThemNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.clDonVi = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,8 +42,6 @@
             this.btnDatHang = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtTenNguyenLieu = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txtGia = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtDonVi = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -55,7 +52,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvNguyenLieu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNguyenLieu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTon.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -71,20 +67,11 @@
             this.clTenNL.VisibleIndex = 1;
             this.clTenNL.Width = 122;
             // 
-            // clGia
-            // 
-            this.clGia.Caption = "Giá";
-            this.clGia.FieldName = "Gia";
-            this.clGia.Name = "clGia";
-            this.clGia.Visible = true;
-            this.clGia.VisibleIndex = 2;
-            this.clGia.Width = 122;
-            // 
             // btnThemNguyenLieu
             // 
             this.btnThemNguyenLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThemNguyenLieu.Image = global::GUI.Properties.Resources.add_16;
-            this.btnThemNguyenLieu.Location = new System.Drawing.Point(336, 442);
+            this.btnThemNguyenLieu.Location = new System.Drawing.Point(541, 442);
             this.btnThemNguyenLieu.Name = "btnThemNguyenLieu";
             this.btnThemNguyenLieu.Size = new System.Drawing.Size(60, 26);
             this.btnThemNguyenLieu.TabIndex = 19;
@@ -95,7 +82,7 @@
             // 
             this.btnCapNhatNguyenLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCapNhatNguyenLieu.Image = global::GUI.Properties.Resources.save_16;
-            this.btnCapNhatNguyenLieu.Location = new System.Drawing.Point(402, 442);
+            this.btnCapNhatNguyenLieu.Location = new System.Drawing.Point(607, 442);
             this.btnCapNhatNguyenLieu.Name = "btnCapNhatNguyenLieu";
             this.btnCapNhatNguyenLieu.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatNguyenLieu.TabIndex = 22;
@@ -108,7 +95,7 @@
             this.clDonVi.FieldName = "DonVi";
             this.clDonVi.Name = "clDonVi";
             this.clDonVi.Visible = true;
-            this.clDonVi.VisibleIndex = 3;
+            this.clDonVi.VisibleIndex = 2;
             this.clDonVi.Width = 122;
             // 
             // groupNguyenLieu
@@ -141,7 +128,6 @@
             this.gvNguyenLieu.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.clSTT,
             this.clTenNL,
-            this.clGia,
             this.clDonVi,
             this.clSoLuongTon});
             this.gvNguyenLieu.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
@@ -170,14 +156,14 @@
             this.clSoLuongTon.FieldName = "SoLuongTon";
             this.clSoLuongTon.Name = "clSoLuongTon";
             this.clSoLuongTon.Visible = true;
-            this.clSoLuongTon.VisibleIndex = 4;
+            this.clSoLuongTon.VisibleIndex = 3;
             this.clSoLuongTon.Width = 125;
             // 
             // btnXoaNguyenLieu
             // 
             this.btnXoaNguyenLieu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXoaNguyenLieu.Image = global::GUI.Properties.Resources.delete_16;
-            this.btnXoaNguyenLieu.Location = new System.Drawing.Point(497, 442);
+            this.btnXoaNguyenLieu.Location = new System.Drawing.Point(702, 442);
             this.btnXoaNguyenLieu.Name = "btnXoaNguyenLieu";
             this.btnXoaNguyenLieu.Size = new System.Drawing.Size(61, 26);
             this.btnXoaNguyenLieu.TabIndex = 24;
@@ -188,7 +174,7 @@
             // 
             this.btnInDanhMucNL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInDanhMucNL.Image = global::GUI.Properties.Resources.print_24;
-            this.btnInDanhMucNL.Location = new System.Drawing.Point(564, 442);
+            this.btnInDanhMucNL.Location = new System.Drawing.Point(769, 442);
             this.btnInDanhMucNL.Name = "btnInDanhMucNL";
             this.btnInDanhMucNL.Size = new System.Drawing.Size(106, 26);
             this.btnInDanhMucNL.TabIndex = 23;
@@ -198,7 +184,8 @@
             // btnDatHang
             // 
             this.btnDatHang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDatHang.Location = new System.Drawing.Point(684, 442);
+            this.btnDatHang.Enabled = false;
+            this.btnDatHang.Location = new System.Drawing.Point(344, 442);
             this.btnDatHang.Name = "btnDatHang";
             this.btnDatHang.Size = new System.Drawing.Size(191, 26);
             this.btnDatHang.TabIndex = 23;
@@ -206,7 +193,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(26, 50);
+            this.labelControl1.Location = new System.Drawing.Point(26, 51);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(80, 13);
             this.labelControl1.TabIndex = 0;
@@ -219,24 +206,9 @@
             this.txtTenNguyenLieu.Size = new System.Drawing.Size(173, 20);
             this.txtTenNguyenLieu.TabIndex = 1;
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(26, 95);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(15, 13);
-            this.labelControl2.TabIndex = 0;
-            this.labelControl2.Text = "Giá";
-            // 
-            // txtGia
-            // 
-            this.txtGia.Location = new System.Drawing.Point(117, 92);
-            this.txtGia.Name = "txtGia";
-            this.txtGia.Size = new System.Drawing.Size(173, 20);
-            this.txtGia.TabIndex = 1;
-            // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(26, 140);
+            this.labelControl3.Location = new System.Drawing.Point(75, 83);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(31, 13);
             this.labelControl3.TabIndex = 0;
@@ -244,14 +216,14 @@
             // 
             // txtDonVi
             // 
-            this.txtDonVi.Location = new System.Drawing.Point(117, 137);
+            this.txtDonVi.Location = new System.Drawing.Point(117, 79);
             this.txtDonVi.Name = "txtDonVi";
             this.txtDonVi.Size = new System.Drawing.Size(173, 20);
             this.txtDonVi.TabIndex = 1;
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(26, 185);
+            this.labelControl4.Location = new System.Drawing.Point(37, 115);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(69, 13);
             this.labelControl4.TabIndex = 0;
@@ -259,7 +231,7 @@
             // 
             // txtSoLuongTon
             // 
-            this.txtSoLuongTon.Location = new System.Drawing.Point(117, 182);
+            this.txtSoLuongTon.Location = new System.Drawing.Point(117, 111);
             this.txtSoLuongTon.Name = "txtSoLuongTon";
             this.txtSoLuongTon.Size = new System.Drawing.Size(173, 20);
             this.txtSoLuongTon.TabIndex = 1;
@@ -270,13 +242,11 @@
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.txtDonVi);
             this.groupControl1.Controls.Add(this.labelControl3);
-            this.groupControl1.Controls.Add(this.txtGia);
-            this.groupControl1.Controls.Add(this.labelControl2);
             this.groupControl1.Controls.Add(this.txtTenNguyenLieu);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Location = new System.Drawing.Point(3, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(327, 240);
+            this.groupControl1.Size = new System.Drawing.Size(323, 159);
             this.groupControl1.TabIndex = 25;
             this.groupControl1.Text = "Thông Tin Nguyên Liệu";
             // 
@@ -299,7 +269,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvNguyenLieu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenNguyenLieu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonVi.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuongTon.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
@@ -312,7 +281,6 @@
         #endregion
 
         private DevExpress.XtraGrid.Columns.GridColumn clTenNL;
-        private DevExpress.XtraGrid.Columns.GridColumn clGia;
         private DevExpress.XtraEditors.SimpleButton btnThemNguyenLieu;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatNguyenLieu;
         private DevExpress.XtraGrid.Columns.GridColumn clDonVi;
@@ -326,8 +294,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn clSTT;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtTenNguyenLieu;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit txtGia;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txtDonVi;
         private DevExpress.XtraEditors.LabelControl labelControl4;
