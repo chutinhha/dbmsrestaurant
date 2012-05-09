@@ -21,6 +21,16 @@ namespace DAO
 
             return ConvertToList(provider.ExecSelectCommand(cm));
         }
+        public List<NhaCungCap_DTO> SelectNhaCungCap_fromNH(String MaNH)
+        {
+            String store = "SelectNhaCungCap_fromNH";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+
+            cm.Parameters["@MaNH"].Value = MaNH;
+            return ConvertToList(provider.ExecSelectCommand(cm));
+        }
+
         public int InsertNhaCungCap(NhaCungCap_DTO ncc)
         {
             String store = "InsertNhaCungCap";

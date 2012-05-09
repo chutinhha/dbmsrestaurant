@@ -14,6 +14,11 @@ namespace BUS
             NhaCungCap_DAO NhaCungCapDAO = new NhaCungCap_DAO();
             return NhaCungCapDAO.SelectNhaCungCap();
         }
+        public static List<NhaCungCap_DTO> SelectNhaCungCap_fromNH(String MaNH)
+        {
+            NhaCungCap_DAO NhaCungCapDAO = new NhaCungCap_DAO();
+            return NhaCungCapDAO.SelectNhaCungCap_fromNH(MaNH);
+        }
         public static int InsertNhaCungCap(NhaCungCap_DTO ncc)
         {
             NhaCungCap_DAO NhaCungCapDAO = new NhaCungCap_DAO();
