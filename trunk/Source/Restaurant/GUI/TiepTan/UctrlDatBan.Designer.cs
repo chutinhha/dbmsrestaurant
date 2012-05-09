@@ -385,7 +385,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
         private System.Windows.Forms.ComboBox cbbTenKhachHang;
     }
 }

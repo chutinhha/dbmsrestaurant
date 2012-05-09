@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using BUS;
 using DTO;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace GUI.TiepTan
