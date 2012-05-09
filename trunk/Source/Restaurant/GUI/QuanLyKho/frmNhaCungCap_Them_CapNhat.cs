@@ -12,15 +12,17 @@ namespace GUI.QuanLyKho
 {
     public partial class frmNhaCungCap_Them_CapNhat : DevExpress.XtraEditors.XtraForm
     {
-        private int _flag;   //flag = 1 :Them , flag =2 : Cap nhat
-        private String _MaNH;
-        private String TenNCC_old;
-        private NhaCungCap_DTO _NCC;
-        private List<NguyenLieu_DTO> lsNguyenLieu;
-        private List<NguyenLieu_DTO> _lsNguyenLieuChon;
-        
+        #region " Thuoc Tinh & properties "
+            private int _flag;   //flag = 1 :Them , flag =2 : Cap nhat
+            private String _MaNH;
+            private String TenNCC_old;
+            private NhaCungCap_DTO _NCC;
+            private List<NguyenLieu_DTO> lsNguyenLieu;
+            private List<NguyenLieu_DTO> _lsNguyenLieuChon;
+        #endregion
+
         #region " Properties "
-            public int Flag
+        public int Flag
             {
                 get { return _flag; }
                 set { _flag = value; }
@@ -42,27 +44,29 @@ namespace GUI.QuanLyKho
             }
         #endregion
 
-        public frmNhaCungCap_Them_CapNhat()
+        #region " Khoi Tao "
+            public frmNhaCungCap_Them_CapNhat()
         {
             InitializeComponent();
             _NCC = new NhaCungCap_DTO();
         }
+        #endregion
 
-        private void frmNhaCungCap_Them_CapNhat_Load(object sender, EventArgs e)
-        {
-            if (_flag == 1)
-            {
-                txtDiemUuTien.Text = "0";
-                txtDiemUuTien.Enabled = false;
-            }
-            else
-                txtDiemUuTien.Text = _NCC.DiemUuTien.ToString();
-            TenNCC_old=_NCC.TenNCC;
-            txtTenNCC.Text = _NCC.TenNCC;
-            txtDiaChi.Text = _NCC.DiaChi;
-            txtSoDienThoai.Text = _NCC.sdt;
-        }
         #region " Control Event "
+            private void frmNhaCungCap_Them_CapNhat_Load(object sender, EventArgs e)
+            {
+                if (_flag == 1)
+                {
+                    txtDiemUuTien.Text = "0";
+                    txtDiemUuTien.Enabled = false;
+                }
+                else
+                    txtDiemUuTien.Text = _NCC.DiemUuTien.ToString();
+                TenNCC_old = _NCC.TenNCC;
+                txtTenNCC.Text = _NCC.TenNCC;
+                txtDiaChi.Text = _NCC.DiaChi;
+                txtSoDienThoai.Text = _NCC.sdt;
+            }
             private void btnThemNL_Click(object sender, EventArgs e)
             {
                 ThemNL();

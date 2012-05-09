@@ -57,23 +57,22 @@ namespace GUI.QuanLyKho
             }
             private void btnDatHang_Click(object sender, EventArgs e)
             {
-                frmDatHang _frmDatHang = new frmDatHang();
-                _frmDatHang.Show();
+                ThemHDDatHang();
             }
 
             private void btnCapNhatDatHang_Click(object sender, EventArgs e)
             {
-
+                CapNhatHDDatHang();
             }
 
             private void btnXoaDatHang_Click(object sender, EventArgs e)
             {
-
+                XoaHDDatHang();
             }
 
             private void btnHuyDatHang_Click(object sender, EventArgs e)
             {
-
+                
             }
         #endregion
 
@@ -116,6 +115,21 @@ namespace GUI.QuanLyKho
             }
             public void ThemHDDatHang()
             {
+                frmDatHang_ChonNCC _frmChonNCC = new frmDatHang_ChonNCC();
+                frmDatHang _frmDatHang = new frmDatHang();
+                _frmChonNCC.MaNH = _MaNH;
+                _frmDatHang.MaNH = _MaNH;
+                _frmChonNCC.LoadDanhSachNCC();
+                while (_frmChonNCC.ShowDialog() == DialogResult.OK)
+                {
+                    _frmDatHang.MaNCC = _frmChonNCC.MaNCC;
+                    _frmDatHang.LoadNguyenLieu();
+                    _frmDatHang.TenNCC = lsDatHang[index_DatHang].TenNCC;
+                    if (_frmDatHang.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
             }
             public void XoaHDDatHang()
             {
