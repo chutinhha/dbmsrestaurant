@@ -13,33 +13,37 @@ namespace GUI.QuanLyKho
 {
     public partial class UCtrlNguyenLieu : DevExpress.XtraEditors.XtraUserControl
     {
-        String _MaNH;
-        public String MaNH
-        {
-            get { return _MaNH; }
-            set { _MaNH = value; }
-        }
+        #region " Thuoc Tinh & Properties"
+            String _MaNH;
+            public String MaNH
+            {
+                get { return _MaNH; }
+                set { _MaNH = value; }
+            }
 
-        String TenNL;
-        List<NguyenLieu_DTO> lsNguyenLieu;
-        DataTable dtNguyenLieu ;
-        int indexNL;
-        
+            String TenNL;
+            List<NguyenLieu_DTO> lsNguyenLieu;
+            DataTable dtNguyenLieu ;
+            int indexNL;
+        #endregion
+
+        #region "Khoi tao UserControl"
         public UCtrlNguyenLieu()
-        {
-            InitializeComponent();
-            lsNguyenLieu = new List<NguyenLieu_DTO>();
-            dtNguyenLieu = new DataTable();
-            indexNL = -1;
+            {
+                InitializeComponent();
+                lsNguyenLieu = new List<NguyenLieu_DTO>();
+                dtNguyenLieu = new DataTable();
+                indexNL = -1;
 
-            dtNguyenLieu.Columns.Add("STT", System.Type.GetType("System.Int16"));
-            dtNguyenLieu.Columns.Add("TenNL", System.Type.GetType("System.String"));
-            dtNguyenLieu.Columns.Add("DonVi", System.Type.GetType("System.String"));
-            dtNguyenLieu.Columns.Add("SoLuongTon", System.Type.GetType("System.Int32"));
-        }
+                dtNguyenLieu.Columns.Add("STT", System.Type.GetType("System.Int16"));
+                dtNguyenLieu.Columns.Add("TenNL", System.Type.GetType("System.String"));
+                dtNguyenLieu.Columns.Add("DonVi", System.Type.GetType("System.String"));
+                dtNguyenLieu.Columns.Add("SoLuongTon", System.Type.GetType("System.Int32"));
+            }
+        #endregion
 
         #region "Event Control"
-            private void UCtrlNguyenLieu_Load(object sender, EventArgs e)
+        private void UCtrlNguyenLieu_Load(object sender, EventArgs e)
         {
         }
 

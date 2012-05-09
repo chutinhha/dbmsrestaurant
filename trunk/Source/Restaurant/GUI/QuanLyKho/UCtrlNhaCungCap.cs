@@ -12,38 +12,43 @@ namespace GUI.QuanLyKho
 {
     public partial class UCtrlNhaCungCap : DevExpress.XtraEditors.XtraUserControl
     {
-        String _MaNH;
-        public String MaNH
-        {
-            get { return _MaNH; }
-            set { _MaNH = value; }
-        }
+        #region " Thuoc tinh && Properties "
+            String _MaNH;
+            public String MaNH
+            {
+                get { return _MaNH; }
+                set { _MaNH = value; }
+            }
 
-        List<NhaCungCap_DTO> lsNCC;
-        List<NguyenLieu_DTO> lsNguyenLieu;
-        DataTable dtNCC;
-        DataTable dtNL;
-        int indexNCC ;
-        int index_NL;
-        public UCtrlNhaCungCap()
-        {
-            InitializeComponent();
-            lsNCC = new List<NhaCungCap_DTO>();
-            dtNCC = new DataTable();            
-            indexNCC = -1;            
-            dtNCC.Columns.Add("STT", System.Type.GetType("System.Int16"));
-            dtNCC.Columns.Add("TenNCC", System.Type.GetType("System.String"));
-            dtNCC.Columns.Add("sdt", System.Type.GetType("System.String"));
-            dtNCC.Columns.Add("DiaChi", System.Type.GetType("System.String"));
-            dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
+            List<NhaCungCap_DTO> lsNCC;
+            List<NguyenLieu_DTO> lsNguyenLieu;
+            DataTable dtNCC;
+            DataTable dtNL;
+            int indexNCC ;
+            int index_NL;
+        #endregion
 
-            lsNguyenLieu = new List<NguyenLieu_DTO>();
-            dtNL = new DataTable();
-            index_NL = -1;
-            dtNL.Columns.Add("STT", System.Type.GetType("System.Int16"));
-            dtNL.Columns.Add("TenNL", System.Type.GetType("System.String"));
-            dtNL.Columns.Add("Gia", System.Type.GetType("System.Double"));
-        }
+        #region " Khoi tao "
+            public UCtrlNhaCungCap()
+            {
+                InitializeComponent();
+                lsNCC = new List<NhaCungCap_DTO>();
+                dtNCC = new DataTable();            
+                indexNCC = -1;            
+                dtNCC.Columns.Add("STT", System.Type.GetType("System.Int16"));
+                dtNCC.Columns.Add("TenNCC", System.Type.GetType("System.String"));
+                dtNCC.Columns.Add("sdt", System.Type.GetType("System.String"));
+                dtNCC.Columns.Add("DiaChi", System.Type.GetType("System.String"));
+                dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
+
+                lsNguyenLieu = new List<NguyenLieu_DTO>();
+                dtNL = new DataTable();
+                index_NL = -1;
+                dtNL.Columns.Add("STT", System.Type.GetType("System.Int16"));
+                dtNL.Columns.Add("TenNL", System.Type.GetType("System.String"));
+                dtNL.Columns.Add("Gia", System.Type.GetType("System.Double"));
+            }
+        #endregion
 
         #region " Event Control "
             private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -62,7 +67,6 @@ namespace GUI.QuanLyKho
             }
             private void btnThemNCC_Click(object sender, EventArgs e)
             {
-
                 ThemNhaCungCap();
             }
             private void btnCapNhatNCC_Click(object sender, EventArgs e)
@@ -75,8 +79,8 @@ namespace GUI.QuanLyKho
             }
             private void btnCapNhatGia_Click(object sender, EventArgs e)
             {
-                //UPDATE
-                //BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
+                BUS.ChiTietNCC_BUS.UpdateChiTietNCC(lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
+                LoadNguyenLieu(lsNCC[indexNCC].MaNCC);
             }
 
             private void txtGia_EditValueChanged(object sender, EventArgs e)
@@ -86,29 +90,7 @@ namespace GUI.QuanLyKho
             }
             private void btnInDSNCC_Click(object sender, EventArgs e)
             {
-                 DevExpress.XtraPrinting.PrintingSystem printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
-                DevExpress.XtraPrinting.PrintableComponentLink printLink = new DevExpress.XtraPrinting.PrintableComponentLink();
-                try
-                {
-                    //Set to landscape
-                    printingSystem1.PageSettings.Landscape = true;
-
-                    this.Cursor = Cursors.WaitCursor;
-                    printLink.Component = this.gridNCC;
-                    printLink.CreateDocument(printingSystem1);
-
-                    printingSystem1.PreviewRibbonFormEx.ShowDialog();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    this.Cursor = Cursors.Default;
-                    printingSystem1.Dispose();
-                    printLink.Dispose();
-                }
+                InDSNCC();
             }
         #endregion
 
@@ -188,6 +170,32 @@ namespace GUI.QuanLyKho
                BUS.NhaCungCap_BUS.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
                lsNCC.RemoveAt(indexNCC);
                dtNCC.Rows.RemoveAt(indexNCC);
+            }
+            public void InDSNCC()
+            {
+                DevExpress.XtraPrinting.PrintingSystem printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
+                DevExpress.XtraPrinting.PrintableComponentLink printLink = new DevExpress.XtraPrinting.PrintableComponentLink();
+                try
+                {
+                    //Set to landscape
+                    printingSystem1.PageSettings.Landscape = true;
+
+                    this.Cursor = Cursors.WaitCursor;
+                    printLink.Component = this.gridNCC;
+                    printLink.CreateDocument(printingSystem1);
+
+                    printingSystem1.PreviewRibbonFormEx.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    this.Cursor = Cursors.Default;
+                    printingSystem1.Dispose();
+                    printLink.Dispose();
+                }
             }
         #endregion
 

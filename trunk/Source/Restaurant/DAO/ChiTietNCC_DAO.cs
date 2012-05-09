@@ -27,6 +27,19 @@ namespace DAO
             cm.Parameters["@Gia"].Value = Gia;
             return  provider.ExecuteInsertUpdateDelete(cm);
         }
+        public int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
+        {
+            String store = "UpdateChiTietNCC";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaNL", SqlDbType.Int);
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@Gia", SqlDbType.Float);
+
+            cm.Parameters["@MaNL"].Value = MaNL;
+            cm.Parameters["@MaNCC"].Value = MaNCC;
+            cm.Parameters["@Gia"].Value = Gia;
+            return provider.ExecuteInsertUpdateDelete(cm);
+        }
         public void DeleteChiTietNCC_fromNCC(int MaNCC)
         {
             String store = "DeleteChiTietNCC_fromNCC";

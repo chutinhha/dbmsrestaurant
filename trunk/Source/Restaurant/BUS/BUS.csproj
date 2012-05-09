@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BanAn_BUS.cs" />
+    <Compile Include="ChiTietDatHang_BUS.cs" />
     <Compile Include="ChiTietNCC_BUS.cs" />
     <Compile Include="DatBan_BUS.cs" />
     <Compile Include="DatHang_BUS.cs" />
