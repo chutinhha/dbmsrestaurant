@@ -8,25 +8,20 @@ namespace DTO
     public class ChiTietDatHang_DTO
     {
         private int _MaHoaDon;
-        private int _MaNCC;
-        private int _MaNguyenLieu;
+        private int _MaNL;
         private int _SoLuong;
         private double _Gia;
+        private String _TenNL;
 
         public int MaHoaDon
         {
             get { return _MaHoaDon; }
             set { _MaHoaDon = value; }
         }
-        public int MaNCC
+        public int MaNL
         {
-            get { return _MaNCC; }
-            set { _MaNCC = value; }
-        }
-        public int MaNguyenLieu
-        {
-            get { return _MaNguyenLieu; }
-            set { _MaNguyenLieu = value; }
+            get { return _MaNL; }
+            set { _MaNL = value; }
         }
         public int SoLuong
         {
@@ -37,6 +32,11 @@ namespace DTO
         {
             get { return _Gia; }
             set { _Gia = value; }
+        }
+        public String TenNL
+        {
+            get { return _TenNL; }
+            set { _TenNL = value; }
         }
     }
 }

@@ -31,9 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatHang));
             this.groupDMNguyenLieu = new DevExpress.XtraEditors.GroupControl();
             this.lstbDanhMucNguyenLieu = new DevExpress.XtraEditors.ListBoxControl();
-            this.groupDSNCC = new DevExpress.XtraEditors.GroupControl();
-            this.lstbDanhSachNCC = new DevExpress.XtraEditors.ListBoxControl();
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lbNguyenLieu = new DevExpress.XtraEditors.LabelControl();
             this.txtNguyenLieu = new DevExpress.XtraEditors.TextEdit();
             this.lbNCC = new DevExpress.XtraEditors.LabelControl();
@@ -53,10 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupDMNguyenLieu)).BeginInit();
             this.groupDMNguyenLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstbDanhMucNguyenLieu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupDSNCC)).BeginInit();
-            this.groupDSNCC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstbDanhSachNCC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNguyenLieu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNCC.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).BeginInit();
@@ -86,38 +79,6 @@
             this.lstbDanhMucNguyenLieu.Name = "lstbDanhMucNguyenLieu";
             this.lstbDanhMucNguyenLieu.Size = new System.Drawing.Size(198, 360);
             this.lstbDanhMucNguyenLieu.TabIndex = 0;
-            // 
-            // groupDSNCC
-            // 
-            this.groupDSNCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupDSNCC.Controls.Add(this.lstbDanhSachNCC);
-            this.groupDSNCC.Location = new System.Drawing.Point(274, 28);
-            this.groupDSNCC.Name = "groupDSNCC";
-            this.groupDSNCC.Size = new System.Drawing.Size(197, 384);
-            this.groupDSNCC.TabIndex = 0;
-            this.groupDSNCC.Text = "Danh Sách Nhà Cung Cấp";
-            // 
-            // lstbDanhSachNCC
-            // 
-            this.lstbDanhSachNCC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstbDanhSachNCC.Location = new System.Drawing.Point(2, 22);
-            this.lstbDanhSachNCC.Name = "lstbDanhSachNCC";
-            this.lstbDanhSachNCC.Size = new System.Drawing.Size(193, 360);
-            this.lstbDanhSachNCC.TabIndex = 1;
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureEdit1.EditValue = global::GUI.Properties.Resources.navigate_right48;
-            this.pictureEdit1.Location = new System.Drawing.Point(220, 201);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
-            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.pictureEdit1.Size = new System.Drawing.Size(50, 66);
-            this.pictureEdit1.TabIndex = 1;
             // 
             // lbNguyenLieu
             // 
@@ -278,8 +239,6 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.groupDSDatHang);
-            this.Controls.Add(this.pictureEdit1);
-            this.Controls.Add(this.groupDSNCC);
             this.Controls.Add(this.groupDMNguyenLieu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDatHang";
@@ -288,10 +247,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupDMNguyenLieu)).EndInit();
             this.groupDMNguyenLieu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstbDanhMucNguyenLieu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupDSNCC)).EndInit();
-            this.groupDSNCC.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstbDanhSachNCC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNguyenLieu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNCC.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).EndInit();
@@ -309,10 +264,7 @@
         #endregion
 
         private DevExpress.XtraEditors.GroupControl groupDMNguyenLieu;
-        private DevExpress.XtraEditors.GroupControl groupDSNCC;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.ListBoxControl lstbDanhMucNguyenLieu;
-        private DevExpress.XtraEditors.ListBoxControl lstbDanhSachNCC;
         private DevExpress.XtraEditors.LabelControl lbNguyenLieu;
         private DevExpress.XtraEditors.TextEdit txtNguyenLieu;
         private DevExpress.XtraEditors.LabelControl lbNCC;
