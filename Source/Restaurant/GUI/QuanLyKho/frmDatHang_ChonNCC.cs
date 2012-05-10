@@ -13,6 +13,7 @@ namespace GUI.QuanLyKho
     public partial class frmDatHang_ChonNCC : DevExpress.XtraEditors.XtraForm
     {
         String _MaNH;
+
         int index_NCC;
         public String MaNH
         {
@@ -27,11 +28,19 @@ namespace GUI.QuanLyKho
         }
         List<NhaCungCap_DTO> lsNCC;
         List<NguyenLieu_DTO> lsNguyenLieu;
+        DataTable dtNCC;
         public frmDatHang_ChonNCC()
         {
             InitializeComponent();
 
             lsNCC = new List<NhaCungCap_DTO>();
+            dtNCC = new DataTable();
+            index_NCC = -1;
+            dtNCC.Columns.Add("STT", System.Type.GetType("System.Int16"));
+            dtNCC.Columns.Add("TenNCC", System.Type.GetType("System.String"));
+            dtNCC.Columns.Add("sdt", System.Type.GetType("System.String"));
+            dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
+
             lsNguyenLieu = new List<NguyenLieu_DTO>();
         }
 
@@ -43,28 +52,28 @@ namespace GUI.QuanLyKho
         {
             this.Close();
         }
-        private void lvNCC_SelectedIndexChanged(object sender, EventArgs e)
+        private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            try
-            {
-                index_NCC = lvNCC.SelectedIndices[0];
-                LoadDanhSachNL(lsNCC[index_NCC].MaNCC);
-            }
-            catch (Exception)
-            {
-            }
-           
+            index_NCC = gvNCC.GetSelectedRows()[0];
+            LoadDanhSachNL(lsNCC[index_NCC].MaNCC);
         }
         #region " Cac ham xu ly "
             public void LoadDanhSachNCC()
-            {
-                lvNCC.Items.Clear();
+            {               
+                gridNCC.DataSource = null;
+                dtNCC.Rows.Clear();
                 lsNCC = BUS.NhaCungCap_BUS.SelectNhaCungCap_fromNH(_MaNH);
+
                 for (int i = 0; i < lsNCC.Count; i++)
                 {
-                    ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), lsNCC[i].TenNCC, lsNCC[i].DiemUuTien.ToString() });
-                    lvNCC.Items.Add(item);                       
+                    DataRow row = dtNCC.NewRow();
+                    row["STT"] = i + 1;
+                    row["TenNCC"] = lsNCC[i].TenNCC;
+                    row["sdt"] = lsNCC[i].sdt;
+                    row["DiemUuTien"] = lsNCC[i].DiemUuTien;
+                    dtNCC.Rows.Add(row);
                 }
+                gridNCC.DataSource = dtNCC;
             }
             public void LoadDanhSachNL(int MaNCC)
             {
@@ -77,7 +86,6 @@ namespace GUI.QuanLyKho
                 }
             }
         #endregion 
-
 
     }
 }
