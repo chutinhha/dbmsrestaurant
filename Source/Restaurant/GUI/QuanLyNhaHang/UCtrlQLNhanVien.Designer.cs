@@ -32,7 +32,7 @@
             this.btnThemNV = new DevExpress.XtraEditors.SimpleButton();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnThemLoaiNV = new DevExpress.XtraEditors.SimpleButton();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView_LoaiNV = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridLoaiNV = new DevExpress.XtraGrid.GridControl();
             this.btnCapNhatNV = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatLoaiNV = new DevExpress.XtraEditors.SimpleButton();
@@ -40,7 +40,7 @@
             this.btnXoaLoaiNV = new DevExpress.XtraEditors.SimpleButton();
             this.groupNhanVien = new DevExpress.XtraEditors.GroupControl();
             this.gridNhanVien = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView_NhanVien = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,12 +48,12 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupLoaiNV = new DevExpress.XtraEditors.GroupControl();
             this.btnInDSNV = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNhanVien)).BeginInit();
             this.groupNhanVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_NhanVien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupLoaiNV)).BeginInit();
             this.groupLoaiNV.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,7 @@
             this.btnThemNV.Size = new System.Drawing.Size(60, 26);
             this.btnThemNV.TabIndex = 10;
             this.btnThemNV.Text = "Thêm";
+            this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
             // 
             // gridColumn2
             // 
@@ -93,26 +94,27 @@
             this.btnThemLoaiNV.Size = new System.Drawing.Size(60, 26);
             this.btnThemLoaiNV.TabIndex = 11;
             this.btnThemLoaiNV.Text = "Thêm";
+            this.btnThemLoaiNV.Click += new System.EventHandler(this.btnThemLoaiNV_Click);
             // 
-            // gridView1
+            // gridView_LoaiNV
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_LoaiNV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2});
-            this.gridView1.GridControl = this.gridLoaiNV;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView_LoaiNV.GridControl = this.gridLoaiNV;
+            this.gridView_LoaiNV.Name = "gridView_LoaiNV";
+            this.gridView_LoaiNV.OptionsView.ShowGroupPanel = false;
             // 
             // gridLoaiNV
             // 
             this.gridLoaiNV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridLoaiNV.Location = new System.Drawing.Point(2, 22);
-            this.gridLoaiNV.MainView = this.gridView1;
+            this.gridLoaiNV.MainView = this.gridView_LoaiNV;
             this.gridLoaiNV.Name = "gridLoaiNV";
             this.gridLoaiNV.Size = new System.Drawing.Size(321, 400);
             this.gridLoaiNV.TabIndex = 0;
             this.gridLoaiNV.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridView_LoaiNV});
             // 
             // btnCapNhatNV
             // 
@@ -123,6 +125,7 @@
             this.btnCapNhatNV.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatNV.TabIndex = 13;
             this.btnCapNhatNV.Text = "Cập Nhật";
+            this.btnCapNhatNV.Click += new System.EventHandler(this.btnCapNhatNV_Click);
             // 
             // btnCapNhatLoaiNV
             // 
@@ -133,6 +136,7 @@
             this.btnCapNhatLoaiNV.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatLoaiNV.TabIndex = 12;
             this.btnCapNhatLoaiNV.Text = "Cập Nhật";
+            this.btnCapNhatLoaiNV.Click += new System.EventHandler(this.btnCapNhatLoaiNV_Click);
             // 
             // btnXoaNV
             // 
@@ -143,6 +147,7 @@
             this.btnXoaNV.Size = new System.Drawing.Size(61, 26);
             this.btnXoaNV.TabIndex = 15;
             this.btnXoaNV.Text = "Xóa";
+            this.btnXoaNV.Click += new System.EventHandler(this.btnXoaNV_Click);
             // 
             // btnXoaLoaiNV
             // 
@@ -153,6 +158,7 @@
             this.btnXoaLoaiNV.Size = new System.Drawing.Size(61, 26);
             this.btnXoaLoaiNV.TabIndex = 16;
             this.btnXoaLoaiNV.Text = "Xóa";
+            this.btnXoaLoaiNV.Click += new System.EventHandler(this.btnXoaLoaiNV_Click);
             // 
             // groupNhanVien
             // 
@@ -170,63 +176,63 @@
             // 
             this.gridNhanVien.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridNhanVien.Location = new System.Drawing.Point(2, 22);
-            this.gridNhanVien.MainView = this.gridView2;
+            this.gridNhanVien.MainView = this.gridView_NhanVien;
             this.gridNhanVien.Name = "gridNhanVien";
             this.gridNhanVien.Size = new System.Drawing.Size(539, 400);
             this.gridNhanVien.TabIndex = 0;
             this.gridNhanVien.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gridView_NhanVien});
             // 
-            // gridView2
+            // gridView_NhanVien
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_NhanVien.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn8});
-            this.gridView2.GridControl = this.gridNhanVien;
-            this.gridView2.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            this.gridView_NhanVien.GridControl = this.gridNhanVien;
+            this.gridView_NhanVien.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "TenNhaHang", null, "")});
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView_NhanVien.Name = "gridView_NhanVien";
+            this.gridView_NhanVien.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Tên Món";
-            this.gridColumn3.FieldName = "TenMon";
+            this.gridColumn3.Caption = "Mã Nhân Viên";
+            this.gridColumn3.FieldName = "MaNV";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "Loại Món";
-            this.gridColumn4.FieldName = "TenLoai";
+            this.gridColumn4.Caption = "Tên Nhân Viên";
+            this.gridColumn4.FieldName = "TenNV";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
             // 
             // gridColumn5
             // 
-            this.gridColumn5.Caption = "Giá";
-            this.gridColumn5.FieldName = "Gia";
+            this.gridColumn5.Caption = "Nhà Hàng";
+            this.gridColumn5.FieldName = "TenNH";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 2;
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "Đơn Vị Tính";
-            this.gridColumn6.FieldName = "DonViTinh";
+            this.gridColumn6.Caption = "Loại Nhân Viên";
+            this.gridColumn6.FieldName = "TenLoai";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 3;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "Tên Nhà Hàng";
-            this.gridColumn8.FieldName = "TenNH";
+            this.gridColumn8.Caption = "Số Điện Thoại";
+            this.gridColumn8.FieldName = "sdt";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 4;
@@ -267,12 +273,13 @@
             this.Controls.Add(this.btnInDSNV);
             this.Name = "UCtrlQLNhanVien";
             this.Size = new System.Drawing.Size(880, 480);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.Load += new System.EventHandler(this.UCtrlQLNhanVien_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiNV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiNV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNhanVien)).EndInit();
             this.groupNhanVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNhanVien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_NhanVien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupLoaiNV)).EndInit();
             this.groupLoaiNV.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -285,7 +292,7 @@
         private DevExpress.XtraEditors.SimpleButton btnThemNV;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.SimpleButton btnThemLoaiNV;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_LoaiNV;
         private DevExpress.XtraGrid.GridControl gridLoaiNV;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatNV;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatLoaiNV;
@@ -293,7 +300,7 @@
         private DevExpress.XtraEditors.SimpleButton btnXoaLoaiNV;
         private DevExpress.XtraEditors.GroupControl groupNhanVien;
         private DevExpress.XtraGrid.GridControl gridNhanVien;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_NhanVien;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
