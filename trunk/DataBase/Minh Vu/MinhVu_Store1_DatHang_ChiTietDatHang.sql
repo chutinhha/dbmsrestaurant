@@ -24,6 +24,13 @@ begin
 	where MaHoaDon=@MaHoaDon
 end
 GO
+create proc DeleteChiTietDatHang_fromNL  @MaNL int
+as
+begin
+	delete ChiTietDatHang
+	where MaNL = @MaNL
+end
+GO
 --------------- table DatHang --------------------------------
 create proc SelectDatHang  @MaNH nchar(10)
 as

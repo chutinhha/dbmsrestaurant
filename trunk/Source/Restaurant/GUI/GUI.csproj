@@ -132,6 +132,18 @@
     <Compile Include="QuanLyNhaHang\Form_ThemLoaiMonAn.Designer.cs">
       <DependentUpon>Form_ThemLoaiMonAn.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyNhaHang\Form_ThemLoaiNhanVien.cs" />
+    <Compile Include="QuanLyNhaHang\Form_ThemLoaiNhanVien.Designer.cs">
+      <DependentUpon>Form_ThemLoaiNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhaHang\Form_ThemMonAn.cs" />
+    <Compile Include="QuanLyNhaHang\Form_ThemMonAn.Designer.cs">
+      <DependentUpon>Form_ThemMonAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNhaHang\Form_ThemNhanVien.cs" />
+    <Compile Include="QuanLyNhaHang\Form_ThemNhanVien.Designer.cs">
+      <DependentUpon>Form_ThemNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyNhaHang\UCtrlQLDanhSachBanAn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -329,6 +341,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNhaHang\Form_ThemLoaiMonAn.resx">
       <DependentUpon>Form_ThemLoaiMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhaHang\Form_ThemLoaiNhanVien.resx">
+      <DependentUpon>Form_ThemLoaiNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhaHang\Form_ThemMonAn.resx">
+      <DependentUpon>Form_ThemMonAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNhaHang\Form_ThemNhanVien.resx">
+      <DependentUpon>Form_ThemNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNhaHang\UCtrlQLDanhSachBanAn.resx">
       <DependentUpon>UCtrlQLDanhSachBanAn.cs</DependentUpon>
