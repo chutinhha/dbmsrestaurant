@@ -244,6 +244,7 @@
             this.btnCapNhatMonAn.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatMonAn.TabIndex = 6;
             this.btnCapNhatMonAn.Text = "Cập Nhật";
+            this.btnCapNhatMonAn.Click += new System.EventHandler(this.btnCapNhatMonAn_Click);
             // 
             // btnThemMonAn
             // 
@@ -254,6 +255,7 @@
             this.btnThemMonAn.Size = new System.Drawing.Size(60, 26);
             this.btnThemMonAn.TabIndex = 5;
             this.btnThemMonAn.Text = "Thêm";
+            this.btnThemMonAn.Click += new System.EventHandler(this.btnThemMonAn_Click);
             // 
             // btnInDSMA
             // 
