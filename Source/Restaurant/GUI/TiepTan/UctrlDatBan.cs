@@ -21,18 +21,21 @@ namespace GUI.TiepTan
         int row;
         string maBanChon;
         bool flag = false;
-        
+        DatBan_BUS DatBan_BUS = new DatBan_BUS();
 
         public UctrlDatBan()
         {
             InitializeComponent();
         }
-
-        private void UctrlDatBan_Load(object sender, EventArgs e)
+        public void LoadForm()
         {
             DocBanTrong();
-            CreateStructTable();
             DocKhachHang();
+        }
+        private void UctrlDatBan_Load(object sender, EventArgs e)
+        {
+            CreateStructTable();
+            LoadForm();
         }
         
 

@@ -10,6 +10,7 @@ using DTO;
 using BUS;
 using System.Data.SqlClient;
 
+
 namespace GUI.TiepTan
 {
     public partial class UCtrlDSDatBan : DevExpress.XtraEditors.XtraUserControl
@@ -22,6 +23,7 @@ namespace GUI.TiepTan
         public deleDatBan DatBan;
         //
         public DatBan_DTO banDat = new DatBan_DTO();
+        DatBan_BUS DatBan_BUS = new DatBan_BUS();
         //
         string maBan;
         string khuVuc;
@@ -39,11 +41,9 @@ namespace GUI.TiepTan
             if(DatBan!=null)
                 DatBan();
         }
-
-        private void UCtrlDSDatBan_Load(object sender, EventArgs e)
+        public void LoadForm()
         {
-            
-            CreateStructTable();
+           // CreateStructTable();
             tbDatBan.Rows.Clear();
             DocDatBan();
             gridDSDatBan.DataSource = tbDatBan;
@@ -51,6 +51,11 @@ namespace GUI.TiepTan
             DocLoaiBan();
             DocDanhSachBan();
             DocTinhTrang();
+        }
+        private void UCtrlDSDatBan_Load(object sender, EventArgs e)
+        {
+            CreateStructTable();
+            LoadForm();
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -119,6 +124,7 @@ namespace GUI.TiepTan
         }
         private void DocKhuVuc()
         {
+            cbbKhuVuc.Items.Clear();
             cbbKhuVuc.Items.Add("All");
             DataTable tb = DatBan_BUS.DocKhuVuc(maNH); ;
             for (int i = 0; i < tb.Rows.Count; i++)
@@ -129,6 +135,7 @@ namespace GUI.TiepTan
         }
         private void DocLoaiBan()
         {
+            cbB_LoaiBan.Items.Clear();
             cbB_LoaiBan.Items.Add("All");
             DataTable tb = DatBan_BUS.DocLoaiBan();
             for (int i = 0; i < tb.Rows.Count; i++)
@@ -137,6 +144,7 @@ namespace GUI.TiepTan
         }
         private void DocDanhSachBan()
         {
+            cbB_MaBan.Items.Clear();
             cbB_MaBan.Items.Add("All");
             DataTable tb = DatBan_BUS.DocBanTrong(maNH);
             for (int i = 0; i < tb.Rows.Count; i++)
@@ -145,6 +153,7 @@ namespace GUI.TiepTan
         }
         private void DocTinhTrang()
         {
+            cbB_TinhTrang.Items.Clear();
             cbB_TinhTrang.Items.Add("All");
             cbB_TinhTrang.Items.Add("Chưa đến ăn");
             cbB_TinhTrang.Items.Add("Đã đến ăn");
