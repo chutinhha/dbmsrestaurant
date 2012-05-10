@@ -17,6 +17,7 @@ namespace GUI.TiepTan
     {
         public DatBan_DTO bandat = new DatBan_DTO();
         public int flag = 0;
+        DatBan_BUS DatBan_BUS = new DatBan_BUS();
         public FrmCapNhatBanDat()
         {
             InitializeComponent();
