@@ -104,7 +104,7 @@ namespace GUI.QuanLyKho
                 for (int i = 0; i < lsNCC.Count; i++)
                 {
                     DataRow row = dtNCC.NewRow();
-                    row["Stt"] = i + 1;
+                    row["STT"] = i + 1;
                     row["TenNCC"] = lsNCC[i].TenNCC;
                     row["sdt"] = lsNCC[i].sdt;
                     row["DiaChi"] = lsNCC[i].DiaChi;
