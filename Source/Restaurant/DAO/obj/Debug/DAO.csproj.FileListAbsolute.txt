@@ -1,0 +1,7 @@
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DAO.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DAO.pdb
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DTO.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\bin\Debug\DTO.pdb
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\obj\Debug\ResolveAssemblyReference.cache
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\obj\Debug\DAO.dll
+E:\MyProgram\Dropbox\SVN\Project Restaurant\Source\Restaurant\DAO\obj\Debug\DAO.pdb
