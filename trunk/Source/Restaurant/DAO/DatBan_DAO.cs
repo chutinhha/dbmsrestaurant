@@ -10,10 +10,12 @@ namespace DAO
 {
     public class DatBan_DAO
     {
+        Provider provider = new Provider();
+     //   SqlCommand cm;
         //đọc danh sách bàn Ăn
-        public static DataTable DocBanTrong(int maNH)
+        public DataTable DocBanTrong(int maNH)
         {
-            Provider provider = new Provider();
+            
             DataTable tb = new DataTable();
             string sql = "select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
             sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
@@ -21,34 +23,70 @@ namespace DAO
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
-        public static DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
+      
+        public DataTable DocBanAn(int maNH,string khuvuc,string succhua)
         {
-            Provider provider = new Provider();
+            //Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = " select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
+            sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH+khuvuc+succhua;
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand(cm);
+        }
+        public DataTable DocBanAn_CommitTran(int maNH, string khuvuc, string succhua)
+        {
+            //Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "begin tran select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
+            sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua + " commit tran";
+            provider.cm = provider.CreateCommandStringSql (sql);
+            return provider.ExecSelectCommand_CloseConnection(provider.cm);
+        }
+        public DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
+        {
+           // Provider provider = new Provider();
             DataTable tb = new DataTable();
             string sql = "select MaBan from DatBan where MaNH="+maNH+" and ThoiGianDen='"+timeNow.ToString("MM/dd/yyyy")+"' and TrangThai=0";
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
-
-        public static DataTable DocKhuVuc(int maNH)
+        public DataTable DSBanDatTrongNgay_BeginTran(int maNH, DateTime timeNow)
         {
-            Provider provider = new Provider();
+            // Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "begin tran select MaBan from DatBan where MaNH=" + maNH + " and ThoiGianDen='" + timeNow.ToString("MM/dd/yyyy") + "' and TrangThai=0";
+            provider.cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand_OpenConnection(provider.cm);
+        }
+        public DataTable DocSucChua(int maNH)
+        {
+           // Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "select MaLoai,SucChua from LoaiBan";
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand(cm);
+        }
+        public DataTable DocKhuVuc(int maNH)
+        {
+           // Provider provider = new Provider();
             DataTable tb = new DataTable();
             string sql = "select MaKhuVuc,TenKhuVuc from KhuVuc where MaNH="+maNH;
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
-        public static DataTable DocLoaiBan()
+        public DataTable DocLoaiBan()
         {
-            Provider provider = new Provider();
+           // Provider provider = new Provider();
             DataTable tb = new DataTable();
             string sql = "select MaLoai,SucChua from LoaiBan ";
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
-        public static DataTable DocDanhSachBanDat(int maNH, string maBan, string khuVuc, string sucChua, string trangThai)
+        public DataTable DocDanhSachBanDat(int maNH, string maBan, string khuVuc, string sucChua, string trangThai)
         {
-            Provider provider = new Provider();
+           // Provider provider = new Provider();
             DataTable tb = new DataTable();
             string sql = "select b.MaBan,TenKhachHang,TenKhuVuc,ViTri,SucChua,ThoiGianDat,ThoiGianDen,d.MaKhachHang, ";
             sql += " case(d.TrangThai) when 0 then N'Chưa đến ăn' else N'Đã đến ăn' end as TrangThai";
@@ -57,9 +95,9 @@ namespace DAO
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
-        public static int ThemDatBan(DatBan_DTO bandat)
+        public int ThemDatBan(DatBan_DTO bandat)
         {
-            Provider provider = new Provider();
+           // Provider provider = new Provider();
             DateTime t = DateTime.Parse(bandat.ThoiGianDen);
             string thoigianden = t.ToString("MM/dd/yyyy");
             string sql = string.Format("insert into DatBan values({0},{1},{2},'{3}',{4},'{5}',{6})",bandat.MaNH,bandat.MaBan,bandat.MaKhachHang,DateTime.Now.ToString("MM/dd/yyyy"),0,thoigianden,bandat.Sdt);//0 ban dat
@@ -68,26 +106,26 @@ namespace DAO
         }
 
         //cập nhật lại tình trang bên bảng Bàn Ăn khi có 1 bàn được đặt
-        public static int UpdateTrangThaiBanAn(int MaBan,int trangthai)
+        public int UpdateTrangThaiBanAn(int MaBan,int trangthai)
         {
-            Provider provider = new Provider();
+           // Provider provider = new Provider();
             DataTable tb = new DataTable();
             string sql = "update BanAn set TrangThai=" + trangthai +" where MaBan=" + MaBan;
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
-        public static int UpdateTrangThaiDatBan(int maNH,int MaBan, int trangthai,DateTime thoigianden)
+        public int UpdateTrangThaiDatBan(int maNH,int MaBan, int trangthai,DateTime thoigianden)
         {
-            Provider provider = new Provider();
+          //  Provider provider = new Provider();
             DataTable tb = new DataTable();
             string sql = "update DatBan set TrangThai=" + trangthai + " where MaBan=" + MaBan+" and maNH="+maNH+" and ThoiGianDen='"+thoigianden.ToString("MM/dd/yyyy")+"'";
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
         //cập nhật lại thông tin đặt bàn.Nếu có Trạng thái là Đã đến ăn thì cập nhật Tình Trạng bên bảng Bàn Ăn luôn.
-        public static int UpdateDatBan(DatBan_DTO bandat,string maban,string maNH,string thoiGianden)
+        public int UpdateDatBan(DatBan_DTO bandat,string maban,string maNH,string thoiGianden)
         {
-            Provider provider = new Provider();
+           // Provider provider = new Provider();
             DateTime t = DateTime.Parse(bandat.ThoiGianDen);
             string timeDen = t.ToString("MM/dd/yyyy");
             //t = DateTime.Parse(bandat.ThoiGianDat);
@@ -104,15 +142,15 @@ namespace DAO
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             if (trangthai == 1)//khi da den an
             {
-                string sqlBanAn = "update BanAn set TrangThai=2 where MaBan="+bandat.MaBan;
+                string sqlBanAn = "update BanAn set TrangThai=1 where MaBan="+bandat.MaBan;
                 SqlCommand cmBanAn = provider.CreateCommandStringSql(sqlBanAn);
                 provider.ExecuteInsertUpdateDelete(cmBanAn);
             }
             return provider.ExecuteInsertUpdateDelete(cm);
         }
-        public static int XoaDatBan(DatBan_DTO bandat)
+        public int XoaDatBan(DatBan_DTO bandat)
         {
-            Provider provider = new Provider();
+           // Provider provider = new Provider();
             DateTime t = DateTime.Parse(bandat.ThoiGianDen);
             string thoigianden = t.ToString("MM/dd/yyyy");
             string sql = string.Format("delete from DatBan where MaNH={0} and MaBan={1} and ThoiGianDen='{2}' ",bandat.MaNH,bandat.MaBan,thoigianden);//0 ban dat
