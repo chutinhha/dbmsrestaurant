@@ -121,17 +121,20 @@ namespace GUI
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
             //goi them cai ham load trong UCtrl_TiepTan_XepBan o day
             // trong UCtrl_TiepTan_XepBan viet them 1 ham de load du lieu
+            UCtrl_TiepTan_XepBan.LoadForm();
         }
         private void barBtn_TiepTan_DatBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             //TiepTan.frmDatBan _frmDatBan = new TiepTan.frmDatBan();
             //_frmDatBan.Show();
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DatBan);
+            UCtrl_TiepTan_DatBan.LoadForm();
         }
 
         private void barBtn_TiepTan_DSDatBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DSDatBan);
+            UCtrl_TiepTan_DSDatBan.LoadForm();
         }
         //------------
         private void DatBan()
