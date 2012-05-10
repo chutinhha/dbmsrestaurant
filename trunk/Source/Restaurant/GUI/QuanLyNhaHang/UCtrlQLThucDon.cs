@@ -14,6 +14,8 @@ namespace GUI.QuanLyNhaHang
     public partial class UCtrlQLThucDon : DevExpress.XtraEditors.XtraUserControl
     {
         DatBan_DTO banDat = new DatBan_DTO();
+        int chon;
+        int[] ArrayMaMon;
         public UCtrlQLThucDon()
         {
             InitializeComponent();
@@ -23,6 +25,17 @@ namespace GUI.QuanLyNhaHang
         {
             gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
             gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+
+            DataTable dt = MonAn_BUS.DocMonAn();
+            if (dt.Rows.Count > 0)
+            {
+                ArrayMaMon = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    ArrayMaMon[i] = (int)dr[0];
+                }
+            }
         }
 
         private void btnThemLoaiMA_Click(object sender, EventArgs e)
@@ -32,6 +45,7 @@ namespace GUI.QuanLyNhaHang
         private void btnCapNhatLoaiMA_Click(object sender, EventArgs e)
         {
             CapNhatLoaiMonAn();
+            gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
         }
         private void btnXoaLoaiMA_Click(object sender, EventArgs e)
         {
@@ -103,7 +117,10 @@ namespace GUI.QuanLyNhaHang
             {
                 if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có muốn xóa dòng thứ " + (index[0] + 1).ToString(), "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    string maloai = gridView_MonAn.GetRowCellValue(index[0], "MaMon").ToString();
+                    chon = index[0];
+                    int maMon = ArrayMaMon[chon];
+                    flag = MonAn_BUS.XoaMonAn(maMon);
+
                     
                 }
                 if (flag != 0)
@@ -116,6 +133,61 @@ namespace GUI.QuanLyNhaHang
 
         #endregion
 
+        private void btnThemMonAn_Click(object sender, EventArgs e)
+        {
+            ThemMonAn();
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+        }
+
+        public void ThemMonAn()
+        {
+            Form_ThemMonAn openf = new Form_ThemMonAn();
+            if (openf.ShowDialog() == DialogResult.OK)
+            {
+                MonAn_BUS.ThemMonAn(openf.MonAn);
+                gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+            }
+
+        }
+
+        private void btnCapNhatMonAn_Click(object sender, EventArgs e)
+        {
+            CapNhatMonAn();
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+        }
+
+        public void CapNhatMonAn()
+        {
+            int flag = 0;
+            int[] index = gridView_MonAn.GetSelectedRows();
+            if (index.Length > 0)
+            {
+                string tenMon = gridView_MonAn.GetRowCellValue(index[0], "TenMon").ToString();
+                //  string maloai = gridView_MonAn.GetRowCellValue(index[0], "LoaiMon").ToString();
+                string gia = gridView_MonAn.GetRowCellValue(index[0], "Gia").ToString();
+                string donvitinh = gridView_MonAn.GetRowCellValue(index[0], "DonViTinh").ToString();
+                //  string maNH = gridView_MonAn.GetRowCellValue(index[0], "MaNH").ToString();
+
+                if (tenMon != null)
+                {
+                    DTO.MonAn_DTO MonAn = new MonAn_DTO();
+                    MonAn.TenMonAn = tenMon;
+                    //  MonAn.MaLoai = maloai;
+                    MonAn.Gia = gia;
+                    MonAn.DonViTinh = donvitinh;
+                    //  MonAn.MaNhaHang = maNH;        dang can nhac
+
+                    chon = index[0];
+                    int tt = ArrayMaMon[chon];
+                    flag = MonAn_BUS.CapNhatMonAn(MonAn, tt);
+                }
+            }
+            if (flag != 0)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
 
     }
 }
