@@ -14,6 +14,7 @@ namespace DAO
         {
             provider = new Provider();
         }
+      
         public List<DatHang_DTO> SelectDatHang(String MaNH)
         {
             String store = "SelectDatHang";
@@ -22,6 +23,50 @@ namespace DAO
 
             cm.Parameters["@maNH"].Value = MaNH;
             return  ConvertToList(provider.ExecSelectCommand(cm));
+        }
+        public int InsertDatHang(DatHang_DTO dh)
+        {
+            String store = "InsertDatHang";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            cm.Parameters.Add("@TongTien", SqlDbType.Float);
+            cm.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
+            cm.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
+            cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+
+            cm.Parameters["@MaNCC"].Value = dh.MaNCC;
+            cm.Parameters["@MaNH"].Value = dh.MaNH;
+            cm.Parameters["@TongTien"].Value = dh.TongTien;
+            cm.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
+            cm.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
+            cm.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+
+            provider.ExecuteInsertUpdateDelete(cm);
+            return (int)cm.Parameters["@MaHoaDon"].Value;
+        }
+        public int UpdatetDatHang(DatHang_DTO dh)
+        {
+            String store = "UpdateDatHang";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            cm.Parameters.Add("@TongTien", SqlDbType.Float);
+            cm.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
+            cm.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
+            cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+
+            cm.Parameters["@MaHoaDon"].Value = dh.MaHoaDon;
+            cm.Parameters["@MaNCC"].Value = dh.MaNCC;
+            cm.Parameters["@MaNH"].Value = dh.MaNH;
+            cm.Parameters["@TongTien"].Value = dh.TongTien;
+            cm.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
+            cm.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
+            cm.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+
+            return provider.ExecuteInsertUpdateDelete(cm);
         }
         private List<DatHang_DTO> ConvertToList(DataTable dt)
         {
@@ -32,7 +77,7 @@ namespace DAO
                 ttdh.MaHoaDon = (int)row.ItemArray[0];
                 ttdh.MaNCC = (int)row.ItemArray[1];
                 ttdh.MaNH = row.ItemArray[2].ToString();
-                ttdh.ThanhTien = (double)row.ItemArray[3];
+                ttdh.TongTien = (double)row.ItemArray[3];
                 try
                 {
                     ttdh.ThoiGianDat = DateTime.Parse(row.ItemArray[4].ToString());

@@ -35,15 +35,28 @@ namespace DAO
             cm.Parameters["@MaNH"].Value = MaNH;
             return ConvertToList(provider.ExecSelectCommand(cm));
         }
-        public List<NguyenLieu_DTO> SelectNguyenLieu_Free(int MaNCC,String MaNH)
+        public List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietNCC(int MaNCC,String MaNH)
         {
-            String store = "SelectNguyenLieu_Free";
+            String store = "SelectNguyenLieu_NotIn_ChiTietNCC";
             SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@maNH"].Value = MaNH;
+            return ConvertToList(provider.ExecSelectCommand(cm));
+        }
+        public List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon,int MaNCC,String MaNH)
+        {
+            String store = "SelectNguyenLieu_NotIn_ChiTietDatHang";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+
+            cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
+             cm.Parameters["@MaNCC"].Value = MaNCC;
+            cm.Parameters["@MaNH"].Value = MaNH;
             return ConvertToList(provider.ExecSelectCommand(cm));
         }
         public int InsertNguyenLieu(NguyenLieu_DTO nl)

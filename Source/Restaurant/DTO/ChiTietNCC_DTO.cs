@@ -13,6 +13,7 @@ namespace DTO
         private String _TenNCC;
         private double _Gia;
 
+
         public double Gia
         {
             get { return _Gia; }
@@ -37,6 +38,8 @@ namespace DTO
         {
             get { return _TenNCC; }
             set { _TenNCC = value; }
-        }        
+        }
+
+
     }
 }

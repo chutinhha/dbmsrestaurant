@@ -95,7 +95,7 @@ namespace GUI.QuanLyKho
                 if (flag == 1)
                     lsNguyenLieu =BUS.NguyenLieu_BUS.SelectNguyenLieu(_MaNH);
                 else
-                    lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_Free(_NCC.MaNCC,_MaNH);
+                    lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietNCC(_NCC.MaNCC,_MaNH);
 
                 Load_lvNguyenLieu();
             }
@@ -157,19 +157,19 @@ namespace GUI.QuanLyKho
                 this.DialogResult = DialogResult.None;
                 if (txtTenNCC.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show("Bạn chưa nhập Tên Nhà Cung Cấp!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập Tên Nhà Cung Cấp!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtTenNCC.Focus();
                 }
                 else
                     if (txtDiaChi.Text.Trim().Length == 0)
                     {
-                        MessageBox.Show("Bạn chưa nhập Địa Chỉ!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập Địa Chỉ!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtDiaChi.Focus();
                     }
                     else
                         if (txtSoDienThoai.Text.Trim().Length == 0)
                         {
-                            MessageBox.Show("Bạn chưa nhập Số Điện Thoại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập Số Điện Thoại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtSoDienThoai.Focus();
                         }
                         else
@@ -182,7 +182,7 @@ namespace GUI.QuanLyKho
                                 _NCC.MaNCC = BUS.NhaCungCap_BUS.InsertNhaCungCap(_NCC);
                                 if (_NCC.MaNCC == 0)
                                 {
-                                    MessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     txtTenNCC.Focus();
                                     this.DialogResult = DialogResult.None;
                                 }
@@ -201,7 +201,7 @@ namespace GUI.QuanLyKho
                                 int flag = BUS.NhaCungCap_BUS.UpdatetNhaCungCap(TenNCC_old,_NCC);
                                 if (flag == 0)
                                 {
-                                    MessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     txtTenNCC.Focus();
                                     this.DialogResult = DialogResult.None;
                                 }

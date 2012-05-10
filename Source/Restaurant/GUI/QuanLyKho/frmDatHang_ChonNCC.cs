@@ -26,6 +26,12 @@ namespace GUI.QuanLyKho
             get { return _MaNCC; }
             set { _MaNCC = value; }
         }
+        String _TenNCC;
+        public String TenNCC
+        {
+            get { return _TenNCC; }
+            set { _TenNCC = value; }
+        }
         List<NhaCungCap_DTO> lsNCC;
         List<NguyenLieu_DTO> lsNguyenLieu;
         DataTable dtNCC;
@@ -47,10 +53,11 @@ namespace GUI.QuanLyKho
         private void btnDongY_Click(object sender, EventArgs e)
         {
             _MaNCC = lsNCC[index_NCC].MaNCC;
+            _TenNCC = lsNCC[index_NCC].TenNCC;
         }
         private void btnHuy_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
         private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
             this.groupDMNguyenLieu = new DevExpress.XtraEditors.GroupControl();
@@ -48,8 +46,6 @@
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDMNguyenLieu)).BeginInit();
             this.groupDMNguyenLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupDSNCC)).BeginInit();
@@ -61,8 +57,6 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.dateEdit1);
-            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.btnHuy);
             this.panelControl1.Controls.Add(this.btnDongY);
             this.panelControl1.Controls.Add(this.groupDMNguyenLieu);
@@ -73,29 +67,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(805, 433);
             this.panelControl1.TabIndex = 0;
-            // 
-            // dateEdit1
-            // 
-            this.dateEdit1.EditValue = new System.DateTime(2012, 5, 10, 9, 15, 57, 231);
-            this.dateEdit1.Location = new System.Drawing.Point(167, 399);
-            this.dateEdit1.Name = "dateEdit1";
-            this.dateEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.dateEdit1.Properties.Appearance.Options.UseFont = true;
-            this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit1.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.dateEdit1.Size = new System.Drawing.Size(146, 23);
-            this.dateEdit1.TabIndex = 41;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Location = new System.Drawing.Point(15, 400);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(139, 17);
-            this.labelControl1.TabIndex = 40;
-            this.labelControl1.Text = "Thời Gian Giao Hàng";
             // 
             // btnHuy
             // 
@@ -274,9 +245,6 @@
             this.Text = "Chọn Nhà Cung Cấp";
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.VistaTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupDMNguyenLieu)).EndInit();
             this.groupDMNguyenLieu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupDSNCC)).EndInit();
@@ -300,8 +268,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private DevExpress.XtraEditors.GroupControl groupDSNCC;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
-        private DevExpress.XtraEditors.DateEdit dateEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraGrid.GridControl gridNCC;
         private DevExpress.XtraGrid.Views.Grid.GridView gvNCC;
         private DevExpress.XtraGrid.Columns.GridColumn clSTT;

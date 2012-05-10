@@ -12,30 +12,49 @@ namespace GUI.QuanLyKho
 {
     public partial class frmDatHang : DevExpress.XtraEditors.XtraForm
     {
-        String _MaNH;
-        int _MaNCC;
-        List<NguyenLieu_DTO> lsNguyenLieu;
-        List<NguyenLieu_DTO> lsDSDatHang;
-        DataTable dtDSDatHang;
-        int index_NL;
+        #region " Thuoc Tinh " 
+            List<NguyenLieu_DTO> _lsNguyenLieu;
+            List<ChiTietDatHang_DTO> _lsDSDatHang;
+            DataTable dtDSDatHang;
+            int index_NL;
+            int index_DSDatHang;
 
+            DatHang_DTO _ttdh;
+            int _soluong_temp;
+        #endregion 
 
         #region " Properties "
-            public String MaNH
-            {
-                get { return _MaNH; }
-                set { _MaNH = value; }
-            }
-            public int MaNCC
-            {
-                get { return _MaNCC; }
-                set { _MaNCC = value; }
-            }
             public String TenNCC
             {
                 get { return txtNCC.Text; }
                 set { txtNCC.Text = value; }
             }
+            public DateTime ThoiGianGiao
+            {
+                get { return dateThoiGianGiao.DateTime; }
+                set { dateThoiGianGiao.DateTime = value; }
+            }
+            public String TongTien
+            {
+                get { return txtTongTien.Text; }
+                set { txtTongTien.Text = value; }
+            }
+            public DatHang_DTO ThongTinDH
+            {
+                get { return _ttdh; }
+                set { _ttdh = value; }
+            }
+            public List<NguyenLieu_DTO> lsNguyenLieu
+            {
+                get { return _lsNguyenLieu; }
+                set { _lsNguyenLieu = value; }
+            }
+            public List<ChiTietDatHang_DTO> lsDSDatHang
+            {
+                get { return _lsDSDatHang; }
+                set { _lsDSDatHang = value; }
+            }
+
         #endregion
 
         #region "Khoi Tao "
@@ -43,8 +62,9 @@ namespace GUI.QuanLyKho
             {
                 InitializeComponent();
 
-                lsNguyenLieu = new List<NguyenLieu_DTO>();
-                lsDSDatHang = new List<NguyenLieu_DTO>();
+                _ttdh = new DatHang_DTO();
+                _lsNguyenLieu = new List<NguyenLieu_DTO>();
+                _lsDSDatHang = new List<ChiTietDatHang_DTO>();
 
                 dtDSDatHang = new DataTable();
                 dtDSDatHang.Columns.Add("STT", System.Type.GetType("System.Int16"));
@@ -52,6 +72,9 @@ namespace GUI.QuanLyKho
                 dtDSDatHang.Columns.Add("SoLuong", System.Type.GetType("System.Int16"));
                 dtDSDatHang.Columns.Add("ThanhTien", System.Type.GetType("System.Double"));
                 gridDSDatHang.DataSource = dtDSDatHang;
+
+                txtTongTien.Text = "0";
+                dateThoiGianGiao.DateTime = DateTime.Now;
             }
         #endregion
 
@@ -61,9 +84,15 @@ namespace GUI.QuanLyKho
                 try
                 {
                     index_NL = lvNguyenLieu.SelectedIndices[0];
-                    txtNguyenLieu.Text = lsNguyenLieu[index_NL].TenNL;
-                    txtSoLuong.Text = "0";
-                    lbDonVi.Text = lsNguyenLieu[index_NL].DonVi;
+                    txtNguyenLieu.Text = _lsNguyenLieu[index_NL].TenNL;
+                    txtSoLuong.Text = "1";
+                    lbDonVi.Text = _lsNguyenLieu[index_NL].DonVi;
+                    if (lvNguyenLieu.Focused)
+                    {
+                        btnThem.Enabled = true;
+                        btnXoa.Enabled = false;
+                        btnCapNhatSoLuong.Enabled = false;
+                    }
                 }
                 catch (Exception)
                 {
@@ -71,11 +100,40 @@ namespace GUI.QuanLyKho
             }
             private void gvDSDatHang_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
+                if (gvDSDatHang.GetSelectedRows().Length > 0)
+                {
+                    try
+                    {
+                        index_DSDatHang = gvDSDatHang.GetSelectedRows()[0];
+                        txtNguyenLieu.Text = _lsDSDatHang[index_DSDatHang].TenNL;
+                        txtSoLuong.Text = _lsDSDatHang[index_DSDatHang].SoLuong.ToString();
+                        lbDonVi.Text = _lsDSDatHang[index_DSDatHang].DonVi;
+                        _soluong_temp = _lsDSDatHang[index_DSDatHang].SoLuong;
+                    }
+                    catch (Exception)
+                    {
+                    }
+        
+                }
+            }
 
+            private void gvDSDatHang_Click(object sender, EventArgs e)
+            {
+                if (gvDSDatHang.GetSelectedRows().Length > 0)
+                {
+                    btnThem.Enabled = false;
+                    btnXoa.Enabled = true;
+                    btnCapNhatSoLuong.Enabled = true;
+
+                    index_DSDatHang = gvDSDatHang.GetSelectedRows()[0];
+                    txtNguyenLieu.Text = _lsDSDatHang[index_DSDatHang].TenNL;
+                    txtSoLuong.Text = _lsDSDatHang[index_DSDatHang].SoLuong.ToString();
+                    lbDonVi.Text = _lsDSDatHang[index_DSDatHang].DonVi;
+                }
             }
             private void btnThem_Click(object sender, EventArgs e)
             {
-                if(lsNguyenLieu.Count>0)
+                if(_lsNguyenLieu.Count>0)
                     ThemNguyenLieu();
             }
 
@@ -93,44 +151,87 @@ namespace GUI.QuanLyKho
             }
             private void btnHuy_Click(object sender, EventArgs e)
             {
-                this.Close();
+                //this.Close();
             }
 
         #endregion
+
         #region " Cac ham xu ly "
             public void LoadNguyenLieu()
             {
                 lvNguyenLieu.Items.Clear();
-                lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_fromNCC(MaNCC, _MaNH);
+                _lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_fromNCC(_ttdh.MaNCC,_ttdh.MaNH);
                 Load_lvNguyenLieu();
             }
             public void Load_lvNguyenLieu()
             {
                 lvNguyenLieu.Items.Clear();
-                for (int i = 0; i < lsNguyenLieu.Count; i++)
+                for (int i = 0; i < _lsNguyenLieu.Count; i++)
                 {
-                    ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), lsNguyenLieu[i].TenNL, lsNguyenLieu[i].Gia.ToString() });
+                    ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), _lsNguyenLieu[i].TenNL, _lsNguyenLieu[i].Gia.ToString() });
                     lvNguyenLieu.Items.Add(item);
                 }
                 if (lvNguyenLieu.Items.Count > 0)
                     lvNguyenLieu.Items[0].Selected = true;
             }
+            public void Load_gridDSDatHang()
+            {
+                gridDSDatHang.DataSource = null;
+                dtDSDatHang.Rows.Clear();
+                for (int i = 0; i < _lsDSDatHang.Count; i++)
+                {
+                    DataRow row = dtDSDatHang.NewRow();
+                    row["STT"] = dtDSDatHang.Rows.Count + 1;
+                    row["TenNL"] = _lsDSDatHang[i].TenNL;
+                    row["SoLuong"] = _lsDSDatHang[i].SoLuong;
+                    row["ThanhTien"] = _lsDSDatHang[i].ThanhTien;
+                    dtDSDatHang.Rows.Add(row);
+                }
+                gridDSDatHang.DataSource = dtDSDatHang;
+            }
+            public void LoadThongTinDatHang()
+            {
+                txtTongTien.Text = _ttdh.TongTien.ToString();
+                txtNCC.Text = _ttdh.TenNCC;
+                dateThoiGianGiao.DateTime = _ttdh.ThoiGianGiao;
+            }
             public void ThemNguyenLieu()
             {
                 try
                 {
-                    int index_NguyenLieu = lvNguyenLieu.SelectedIndices[0];
-                    //Add Grid DSDatHang
-                    DataRow row = dtDSDatHang.NewRow();
-                    row["STT"] = dtDSDatHang.Rows.Count + 1;
-                    row["TenNL"] = lsNguyenLieu[index_NguyenLieu].TenNL;
-                    row["SoLuong"] = int.Parse(txtSoLuong.Text);
-                    row["ThanhTien"] = lsNguyenLieu[index_NguyenLieu].Gia * int.Parse(txtSoLuong.Text);
-                    dtDSDatHang.Rows.Add(row);
-                    lsDSDatHang.Add(lsNguyenLieu[index_NguyenLieu]);
-                    //Delete List View Nguyen Lieu
-                    lsNguyenLieu.RemoveAt(index_NguyenLieu);
-                    Load_lvNguyenLieu();
+                    if (int.Parse(txtSoLuong.Text) == 0)
+                    {
+                        MessageBox.Show("Số lượng phải khác 0", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        //Add Grid DSDatHang
+
+                        ChiTietDatHang_DTO temp = new ChiTietDatHang_DTO();
+                        temp.MaNL = _lsNguyenLieu[index_NL].MaNL;
+                        temp.ThanhTien = _lsNguyenLieu[index_NL].Gia;
+                        temp.DonVi = _lsNguyenLieu[index_NL].DonVi;
+                        temp.TenNL = _lsNguyenLieu[index_NL].TenNL;
+                        temp.SoLuong = int.Parse(txtSoLuong.Text);
+                        _lsDSDatHang.Add(temp);
+
+                        DataRow row = dtDSDatHang.NewRow();
+                        row["STT"] = dtDSDatHang.Rows.Count + 1;
+                        row["TenNL"] = _lsNguyenLieu[index_NL].TenNL;
+                        row["SoLuong"] = int.Parse(txtSoLuong.Text);
+                        Double ThanhTien = _lsNguyenLieu[index_NL].Gia * int.Parse(txtSoLuong.Text);
+                        row["ThanhTien"] = ThanhTien;
+                        dtDSDatHang.Rows.Add(row);
+
+                        //Delete List View Nguyen Lieu
+                        _lsNguyenLieu.RemoveAt(index_NL);
+                        Load_lvNguyenLieu();
+
+                        //Cap Nhat Tong Tien
+                        Double TongTien = Double.Parse(txtTongTien.Text);
+                        TongTien += ThanhTien;
+                        txtTongTien.Text = TongTien.ToString();
+                    }
                 }
                 catch (Exception)
                 {
@@ -138,20 +239,56 @@ namespace GUI.QuanLyKho
             }
             public void XoaNguyenLieu()
             {
-                int index_NguyenLieuChon = gvDSDatHang.GetSelectedRows()[0];
+
+                //Cap nhat tong tien 
+                Double TongTien = Double.Parse(txtTongTien.Text);
+                TongTien -= _lsDSDatHang[index_DSDatHang].ThanhTien;
+                txtTongTien.Text = TongTien.ToString();
+
                 //Add List View Nguyen Lieu
-                ListViewItem lvItem = new ListViewItem(new String[] { (lsNguyenLieu.Count + 1).ToString(), lsDSDatHang[index_NguyenLieuChon].TenNL });
+
+                NguyenLieu_DTO temp = new NguyenLieu_DTO();
+                temp.MaNL = _lsDSDatHang[index_DSDatHang].MaNL;
+                temp.TenNL = _lsDSDatHang[index_DSDatHang].TenNL;
+                temp.DonVi = _lsDSDatHang[index_DSDatHang].DonVi;
+                temp.Gia = _lsDSDatHang[index_DSDatHang].ThanhTien;
+                _lsNguyenLieu.Add(temp);
+                ListViewItem lvItem = new ListViewItem(new String[] { (_lsNguyenLieu.Count + 1).ToString(), _lsDSDatHang[index_DSDatHang].TenNL });
                 lvNguyenLieu.Items.Add(lvItem);
-                lsNguyenLieu.Add(lsDSDatHang[index_NguyenLieuChon]);
+
                 //Remove grid DSDatHang
-                lsDSDatHang.RemoveAt(index_NguyenLieuChon);
-                dtDSDatHang.Rows.RemoveAt(index_NguyenLieuChon);
+                _lsDSDatHang.RemoveAt(index_DSDatHang);
+                dtDSDatHang.Rows.RemoveAt(index_DSDatHang);
+
             }
             public void CapNhatSoLuong()
             {
+                if (int.Parse(txtSoLuong.Text) == 0)
+                {
+                    MessageBox.Show("Số lượng phải khác 0", "Cảnh Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    dtDSDatHang.Rows[index_DSDatHang]["SoLuong"] = int.Parse(txtSoLuong.Text);
+                    dtDSDatHang.Rows[index_DSDatHang]["ThanhTien"] = (_lsDSDatHang[index_NL].ThanhTien/_soluong_temp) * int.Parse(txtSoLuong.Text);
+                    _lsDSDatHang[index_DSDatHang].SoLuong = int.Parse(txtSoLuong.Text);
+                    _lsDSDatHang[index_DSDatHang].ThanhTien = _lsNguyenLieu[index_NL].Gia * int.Parse(txtSoLuong.Text);
+                }
             }
             public void DongY()
             {
+                if(lsDSDatHang.Count== 0)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa chọn nguyên liệu để đặt hàng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.None;
+                }
+                else{
+                    _ttdh.ThoiGianGiao = dateThoiGianGiao.DateTime ;
+                    ThongTinDH.TinhTrang = "Chưa Giao";
+                    ThongTinDH.ThoiGianDat = DateTime.Now;
+                    _ttdh.TongTien = Double.Parse(txtTongTien.Text);
+                }
+
             }
 
         #endregion

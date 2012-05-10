@@ -35,7 +35,7 @@ namespace GUI.QuanLyKho
                 dtDatHang = new DataTable();
                 dtDatHang.Columns.Add("STT", System.Type.GetType("System.Int16"));
                 dtDatHang.Columns.Add("TenNCC", System.Type.GetType("System.String"));
-                dtDatHang.Columns.Add("ThanhTien", System.Type.GetType("System.Double"));
+                dtDatHang.Columns.Add("TongTien", System.Type.GetType("System.Double"));
                 dtDatHang.Columns.Add("ThoiGianDat", System.Type.GetType("System.DateTime"));
                 dtDatHang.Columns.Add("ThoiGianGiao", System.Type.GetType("System.DateTime"));
                 dtDatHang.Columns.Add("TinhTrang", System.Type.GetType("System.String"));
@@ -45,7 +45,7 @@ namespace GUI.QuanLyKho
                 dtChiTietDH.Columns.Add("STT", System.Type.GetType("System.Int16"));
                 dtChiTietDH.Columns.Add("TenNL", System.Type.GetType("System.String"));
                 dtChiTietDH.Columns.Add("SoLuong", System.Type.GetType("System.Int16"));
-                dtChiTietDH.Columns.Add("Gia", System.Type.GetType("System.Double"));
+                dtChiTietDH.Columns.Add("ThanhTien", System.Type.GetType("System.Double"));
             }
         #endregion
 
@@ -88,7 +88,7 @@ namespace GUI.QuanLyKho
                     DataRow row = dtDatHang.NewRow();
                     row["STT"] = i + 1;
                     row["TenNCC"] = lsDatHang[i].TenNCC;
-                    row["ThanhTien"] = lsDatHang[i].ThanhTien;
+                    row["TongTien"] = lsDatHang[i].TongTien;
                     row["ThoiGianDat"] = lsDatHang[i].ThoiGianDat;
                     row["ThoiGianGiao"] = lsDatHang[i].ThoiGianGiao;
                     row["TinhTrang"] = lsDatHang[i].TinhTrang;
@@ -108,7 +108,7 @@ namespace GUI.QuanLyKho
                     row["STT"] = i + 1;
                     row["TenNL"] = lsChiTietDH[i].TenNL;
                     row["SoLuong"] = lsChiTietDH[i].SoLuong;
-                    row["Gia"] = lsChiTietDH[i].Gia;
+                    row["ThanhTien"] = lsChiTietDH[i].ThanhTien;
                     dtChiTietDH.Rows.Add(row);
                 }
                 gridChiTietHD.DataSource = dtChiTietDH;
@@ -116,18 +116,26 @@ namespace GUI.QuanLyKho
             public void ThemHDDatHang()
             {
                 frmDatHang_ChonNCC _frmChonNCC = new frmDatHang_ChonNCC();
-                frmDatHang _frmDatHang = new frmDatHang();
                 _frmChonNCC.MaNH = _MaNH;
-                _frmDatHang.MaNH = _MaNH;
+                
                 _frmChonNCC.LoadDanhSachNCC();
                 while (_frmChonNCC.ShowDialog() == DialogResult.OK)
                 {
-                    _frmDatHang.MaNCC = _frmChonNCC.MaNCC;
+                    frmDatHang _frmDatHang = new frmDatHang();
+                    _frmDatHang.ThongTinDH.MaNH = _MaNH;
+                    _frmDatHang.ThongTinDH.MaNCC = _frmChonNCC.MaNCC;
                     _frmDatHang.LoadNguyenLieu();
-                    _frmDatHang.TenNCC = lsDatHang[index_DatHang].TenNCC;
+                    _frmDatHang.TenNCC = _frmChonNCC.TenNCC;
                     if (_frmDatHang.ShowDialog() == DialogResult.OK)
                     {
-
+                        int MaHD = BUS.DatHang_BUS.InsertDatHang(_frmDatHang.ThongTinDH);
+                        for(int i = 0;i<_frmDatHang.lsDSDatHang.Count;i++)
+                        {
+                            _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+                            BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                        }
+                        LoadDSDatHang();
+                        break;
                     }
                 }
             }
@@ -136,6 +144,29 @@ namespace GUI.QuanLyKho
             }
             public void CapNhatHDDatHang()
             {
+                frmDatHang _frmDatHang = new frmDatHang();
+                _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
+                _frmDatHang.LoadThongTinDatHang();
+                _frmDatHang.lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon,lsDatHang[index_DatHang].MaNCC,_MaNH);
+                _frmDatHang.lsDSDatHang = BUS.ChiTietDatHang_BUS.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
+                _frmDatHang.Load_gridDSDatHang();
+                _frmDatHang.Load_lvNguyenLieu();
+
+                if (_frmDatHang.ShowDialog() == DialogResult.OK)
+                {
+                    if(BUS.DatHang_BUS.UpdateDatHang(_frmDatHang.ThongTinDH)>0)
+                    {
+                        int MaHD = lsDatHang[index_DatHang].MaHoaDon;
+                        BUS.ChiTietDatHang_BUS.DeleteChiTietDatHang(MaHD);
+                        for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
+                        {
+                            _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+                            BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                        }
+                        LoadDSDatHang();
+                        LoadChiTietDH(MaHD);
+                    }
+                }
             }
         #endregion
 
