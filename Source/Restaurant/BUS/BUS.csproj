@@ -47,9 +47,11 @@
     <Compile Include="DatHang_BUS.cs" />
     <Compile Include="KhachHang_BUS.cs" />
     <Compile Include="LoaiMonAn_BUS.cs" />
+    <Compile Include="LoaiNhanVien_BUS.cs" />
     <Compile Include="MonAn_BUS.cs" />
     <Compile Include="NguyenLieu_BUS.cs" />
     <Compile Include="NhaCungCap_BUS.cs" />
+    <Compile Include="NhanVien_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

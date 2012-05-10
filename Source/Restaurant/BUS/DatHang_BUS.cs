@@ -25,5 +25,10 @@ namespace BUS
             DatHang_DAO DatHangDAO = new DatHang_DAO();
             return DatHangDAO.UpdatetDatHang(dh);
         }
+        public static int DeleteDatHang(int MaHD)
+        {
+            DatHang_DAO DatHangDAO = new DatHang_DAO();
+            return DatHangDAO.DeleteDatHang(MaHD);
+        }
     }
 }
