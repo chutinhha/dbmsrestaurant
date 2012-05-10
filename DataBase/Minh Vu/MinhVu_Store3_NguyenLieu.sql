@@ -45,26 +45,26 @@ begin
 								    and ct.MaHoaDon = @MaHoaDon and nl.MaNH = @MaNH )
 	order by nl1.TenNL
 end
---exec SelectNguyenLieu_NotIn_ChiTietDatHang 16,18,'1'
+
 GO
-create  proc InsertNguyenLieu @Flag int out,@MaNH nchar(10),@TenNL nvarchar(50),@Gia float,@DonVi nvarchar(20),@SoLuongTon int
+create  proc InsertNguyenLieu @Flag int out,@MaNH nchar(10),@TenNL nvarchar(50),@DonVi nvarchar(20),@SoLuongTon int
 as
 begin
 	if((select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH)=0)
 	begin
-		insert into NguyenLieu values (@MaNH,@TenNL,@Gia,@DonVi,@SoLuongTon)
+		insert into NguyenLieu values (@MaNH,@TenNL,@DonVi,@SoLuongTon)
 		set @Flag =1
 	end
 	else
 		set @Flag =0
 end
 GO
-create proc UpdateNguyenLieu @Flag int out,@TenNL_old nvarchar(50),@MaNL int,@MaNH nchar(10),@TenNL nvarchar(50),@Gia float,@DonVi nvarchar(20),@SoLuongTon int
+create proc UpdateNguyenLieu @Flag int out,@TenNL_old nvarchar(50),@MaNL int,@MaNH nchar(10),@TenNL nvarchar(50),@DonVi nvarchar(20),@SoLuongTon int
 as
 begin
 	if(@TenNL_old = @TenNL or(select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH)=0)
 	begin
-		update NguyenLieu set  MaNH=@MaNH,TenNL=@TenNL,Gia=@Gia,DonVi=@Donvi,SoLuongTon=@SoLuongTon
+		update NguyenLieu set  MaNH=@MaNH,TenNL=@TenNL,DonVi=@Donvi,SoLuongTon=@SoLuongTon
 			where MaNL=@MaNL
 		set @Flag = 1
 	end
@@ -76,5 +76,6 @@ create proc DeleteNguyenLieu  @MaNL int,@MaNH nchar(10)
 as
 begin
 	exec DeleteChiTietNCC_fromNL @MaNL
+	exec DeleteChiTietDatHang_fromNL @MaNL
 	delete from NguyenLieu where MaNL=@MaNL and MaNH=@MaNH
 end
