@@ -10,7 +10,7 @@ namespace DTO
         private int _MaHoaDon;
         private int _MaNCC;
         private String _MaNH;
-        private double _ThanhTien;
+        private double _TongTien;
         private DateTime _ThoiGianDat;
         private DateTime _ThoiGianGiao;
         private String _TinhTrang;
@@ -26,10 +26,10 @@ namespace DTO
             get { return _MaNCC; }
             set { _MaNCC = value; }
         }
-        public double ThanhTien
+        public double TongTien
         {
-            get { return _ThanhTien; }
-            set { _ThanhTien = value; }
+            get { return _TongTien; }
+            set { _TongTien = value; }
         }
         public DateTime ThoiGianDat
         {

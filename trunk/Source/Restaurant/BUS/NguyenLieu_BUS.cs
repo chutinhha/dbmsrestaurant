@@ -19,10 +19,15 @@ namespace BUS
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
             return nguyenlieuDAO.SelectNguyenLieu_fromNCC(MaNCC,MaNH);
         }
-        public static List<NguyenLieu_DTO> SelectNguyenLieu_Free(int MaNCC,String maNH)
+        public static List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietNCC(int MaNCC,String maNH)
         {
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
-            return nguyenlieuDAO.SelectNguyenLieu_Free(MaNCC,maNH);
+            return nguyenlieuDAO.SelectNguyenLieu_NotIn_ChiTietNCC(MaNCC,maNH);
+        }
+        public static List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon,int MaNCC,String MaNH)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.SelectNguyenLieu_NotIn_ChiTietDatHang(MaHoaDon,MaNCC,MaNH);
         }
         public static int InsertNguyenLieu(NguyenLieu_DTO nl)
         {

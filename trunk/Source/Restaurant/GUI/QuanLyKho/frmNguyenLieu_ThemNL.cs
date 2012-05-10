@@ -29,13 +29,13 @@ namespace GUI.QuanLyKho
             this.DialogResult = DialogResult.None;
             if (txtTenNguyenLieu.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Bạn chưa nhập Tên Nguyên Liệu !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập Tên Nguyên Liệu !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTenNguyenLieu.Focus();
             } 
             else
                 if (txtDonVi.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show("Bạn chưa nhập đơn vị nguyên liêu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập đơn vị nguyên liêu!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtDonVi.Focus();
                 }
                 else
@@ -44,7 +44,7 @@ namespace GUI.QuanLyKho
                     _nguyenlieu.DonVi = txtDonVi.Text.Trim();
                     if (BUS.NguyenLieu_BUS.InsertNguyenLieu(NguyenLieu) == 0)
                     {
-                        MessageBox.Show("Tên nguyên liệu này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Tên nguyên liệu này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtTenNguyenLieu.Focus();
                         this.DialogResult = DialogResult.None;
                     }

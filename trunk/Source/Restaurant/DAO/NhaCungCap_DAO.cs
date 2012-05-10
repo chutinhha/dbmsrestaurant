@@ -47,7 +47,6 @@ namespace DAO
             cm.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
 
             provider.ExecuteInsertUpdateDelete(cm);
-            int a = (int)cm.Parameters["@MaNCC"].Value;
             return (int)cm.Parameters["@MaNCC"].Value;
         }
         public int UpdateNhaCungCap(String TenNCC,NhaCungCap_DTO ncc)

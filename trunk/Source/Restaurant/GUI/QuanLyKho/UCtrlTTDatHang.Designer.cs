@@ -37,7 +37,7 @@
             this.gvDatHang = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.clSTT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clTenNCC = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.clThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.clTongTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clThoiGianDat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clThoiGianGiao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -47,7 +47,7 @@
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TeNL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.Gia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinDatHang)).BeginInit();
             this.groupThongTinDatHang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDatHang)).BeginInit();
@@ -73,9 +73,9 @@
             // 
             this.btnDatHang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDatHang.Image = global::GUI.Properties.Resources.add_16;
-            this.btnDatHang.Location = new System.Drawing.Point(506, 442);
+            this.btnDatHang.Location = new System.Drawing.Point(402, 442);
             this.btnDatHang.Name = "btnDatHang";
-            this.btnDatHang.Size = new System.Drawing.Size(95, 26);
+            this.btnDatHang.Size = new System.Drawing.Size(199, 26);
             this.btnDatHang.TabIndex = 21;
             this.btnDatHang.Text = "Đặt Hàng";
             this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
@@ -132,7 +132,7 @@
             this.gvDatHang.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.clSTT,
             this.clTenNCC,
-            this.clThanhTien,
+            this.clTongTien,
             this.clThoiGianDat,
             this.clThoiGianGiao,
             this.TinhTrang});
@@ -165,13 +165,13 @@
             this.clTenNCC.VisibleIndex = 1;
             this.clTenNCC.Width = 150;
             // 
-            // clThanhTien
+            // clTongTien
             // 
-            this.clThanhTien.Caption = "Thành Tiền";
-            this.clThanhTien.FieldName = "ThanhTien";
-            this.clThanhTien.Name = "clThanhTien";
-            this.clThanhTien.Visible = true;
-            this.clThanhTien.VisibleIndex = 2;
+            this.clTongTien.Caption = "TongTien";
+            this.clTongTien.FieldName = "TongTien";
+            this.clTongTien.Name = "clTongTien";
+            this.clTongTien.Visible = true;
+            this.clTongTien.VisibleIndex = 2;
             // 
             // clThoiGianDat
             // 
@@ -230,7 +230,7 @@
             this.STT,
             this.TeNL,
             this.SoLuong,
-            this.Gia});
+            this.ThanhTien});
             this.gvChiTietDH.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gvChiTietDH.GridControl = this.gridChiTietHD;
             this.gvChiTietDH.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -268,15 +268,15 @@
             this.SoLuong.VisibleIndex = 2;
             this.SoLuong.Width = 69;
             // 
-            // Gia
+            // ThanhTien
             // 
-            this.Gia.Caption = "Giá";
-            this.Gia.FieldName = "Gia";
-            this.Gia.MaxWidth = 160;
-            this.Gia.Name = "Gia";
-            this.Gia.Visible = true;
-            this.Gia.VisibleIndex = 3;
-            this.Gia.Width = 86;
+            this.ThanhTien.Caption = "Thành Tiền";
+            this.ThanhTien.FieldName = "ThanhTien";
+            this.ThanhTien.MaxWidth = 160;
+            this.ThanhTien.Name = "ThanhTien";
+            this.ThanhTien.Visible = true;
+            this.ThanhTien.VisibleIndex = 3;
+            this.ThanhTien.Width = 86;
             // 
             // UCtrlTTDatHang
             // 
@@ -313,7 +313,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvDatHang;
         private DevExpress.XtraGrid.Columns.GridColumn clSTT;
         private DevExpress.XtraGrid.Columns.GridColumn clTenNCC;
-        private DevExpress.XtraGrid.Columns.GridColumn clThanhTien;
+        private DevExpress.XtraGrid.Columns.GridColumn clTongTien;
         private DevExpress.XtraGrid.Columns.GridColumn clThoiGianDat;
         private DevExpress.XtraGrid.Columns.GridColumn clThoiGianGiao;
         private DevExpress.XtraEditors.GroupControl groupControl1;
@@ -323,7 +323,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraGrid.Columns.GridColumn TeNL;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn Gia;
+        private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
 
 
     }
