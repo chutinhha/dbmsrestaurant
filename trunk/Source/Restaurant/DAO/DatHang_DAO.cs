@@ -68,6 +68,16 @@ namespace DAO
 
             return provider.ExecuteInsertUpdateDelete(cm);
         }
+        public int DeleteDatHang(int MaHoaDon)
+        {
+            String store = "DeleteDatHang";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+
+            cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
+
+            return provider.ExecuteInsertUpdateDelete(cm);
+        }
         private List<DatHang_DTO> ConvertToList(DataTable dt)
         {
             List<DatHang_DTO> ls = new List<DatHang_DTO>();

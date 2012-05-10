@@ -176,6 +176,8 @@
             // clThoiGianDat
             // 
             this.clThoiGianDat.Caption = "Thời Gian Đặt";
+            this.clThoiGianDat.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.clThoiGianDat.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clThoiGianDat.FieldName = "ThoiGianDat";
             this.clThoiGianDat.Name = "clThoiGianDat";
             this.clThoiGianDat.Visible = true;
@@ -185,6 +187,8 @@
             // clThoiGianGiao
             // 
             this.clThoiGianGiao.Caption = "Thời Gian Giao";
+            this.clThoiGianGiao.DisplayFormat.FormatString = "dd/MM/yyyy";
+            this.clThoiGianGiao.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clThoiGianGiao.FieldName = "ThoiGianGiao";
             this.clThoiGianGiao.Name = "clThoiGianGiao";
             this.clThoiGianGiao.Visible = true;

@@ -52,8 +52,13 @@ namespace GUI.QuanLyKho
         #region "Control Event"
             private void gvDatHang_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
-                index_DatHang = gvDatHang.GetSelectedRows()[0];
-                LoadChiTietDH(lsDatHang[index_DatHang].MaHoaDon);
+                if (gvDatHang.GetSelectedRows().Length > 0)
+                {
+                    index_DatHang = gvDatHang.GetSelectedRows()[0];
+                    LoadChiTietDH(lsDatHang[index_DatHang].MaHoaDon);
+                }
+                else
+                    index_DatHang = -1;
             }
             private void btnDatHang_Click(object sender, EventArgs e)
             {
@@ -67,12 +72,12 @@ namespace GUI.QuanLyKho
 
             private void btnXoaDatHang_Click(object sender, EventArgs e)
             {
-                XoaHDDatHang();
+                XoaDatHang();
             }
 
             private void btnHuyDatHang_Click(object sender, EventArgs e)
             {
-                
+                HuyDatHang();
             }
         #endregion
 
@@ -139,32 +144,79 @@ namespace GUI.QuanLyKho
                     }
                 }
             }
-            public void XoaHDDatHang()
+            public void XoaDatHang()
             {
+                if (index_DatHang != -1)
+                {
+                    if (lsDatHang[index_DatHang].TinhTrang == "Chưa Giao")
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Đơn đặt hàng chưa giao không thể xóa \n Bạn phải hủy đơn đặt hàng này mới được xóa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        int MaHD = lsDatHang[index_DatHang].MaHoaDon;
+                        BUS.DatHang_BUS.DeleteDatHang(MaHD);
+                        LoadDSDatHang();
+                        if (dtDatHang.Rows.Count == 0)
+                            dtChiTietDH.Clear();
+                    }
+                }                   
+            }
+            public void HuyDatHang()
+            {
+                if (index_DatHang != -1)
+                {
+                    if (lsDatHang[index_DatHang].TinhTrang != "Hủy")
+                    {
+                        if (lsDatHang[index_DatHang].TinhTrang == "Đã Giao")
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Không thể Hủy đơn đặt hàng này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là hủy đơn đặt hàng này không!", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                lsDatHang[index_DatHang].TinhTrang = "Hủy";
+                                BUS.DatHang_BUS.UpdateDatHang(lsDatHang[index_DatHang]);
+                                LoadDSDatHang();
+                            }
+                        }
+                    }
+                }
             }
             public void CapNhatHDDatHang()
             {
-                frmDatHang _frmDatHang = new frmDatHang();
-                _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
-                _frmDatHang.LoadThongTinDatHang();
-                _frmDatHang.lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon,lsDatHang[index_DatHang].MaNCC,_MaNH);
-                _frmDatHang.lsDSDatHang = BUS.ChiTietDatHang_BUS.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
-                _frmDatHang.Load_gridDSDatHang();
-                _frmDatHang.Load_lvNguyenLieu();
-
-                if (_frmDatHang.ShowDialog() == DialogResult.OK)
+                if (index_DatHang != -1)
                 {
-                    if(BUS.DatHang_BUS.UpdateDatHang(_frmDatHang.ThongTinDH)>0)
+                    if (lsDatHang[index_DatHang].TinhTrang == "Đã Giao" || lsDatHang[index_DatHang].TinhTrang == "Hủy")
                     {
-                        int MaHD = lsDatHang[index_DatHang].MaHoaDon;
-                        BUS.ChiTietDatHang_BUS.DeleteChiTietDatHang(MaHD);
-                        for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Không thể cập nhật đơn đặt hàng này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        frmDatHang _frmDatHang = new frmDatHang();
+                        _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
+                        _frmDatHang.LoadThongTinDatHang();
+                        _frmDatHang.lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, _MaNH);
+                        _frmDatHang.lsDSDatHang = BUS.ChiTietDatHang_BUS.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
+                        _frmDatHang.Load_gridDSDatHang();
+                        _frmDatHang.Load_lvNguyenLieu();
+
+                        if (_frmDatHang.ShowDialog() == DialogResult.OK)
                         {
-                            _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                            BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                            if (BUS.DatHang_BUS.UpdateDatHang(_frmDatHang.ThongTinDH) > 0)
+                            {
+                                int MaHD = lsDatHang[index_DatHang].MaHoaDon;
+                                BUS.ChiTietDatHang_BUS.DeleteChiTietDatHang(MaHD);
+                                for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
+                                {
+                                    _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+                                    BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                                }
+                                LoadDSDatHang();
+                                LoadChiTietDH(MaHD);
+                            }
                         }
-                        LoadDSDatHang();
-                        LoadChiTietDH(MaHD);
                     }
                 }
             }
