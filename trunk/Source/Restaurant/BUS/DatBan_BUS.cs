@@ -11,44 +11,65 @@ namespace BUS
 {
     public class DatBan_BUS
     {
-        public static DataTable DocBanTrong(int maNH)
+        DatBan_DAO DatBan_DAO = new DatBan_DAO();
+        public DataTable DocBanTrong(int maNH)
         {
             return DatBan_DAO.DocBanTrong(maNH);
         }
-        public static DataTable DocKhuVuc(int maNH)
+        public DataTable DocBanTrong_OpenConnection(int maNH)
+        {
+            return DatBan_DAO.DocBanTrong(maNH);
+        }
+        public DataTable DocBanAn(int maNH,string khuvuc,string succhua)
+        {
+            return DatBan_DAO.DocBanAn(maNH,khuvuc,succhua);
+        }
+        public DataTable DocBanAn_OpenConnection(int maNH, string khuvuc, string succhua)
+        {
+            return DatBan_DAO.DocBanAn_CommitTran(maNH, khuvuc, succhua);
+        }
+        public DataTable DocKhuVuc(int maNH)
         {
             return DatBan_DAO.DocKhuVuc(maNH);
         }
-        public static DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
+        public DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
         {
             return DatBan_DAO.DSBanDatTrongNgay(maNH, timeNow);
         }
-        public static DataTable DocLoaiBan()
+        public DataTable DSBanDatTrongNgay_CloseConnection(int maNH, DateTime timeNow)
+        {
+            return DatBan_DAO.DSBanDatTrongNgay_BeginTran(maNH, timeNow);
+        }
+        public DataTable DocSucChua(int maNH)
+        {
+            return DatBan_DAO.DocSucChua(maNH);
+        }
+        public DataTable DocLoaiBan()
         {
             return DatBan_DAO.DocLoaiBan();
         }
-        public static int ThemDatBan(DatBan_DTO banDat)
+        public int ThemDatBan(DatBan_DTO banDat)
         {
             return DatBan_DAO.ThemDatBan(banDat);
         }
-        public static DataTable DocDanhSachBanDat(int maNH,string maBan,string khuVuc,string sucChua,string trangThai)
+        public DataTable DocDanhSachBanDat(int maNH,string maBan,string khuVuc,string sucChua,string trangThai)
         {
             return DatBan_DAO.DocDanhSachBanDat(maNH, maBan, khuVuc, sucChua, trangThai);
         }
-        public static int UpdateDatBan(DatBan_DTO bandat,string maBan,string maNH,string thoigianden)
+        public int UpdateDatBan(DatBan_DTO bandat,string maBan,string maNH,string thoigianden)
         {
             return DatBan_DAO.UpdateDatBan(bandat,maBan,maNH,thoigianden);
         }
         
-        public static int XoaDatBan(DatBan_DTO bandat)
+        public int XoaDatBan(DatBan_DTO bandat)
         {
             return DatBan_DAO.XoaDatBan(bandat);
         }
-        public static int UpdateTrangThaiBanAn(int MaBan,int trangthai)
+        public int UpdateTrangThaiBanAn(int MaBan,int trangthai)
         {
             return DatBan_DAO.UpdateTrangThaiBanAn(MaBan,trangthai );
         }
-        public static int UpdateTrangThaiDatBan(int maNH, int MaBan, int trangthai, DateTime thoigianden)
+        public int UpdateTrangThaiDatBan(int maNH, int MaBan, int trangthai, DateTime thoigianden)
         {
             return DatBan_DAO.UpdateTrangThaiDatBan(maNH, MaBan, trangthai, thoigianden);
         }
