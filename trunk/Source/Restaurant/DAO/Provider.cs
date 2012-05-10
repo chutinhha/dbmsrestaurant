@@ -9,15 +9,17 @@ namespace DAO
 {
     class Provider
     {
-       //public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
-        public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+       public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        //public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlConnection cnn;
+        public SqlCommand cm;
         //public SqlTransaction trans;
 
         public SqlCommand CreateCommandStringSql(string sql)
         {
-            cnn = new SqlConnection(str_connection);
-            SqlCommand cm = cnn.CreateCommand();
+            if(cnn==null)
+                cnn = new SqlConnection(str_connection);
+            cm = cnn.CreateCommand();
             //cnn.Open();
             cm.CommandType = System.Data.CommandType.Text;
             cm.CommandText = sql;
@@ -26,7 +28,7 @@ namespace DAO
         public SqlCommand CreateCommandStoreName(string StoreName)
         {
             cnn = new SqlConnection(str_connection);
-            SqlCommand cm = cnn.CreateCommand();
+            cm = cnn.CreateCommand();
             //cnn.Open();
             cm.CommandType = System.Data.CommandType.StoredProcedure;
             cm.CommandText = StoreName;
@@ -57,7 +59,26 @@ namespace DAO
             }
             
         }
-        
+        public DataTable ExecSelectCommand_OpenConnection(SqlCommand cm)
+        {
+            DataTable table = new DataTable();
+            cm.Connection.Open();
+            SqlDataReader read = cm.ExecuteReader();
+            table.Load(read);
+            read.Close();
+           // cm.Connection.Close();
+            return table;
+        }
+        public DataTable ExecSelectCommand_CloseConnection(SqlCommand cm)
+        {
+            DataTable table = new DataTable();
+          //  cm.Connection.Open();
+            SqlDataReader read = cm.ExecuteReader();
+            table.Load(read);
+            read.Close();
+             cm.Connection.Close();
+            return table;
+        }
        
      
     }
