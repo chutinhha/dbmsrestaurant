@@ -39,7 +39,6 @@
             this.clSoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXoaNguyenLieu = new DevExpress.XtraEditors.SimpleButton();
             this.btnInDanhMucNL = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDatHang = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtTenNguyenLieu = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -47,6 +46,7 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtSoLuongTon = new DevExpress.XtraEditors.TextEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupNguyenLieu)).BeginInit();
             this.groupNguyenLieu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNguyenLieu)).BeginInit();
@@ -181,16 +181,6 @@
             this.btnInDanhMucNL.Text = "In Danh Sách";
             this.btnInDanhMucNL.Click += new System.EventHandler(this.btnInDanhMucNL_Click);
             // 
-            // btnDatHang
-            // 
-            this.btnDatHang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDatHang.Enabled = false;
-            this.btnDatHang.Location = new System.Drawing.Point(344, 442);
-            this.btnDatHang.Name = "btnDatHang";
-            this.btnDatHang.Size = new System.Drawing.Size(191, 26);
-            this.btnDatHang.TabIndex = 23;
-            this.btnDatHang.Text = "Đặt Hàng";
-            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(26, 51);
@@ -250,16 +240,27 @@
             this.groupControl1.TabIndex = 25;
             this.groupControl1.Text = "Thông Tin Nguyên Liệu";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Image = global::GUI.Properties.Resources.refresh16;
+            this.btnRefresh.Location = new System.Drawing.Point(424, 442);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(111, 26);
+            this.btnRefresh.TabIndex = 19;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // UCtrlNguyenLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnThemNguyenLieu);
             this.Controls.Add(this.btnCapNhatNguyenLieu);
             this.Controls.Add(this.groupNguyenLieu);
             this.Controls.Add(this.btnXoaNguyenLieu);
-            this.Controls.Add(this.btnDatHang);
             this.Controls.Add(this.btnInDanhMucNL);
             this.Name = "UCtrlNguyenLieu";
             this.Size = new System.Drawing.Size(880, 480);
@@ -289,7 +290,6 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvNguyenLieu;
         private DevExpress.XtraEditors.SimpleButton btnXoaNguyenLieu;
         private DevExpress.XtraEditors.SimpleButton btnInDanhMucNL;
-        private DevExpress.XtraEditors.SimpleButton btnDatHang;
         private DevExpress.XtraGrid.Columns.GridColumn clSoLuongTon;
         private DevExpress.XtraGrid.Columns.GridColumn clSTT;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -299,5 +299,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtSoLuongTon;
         private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
     }
 }

@@ -51,6 +51,11 @@ namespace GUI.QuanLyKho
         #endregion
 
         #region " Event Control "
+
+            private void UCtrlNhaCungCap_Load(object sender, EventArgs e)
+            {
+                LoadNhaCungCap();
+            }
             private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
                 indexNCC = gvNCC.GetSelectedRows()[0];
@@ -82,7 +87,10 @@ namespace GUI.QuanLyKho
                 BUS.ChiTietNCC_BUS.UpdateChiTietNCC(lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
                 LoadNguyenLieu(lsNCC[indexNCC].MaNCC);
             }
-
+            private void btnRefresh_Click(object sender, EventArgs e)
+            {
+                LoadNhaCungCap();
+            }
             private void txtGia_EditValueChanged(object sender, EventArgs e)
             {
                 if (txtGia.Text.Trim().Length == 0)
@@ -198,6 +206,7 @@ namespace GUI.QuanLyKho
                 }
             }
         #endregion
+
 
     }
 }

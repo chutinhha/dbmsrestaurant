@@ -48,6 +48,7 @@
             this.TeNL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinDatHang)).BeginInit();
             this.groupThongTinDatHang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridDatHang)).BeginInit();
@@ -73,9 +74,9 @@
             // 
             this.btnDatHang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDatHang.Image = global::GUI.Properties.Resources.add_16;
-            this.btnDatHang.Location = new System.Drawing.Point(402, 442);
+            this.btnDatHang.Location = new System.Drawing.Point(435, 442);
             this.btnDatHang.Name = "btnDatHang";
-            this.btnDatHang.Size = new System.Drawing.Size(199, 26);
+            this.btnDatHang.Size = new System.Drawing.Size(166, 26);
             this.btnDatHang.TabIndex = 21;
             this.btnDatHang.Text = "Đặt Hàng";
             this.btnDatHang.Click += new System.EventHandler(this.btnDatHang_Click);
@@ -282,10 +283,22 @@
             this.ThanhTien.VisibleIndex = 3;
             this.ThanhTien.Width = 86;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Image = global::GUI.Properties.Resources.refresh16;
+            this.btnRefresh.Location = new System.Drawing.Point(334, 442);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(95, 26);
+            this.btnRefresh.TabIndex = 29;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // UCtrlTTDatHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnDatHang);
             this.Controls.Add(this.btnCapNhatDatHang);
@@ -294,6 +307,7 @@
             this.Controls.Add(this.btnHuyDatHang);
             this.Name = "UCtrlTTDatHang";
             this.Size = new System.Drawing.Size(880, 480);
+            this.Load += new System.EventHandler(this.UCtrlTTDatHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupThongTinDatHang)).EndInit();
             this.groupThongTinDatHang.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridDatHang)).EndInit();
@@ -328,6 +342,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn TeNL;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
         private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
 
 
     }

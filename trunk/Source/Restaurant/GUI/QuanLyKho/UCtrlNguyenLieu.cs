@@ -22,8 +22,8 @@ namespace GUI.QuanLyKho
         }
 
         String TenNL;
-        List<NguyenLieu_DTO> lsNguyenLieu;
         DataTable dtNguyenLieu ;
+        DataTable dtNguyenLieu_Source;
         int indexNL;
         #endregion
 
@@ -31,7 +31,6 @@ namespace GUI.QuanLyKho
         public UCtrlNguyenLieu()
         {
             InitializeComponent();
-            lsNguyenLieu = new List<NguyenLieu_DTO>();
             dtNguyenLieu = new DataTable();
             indexNL = -1;
 
@@ -46,7 +45,7 @@ namespace GUI.QuanLyKho
         #region "Event Control"
         private void UCtrlNguyenLieu_Load(object sender, EventArgs e)
         {
-            
+            LoadNguyenLieu();
         }
 
         private void gvNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -54,11 +53,10 @@ namespace GUI.QuanLyKho
             if (gvNguyenLieu.GetSelectedRows().Length > 0)
             {
                 indexNL = gvNguyenLieu.GetSelectedRows()[0];
-                txtTenNguyenLieu.Text = lsNguyenLieu[indexNL].TenNL;
-                txtDonVi.Text = lsNguyenLieu[indexNL].DonVi;
-                txtSoLuongTon.Text = lsNguyenLieu[indexNL].SoLuongTon.ToString();
-
-                TenNL = lsNguyenLieu[indexNL].TenNL;
+                txtTenNguyenLieu.Text = dtNguyenLieu.Rows[indexNL]["TenNL"].ToString();
+                txtDonVi.Text = dtNguyenLieu.Rows[indexNL]["DonVi"].ToString();
+                txtSoLuongTon.Text = dtNguyenLieu.Rows[indexNL]["SoLuongTon"].ToString();
+                TenNL = txtTenNguyenLieu.Text;
             }
         }
 
@@ -76,7 +74,10 @@ namespace GUI.QuanLyKho
         {
             CapNhatNguyenLieu();
         }
-
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadNguyenLieu();
+        }
         private void btnInDanhMucNL_Click(object sender, EventArgs e)
         {
             DevExpress.XtraPrinting.PrintingSystem printingSystem1 = new DevExpress.XtraPrinting.PrintingSystem();
@@ -108,20 +109,22 @@ namespace GUI.QuanLyKho
         #region "Cac ham xu ly "
         public void LoadNguyenLieu()
         {
-            //gridNguyenLieu.DataSource = null;
             dtNguyenLieu.Rows.Clear();
-            lsNguyenLieu = NguyenLieu_BUS.SelectNguyenLieu(_MaNH);
+            dtNguyenLieu_Source = NguyenLieu_BUS.SelectNguyenLieu_toDataTable(_MaNH);
 
-            for (int i = 0; i < lsNguyenLieu.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dtNguyenLieu_Source.Rows)
             {
-                DataRow row = dtNguyenLieu.NewRow();
-                row["Stt"] = i + 1;
-                row["TenNL"] = lsNguyenLieu[i].TenNL;
-                row["DonVi"] = lsNguyenLieu[i].DonVi;
-                row["SoLuongTon"] = lsNguyenLieu[i].SoLuongTon;
-                dtNguyenLieu.Rows.Add(row);
+                DataRow row2 = dtNguyenLieu.NewRow();
+                row2["STT"] = i + 1;
+                row2["TenNL"] = row.ItemArray[2].ToString();
+                row2["DonVi"] = row.ItemArray[3].ToString();
+                row2["SoLuongTon"] = (int)row.ItemArray[4];
+                dtNguyenLieu.Rows.Add(row2);
+
+                i++;
+
             }
-            
         }
         public void ThemNguyenLieu()
         {
@@ -129,20 +132,14 @@ namespace GUI.QuanLyKho
             _frmThemNL.NguyenLieu.MaNH = _MaNH;
             if (_frmThemNL.ShowDialog() == DialogResult.OK)
             {
-                DataRow row = dtNguyenLieu.NewRow();
-                row["STT"] = dtNguyenLieu.Rows.Count + 1;
-                row["TenNL"] = _frmThemNL.NguyenLieu.TenNL;
-                row["DonVi"] = _frmThemNL.NguyenLieu.DonVi;
-                row["SoLuongTon"] = 0;
-                dtNguyenLieu.Rows.Add(row);
-                lsNguyenLieu.Add(_frmThemNL.NguyenLieu);
+                LoadNguyenLieu();
             }
         }
         public void XoaNguyenLieu()
         {
-            BUS.NguyenLieu_BUS.DeleteNguyenLieu(lsNguyenLieu[indexNL].MaNL, _MaNH);
-            lsNguyenLieu.RemoveAt(indexNL);
+            BUS.NguyenLieu_BUS.DeleteNguyenLieu((int)dtNguyenLieu_Source.Rows[indexNL][0], _MaNH);
             dtNguyenLieu.Rows.RemoveAt(indexNL);
+            dtNguyenLieu_Source.Rows.RemoveAt(indexNL);
         }
         public void CapNhatNguyenLieu()
         {
@@ -167,8 +164,8 @@ namespace GUI.QuanLyKho
                     {
 
                         NguyenLieu_DTO temp = new NguyenLieu_DTO();
-                        temp.MaNL = lsNguyenLieu[indexNL].MaNL;
-                        temp.MaNH = lsNguyenLieu[indexNL].MaNH;
+                        temp.MaNL = (int)dtNguyenLieu_Source.Rows[indexNL][0];
+                        temp.MaNH = dtNguyenLieu_Source.Rows[indexNL][1].ToString();
                         temp.TenNL = txtTenNguyenLieu.Text.Trim();
                         temp.DonVi = txtDonVi.Text.Trim();
                         temp.SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
@@ -180,18 +177,13 @@ namespace GUI.QuanLyKho
                         }
                         else
                         {
-                            dtNguyenLieu.Rows[indexNL]["TenNL"] = txtTenNguyenLieu.Text.Trim();
-                            dtNguyenLieu.Rows[indexNL]["DonVi"] = txtDonVi.Text.Trim();
-                            dtNguyenLieu.Rows[indexNL]["SoLuongTon"] = int.Parse(txtSoLuongTon.Text.Trim());
-                            lsNguyenLieu[indexNL].TenNL = txtTenNguyenLieu.Text.Trim();
-                            lsNguyenLieu[indexNL].DonVi = txtDonVi.Text.Trim();
-                            lsNguyenLieu[indexNL].SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
+                            LoadNguyenLieu();
                         }
                     }
         }
         #endregion
 
-
+ 
 
     }
 }
