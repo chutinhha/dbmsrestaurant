@@ -1,8 +1,10 @@
-
+﻿
 use [QLNhaHang]
 GO
---------------- table ChiTietDatHang -------------------------
+--------------- table ChiTietDatHang --------------------------------------------------------------------
 
+-- Select chi tiết đặt hàng theo Mã Hóa Đơn
+---------------------------------------------------------------
 create proc SelectChiTietDatHang @MaHoaDon int
 as
 begin
@@ -11,12 +13,29 @@ begin
 	where MaHoaDon = @MaHoaDon and ct.MaNL = nl.MaNL
 end
 GO
+
+-- Kiểm tra một nguyên liệu có trong bảng chi tiết đặt hàng hay không
+----------------------------------------------------------------
+
+create proc SelectChiTietDatHang @MaNL int
+as
+begin
+	select ct.*,nl.TenNL,nl.DonVi
+	from ChiTietDatHang ct,NguyenLieu nl
+	where MaHoaDon = @MaHoaDon and ct.MaNL = nl.MaNL
+end
+GO
+-- insert chi tiết đặt hàng 
+----------------------------------------------------------------
 create proc InsertChiTietDatHang @MaHoaDon int,@MaNL int,@SoLuong int,@ThanhTien float
 as
 begin
 	insert into ChiTietDatHang values(@MaHoaDon,@MaNL,@SoLuong,@ThanhTien)
 end
 GO
+
+-- Delete chi tiết đặt hàng theo Mã Hóa Đơn
+-----------------------------------------------------------------
 create proc DeleteChiTietDatHang  @MaHoaDon int
 as
 begin
@@ -24,14 +43,21 @@ begin
 	where MaHoaDon=@MaHoaDon
 end
 GO
+
+-- Delete chi tiết đặt hàng theo Mã Nguyên Liệu
+----------------------------------------------------------------
 create proc DeleteChiTietDatHang_fromNL  @MaNL int
 as
 begin
 	delete ChiTietDatHang
 	where MaNL = @MaNL
 end
+
 GO
---------------- table DatHang --------------------------------
+--------------- table DatHang -------------------------------------------------------------------------
+
+-- Slect đơn đặt hàng theo Mã Nhà Hàng
+----------------------------------------------------------------
 create proc SelectDatHang  @MaNH nchar(10)
 as
 begin

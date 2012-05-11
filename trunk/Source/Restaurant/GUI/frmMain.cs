@@ -106,7 +106,6 @@ namespace GUI
         {
             Panel.Controls.Clear();
             UCtrl.Dock = DockStyle.Fill;
-
             Panel.Controls.Add(UCtrl);
         }
 
@@ -171,8 +170,9 @@ namespace GUI
         private void barBtn_QLKho_DatHang_ItemClick(object sender, ItemClickEventArgs e)
         {
             UCtrl_QLKho_DatHang.MaNH = strMaNH;
-            Add_UserControl(panelCtrl_Main, UCtrl_QLKho_DatHang);
             UCtrl_QLKho_DatHang.LoadDSDatHang();
+            Add_UserControl(panelCtrl_Main, UCtrl_QLKho_DatHang);
+            
         }
         private void barBtn_NhapKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -181,14 +181,16 @@ namespace GUI
         private void barBtn_QLKho_QLNCC_ItemClick(object sender, ItemClickEventArgs e)
         {
             UCtrl_QLKho_NCC.MaNH = strMaNH;
-            Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NCC);
             UCtrl_QLKho_NCC.LoadNhaCungCap();
+            Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NCC);
+            
         }
         private void barBtn_QLNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UCtrl_QLKho_NguyenLieu.MaNH = strMaNH;
-            Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NguyenLieu);
             UCtrl_QLKho_NguyenLieu.LoadNguyenLieu();
+            Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NguyenLieu);
+            
         }
         #endregion
 

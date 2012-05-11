@@ -1,7 +1,7 @@
 
 use [QLNhaHang]
 GO
---------------- table ChiTietNCC -----------------------------
+--------------- table ChiTietNCC ---------------------------------------------------------
 create proc InsertChiTietNCC @MaNL int,@MaNCC int ,@Gia float
 as
 begin
@@ -27,7 +27,7 @@ begin
 	delete ChiTietNCC where MaNL = @MaNL
 end
 GO
-------------- table NhaCungCap --------------------------------------------
+------------- table NhaCungCap -----------------------------------------------------------
 
 create proc SelectNhaCungCap
 as

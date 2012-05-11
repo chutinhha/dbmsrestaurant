@@ -1,7 +1,8 @@
 
 use [QLNhaHang]
 GO
-------------------- Table Nguyen Lieu -----------------------------------
+------------------- Table Nguyen Lieu -----------------------------------------------------------------
+
 create proc SelectNguyenLieu @MaNH nchar(10)
 as
 begin
