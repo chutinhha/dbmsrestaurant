@@ -146,6 +146,7 @@
             this.lvNguyenLieuChon.TabIndex = 1;
             this.lvNguyenLieuChon.UseCompatibleStateImageBehavior = false;
             this.lvNguyenLieuChon.View = System.Windows.Forms.View.Details;
+            this.lvNguyenLieuChon.DoubleClick += new System.EventHandler(this.lvNguyenLieuChon_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -181,6 +182,7 @@
             this.lvNguyenLieu.TabIndex = 1;
             this.lvNguyenLieu.UseCompatibleStateImageBehavior = false;
             this.lvNguyenLieu.View = System.Windows.Forms.View.Details;
+            this.lvNguyenLieu.DoubleClick += new System.EventHandler(this.lvNguyenLieu_DoubleClick);
             // 
             // cl_STT
             // 

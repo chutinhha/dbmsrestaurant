@@ -10,10 +10,18 @@ namespace DAO
     public class ChiTietDatHang_DAO
     {
         Provider provider;
+        Provider_Vu _provider;
+        public Provider_Vu Provider
+        {
+            get { return _provider; }
+            set { _provider = value; }
+        }
         public ChiTietDatHang_DAO()
         {
             provider = new Provider();
+            _provider = new Provider_Vu();
         }
+
         public List<ChiTietDatHang_DTO> SelectChiTietDatDang(int MaHoaDon)
         {
             String store = "SelectChiTietDatHang";
@@ -23,21 +31,24 @@ namespace DAO
             cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
             return ConvertToList(provider.ExecSelectCommand(cm));
         }
-        public int InsertChiTietDatHang(ChiTietDatHang_DTO ctdh)
+        public int InsertChiTietDatHang(int flag_connec, int flag_tran,ChiTietDatHang_DTO ctdh)
         {
             String store = "InsertChiTietDatHang";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
-            cm.Parameters.Add("@MaNL", SqlDbType.Int);
-            cm.Parameters.Add("@SoLuong", SqlDbType.Int);
-            cm.Parameters.Add("@ThanhTien", SqlDbType.Float);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNL", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@SoLuong", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@ThanhTien", SqlDbType.Float);
 
-            cm.Parameters["@MaHoaDon"].Value = ctdh.MaHoaDon;
-            cm.Parameters["@MaNL"].Value = ctdh.MaNL;
-            cm.Parameters["@SoLuong"].Value = ctdh.SoLuong;
-            cm.Parameters["@ThanhTien"].Value = ctdh.ThanhTien;
+            _provider.Command.Parameters["@MaHoaDon"].Value = ctdh.MaHoaDon;
+            _provider.Command.Parameters["@MaNL"].Value = ctdh.MaNL;
+            _provider.Command.Parameters["@SoLuong"].Value = ctdh.SoLuong;
+            _provider.Command.Parameters["@ThanhTien"].Value = ctdh.ThanhTien;
 
-            return provider.ExecuteInsertUpdateDelete(cm);
+            return _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
         }
         public int DeleteChiTietDatDang(int MaHoaDon)
         {

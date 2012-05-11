@@ -10,9 +10,16 @@ namespace DAO
     public class NhaCungCap_DAO
     {
         Provider provider ;
+        Provider_Vu _provider;
+        public Provider_Vu Provider
+        {
+            get { return _provider; }
+            set { _provider = value; }
+        }
         public NhaCungCap_DAO()
         {
             provider = new Provider();
+            _provider = new Provider_Vu();
         }
         public List<NhaCungCap_DTO> SelectNhaCungCap()
         {
@@ -21,14 +28,19 @@ namespace DAO
 
             return ConvertToList(provider.ExecSelectCommand(cm));
         }
-        public List<NhaCungCap_DTO> SelectNhaCungCap_fromNH(String MaNH)
+
+        public List<NhaCungCap_DTO> SelectNhaCungCap_fromNH(int flag_connec,int flag_tran,String MaNH)
         {
             String store = "SelectNhaCungCap_fromNH";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNH", SqlDbType.NChar);
 
-            cm.Parameters["@MaNH"].Value = MaNH;
-            return ConvertToList(provider.ExecSelectCommand(cm));
+            _provider.Command.Parameters["@MaNH"].Value = MaNH;
+
+            return ConvertToList(_provider.ExecSelectCommand(flag_connec,flag_tran));
         }
 
         public int InsertNhaCungCap(NhaCungCap_DTO ncc)

@@ -273,6 +273,7 @@
             this.lvNguyenLieu.UseCompatibleStateImageBehavior = false;
             this.lvNguyenLieu.View = System.Windows.Forms.View.Details;
             this.lvNguyenLieu.SelectedIndexChanged += new System.EventHandler(this.lvNguyenLieu_SelectedIndexChanged);
+            this.lvNguyenLieu.DoubleClick += new System.EventHandler(this.lvNguyenLieu_DoubleClick);
             // 
             // columnHeader4
             // 
@@ -311,6 +312,7 @@
             this.gridDSDatHang.TabIndex = 4;
             this.gridDSDatHang.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDSDatHang});
+            this.gridDSDatHang.DoubleClick += new System.EventHandler(this.gridDSDatHang_DoubleClick);
             // 
             // gvDSDatHang
             // 

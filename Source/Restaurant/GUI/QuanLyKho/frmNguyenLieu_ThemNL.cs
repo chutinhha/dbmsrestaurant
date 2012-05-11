@@ -26,7 +26,6 @@ namespace GUI.QuanLyKho
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.None;
             if (txtTenNguyenLieu.Text.Trim().Length == 0)
             {
                 DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập Tên Nguyên Liệu !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -42,14 +41,10 @@ namespace GUI.QuanLyKho
                 {
                     _nguyenlieu.TenNL = txtTenNguyenLieu.Text.Trim();
                     _nguyenlieu.DonVi = txtDonVi.Text.Trim();
-                    if (BUS.NguyenLieu_BUS.InsertNguyenLieu(NguyenLieu) == 0)
-                    {
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Tên nguyên liệu này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtTenNguyenLieu.Focus();
-                        this.DialogResult = DialogResult.None;
-                    }
+                    if (BUS.NguyenLieu_BUS.InsertNguyenLieu(NguyenLieu) == 1)
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        this.DialogResult = DialogResult.OK;
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }          
         }
     }

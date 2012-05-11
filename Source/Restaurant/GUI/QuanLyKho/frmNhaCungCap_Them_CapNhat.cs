@@ -19,6 +19,7 @@ namespace GUI.QuanLyKho
             private NhaCungCap_DTO _NCC;
             private List<NguyenLieu_DTO> lsNguyenLieu;
             private List<NguyenLieu_DTO> _lsNguyenLieuChon;
+            BUS.NguyenLieu_BUS _NguyenLieuBUS;
         #endregion
 
         #region " Properties "
@@ -49,6 +50,7 @@ namespace GUI.QuanLyKho
         {
             InitializeComponent();
             _NCC = new NhaCungCap_DTO();
+            _NguyenLieuBUS = new NguyenLieu_BUS();
         }
         #endregion
 
@@ -93,7 +95,7 @@ namespace GUI.QuanLyKho
             public void LoadNguyenLieu(int flag)
             {
                 if (flag == 1)
-                    lsNguyenLieu =BUS.NguyenLieu_BUS.SelectNguyenLieu(_MaNH);
+                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu(2,-1,_MaNH);
                 else
                     lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietNCC(_NCC.MaNCC,_MaNH);
 
@@ -101,8 +103,12 @@ namespace GUI.QuanLyKho
             }
             public void LoadNguyenLieuChon()
             {
+                lsNguyenLieuChon = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(2,-1,_NCC.MaNCC, _MaNH);
+                Load_lvNguyenLieuChon();
+            }
+            public void Load_lvNguyenLieuChon()
+            {
                 lvNguyenLieuChon.Items.Clear();
-                lsNguyenLieuChon = BUS.NguyenLieu_BUS.SelectNguyenLieu_fromNCC(_NCC.MaNCC, _MaNH);
                 for (int i = 0; i < lsNguyenLieuChon.Count; i++)
                 {
                     ListViewItem lvItem = new ListViewItem(new String[] { (i + 1).ToString(), lsNguyenLieuChon[i].TenNL });
@@ -146,7 +152,7 @@ namespace GUI.QuanLyKho
                     lsNguyenLieu.Add(lsNguyenLieuChon[index_NguyenLieuChon]);
                     //Remove List View Nguyen Lieu Chon
                     lsNguyenLieuChon.RemoveAt(index_NguyenLieuChon);
-                    LoadNguyenLieuChon();
+                    Load_lvNguyenLieuChon();
                 }
                 catch (Exception)
                 {
@@ -218,6 +224,32 @@ namespace GUI.QuanLyKho
                         }  
             }
         #endregion
+
+            private void lvNguyenLieu_DoubleClick(object sender, EventArgs e)
+            {
+                try
+                {
+                    ThemNL();
+                }
+                catch (Exception)
+                {
+                    
+                }
+               
+            }
+
+            private void lvNguyenLieuChon_DoubleClick(object sender, EventArgs e)
+            {
+                try
+                {
+                    XoaNL();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+            }
 
 
     }

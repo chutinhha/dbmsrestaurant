@@ -17,12 +17,12 @@ GO
 -- Kiểm tra một nguyên liệu có trong bảng chi tiết đặt hàng hay không
 ----------------------------------------------------------------
 
-create proc SelectChiTietDatHang @MaNL int
+create proc CountChiTietDatHang_fromMaNL @MaNL int
 as
 begin
-	select ct.*,nl.TenNL,nl.DonVi
-	from ChiTietDatHang ct,NguyenLieu nl
-	where MaHoaDon = @MaHoaDon and ct.MaNL = nl.MaNL
+	return (select count(*)
+	from NguyenLieu nl
+	where nl.MaNL = @MaNL)
 end
 GO
 -- insert chi tiết đặt hàng 

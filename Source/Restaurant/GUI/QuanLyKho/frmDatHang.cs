@@ -13,6 +13,8 @@ namespace GUI.QuanLyKho
     public partial class frmDatHang : DevExpress.XtraEditors.XtraForm
     {
         #region " Thuoc Tinh " 
+            BUS.NhaCungCap_BUS _NhaCungCapBUS;
+            BUS.NguyenLieu_BUS _NguyenLieuBUS;
             List<NguyenLieu_DTO> _lsNguyenLieu;
             List<ChiTietDatHang_DTO> _lsDSDatHang;
             DataTable dtDSDatHang;
@@ -24,6 +26,17 @@ namespace GUI.QuanLyKho
         #endregion 
 
         #region " Properties "
+            public NhaCungCap_BUS NhaCungCapBUS
+            {
+                get { return _NhaCungCapBUS; }
+                set { _NhaCungCapBUS = value; }
+            }
+            public NguyenLieu_BUS NguyenLieuBUS
+            {
+                get { return _NguyenLieuBUS; }
+                set { _NguyenLieuBUS = value; }
+            }
+
             public String TenNCC
             {
                 get { return txtNCC.Text; }
@@ -61,7 +74,8 @@ namespace GUI.QuanLyKho
             public frmDatHang()
             {
                 InitializeComponent();
-
+                _NhaCungCapBUS = new NhaCungCap_BUS();
+                _NguyenLieuBUS = new NguyenLieu_BUS();
                 _ttdh = new DatHang_DTO();
                 _lsNguyenLieu = new List<NguyenLieu_DTO>();
                 _lsDSDatHang = new List<ChiTietDatHang_DTO>();
@@ -154,13 +168,38 @@ namespace GUI.QuanLyKho
                 //this.Close();
             }
 
+            private void lvNguyenLieu_DoubleClick(object sender, EventArgs e)
+            {
+                try
+                {
+                    ThemNguyenLieu();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
+
+            private void gridDSDatHang_DoubleClick(object sender, EventArgs e)
+            {
+                try
+                {
+                    XoaNguyenLieu();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         #endregion
 
         #region " Cac ham xu ly "
             public void LoadNguyenLieu()
             {
                 lvNguyenLieu.Items.Clear();
-                _lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_fromNCC(_ttdh.MaNCC,_ttdh.MaNH);
+                _lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(-1,-1,_ttdh.MaNCC,_ttdh.MaNH);
                 Load_lvNguyenLieu();
             }
             public void Load_lvNguyenLieu()
@@ -253,8 +292,7 @@ namespace GUI.QuanLyKho
                 temp.DonVi = _lsDSDatHang[index_DSDatHang].DonVi;
                 temp.Gia = _lsDSDatHang[index_DSDatHang].ThanhTien;
                 _lsNguyenLieu.Add(temp);
-                ListViewItem lvItem = new ListViewItem(new String[] { (_lsNguyenLieu.Count + 1).ToString(), _lsDSDatHang[index_DSDatHang].TenNL });
-                lvNguyenLieu.Items.Add(lvItem);
+                Load_lvNguyenLieu();
 
                 //Remove grid DSDatHang
                 _lsDSDatHang.RemoveAt(index_DSDatHang);
@@ -292,6 +330,7 @@ namespace GUI.QuanLyKho
             }
 
         #endregion
+
 
     }
 }

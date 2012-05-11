@@ -26,11 +26,14 @@ namespace GUI.QuanLyKho
             DataTable dtNL;
             int indexNCC ;
             int index_NL;
+            BUS.NguyenLieu_BUS _NguyenLieuBUS;
         #endregion
 
         #region " Khoi tao "
             public UCtrlNhaCungCap()
             {
+                _NguyenLieuBUS = new NguyenLieu_BUS();
+
                 InitializeComponent();
                 lsNCC = new List<NhaCungCap_DTO>();
                 dtNCC = new DataTable();            
@@ -125,7 +128,7 @@ namespace GUI.QuanLyKho
             {
                 gridNguyenLieu.DataSource = null;
                 dtNL.Rows.Clear();
-                lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_fromNCC(MaNCC,_MaNH);
+                lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(2,-1,MaNCC,_MaNH);
                 for (int i = 0; i < lsNguyenLieu.Count; i++)
                 {
                     DataRow row = dtNL.NewRow();

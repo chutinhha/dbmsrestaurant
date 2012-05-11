@@ -9,20 +9,38 @@ namespace BUS
 {
     public class NguyenLieu_BUS
     {
-        public static List<NguyenLieu_DTO> SelectNguyenLieu(String maNH)
+        NguyenLieu_DAO _NguyenLieuDAO;
+        public NguyenLieu_DAO NguyenLieuDAO
         {
-            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
-            return nguyenlieuDAO.SelectNguyenLieu(maNH);
+            get { return _NguyenLieuDAO; }
+            set { _NguyenLieuDAO = value; }
+        }
+        public NguyenLieu_BUS(NhaCungCap_BUS ncc)
+        {
+            _NguyenLieuDAO = new NguyenLieu_DAO();
+            _NguyenLieuDAO.Provider = ncc.NhaCungCapDAO.Provider;
+        }
+        public NguyenLieu_BUS(NguyenLieu_BUS nl)
+        {
+            _NguyenLieuDAO = new NguyenLieu_DAO();
+            _NguyenLieuDAO.Provider = nl._NguyenLieuDAO.Provider;
+        }
+        public NguyenLieu_BUS()
+        {
+            _NguyenLieuDAO = new NguyenLieu_DAO();
+        }
+        public  List<NguyenLieu_DTO> SelectNguyenLieu(int flag_connec,int flag_tran,String maNH)
+        {
+            return _NguyenLieuDAO.SelectNguyenLieu(flag_connec,flag_tran,maNH);
         }
         public static DataTable SelectNguyenLieu_toDataTable(String maNH)
         {
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
             return nguyenlieuDAO.SelectNguyenLieu_toDataTable(maNH);
         }
-        public static List<NguyenLieu_DTO> SelectNguyenLieu_fromNCC(int MaNCC, String MaNH)
+        public  List<NguyenLieu_DTO> SelectNguyenLieu_fromNCC(int flag_connec,int flag_tran,int MaNCC, String MaNH)
         {
-            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
-            return nguyenlieuDAO.SelectNguyenLieu_fromNCC(MaNCC,MaNH);
+            return _NguyenLieuDAO.SelectNguyenLieu_fromNCC(flag_connec,flag_tran,MaNCC,MaNH);
         }
         public static List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietNCC(int MaNCC,String maNH)
         {
