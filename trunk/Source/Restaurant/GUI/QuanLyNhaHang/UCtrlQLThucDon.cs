@@ -171,10 +171,10 @@ namespace GUI.QuanLyNhaHang
                 if (tenMon != null)
                 {
                     DTO.MonAn_DTO MonAn = new MonAn_DTO();
-                    MonAn.TenMonAn = tenMon;
+                    MonAn.tenmon = tenMon;
                     //  MonAn.MaLoai = maloai;
-                    MonAn.Gia = gia;
-                    MonAn.DonViTinh = donvitinh;
+                    MonAn.Gia = double.Parse(gia);
+                    MonAn.Dvtinh = donvitinh;
                     //  MonAn.MaNhaHang = maNH;        dang can nhac
 
                     chon = index[0];

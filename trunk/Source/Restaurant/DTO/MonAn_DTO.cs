@@ -9,14 +9,14 @@ namespace DTO
     {
         string maMonAn;
 
-        public string MaMonAn
+        public string Mamon
         {
             get { return maMonAn; }
             set { maMonAn = value; }
         }
         string tenMonAn;
 
-        public string TenMonAn
+        public string tenmon
         {
             get { return tenMonAn; }
             set { tenMonAn = value; }
@@ -24,15 +24,15 @@ namespace DTO
 
         string maLoai;
 
-        public string MaLoai
+        public string Loaimon
         {
             get { return maLoai; }
             set { maLoai = value; }
         }
 
-        string gia;
+        private double gia;
 
-        public string Gia
+        public double Gia
         {
             get { return gia; }
             set { gia = value; }
@@ -40,18 +40,18 @@ namespace DTO
 
         string donViTinh;
 
-        public string DonViTinh
+        public string Dvtinh
         {
             get { return donViTinh; }
             set { donViTinh = value; }
         }
 
-        string maNhaHang;
+        string manh;
 
-        public string MaNhaHang
+        public string Manh
         {
-            get { return maNhaHang; }
-            set { maNhaHang = value; }
+            get { return manh; }
+            set { manh = value; }
         }
 
     }

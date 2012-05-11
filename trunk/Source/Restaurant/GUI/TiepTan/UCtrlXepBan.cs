@@ -36,8 +36,8 @@ namespace GUI.TiepTan
         }
         public void LoadForm()
         {
-            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
-            tbBanAn = DatBan_BUS.DocBanAn_OpenConnection (maNH,khuvuc,succhua);
+            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
+            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection (maNH,khuvuc,succhua);
            
             LoadDuLieuListView();
            
@@ -91,8 +91,11 @@ namespace GUI.TiepTan
                             {
                                 if (maban == tbBanDatTrongNgay.Rows[j]["MaBan"].ToString())
                                 {
-                                    flag = 1;
-                                    break;
+                                    if (row["TrangThai"].ToString() == "0")
+                                    {
+                                        flag = 1;
+                                        break;
+                                    }
                                 }
                             }
                         }
@@ -104,6 +107,7 @@ namespace GUI.TiepTan
                         else
                         {
                             item.ImageIndex = 2;//Ban Dang duoc dat trong thoi gian Hien Tai
+                                                        
                             lv_BanDat.Items.Add(item);
                         }
                       
@@ -225,20 +229,56 @@ namespace GUI.TiepTan
 
         private void btnDocBanAn_Click(object sender, EventArgs e)
         {
-            tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection(maNH, khuvuc, succhua);
            // tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
             LoadDuLieuListView();
         }
-
         private void btnDocDatBan_Click(object sender, EventArgs e)
         {
            // tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
-            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
+            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
+            LoadDuLieuListView();
+        }
+        private void btnDocBanAn_begin_Click(object sender, EventArgs e)
+        {
+           // tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay(maNH, timeNow);
+            tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
             LoadDuLieuListView();
         }
 
-      
-       
+        private void btnXepBanAn_Commit_Click(object sender, EventArgs e)
+        {
+            if (rowSelect != null)
+            {
+                for (int i = 0; i < tbBanAn.Rows.Count; i++)
+                {
+                    if (int.Parse(rowSelect["MaBan"].ToString()) == int.Parse(tbBanAn.Rows[i]["MaBan"].ToString()))
+                    {
+                        DataRow row = tbBanAn.Rows[i];
+                        if (int.Parse(row["TrangThai"].ToString()) != 1 && timeNow.Date == DateTime.Now.Date)
+                        {
+                            //cap nhat tinh trang xuong csdl
+                            DatBan_BUS.UpdateTrangThaiBanAn_CommitTran(int.Parse(row["MaBan"].ToString()), 1);
 
+                            //neu co trong bang Datban thi cap nhat lai Tinh trang
+                            //if (tbBanDatTrongNgay.Rows.Count > 0)
+                            //{
+                            //    for (int j = 0; j < tbBanDatTrongNgay.Rows.Count; j++)
+                            //        if (int.Parse(row["MaBan"].ToString()) == int.Parse(tbBanDatTrongNgay.Rows[j]["MaBan"].ToString()))
+                            //        {
+                            //            DatBan_BUS.UpdateTrangThaiDatBan(maNH, int.Parse(tbBanDatTrongNgay.Rows[j]["MaBan"].ToString()), 1, DateTime.Now);
+                            //        }
+                            //}
+                            //
+                            LoadForm();
+                           
+                        }
+                        else
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Bàn này không thể Xếp", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }

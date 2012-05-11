@@ -38,11 +38,21 @@ namespace DAO
         {
             //Provider provider = new Provider();
             DataTable tb = new DataTable();
-            string sql = "begin tran select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            string sql = "select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
             sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
             sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua + " commit tran";
             provider.cm = provider.CreateCommandStringSql (sql);
             return provider.ExecSelectCommand_CloseConnection(provider.cm);
+        }
+        public DataTable DocBanAn_BeginTran(int maNH, string khuvuc, string succhua)
+        {
+            //Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "begin tran select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
+            sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua;
+            provider.cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand_OpenConnection(provider.cm);
         }
         public DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
         {
@@ -113,6 +123,14 @@ namespace DAO
             string sql = "update BanAn set TrangThai=" + trangthai +" where MaBan=" + MaBan;
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
+        }
+        public int UpdateTrangThaiBanAn_CommitTran(int MaBan, int trangthai)
+        {
+            // Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "update BanAn set TrangThai=" + trangthai + " where MaBan=" + MaBan+" commit tran";
+            provider.cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecuteInsertUpdateDelete_CloseConnection(provider.cm);
         }
         public int UpdateTrangThaiDatBan(int maNH,int MaBan, int trangthai,DateTime thoigianden)
         {

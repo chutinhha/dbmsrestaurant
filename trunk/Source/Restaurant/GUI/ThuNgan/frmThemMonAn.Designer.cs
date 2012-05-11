@@ -29,33 +29,38 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.btnTru = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditSL = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.btnCong = new DevExpress.XtraEditors.SimpleButton();
             this.cboLoaiMonAn = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridControlChon = new DevExpress.XtraGrid.GridControl();
+            this.gridViewChon = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewDSMonAn = new System.Windows.Forms.ListView();
+            this.ten = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.gia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSL.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLoaiMonAn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlChon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewChon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.btnTru);
+            this.panelControl1.Controls.Add(this.textEditSL);
+            this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.btnCong);
             this.panelControl1.Controls.Add(this.cboLoaiMonAn);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -71,25 +76,31 @@
             this.panelControl1.Size = new System.Drawing.Size(694, 422);
             this.panelControl1.TabIndex = 0;
             // 
-            // btnTru
+            // textEditSL
             // 
-            this.btnTru.Appearance.Font = new System.Drawing.Font("Simplified Arabic", 20F);
-            this.btnTru.Appearance.Options.UseFont = true;
-            this.btnTru.Location = new System.Drawing.Point(339, 5);
-            this.btnTru.Name = "btnTru";
-            this.btnTru.Size = new System.Drawing.Size(58, 32);
-            this.btnTru.TabIndex = 29;
-            this.btnTru.Text = "-";
+            this.textEditSL.Location = new System.Drawing.Point(516, 9);
+            this.textEditSL.Name = "textEditSL";
+            this.textEditSL.Size = new System.Drawing.Size(102, 20);
+            this.textEditSL.TabIndex = 36;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(464, 16);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(46, 13);
+            this.labelControl2.TabIndex = 35;
+            this.labelControl2.Text = "Số lượng:";
             // 
             // btnCong
             // 
             this.btnCong.Appearance.Font = new System.Drawing.Font("Simplified Arabic", 20F);
             this.btnCong.Appearance.Options.UseFont = true;
-            this.btnCong.Location = new System.Drawing.Point(273, 5);
+            this.btnCong.Location = new System.Drawing.Point(624, 6);
             this.btnCong.Name = "btnCong";
-            this.btnCong.Size = new System.Drawing.Size(58, 32);
-            this.btnCong.TabIndex = 30;
+            this.btnCong.Size = new System.Drawing.Size(58, 23);
+            this.btnCong.TabIndex = 34;
             this.btnCong.Text = "+";
+            this.btnCong.Click += new System.EventHandler(this.btnCong_Click);
             // 
             // cboLoaiMonAn
             // 
@@ -99,6 +110,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cboLoaiMonAn.Size = new System.Drawing.Size(131, 20);
             this.cboLoaiMonAn.TabIndex = 28;
+            this.cboLoaiMonAn.SelectedIndexChanged += new System.EventHandler(this.cboLoaiMonAn_SelectedIndexChanged);
             // 
             // labelControl1
             // 
@@ -117,6 +129,7 @@
             this.btnDongY.Size = new System.Drawing.Size(75, 32);
             this.btnDongY.TabIndex = 26;
             this.btnDongY.Text = "Đồng Ý";
+            this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
             // 
             // btnHuy
             // 
@@ -128,35 +141,39 @@
             this.btnHuy.Size = new System.Drawing.Size(75, 32);
             this.btnHuy.TabIndex = 25;
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // groupControl2
             // 
             this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl2.Controls.Add(this.gridControl1);
+            this.groupControl2.Controls.Add(this.gridControlChon);
             this.groupControl2.Location = new System.Drawing.Point(273, 44);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(409, 334);
             this.groupControl2.TabIndex = 24;
             this.groupControl2.Text = "Món Ăn Chọn";
             // 
-            // gridControl1
+            // gridControlChon
             // 
-            this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.Location = new System.Drawing.Point(2, 22);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(405, 310);
-            this.gridControl1.TabIndex = 0;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridControlChon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlChon.Location = new System.Drawing.Point(2, 22);
+            this.gridControlChon.MainView = this.gridViewChon;
+            this.gridControlChon.Name = "gridControlChon";
+            this.gridControlChon.Size = new System.Drawing.Size(405, 310);
+            this.gridControlChon.TabIndex = 0;
+            this.gridControlChon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewChon});
             // 
-            // gridView1
+            // gridViewChon
             // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridViewChon.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridViewChon.GridControl = this.gridControlChon;
+            this.gridViewChon.Name = "gridViewChon";
+            this.gridViewChon.OptionsBehavior.Editable = false;
+            this.gridViewChon.OptionsView.ShowGroupPanel = false;
+            this.gridViewChon.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewChon_FocusedRowChanged);
             // 
             // simpleButton4
             // 
@@ -166,6 +183,7 @@
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(47, 34);
             this.simpleButton4.TabIndex = 23;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // simpleButton1
             // 
@@ -175,27 +193,44 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(47, 34);
             this.simpleButton1.TabIndex = 22;
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // groupControl1
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupControl1.Controls.Add(this.listView1);
+            this.groupControl1.Controls.Add(this.listViewDSMonAn);
             this.groupControl1.Location = new System.Drawing.Point(12, 44);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(200, 334);
             this.groupControl1.TabIndex = 21;
             this.groupControl1.Text = "Danh Sách Món Ăn";
             // 
-            // listView1
+            // listViewDSMonAn
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(2, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(196, 310);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewDSMonAn.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ten,
+            this.gia});
+            this.listViewDSMonAn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewDSMonAn.FullRowSelect = true;
+            this.listViewDSMonAn.GridLines = true;
+            this.listViewDSMonAn.Location = new System.Drawing.Point(2, 22);
+            this.listViewDSMonAn.Name = "listViewDSMonAn";
+            this.listViewDSMonAn.Size = new System.Drawing.Size(196, 310);
+            this.listViewDSMonAn.TabIndex = 1;
+            this.listViewDSMonAn.UseCompatibleStateImageBehavior = false;
+            this.listViewDSMonAn.View = System.Windows.Forms.View.Details;
+            this.listViewDSMonAn.DoubleClick += new System.EventHandler(this.listViewDSMonAn_DoubleClick);
+            // 
+            // ten
+            // 
+            this.ten.Text = "Tên";
+            this.ten.Width = 120;
+            // 
+            // gia
+            // 
+            this.gia.Text = "Giá";
+            this.gia.Width = 70;
             // 
             // frmThemMonAn
             // 
@@ -206,14 +241,16 @@
             this.MinimumSize = new System.Drawing.Size(700, 450);
             this.Name = "frmThemMonAn";
             this.Text = "Thêm Món Ăn";
+            this.Load += new System.EventHandler(this.frmThemMonAn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSL.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLoaiMonAn.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlChon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewChon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -223,19 +260,22 @@
         #endregion
 
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton btnTru;
-        private DevExpress.XtraEditors.SimpleButton btnCong;
         private DevExpress.XtraEditors.ComboBoxEdit cboLoaiMonAn;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton btnDongY;
         private DevExpress.XtraEditors.SimpleButton btnHuy;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.GridControl gridControlChon;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewChon;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewDSMonAn;
+        private System.Windows.Forms.ColumnHeader ten;
+        private System.Windows.Forms.ColumnHeader gia;
+        private DevExpress.XtraEditors.SimpleButton btnCong;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.TextEdit textEditSL;
 
 
     }

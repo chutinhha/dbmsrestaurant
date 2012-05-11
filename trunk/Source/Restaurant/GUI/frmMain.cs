@@ -134,7 +134,6 @@ namespace GUI
         private void barBtn_TiepTan_DSDatBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DSDatBan);
-            UCtrl_TiepTan_DSDatBan.LoadForm();
         }
         //------------
         private void DatBan()
@@ -151,14 +150,14 @@ namespace GUI
 
         private void barBtn_ThuNgan_ChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ThuNgan.frmChuyenBan _frmChuyenBan = new ThuNgan.frmChuyenBan();
-            _frmChuyenBan.Show();
+            //ThuNgan.frmChuyenBan _frmChuyenBan = new ThuNgan.frmChuyenBan();
+            //_frmChuyenBan.Show();
+            UCtrl_ThuNgan_QLBanAn.ShowFormChuyenBan();
         }
 
         private void barBtn_ThuNgan_GhepBan_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ThuNgan.frmGhepBan _frmGhepBan = new ThuNgan.frmGhepBan();
-            _frmGhepBan.Show();
+            UCtrl_ThuNgan_QLBanAn.ShowFormGhepBan();
         }
 
         private void barBtn_ThuNgan_ThongKe_ItemClick(object sender, ItemClickEventArgs e)

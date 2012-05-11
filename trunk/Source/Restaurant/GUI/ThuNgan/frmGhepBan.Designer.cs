@@ -31,18 +31,23 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
             this.btnHuy = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbboxChuyenVaoBan = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.listViewDSBanGhep = new System.Windows.Forms.ListView();
+            this.banghep = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ngaygiosudung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mahd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewDSBanDangDung = new System.Windows.Forms.ListView();
+            this.ban = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ngaygio = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbboxChuyenVaoBan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -54,7 +59,7 @@
             // 
             this.panelControl1.Controls.Add(this.btnDongY);
             this.panelControl1.Controls.Add(this.btnHuy);
-            this.panelControl1.Controls.Add(this.comboBoxEdit1);
+            this.panelControl1.Controls.Add(this.cbboxChuyenVaoBan);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.pictureEdit1);
             this.panelControl1.Controls.Add(this.simpleButton1);
@@ -76,6 +81,7 @@
             this.btnDongY.Size = new System.Drawing.Size(75, 32);
             this.btnDongY.TabIndex = 30;
             this.btnDongY.Text = "Đồng Ý";
+            this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
             // 
             // btnHuy
             // 
@@ -87,15 +93,17 @@
             this.btnHuy.Size = new System.Drawing.Size(75, 32);
             this.btnHuy.TabIndex = 29;
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
-            // comboBoxEdit1
+            // cbboxChuyenVaoBan
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(404, 269);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbboxChuyenVaoBan.Location = new System.Drawing.Point(404, 269);
+            this.cbboxChuyenVaoBan.Name = "cbboxChuyenVaoBan";
+            this.cbboxChuyenVaoBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(123, 20);
-            this.comboBoxEdit1.TabIndex = 14;
+            this.cbboxChuyenVaoBan.Size = new System.Drawing.Size(123, 20);
+            this.cbboxChuyenVaoBan.TabIndex = 14;
+            this.cbboxChuyenVaoBan.SelectedIndexChanged += new System.EventHandler(this.cbboxChuyenVaoBan_SelectedIndexChanged);
             // 
             // labelControl1
             // 
@@ -124,6 +132,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(45, 42);
             this.simpleButton1.TabIndex = 11;
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // simpleButton4
             // 
@@ -133,44 +142,82 @@
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(45, 42);
             this.simpleButton4.TabIndex = 10;
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // groupControl2
             // 
-            this.groupControl2.Controls.Add(this.listView2);
+            this.groupControl2.Controls.Add(this.listViewDSBanGhep);
             this.groupControl2.Location = new System.Drawing.Point(283, 12);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(289, 176);
             this.groupControl2.TabIndex = 0;
             this.groupControl2.Text = "Danh Sách Bàn Ghép";
             // 
-            // listView2
+            // listViewDSBanGhep
             // 
-            this.listView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView2.GridLines = true;
-            this.listView2.Location = new System.Drawing.Point(2, 22);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(285, 152);
-            this.listView2.TabIndex = 1;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listViewDSBanGhep.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.banghep,
+            this.ngaygiosudung,
+            this.mahd});
+            this.listViewDSBanGhep.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewDSBanGhep.FullRowSelect = true;
+            this.listViewDSBanGhep.GridLines = true;
+            this.listViewDSBanGhep.Location = new System.Drawing.Point(2, 22);
+            this.listViewDSBanGhep.Name = "listViewDSBanGhep";
+            this.listViewDSBanGhep.Size = new System.Drawing.Size(285, 152);
+            this.listViewDSBanGhep.TabIndex = 1;
+            this.listViewDSBanGhep.UseCompatibleStateImageBehavior = false;
+            this.listViewDSBanGhep.View = System.Windows.Forms.View.Details;
+            // 
+            // banghep
+            // 
+            this.banghep.Text = "Bàn";
+            // 
+            // ngaygiosudung
+            // 
+            this.ngaygiosudung.Text = "Thời gian bắt đầu";
+            this.ngaygiosudung.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ngaygiosudung.Width = 160;
+            // 
+            // mahd
+            // 
+            this.mahd.Text = "Hoá đơn";
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.listView1);
+            this.groupControl1.Controls.Add(this.listViewDSBanDangDung);
             this.groupControl1.Location = new System.Drawing.Point(12, 12);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(193, 338);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Danh Sách Bàn Đang Sử Dụng";
             // 
-            // listView1
+            // listViewDSBanDangDung
             // 
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(2, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(189, 314);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewDSBanDangDung.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ban,
+            this.ngaygio});
+            this.listViewDSBanDangDung.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewDSBanDangDung.FullRowSelect = true;
+            this.listViewDSBanDangDung.GridLines = true;
+            this.listViewDSBanDangDung.Location = new System.Drawing.Point(2, 22);
+            this.listViewDSBanDangDung.Name = "listViewDSBanDangDung";
+            this.listViewDSBanDangDung.Size = new System.Drawing.Size(189, 314);
+            this.listViewDSBanDangDung.TabIndex = 0;
+            this.listViewDSBanDangDung.UseCompatibleStateImageBehavior = false;
+            this.listViewDSBanDangDung.View = System.Windows.Forms.View.Details;
+            this.listViewDSBanDangDung.DoubleClick += new System.EventHandler(this.listViewDSBanDangDung_DoubleClick);
+            // 
+            // ban
+            // 
+            this.ban.Text = "Bàn";
+            this.ban.Width = 65;
+            // 
+            // ngaygio
+            // 
+            this.ngaygio.Text = "Thời gian bắt đầu";
+            this.ngaygio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ngaygio.Width = 120;
             // 
             // frmGhepBan
             // 
@@ -181,10 +228,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmGhepBan";
             this.Text = "Gộp Bàn";
+            this.Load += new System.EventHandler(this.frmGhepBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbboxChuyenVaoBan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -201,12 +249,17 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.GroupControl groupControl2;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbboxChuyenVaoBan;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.SimpleButton btnDongY;
         private DevExpress.XtraEditors.SimpleButton btnHuy;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewDSBanGhep;
+        private System.Windows.Forms.ListView listViewDSBanDangDung;
+        private System.Windows.Forms.ColumnHeader ban;
+        private System.Windows.Forms.ColumnHeader ngaygio;
+        private System.Windows.Forms.ColumnHeader banghep;
+        private System.Windows.Forms.ColumnHeader ngaygiosudung;
+        private System.Windows.Forms.ColumnHeader mahd;
     }
 }

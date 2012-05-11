@@ -23,11 +23,11 @@ namespace GUI.QuanLyNhaHang
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            MonAn.TenMonAn = txtTenMonAn.Text;
-            MonAn.MaLoai = ArrayMaMon[cbbLoaiMonAn.SelectedIndex];
-            MonAn.Gia = txtGia.Text;
-            MonAn.DonViTinh = txtDonViTinh.Text;
-            MonAn.MaNhaHang = ArrayMaNH[cbbNhaHang.SelectedIndex];
+            MonAn.tenmon = txtTenMonAn.Text;
+            MonAn.Loaimon = ArrayMaMon[cbbLoaiMonAn.SelectedIndex];
+            MonAn.Gia = double.Parse(txtGia.Text);
+            MonAn.Dvtinh = txtDonViTinh.Text;
+            MonAn.Manh = ArrayMaNH[cbbNhaHang.SelectedIndex];
 
             MonAn_BUS.ThemMonAn(MonAn);
 

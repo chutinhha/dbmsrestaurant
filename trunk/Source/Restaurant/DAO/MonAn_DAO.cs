@@ -10,6 +10,11 @@ namespace DAO
 {
     public class MonAn_DAO
     {
+        Provider provider;
+        public MonAn_DAO()
+        {
+            provider = new Provider();
+        }
         
         public static  DataTable DocMonAn()
         {
@@ -29,7 +34,7 @@ namespace DAO
         public static int ThemMonAn(MonAn_DTO MonAn)
         {
             Provider provider = new Provider();
-            string sql = string.Format("insert into MonAn(TenMon,LoaiMon,Gia,DonViTinh,MaNH) values ('{0}','{1}','{2}','{3}','{4}')", MonAn.TenMonAn, MonAn.MaLoai, MonAn.Gia, MonAn.DonViTinh, MonAn.MaNhaHang);
+            string sql = string.Format("insert into MonAn(TenMon,LoaiMon,Gia,DonViTinh,MaNH) values ('{0}','{1}','{2}','{3}','{4}')", MonAn.tenmon, MonAn.Loaimon, MonAn.Gia, MonAn.Dvtinh, MonAn.Manh);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
@@ -56,7 +61,7 @@ namespace DAO
         {
             Provider provider = new Provider();
             //chua xu ly nha hang
-            string sql = string.Format("update MonAn set TenMon=N'{0}',Gia='{1}',DonViTinh='{2}' where MaMon='{3}'", MonAn.TenMonAn, MonAn.Gia, MonAn.DonViTinh, maMonAn);
+            string sql = string.Format("update MonAn set TenMon=N'{0}',Gia='{1}',DonViTinh='{2}' where MaMon='{3}'", MonAn.tenmon, MonAn.Gia, MonAn.Dvtinh, maMonAn);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
@@ -68,6 +73,15 @@ namespace DAO
             string sql = string.Format("delete MonAn  where MaMon={0}", maMonAn);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
+        }
+        public DataTable SelectMonAnTheoLoai(String maloai, String manh)
+        {
+            SqlCommand cm = provider.CreateCommandStoreName("sp_SelectMonAnTheoLoai");
+            cm.Parameters.Add("@maloai", SqlDbType.NChar);
+            cm.Parameters.Add("@manh", SqlDbType.NChar);
+            cm.Parameters["@maloai"].Value = maloai;
+            cm.Parameters["@manh"].Value = manh;
+            return provider.ExecSelectCommand(cm);
         }
     }
 }
