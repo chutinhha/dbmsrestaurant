@@ -67,6 +67,10 @@
             this.ContentPanel = new System.Windows.Forms.ToolStripContentPanel();
             this.btnDocBanAn = new DevExpress.XtraEditors.SimpleButton();
             this.btnDocDatBan = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.btnDocBanAn_begin = new DevExpress.XtraEditors.SimpleButton();
+            this.btnXepBanAn_Commit = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -85,10 +89,16 @@
             this.groupControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupControl1
             // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.lv_BanAn);
             this.groupControl1.Location = new System.Drawing.Point(413, 3);
             this.groupControl1.Name = "groupControl1";
@@ -98,13 +108,13 @@
             // 
             // lv_BanAn
             // 
-            this.lv_BanAn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lv_BanAn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv_BanAn.FullRowSelect = true;
             this.lv_BanAn.GridLines = true;
             this.lv_BanAn.LargeImageList = this.imageList1;
             this.lv_BanAn.Location = new System.Drawing.Point(2, 22);
             this.lv_BanAn.Name = "lv_BanAn";
-            this.lv_BanAn.Size = new System.Drawing.Size(460, 223);
+            this.lv_BanAn.Size = new System.Drawing.Size(460, 226);
             this.lv_BanAn.TabIndex = 0;
             this.lv_BanAn.UseCompatibleStateImageBehavior = false;
             this.lv_BanAn.SelectedIndexChanged += new System.EventHandler(this.lv_BanAn_SelectedIndexChanged);
@@ -151,9 +161,9 @@
             // 
             // txtViTri
             // 
-            this.txtViTri.Location = new System.Drawing.Point(224, 161);
+            this.txtViTri.Location = new System.Drawing.Point(248, 161);
             this.txtViTri.Name = "txtViTri";
-            this.txtViTri.Size = new System.Drawing.Size(164, 20);
+            this.txtViTri.Size = new System.Drawing.Size(140, 20);
             this.txtViTri.TabIndex = 1;
             // 
             // txtKhuVuc
@@ -188,7 +198,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(197, 164);
+            this.labelControl2.Location = new System.Drawing.Point(196, 164);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(21, 13);
             this.labelControl2.TabIndex = 0;
@@ -214,9 +224,9 @@
             // 
             this.btnXepBanAn.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnXepBanAn.Appearance.Options.UseFont = true;
-            this.btnXepBanAn.Location = new System.Drawing.Point(7, 356);
+            this.btnXepBanAn.Location = new System.Drawing.Point(7, 345);
             this.btnXepBanAn.Name = "btnXepBanAn";
-            this.btnXepBanAn.Size = new System.Drawing.Size(113, 32);
+            this.btnXepBanAn.Size = new System.Drawing.Size(130, 86);
             this.btnXepBanAn.TabIndex = 5;
             this.btnXepBanAn.Text = "Xếp Bàn Ăn";
             this.btnXepBanAn.Click += new System.EventHandler(this.btnXepBanAn_Click);
@@ -357,6 +367,9 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl4.Controls.Add(this.lv_BanDat);
             this.groupControl4.Location = new System.Drawing.Point(415, 259);
             this.groupControl4.Name = "groupControl4";
@@ -417,7 +430,7 @@
             // 
             this.btnDocBanAn.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDocBanAn.Appearance.Options.UseFont = true;
-            this.btnDocBanAn.Location = new System.Drawing.Point(151, 354);
+            this.btnDocBanAn.Location = new System.Drawing.Point(8, 49);
             this.btnDocBanAn.Name = "btnDocBanAn";
             this.btnDocBanAn.Size = new System.Drawing.Size(113, 32);
             this.btnDocBanAn.TabIndex = 5;
@@ -428,25 +441,65 @@
             // 
             this.btnDocDatBan.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDocDatBan.Appearance.Options.UseFont = true;
-            this.btnDocDatBan.Location = new System.Drawing.Point(296, 354);
+            this.btnDocDatBan.Location = new System.Drawing.Point(8, 5);
             this.btnDocDatBan.Name = "btnDocDatBan";
             this.btnDocDatBan.Size = new System.Drawing.Size(113, 32);
             this.btnDocDatBan.TabIndex = 5;
             this.btnDocDatBan.Text = "Đọc Đặt Bàn";
             this.btnDocDatBan.Click += new System.EventHandler(this.btnDocDatBan_Click);
             // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.btnDocBanAn_begin);
+            this.panelControl2.Controls.Add(this.btnXepBanAn_Commit);
+            this.panelControl2.Location = new System.Drawing.Point(143, 345);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(128, 86);
+            this.panelControl2.TabIndex = 19;
+            // 
+            // btnDocBanAn_begin
+            // 
+            this.btnDocBanAn_begin.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDocBanAn_begin.Appearance.Options.UseFont = true;
+            this.btnDocBanAn_begin.Location = new System.Drawing.Point(8, 5);
+            this.btnDocBanAn_begin.Name = "btnDocBanAn_begin";
+            this.btnDocBanAn_begin.Size = new System.Drawing.Size(113, 32);
+            this.btnDocBanAn_begin.TabIndex = 5;
+            this.btnDocBanAn_begin.Text = "Đọc Bàn Ăn";
+            this.btnDocBanAn_begin.Click += new System.EventHandler(this.btnDocBanAn_begin_Click);
+            // 
+            // btnXepBanAn_Commit
+            // 
+            this.btnXepBanAn_Commit.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnXepBanAn_Commit.Appearance.Options.UseFont = true;
+            this.btnXepBanAn_Commit.Location = new System.Drawing.Point(8, 49);
+            this.btnXepBanAn_Commit.Name = "btnXepBanAn_Commit";
+            this.btnXepBanAn_Commit.Size = new System.Drawing.Size(113, 32);
+            this.btnXepBanAn_Commit.TabIndex = 5;
+            this.btnXepBanAn_Commit.Text = "Xếp Bàn Ăn";
+            this.btnXepBanAn_Commit.Click += new System.EventHandler(this.btnXepBanAn_Commit_Click);
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.btnDocDatBan);
+            this.panelControl1.Controls.Add(this.btnDocBanAn);
+            this.panelControl1.Location = new System.Drawing.Point(285, 345);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(128, 86);
+            this.panelControl1.TabIndex = 19;
+            // 
             // UCtrlXepBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelControl2);
+            this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl3);
             this.Controls.Add(this.labelControl9);
             this.Controls.Add(this.dateNow);
             this.Controls.Add(this.pictureEdit3);
             this.Controls.Add(this.pictureEdit2);
-            this.Controls.Add(this.btnDocDatBan);
-            this.Controls.Add(this.btnDocBanAn);
             this.Controls.Add(this.btnXepBanAn);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
@@ -477,6 +530,10 @@
             this.groupControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,5 +578,9 @@
         private System.Windows.Forms.ToolStripContentPanel ContentPanel;
         private DevExpress.XtraEditors.SimpleButton btnDocBanAn;
         private DevExpress.XtraEditors.SimpleButton btnDocDatBan;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.SimpleButton btnDocBanAn_begin;
+        private DevExpress.XtraEditors.SimpleButton btnXepBanAn_Commit;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }

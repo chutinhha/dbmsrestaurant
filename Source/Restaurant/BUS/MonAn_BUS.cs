@@ -41,5 +41,11 @@ namespace BUS
         {
             return MonAn_DAO.XoaMonAn(maMonAn);
         }
+
+        public static DataTable SelectMonAnTheoLoai(String maloai, String manh)
+        {
+            MonAn_DAO dao = new MonAn_DAO();
+            return dao.SelectMonAnTheoLoai(maloai, manh);
+        }
     }
 }

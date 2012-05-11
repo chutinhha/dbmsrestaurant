@@ -42,9 +42,11 @@
   <ItemGroup>
     <Compile Include="BanAn_BUS.cs" />
     <Compile Include="ChiTietDatHang_BUS.cs" />
+    <Compile Include="ChiTietHoaDon_BUS.cs" />
     <Compile Include="ChiTietNCC_BUS.cs" />
     <Compile Include="DatBan_BUS.cs" />
     <Compile Include="DatHang_BUS.cs" />
+    <Compile Include="HoaDon_BUS.cs" />
     <Compile Include="KhachHang_BUS.cs" />
     <Compile Include="LoaiMonAn_BUS.cs" />
     <Compile Include="LoaiNhanVien_BUS.cs" />
