@@ -10,9 +10,16 @@ namespace DAO
     public class DatHang_DAO
     {
         Provider provider;
+        Provider_Vu _provider;
+        public Provider_Vu Provider
+        {
+            get { return _provider; }
+            set { _provider = value; }
+        }
         public DatHang_DAO()
         {
             provider = new Provider();
+            _provider = new Provider_Vu();
         }
       
         public List<DatHang_DTO> SelectDatHang(String MaNH)
@@ -24,27 +31,30 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return  ConvertToList(provider.ExecSelectCommand(cm));
         }
-        public int InsertDatHang(DatHang_DTO dh)
+        public int InsertDatHang(int flag_connec, int flag_tran,DatHang_DTO dh)
         {
             String store = "InsertDatHang";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int).Direction = ParameterDirection.Output;
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
-            cm.Parameters.Add("@TongTien", SqlDbType.Float);
-            cm.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
-            cm.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
-            cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaHoaDon", SqlDbType.Int).Direction = ParameterDirection.Output;
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNH", SqlDbType.NChar);
+            _provider.Command.Parameters.Add("@TongTien", SqlDbType.Float);
+            _provider.Command.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
+            _provider.Command.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
+            _provider.Command.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
 
-            cm.Parameters["@MaNCC"].Value = dh.MaNCC;
-            cm.Parameters["@MaNH"].Value = dh.MaNH;
-            cm.Parameters["@TongTien"].Value = dh.TongTien;
-            cm.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
-            cm.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
-            cm.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+            _provider.Command.Parameters["@MaNCC"].Value = dh.MaNCC;
+            _provider.Command.Parameters["@MaNH"].Value = dh.MaNH;
+            _provider.Command.Parameters["@TongTien"].Value = dh.TongTien;
+            _provider.Command.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
+            _provider.Command.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
+            _provider.Command.Parameters["@TinhTrang"].Value = dh.TinhTrang;
 
-            provider.ExecuteInsertUpdateDelete(cm);
-            return (int)cm.Parameters["@MaHoaDon"].Value;
+            _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
+            return (int)_provider.Command.Parameters["@MaHoaDon"].Value;
         }
         public int UpdatetDatHang(DatHang_DTO dh)
         {

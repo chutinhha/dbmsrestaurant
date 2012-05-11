@@ -2,6 +2,7 @@
 use [QLNhaHang]
 GO
 --------------- table ChiTietNCC ---------------------------------------------------------
+
 create proc InsertChiTietNCC @MaNL int,@MaNCC int ,@Gia float
 as
 begin

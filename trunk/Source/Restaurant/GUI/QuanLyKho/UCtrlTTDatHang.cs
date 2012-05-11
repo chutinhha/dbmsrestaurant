@@ -13,6 +13,9 @@ namespace GUI.QuanLyKho
     public partial class UCtrlTTDatHang : DevExpress.XtraEditors.XtraUserControl
     {
         #region " Thuoc tinh && Properties "
+            BUS.NhaCungCap_BUS _NhaCungCapBUS;
+            BUS.DatHang_BUS _DatHangBUS;
+            BUS.ChiTietDatHang_BUS _ChiTietDatHangBUS;
             DataTable dtDatHang;
             DataTable dtChiTietDH;
             List<DatHang_DTO> lsDatHang;
@@ -20,6 +23,7 @@ namespace GUI.QuanLyKho
             int index_DatHang;
 
             String _MaNH;
+
             public String MaNH
             {
                 get { return _MaNH; }
@@ -30,6 +34,9 @@ namespace GUI.QuanLyKho
         #region " Khoi tao "
             public UCtrlTTDatHang()
             {
+                _NhaCungCapBUS = new NhaCungCap_BUS();
+                _DatHangBUS = new DatHang_BUS();
+                _ChiTietDatHangBUS = new ChiTietDatHang_BUS();
                 InitializeComponent();
                 lsDatHang = new List<DatHang_DTO>();
                 dtDatHang = new DataTable();
@@ -132,20 +139,28 @@ namespace GUI.QuanLyKho
                 _frmChonNCC.MaNH = _MaNH;
                 
                 _frmChonNCC.LoadDanhSachNCC();
+                _frmChonNCC.NhaCungCapBUS = _NhaCungCapBUS;
                 while (_frmChonNCC.ShowDialog() == DialogResult.OK)
                 {
                     frmDatHang _frmDatHang = new frmDatHang();
                     _frmDatHang.ThongTinDH.MaNH = _MaNH;
                     _frmDatHang.ThongTinDH.MaNCC = _frmChonNCC.MaNCC;
-                    _frmDatHang.LoadNguyenLieu();
                     _frmDatHang.TenNCC = _frmChonNCC.TenNCC;
+
+                    _frmDatHang.NguyenLieuBUS = new NguyenLieu_BUS( _frmChonNCC.NguyenLieuBUS);
+                    _frmDatHang.LoadNguyenLieu();
                     if (_frmDatHang.ShowDialog() == DialogResult.OK)
                     {
-                        int MaHD = BUS.DatHang_BUS.InsertDatHang(_frmDatHang.ThongTinDH);
+                        _DatHangBUS = new DatHang_BUS(_frmDatHang.NguyenLieuBUS);
+                        int MaHD = _DatHangBUS.InsertDatHang(-1,-1,_frmDatHang.ThongTinDH);
                         for(int i = 0;i<_frmDatHang.lsDSDatHang.Count;i++)
                         {
                             _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                            BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                            _ChiTietDatHangBUS = new ChiTietDatHang_BUS(_DatHangBUS);
+                            if(i<_frmDatHang.lsDSDatHang.Count-1)
+                                _ChiTietDatHangBUS.InsertChiTietDatHang(-1,-1,_frmDatHang.lsDSDatHang[i]);
+                            else
+                                _ChiTietDatHangBUS.InsertChiTietDatHang(0, 0, _frmDatHang.lsDSDatHang[i]);
                         }
                         LoadDSDatHang();
                         break;
@@ -219,7 +234,7 @@ namespace GUI.QuanLyKho
                                 for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
                                 {
                                     _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                                    BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                                    //BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
                                 }
                                 LoadDSDatHang();
                                 LoadChiTietDH(MaHD);
