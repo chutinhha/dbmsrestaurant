@@ -121,10 +121,9 @@ namespace GUI.ThuNgan
                 int mamon = (int)row.ItemArray[0];
                 ChiTietHoaDon_BUS.DeleteCTHD(maHD, mamon);
                 dtCTHD.Rows.RemoveAt(indexChiTiet);
-
                 load_GridviewCTHD();
             }
-            catch(Exception ex){}
+            catch(Exception){}
         }
 
         int indexChiTiet = -1;
