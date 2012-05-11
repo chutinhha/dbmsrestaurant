@@ -24,6 +24,15 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return ConvertToList(provider.ExecSelectCommand(cm));
         }
+        public DataTable SelectNguyenLieu_toDataTable(String MaNH)
+        {
+            String store = "SelectNguyenLieu";
+            SqlCommand cm = provider.CreateCommandStoreName(store);
+            cm.Parameters.Add("@maNH", SqlDbType.NChar);
+
+            cm.Parameters["@maNH"].Value = MaNH;
+            return provider.ExecSelectCommand(cm);
+        }
         public List<NguyenLieu_DTO> SelectNguyenLieu_fromNCC(int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_fromNCC";
@@ -125,10 +134,7 @@ namespace DAO
                 {
                     nguyenlieu.Gia = (double)row.ItemArray[5];
                 }
-                catch (Exception)
-                {
-                    nguyenlieu.Gia = 0;
-                }
+                catch (Exception){}
                 ls.Add(nguyenlieu);
             }
             return ls;

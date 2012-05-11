@@ -454,6 +454,8 @@
     <None Include="Resources\navigate-left32.png" />
     <None Include="Resources\navigate-left48.png" />
     <Content Include="Resources\left_32.png" />
+    <None Include="Resources\refresh16.png" />
+    <None Include="Resources\refresh24.png" />
     <Content Include="Resources\right_32.png" />
     <Content Include="Resources\statistics_16.png" />
     <Content Include="Resources\statistics_32.png" />

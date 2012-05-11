@@ -48,6 +48,7 @@
             this.Gia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtGia = new DevExpress.XtraEditors.TextEdit();
             this.btnCapNhatGia = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupNhaCungCap)).BeginInit();
             this.groupNhaCungCap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNCC)).BeginInit();
@@ -285,10 +286,22 @@
             this.btnCapNhatGia.Text = "Cập Nhật Giá";
             this.btnCapNhatGia.Click += new System.EventHandler(this.btnCapNhatGia_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Image = global::GUI.Properties.Resources.refresh16;
+            this.btnRefresh.Location = new System.Drawing.Point(426, 442);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(111, 26);
+            this.btnRefresh.TabIndex = 28;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // UCtrlNhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnCapNhatGia);
             this.Controls.Add(this.txtGia);
             this.Controls.Add(this.groupNL);
@@ -299,6 +312,7 @@
             this.Controls.Add(this.btnInDSNCC);
             this.Name = "UCtrlNhaCungCap";
             this.Size = new System.Drawing.Size(880, 480);
+            this.Load += new System.EventHandler(this.UCtrlNhaCungCap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupNhaCungCap)).EndInit();
             this.groupNhaCungCap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridNCC)).EndInit();
@@ -334,5 +348,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraGrid.Columns.GridColumn TeNL;
         private DevExpress.XtraGrid.Columns.GridColumn Gia;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
     }
 }

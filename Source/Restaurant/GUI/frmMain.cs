@@ -170,7 +170,6 @@ namespace GUI
         private void barBtn_QLKho_DatHang_ItemClick(object sender, ItemClickEventArgs e)
         {
             UCtrl_QLKho_DatHang.MaNH = strMaNH;
-            UCtrl_QLKho_DatHang.LoadDSDatHang();
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_DatHang);
             
         }
@@ -181,14 +180,12 @@ namespace GUI
         private void barBtn_QLKho_QLNCC_ItemClick(object sender, ItemClickEventArgs e)
         {
             UCtrl_QLKho_NCC.MaNH = strMaNH;
-            UCtrl_QLKho_NCC.LoadNhaCungCap();
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NCC);
             
         }
         private void barBtn_QLNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             UCtrl_QLKho_NguyenLieu.MaNH = strMaNH;
-            UCtrl_QLKho_NguyenLieu.LoadNguyenLieu();
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NguyenLieu);
             
         }

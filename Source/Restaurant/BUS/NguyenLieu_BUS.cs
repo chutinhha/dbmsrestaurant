@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using DAO;
 using DTO;
-
+using System.Data;
 namespace BUS
 {
     public class NguyenLieu_BUS
@@ -13,6 +13,11 @@ namespace BUS
         {
             NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
             return nguyenlieuDAO.SelectNguyenLieu(maNH);
+        }
+        public static DataTable SelectNguyenLieu_toDataTable(String maNH)
+        {
+            NguyenLieu_DAO nguyenlieuDAO = new NguyenLieu_DAO();
+            return nguyenlieuDAO.SelectNguyenLieu_toDataTable(maNH);
         }
         public static List<NguyenLieu_DTO> SelectNguyenLieu_fromNCC(int MaNCC, String MaNH)
         {

@@ -50,6 +50,14 @@ namespace GUI.QuanLyKho
         #endregion
 
         #region "Control Event"
+            private void UCtrlTTDatHang_Load(object sender, EventArgs e)
+            {
+                LoadDSDatHang();
+            }
+            private void btnRefresh_Click(object sender, EventArgs e)
+            {
+                LoadDSDatHang();
+            }
             private void gvDatHang_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
                 if (gvDatHang.GetSelectedRows().Length > 0)
@@ -221,7 +229,6 @@ namespace GUI.QuanLyKho
                 }
             }
         #endregion
-
-       
+      
     }
 }
