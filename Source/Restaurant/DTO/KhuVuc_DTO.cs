@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DTO
 {
-    public class KhuVuc_DTO
+   public  class KhuVuc_DTO
     {
         int maKhuVuc;
         public int MaKhuVuc
