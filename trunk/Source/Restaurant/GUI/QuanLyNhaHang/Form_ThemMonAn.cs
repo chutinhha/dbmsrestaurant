@@ -24,7 +24,7 @@ namespace GUI.QuanLyNhaHang
         private void btnDongY_Click(object sender, EventArgs e)
         {
             MonAn.tenmon = txtTenMonAn.Text;
-            MonAn.Loaimon = ArrayMaMon[cbbLoaiMonAn.SelectedIndex];
+            MonAn.Mamon = ArrayMaMon[cbbLoaiMonAn.SelectedIndex];
             MonAn.Gia = double.Parse(txtGia.Text);
             MonAn.Dvtinh = txtDonViTinh.Text;
             MonAn.Manh = ArrayMaNH[cbbNhaHang.SelectedIndex];
