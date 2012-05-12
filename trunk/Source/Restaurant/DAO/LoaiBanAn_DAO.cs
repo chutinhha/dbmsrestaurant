@@ -29,7 +29,7 @@ namespace DAO
         public static int CapNhatLoaiBA(LoaiBanAn_DTO loaiBA)
         {
             Provider provider = new Provider();
-            string sql = string.Format("update LoaiBan set SucChua={0} where Maloai='{1}'", loaiBA.SucChua,loaiBA.MaLoai);
+            string sql = string.Format("update LoaiBan set SucChua={0} where Maloai='{1}'", loaiBA.SucChua, loaiBA.MaLoai);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
