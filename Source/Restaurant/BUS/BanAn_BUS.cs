@@ -23,6 +23,26 @@ namespace BUS
             dao.UpdateTrangThaiBanAn(maban, trangthai);
         }
 
+        public static DataTable DocBanAn()
+        {
+            return BanAn_DAO.DocBanAn();
+        }
+
+        public static int ThemBanAn(BanAn_DTO BanAn)
+        {
+            return BanAn_DAO.ThemBanAn(BanAn);
+        }
+
+        public static int CapNhatBanAn(BanAn_DTO BanAn)
+        {
+            return BanAn_DAO.CapNhatBanAn(BanAn);
+        }
+
+        public static int XoaBanAn(string maBan)
+        {
+            return BanAn_DAO.XoaBanAn(maBan);
+        }
+
 
     }
 }
