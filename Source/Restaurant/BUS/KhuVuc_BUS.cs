@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using DAO;
+
 using DTO;
+using DAO;
 namespace BUS
 {
-    public class KhuVuc_BUS
+   public class KhuVuc_BUS
     {
         public static DataTable DocKhuVuc()
         {
