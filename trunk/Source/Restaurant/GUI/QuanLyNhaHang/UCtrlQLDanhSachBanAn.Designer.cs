@@ -31,8 +31,8 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnThemBanAn = new DevExpress.XtraEditors.SimpleButton();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnTemLoaiBA = new DevExpress.XtraEditors.SimpleButton();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.btnThemLoaiBA = new DevExpress.XtraEditors.SimpleButton();
+            this.gridView_LoaiBanAn = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridLoaiBA = new DevExpress.XtraGrid.GridControl();
             this.btnCapNhatBanAn = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatLoaiBA = new DevExpress.XtraEditors.SimpleButton();
@@ -40,7 +40,7 @@
             this.btnXoaLoaiBA = new DevExpress.XtraEditors.SimpleButton();
             this.groupBanAn = new DevExpress.XtraEditors.GroupControl();
             this.gridBanAn = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView_BanAn = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,30 +50,31 @@
             this.btnInDSBA = new DevExpress.XtraEditors.SimpleButton();
             this.groupKhuVuc = new DevExpress.XtraEditors.GroupControl();
             this.gridKhuVuc = new DevExpress.XtraGrid.GridControl();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView_KhuVuc = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnXoaKhuVuc = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhatKhuVuc = new DevExpress.XtraEditors.SimpleButton();
             this.btnThemKhuVuc = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiBanAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiBA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBanAn)).BeginInit();
             this.groupBanAn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridBanAn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_BanAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupLoaiBA)).BeginInit();
             this.groupLoaiBA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupKhuVuc)).BeginInit();
             this.groupKhuVuc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridKhuVuc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_KhuVuc)).BeginInit();
             this.SuspendLayout();
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Mã Loại";
-            this.gridColumn1.FieldName = "MaLoai";
+            this.gridColumn1.FieldName = "Maloai";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
@@ -87,43 +88,45 @@
             this.btnThemBanAn.Size = new System.Drawing.Size(60, 26);
             this.btnThemBanAn.TabIndex = 10;
             this.btnThemBanAn.Text = "Thêm";
+            this.btnThemBanAn.Click += new System.EventHandler(this.btnThemBanAn_Click);
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Tên Loại";
-            this.gridColumn2.FieldName = "TenLoai";
+            this.gridColumn2.Caption = "Sức Chứa";
+            this.gridColumn2.FieldName = "SucChua";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 1;
             // 
-            // btnTemLoaiBA
+            // btnThemLoaiBA
             // 
-            this.btnTemLoaiBA.Image = global::GUI.Properties.Resources.add_16;
-            this.btnTemLoaiBA.Location = new System.Drawing.Point(104, 253);
-            this.btnTemLoaiBA.Name = "btnTemLoaiBA";
-            this.btnTemLoaiBA.Size = new System.Drawing.Size(60, 26);
-            this.btnTemLoaiBA.TabIndex = 11;
-            this.btnTemLoaiBA.Text = "Thêm";
+            this.btnThemLoaiBA.Image = global::GUI.Properties.Resources.add_16;
+            this.btnThemLoaiBA.Location = new System.Drawing.Point(104, 253);
+            this.btnThemLoaiBA.Name = "btnThemLoaiBA";
+            this.btnThemLoaiBA.Size = new System.Drawing.Size(60, 26);
+            this.btnThemLoaiBA.TabIndex = 11;
+            this.btnThemLoaiBA.Text = "Thêm";
+            this.btnThemLoaiBA.Click += new System.EventHandler(this.btnThemLoaiBA_Click);
             // 
-            // gridView1
+            // gridView_LoaiBanAn
             // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_LoaiBanAn.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2});
-            this.gridView1.GridControl = this.gridLoaiBA;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView_LoaiBanAn.GridControl = this.gridLoaiBA;
+            this.gridView_LoaiBanAn.Name = "gridView_LoaiBanAn";
+            this.gridView_LoaiBanAn.OptionsView.ShowGroupPanel = false;
             // 
             // gridLoaiBA
             // 
             this.gridLoaiBA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridLoaiBA.Location = new System.Drawing.Point(2, 22);
-            this.gridLoaiBA.MainView = this.gridView1;
+            this.gridLoaiBA.MainView = this.gridView_LoaiBanAn;
             this.gridLoaiBA.Name = "gridLoaiBA";
             this.gridLoaiBA.Size = new System.Drawing.Size(321, 211);
             this.gridLoaiBA.TabIndex = 0;
             this.gridLoaiBA.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
+            this.gridView_LoaiBanAn});
             // 
             // btnCapNhatBanAn
             // 
@@ -134,6 +137,7 @@
             this.btnCapNhatBanAn.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatBanAn.TabIndex = 13;
             this.btnCapNhatBanAn.Text = "Cập Nhật";
+            this.btnCapNhatBanAn.Click += new System.EventHandler(this.btnCapNhatBanAn_Click);
             // 
             // btnCapNhatLoaiBA
             // 
@@ -143,6 +147,7 @@
             this.btnCapNhatLoaiBA.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatLoaiBA.TabIndex = 12;
             this.btnCapNhatLoaiBA.Text = "Cập Nhật";
+            this.btnCapNhatLoaiBA.Click += new System.EventHandler(this.btnCapNhatLoaiBA_Click);
             // 
             // btnXoaBanAn
             // 
@@ -153,6 +158,7 @@
             this.btnXoaBanAn.Size = new System.Drawing.Size(61, 26);
             this.btnXoaBanAn.TabIndex = 15;
             this.btnXoaBanAn.Text = "Xóa";
+            this.btnXoaBanAn.Click += new System.EventHandler(this.btnXoaBanAn_Click);
             // 
             // btnXoaLoaiBA
             // 
@@ -162,6 +168,7 @@
             this.btnXoaLoaiBA.Size = new System.Drawing.Size(61, 26);
             this.btnXoaLoaiBA.TabIndex = 16;
             this.btnXoaLoaiBA.Text = "Xóa";
+            this.btnXoaLoaiBA.Click += new System.EventHandler(this.btnXoaLoaiBA_Click);
             // 
             // groupBanAn
             // 
@@ -179,63 +186,63 @@
             // 
             this.gridBanAn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridBanAn.Location = new System.Drawing.Point(2, 22);
-            this.gridBanAn.MainView = this.gridView2;
+            this.gridBanAn.MainView = this.gridView_BanAn;
             this.gridBanAn.Name = "gridBanAn";
             this.gridBanAn.Size = new System.Drawing.Size(539, 400);
             this.gridBanAn.TabIndex = 0;
             this.gridBanAn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.gridView_BanAn});
             // 
-            // gridView2
+            // gridView_BanAn
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_BanAn.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn8});
-            this.gridView2.GridControl = this.gridBanAn;
-            this.gridView2.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            this.gridView_BanAn.GridControl = this.gridBanAn;
+            this.gridView_BanAn.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "TenNhaHang", null, "")});
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView_BanAn.Name = "gridView_BanAn";
+            this.gridView_BanAn.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn3
             // 
-            this.gridColumn3.Caption = "Tên Món";
-            this.gridColumn3.FieldName = "TenMon";
+            this.gridColumn3.Caption = "Mã Bàn";
+            this.gridColumn3.FieldName = "MaBan";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "Loại Món";
-            this.gridColumn4.FieldName = "TenLoai";
+            this.gridColumn4.Caption = "Khu Vực";
+            this.gridColumn4.FieldName = "TenKhuVuc";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
             // 
             // gridColumn5
             // 
-            this.gridColumn5.Caption = "Giá";
-            this.gridColumn5.FieldName = "Gia";
+            this.gridColumn5.Caption = "Sức Chứa";
+            this.gridColumn5.FieldName = "SucChua";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 2;
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "Đơn Vị Tính";
-            this.gridColumn6.FieldName = "DonViTinh";
+            this.gridColumn6.Caption = "Nhà Hàng";
+            this.gridColumn6.FieldName = "TenNH";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 3;
             // 
             // gridColumn8
             // 
-            this.gridColumn8.Caption = "Tên Nhà Hàng";
-            this.gridColumn8.FieldName = "TenNH";
+            this.gridColumn8.Caption = "Trạng Thái";
+            this.gridColumn8.FieldName = "TrangThai";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 4;
@@ -274,37 +281,46 @@
             // 
             this.gridKhuVuc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridKhuVuc.Location = new System.Drawing.Point(2, 22);
-            this.gridKhuVuc.MainView = this.gridView3;
+            this.gridKhuVuc.MainView = this.gridView_KhuVuc;
             this.gridKhuVuc.Name = "gridKhuVuc";
             this.gridKhuVuc.Size = new System.Drawing.Size(321, 123);
             this.gridKhuVuc.TabIndex = 0;
             this.gridKhuVuc.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView3});
+            this.gridView_KhuVuc});
             // 
-            // gridView3
+            // gridView_KhuVuc
             // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_KhuVuc.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn7,
-            this.gridColumn9});
-            this.gridView3.GridControl = this.gridKhuVuc;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsView.ShowGroupPanel = false;
+            this.gridColumn9,
+            this.gridColumn10});
+            this.gridView_KhuVuc.GridControl = this.gridKhuVuc;
+            this.gridView_KhuVuc.Name = "gridView_KhuVuc";
+            this.gridView_KhuVuc.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn7
             // 
-            this.gridColumn7.Caption = "Mã Loại";
-            this.gridColumn7.FieldName = "MaLoai";
+            this.gridColumn7.Caption = "Mã Khu Vực";
+            this.gridColumn7.FieldName = "MaKhuVuc";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
             // 
             // gridColumn9
             // 
-            this.gridColumn9.Caption = "Tên Loại";
-            this.gridColumn9.FieldName = "TenLoai";
+            this.gridColumn9.Caption = "Tên Khu Vực";
+            this.gridColumn9.FieldName = "TenKhuVuc";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Vị Trí";
+            this.gridColumn10.FieldName = "ViTri";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 2;
             // 
             // btnXoaKhuVuc
             // 
@@ -315,6 +331,7 @@
             this.btnXoaKhuVuc.Size = new System.Drawing.Size(61, 26);
             this.btnXoaKhuVuc.TabIndex = 16;
             this.btnXoaKhuVuc.Text = "Xóa";
+            this.btnXoaKhuVuc.Click += new System.EventHandler(this.btnXoaKhuVuc_Click);
             // 
             // btnCapNhatKhuVuc
             // 
@@ -325,6 +342,7 @@
             this.btnCapNhatKhuVuc.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhatKhuVuc.TabIndex = 12;
             this.btnCapNhatKhuVuc.Text = "Cập Nhật";
+            this.btnCapNhatKhuVuc.Click += new System.EventHandler(this.btnCapNhatKhuVuc_Click);
             // 
             // btnThemKhuVuc
             // 
@@ -335,6 +353,7 @@
             this.btnThemKhuVuc.Size = new System.Drawing.Size(60, 26);
             this.btnThemKhuVuc.TabIndex = 11;
             this.btnThemKhuVuc.Text = "Thêm";
+            this.btnThemKhuVuc.Click += new System.EventHandler(this.btnThemKhuVuc_Click);
             // 
             // UCtrlQLDanhSachBanAn
             // 
@@ -342,7 +361,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnThemBanAn);
             this.Controls.Add(this.btnThemKhuVuc);
-            this.Controls.Add(this.btnTemLoaiBA);
+            this.Controls.Add(this.btnThemLoaiBA);
             this.Controls.Add(this.btnCapNhatBanAn);
             this.Controls.Add(this.btnCapNhatKhuVuc);
             this.Controls.Add(this.btnCapNhatLoaiBA);
@@ -355,18 +374,19 @@
             this.Controls.Add(this.btnInDSBA);
             this.Name = "UCtrlQLDanhSachBanAn";
             this.Size = new System.Drawing.Size(880, 480);
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            this.Load += new System.EventHandler(this.UCtrlQLDanhSachBanAn_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiBanAn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiBA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBanAn)).EndInit();
             this.groupBanAn.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridBanAn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_BanAn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupLoaiBA)).EndInit();
             this.groupLoaiBA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupKhuVuc)).EndInit();
             this.groupKhuVuc.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridKhuVuc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_KhuVuc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,8 +396,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.SimpleButton btnThemBanAn;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraEditors.SimpleButton btnTemLoaiBA;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraEditors.SimpleButton btnThemLoaiBA;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_LoaiBanAn;
         private DevExpress.XtraGrid.GridControl gridLoaiBA;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatBanAn;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatLoaiBA;
@@ -385,7 +405,7 @@
         private DevExpress.XtraEditors.SimpleButton btnXoaLoaiBA;
         private DevExpress.XtraEditors.GroupControl groupBanAn;
         private DevExpress.XtraGrid.GridControl gridBanAn;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_BanAn;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
@@ -395,12 +415,13 @@
         private DevExpress.XtraEditors.SimpleButton btnInDSBA;
         private DevExpress.XtraEditors.GroupControl groupKhuVuc;
         private DevExpress.XtraGrid.GridControl gridKhuVuc;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_KhuVuc;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.SimpleButton btnXoaKhuVuc;
         private DevExpress.XtraEditors.SimpleButton btnCapNhatKhuVuc;
         private DevExpress.XtraEditors.SimpleButton btnThemKhuVuc;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
 
 
 
