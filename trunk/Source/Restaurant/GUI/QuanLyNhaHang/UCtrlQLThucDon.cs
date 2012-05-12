@@ -173,8 +173,8 @@ namespace GUI.QuanLyNhaHang
                     DTO.MonAn_DTO MonAn = new MonAn_DTO();
                     MonAn.tenmon = tenMon;
                     //  MonAn.MaLoai = maloai;
-                    MonAn.Gia = double.Parse(gia);
-                    MonAn.Dvtinh = donvitinh;
+                    MonAn.Gia =double.Parse( gia);
+                    MonAn.Dvtinh= donvitinh;
                     //  MonAn.MaNhaHang = maNH;        dang can nhac
 
                     chon = index[0];
