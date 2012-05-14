@@ -229,15 +229,50 @@ namespace GUI.TiepTan
 
         private void btnDocBanAn_Click(object sender, EventArgs e)
         {
-            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection2(maNH, khuvuc, succhua);
            // tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
-            LoadDuLieuListView();
+           lv_BanAn.Items.Clear();
+            if (tbBanAn.Rows.Count > 0)
+            {
+                // if (timeNow.Date == DateTime.Now.Date)
+                // {
+                for (int i = 0; i < tbBanAn.Rows.Count; i++)
+                {
+                    DataRow row = tbBanAn.Rows[i];
+                    ListViewItem item = new ListViewItem();
+                    string maban = row["MaBan"].ToString();
+                    //neu co dsBanDat
+                    item.Text = "Bàn " + maban;
+                    item.Tag = row;
+                    item.ImageIndex = int.Parse(row["TrangThai"].ToString());
+                    lv_BanAn.Items.Add(item);
+       
+                }
+            }
         }
         private void btnDocDatBan_Click(object sender, EventArgs e)
         {
            // tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
             tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
-            LoadDuLieuListView();
+            lv_BanAn.Items.Clear();
+            lv_BanDat.Items.Clear();
+            if (tbBanDatTrongNgay.Rows.Count > 0)
+            {
+                // if (timeNow.Date == DateTime.Now.Date)
+                // {
+                for (int i = 0; i < tbBanDatTrongNgay.Rows.Count; i++)
+                {
+                    DataRow row = tbBanDatTrongNgay.Rows[i];
+                    ListViewItem item = new ListViewItem();
+                    string maban = row["MaBan"].ToString();
+                    //neu co dsBanDat
+                    item.Text = "Bàn " + maban;
+                    item.Tag = row;
+                    item.ImageIndex = 2;
+                    lv_BanDat.Items.Add(item);
+
+                }
+            }
         }
         private void btnDocBanAn_begin_Click(object sender, EventArgs e)
         {
@@ -279,6 +314,52 @@ namespace GUI.TiepTan
                     }
                 }
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
+            lv_BanAn.Items.Clear();
+            lv_BanDat.Items.Clear();
+            if (tbBanDatTrongNgay.Rows.Count > 0)
+            {
+                // if (timeNow.Date == DateTime.Now.Date)
+                // {
+                for (int i = 0; i < tbBanDatTrongNgay.Rows.Count; i++)
+                {
+                    DataRow row = tbBanDatTrongNgay.Rows[i];
+                    ListViewItem item = new ListViewItem();
+                    string maban = row["MaBan"].ToString();
+                    //neu co dsBanDat
+                    item.Text = "Bàn " + maban;
+                    item.Tag = row;
+                    item.ImageIndex = 2;
+                    lv_BanDat.Items.Add(item);
+
+                }
+            }
+
+            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection2(maNH, khuvuc, succhua);
+            // tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
+            lv_BanAn.Items.Clear();
+            if (tbBanAn.Rows.Count > 0)
+            {
+                // if (timeNow.Date == DateTime.Now.Date)
+                // {
+                for (int i = 0; i < tbBanAn.Rows.Count; i++)
+                {
+                    DataRow row = tbBanAn.Rows[i];
+                    ListViewItem item = new ListViewItem();
+                    string maban = row["MaBan"].ToString();
+                    //neu co dsBanDat
+                    item.Text = "Bàn " + maban;
+                    item.Tag = row;
+                    item.ImageIndex = int.Parse(row["TrangThai"].ToString());
+                    lv_BanAn.Items.Add(item);
+
+                }
+            }
+
         }
     }
 }

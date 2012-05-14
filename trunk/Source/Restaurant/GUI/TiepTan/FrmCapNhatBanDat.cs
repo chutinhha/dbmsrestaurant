@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DTO;
 using BUS;
+using System.Data.SqlClient;
 
 namespace GUI.TiepTan
 {
@@ -15,7 +16,9 @@ namespace GUI.TiepTan
     {
         public DatBan_DTO bandat = new DatBan_DTO();
         public int flag = 0;
-        DatBan_BUS DatBan_BUS = new DatBan_BUS();
+        DatBan_BUS DatBan_BUS;
+        public SqlCommand cm;
+
         public FrmCapNhatBanDat()
         {
             InitializeComponent();
@@ -23,6 +26,7 @@ namespace GUI.TiepTan
 
         private void FrmCapNhatBanDat_Load(object sender, EventArgs e)
         {
+            DatBan_BUS = new DatBan_BUS(cm);
             DocKhachHang();
             DocBanAn();
             if (bandat!=null)
@@ -59,7 +63,8 @@ namespace GUI.TiepTan
             bandat.TrangThai = cbbHienTrang.Text;
             bandat.ThoiGianDen = DateTime.Parse( calcEdit_ThoiGianDen.Text).ToString("dd/MM/yyyy");
             bandat.TenKhachHang = cbbKhachHang.Text;
-            flag=DatBan_BUS.UpdateDatBan(bandat,maBan,maNH,thoiGianDen);
+            DatBan_BUS datbancommit = new BUS.DatBan_BUS(cm);
+            flag=datbancommit.UpdateDatBan(bandat,maBan,maNH,thoiGianDen);
         }
     }
 }
