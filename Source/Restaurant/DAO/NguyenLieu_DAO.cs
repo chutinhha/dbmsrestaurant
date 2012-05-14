@@ -25,8 +25,11 @@ namespace DAO
         public List<NguyenLieu_DTO> SelectNguyenLieu(int flag_connec,int flag_tran,String MaNH)
         {
             String store = "SelectNguyenLieu";
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
             _provider.CreateCommand_StoreName(store);
-            _provider.Command .Parameters.Add("@maNH", SqlDbType.NChar);
+            _provider.Command.Parameters.Add("@maNH", SqlDbType.NChar);
 
             _provider.Command.Parameters["@maNH"].Value = MaNH;
             return ConvertToList(_provider.ExecSelectCommand(flag_connec,flag_tran));
@@ -43,7 +46,7 @@ namespace DAO
         public List<NguyenLieu_DTO> SelectNguyenLieu_fromNCC(int flag_connec,int flag_tran,int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_fromNCC";
-            if (flag_connec == 2 || flag_connec == 1)
+            if(flag_connec == 2 || flag_connec == 1)
                 _provider.CreateCommand();
             _provider.Command.Parameters.Clear();
             _provider.CreateCommand_StoreName(store);
@@ -54,29 +57,35 @@ namespace DAO
             _provider.Command.Parameters["@MaNH"].Value = MaNH;
             return ConvertToList(_provider.ExecSelectCommand(flag_connec,flag_tran));
         }
-        public List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietNCC(int MaNCC,String MaNH)
+        public List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietNCC(int flag_connec, int flag_tran, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_NotIn_ChiTietNCC";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-            cm.Parameters.Add("@maNH", SqlDbType.NChar);
+            if(flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@maNH", SqlDbType.NChar);
 
-            cm.Parameters["@MaNCC"].Value = MaNCC;
-            cm.Parameters["@maNH"].Value = MaNH;
-            return ConvertToList(provider.ExecSelectCommand(cm));
+            _provider.Command.Parameters["@MaNCC"].Value = MaNCC;
+            _provider.Command.Parameters["@maNH"].Value = MaNH;
+            return ConvertToList(_provider.ExecSelectCommand(flag_connec,flag_connec));
         }
-        public List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon,int MaNCC,String MaNH)
+        public List<NguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietDatHang(int flag_connec, int flag_tran, int MaHoaDon, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_NotIn_ChiTietDatHang";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            if(flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNH", SqlDbType.NChar);
 
-            cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
-             cm.Parameters["@MaNCC"].Value = MaNCC;
-            cm.Parameters["@MaNH"].Value = MaNH;
-            return ConvertToList(provider.ExecSelectCommand(cm));
+            _provider.Command.Parameters["@MaHoaDon"].Value = MaHoaDon;
+            _provider.Command.Parameters["@MaNCC"].Value = MaNCC;
+            _provider.Command.Parameters["@MaNH"].Value = MaNH;
+            return ConvertToList(_provider.ExecSelectCommand(flag_connec,flag_tran));
         }
         public int InsertNguyenLieu(NguyenLieu_DTO nl)
         {

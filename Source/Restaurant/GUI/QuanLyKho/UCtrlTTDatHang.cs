@@ -16,6 +16,7 @@ namespace GUI.QuanLyKho
             BUS.NhaCungCap_BUS _NhaCungCapBUS;
             BUS.DatHang_BUS _DatHangBUS;
             BUS.ChiTietDatHang_BUS _ChiTietDatHangBUS;
+            BUS.NguyenLieu_BUS _NguyenLieuBUS;
             DataTable dtDatHang;
             DataTable dtChiTietDH;
             List<DatHang_DTO> lsDatHang;
@@ -37,6 +38,7 @@ namespace GUI.QuanLyKho
                 _NhaCungCapBUS = new NhaCungCap_BUS();
                 _DatHangBUS = new DatHang_BUS();
                 _ChiTietDatHangBUS = new ChiTietDatHang_BUS();
+                _NguyenLieuBUS = new NguyenLieu_BUS();
                 InitializeComponent();
                 lsDatHang = new List<DatHang_DTO>();
                 dtDatHang = new DataTable();
@@ -140,16 +142,20 @@ namespace GUI.QuanLyKho
                 
                 _frmChonNCC.LoadDanhSachNCC();
                 _frmChonNCC.NhaCungCapBUS = _NhaCungCapBUS;
-                while (_frmChonNCC.ShowDialog() == DialogResult.OK)
+
+
+                while (_frmChonNCC.ShowDialog() == DialogResult.OK)  //Mo form chon Nha cung cap
                 {
                     frmDatHang _frmDatHang = new frmDatHang();
                     _frmDatHang.ThongTinDH.MaNH = _MaNH;
                     _frmDatHang.ThongTinDH.MaNCC = _frmChonNCC.MaNCC;
+                    _frmDatHang.ThongTinDH.TenNCC = _frmChonNCC.TenNCC;
                     _frmDatHang.TenNCC = _frmChonNCC.TenNCC;
-
                     _frmDatHang.NguyenLieuBUS = new NguyenLieu_BUS( _frmChonNCC.NguyenLieuBUS);
                     _frmDatHang.LoadNguyenLieu();
-                    if (_frmDatHang.ShowDialog() == DialogResult.OK)
+
+
+                    if (_frmDatHang.ShowDialog() == DialogResult.OK)     //Mo form chon nguyen lieu va thong tin dat hang
                     {
                         _DatHangBUS = new DatHang_BUS(_frmDatHang.NguyenLieuBUS);
                         int MaHD = _DatHangBUS.InsertDatHang(-1,-1,_frmDatHang.ThongTinDH);
@@ -220,7 +226,7 @@ namespace GUI.QuanLyKho
                         frmDatHang _frmDatHang = new frmDatHang();
                         _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
                         _frmDatHang.LoadThongTinDatHang();
-                        _frmDatHang.lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, _MaNH);
+                        _frmDatHang.lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_NotIn_ChiTietDatHang(2,-1,lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, _MaNH);
                         _frmDatHang.lsDSDatHang = BUS.ChiTietDatHang_BUS.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
                         _frmDatHang.Load_gridDSDatHang();
                         _frmDatHang.Load_lvNguyenLieu();

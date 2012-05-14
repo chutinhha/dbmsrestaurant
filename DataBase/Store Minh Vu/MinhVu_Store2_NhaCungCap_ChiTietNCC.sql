@@ -28,6 +28,12 @@ begin
 	delete ChiTietNCC where MaNL = @MaNL
 end
 GO
+create proc DeleteChiTietNCC @MaNL int,@MaNCC int
+as
+begin
+	delete ChiTietNCC where MaNL = @MaNL and MaNCC = @MaNCC
+end
+GO
 ------------- table NhaCungCap -----------------------------------------------------------
 
 create proc SelectNhaCungCap
@@ -41,9 +47,11 @@ GO
 create proc SelectNhaCungCap_fromNH @MaNH nchar(10)
 as
 begin
+	begin tran
 	select distinct ncc.*
 	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
 	where ncc.MaNCC = ct.MaNCC and nl.MaNL = ct.MaNL and NL.MANH = @MaNH
+	commit tran
 end
 GO
 create proc InsertNhaCungCap @MaNCC int out,@TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int

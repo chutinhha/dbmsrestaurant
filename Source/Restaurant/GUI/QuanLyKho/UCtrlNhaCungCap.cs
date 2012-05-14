@@ -27,13 +27,14 @@ namespace GUI.QuanLyKho
             int indexNCC ;
             int index_NL;
             BUS.NguyenLieu_BUS _NguyenLieuBUS;
+            BUS.ChiTietNCC_BUS _ChiTietNCCBUS;
         #endregion
 
         #region " Khoi tao "
             public UCtrlNhaCungCap()
             {
                 _NguyenLieuBUS = new NguyenLieu_BUS();
-
+                _ChiTietNCCBUS = new ChiTietNCC_BUS();
                 InitializeComponent();
                 lsNCC = new List<NhaCungCap_DTO>();
                 dtNCC = new DataTable();            
@@ -87,7 +88,7 @@ namespace GUI.QuanLyKho
             }
             private void btnCapNhatGia_Click(object sender, EventArgs e)
             {
-                BUS.ChiTietNCC_BUS.UpdateChiTietNCC(lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
+                _ChiTietNCCBUS.UpdateChiTietNCC(2,-1,lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
                 LoadNguyenLieu(lsNCC[indexNCC].MaNCC);
             }
             private void btnRefresh_Click(object sender, EventArgs e)
@@ -166,9 +167,9 @@ namespace GUI.QuanLyKho
                 _frm.MaNH = _MaNH;
                 _frm.NCC = lsNCC[indexNCC];
                 _frm.lsNguyenLieuChon = lsNguyenLieu;
-                _frm.LoadNguyenLieuChon();
                 _frm.LoadNguyenLieu(2);
-
+                _frm.LoadNguyenLieuChon();
+                
                 if (_frm.ShowDialog() == DialogResult.OK)
                 {
                     lsNCC[indexNCC] = _frm.NCC;

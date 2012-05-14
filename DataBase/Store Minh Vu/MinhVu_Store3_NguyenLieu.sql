@@ -2,16 +2,30 @@
 use [QLNhaHang]
 GO
 ------------------- Table Nguyen Lieu -----------------------------------------------------------------
-
+create proc SelectNguyenLieu @MaNH nchar(10)
+as
+begin
+	begin tran
+	set transaction isolation level read uncommitted
+	select *
+	from NguyenLieu nl
+	where nl.MaNH = @MaNH
+	order by nl.TenNL
+	commit tran
+end
+GO
 
 create proc SelectNguyenLieu_fromNCC @MaNCC int,@MaNH int
 as
 begin
+	begin tran
+	set transaction isolation level read uncommitted
 	select nl.*,ct.Gia
 	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
 	where ct.MaNCC = @MaNCC and nl.MaNH = @MaNH 
 		  and ct.MaNL = nl.MaNL and ct.MaNCC = ncc.MaNCC
 	order by nl.TenNL
+	commit tran
 end
 GO
 create proc SelectNguyenLieu_NotIn_ChiTietNCC @MaNCC int ,@MaNH nchar(10) --Select danh sach nguyen lieu khong co trong chi tiet nha cung cap
@@ -44,7 +58,7 @@ GO
 
 --- Insert Nguyên Liệu 
 ------------------------------------------------------------------------------------- 
-alter proc InsertNguyenLieu @Flag int out,@MaNH nchar(10),@TenNL nvarchar(50),@DonVi nvarchar(20),@SoLuongTon int
+create proc InsertNguyenLieu @Flag int out,@MaNH nchar(10),@TenNL nvarchar(50),@DonVi nvarchar(20),@SoLuongTon int
 as
 begin
 	set @Flag = 0

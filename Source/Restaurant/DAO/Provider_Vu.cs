@@ -83,7 +83,7 @@ namespace DAO
                 OpenConnection();
             if (flag_connec == 1)
             {
-                _cm.CommandTimeout = 10000;
+                //_cm.CommandTimeout = 10000;
                 OpenConnection();
 
             }
