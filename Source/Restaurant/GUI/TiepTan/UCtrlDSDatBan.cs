@@ -25,6 +25,7 @@ namespace GUI.TiepTan
         public DatBan_DTO banDat = new DatBan_DTO();
         DatBan_BUS DatBan_BUS = new DatBan_BUS();
         //
+        SqlCommand cm;
         string maBan;
         string khuVuc;
         string sucChua;
@@ -62,6 +63,7 @@ namespace GUI.TiepTan
         {
             FrmCapNhatBanDat frm = new FrmCapNhatBanDat();
             frm.bandat = banDat;
+            frm.cm = cm;
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 if (frm.flag > 0)
@@ -122,6 +124,7 @@ namespace GUI.TiepTan
                 }
             }
         }
+        
         private void DocKhuVuc()
         {
             cbbKhuVuc.Items.Clear();
@@ -249,5 +252,27 @@ namespace GUI.TiepTan
             gridDSDatBan.DataSource = tbDatBan;
         }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            tbDatBan.Rows.Clear();
+            cm = new SqlCommand();//tao va lay Comman
+            DocDatBanRefresh(ref cm);
+
+            gridDSDatBan.DataSource = tbDatBan;
+
+        }
+        private void DocDatBanRefresh(ref SqlCommand cm)
+        {
+            DataTable tbTemp = DatBan_BUS.DocDanhSachBanDatRefresh(maNH, maBan, khuVuc, sucChua, trangThai,ref cm);
+            if (tbTemp.Rows.Count > 0)
+            {
+
+                for (int i = 0; i < tbTemp.Rows.Count; i++)
+                {
+                    DataRow row = tbTemp.Rows[i];
+                    Them1Ban(row);
+                }
+            }
+        }
     }
 }

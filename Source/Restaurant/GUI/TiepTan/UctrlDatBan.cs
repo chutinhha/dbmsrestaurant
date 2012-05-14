@@ -41,7 +41,7 @@ namespace GUI.TiepTan
 
         private void btnDatBan_Click(object sender, EventArgs e)
         {
-            if ( flag  && txtSoDienThoai.Text != "" && txtThoiGianDen.Text != "" && maBanChon!=null)
+            if ( flag  /*&& txtSoDienThoai.Text != ""*/ && txtThoiGianDen.Text != "" && maBanChon!=null)
             {
                
                     DatBan_DTO banDat = new DatBan_DTO();
@@ -108,9 +108,12 @@ namespace GUI.TiepTan
                     if (DatBan_BUS.ThemDatBan(banDat) > 0)
                     {
                         //Cập nhật Tình trạng bên bảng Bàn Ăn
-                        
+                        if(dsBanDat[i].Sdt=="")
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số " + dsBanDat[i].MaBan + " đặt không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        else
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số " + dsBanDat[i].MaBan + " đã được đặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                        // DatBan_BUS.UpdateTrangThaiBanAn(int.Parse( banDat.MaBan));
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Bàn số " + dsBanDat[i].MaBan + " đã được đặt", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
                         
                     }
                     else

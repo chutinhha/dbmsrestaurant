@@ -52,7 +52,7 @@
             this.btnDatBan = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapNhat = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
-            this.btnInDSNV = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -269,9 +269,9 @@
             // 
             this.btnDatBan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDatBan.Image = global::GUI.Properties.Resources.add_16;
-            this.btnDatBan.Location = new System.Drawing.Point(413, 442);
+            this.btnDatBan.Location = new System.Drawing.Point(479, 440);
             this.btnDatBan.Name = "btnDatBan";
-            this.btnDatBan.Size = new System.Drawing.Size(190, 26);
+            this.btnDatBan.Size = new System.Drawing.Size(94, 26);
             this.btnDatBan.TabIndex = 16;
             this.btnDatBan.Text = "Đặt Bàn";
             this.btnDatBan.Click += new System.EventHandler(this.btnDatBan_Click);
@@ -280,7 +280,7 @@
             // 
             this.btnCapNhat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCapNhat.Image = global::GUI.Properties.Resources.save_16;
-            this.btnCapNhat.Location = new System.Drawing.Point(609, 442);
+            this.btnCapNhat.Location = new System.Drawing.Point(581, 440);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(89, 26);
             this.btnCapNhat.TabIndex = 17;
@@ -291,33 +291,34 @@
             // 
             this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXoa.Image = global::GUI.Properties.Resources.delete_16;
-            this.btnXoa.Location = new System.Drawing.Point(704, 442);
+            this.btnXoa.Location = new System.Drawing.Point(679, 440);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(61, 26);
+            this.btnXoa.Size = new System.Drawing.Size(94, 26);
             this.btnXoa.TabIndex = 19;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // btnInDSNV
+            // btnRefresh
             // 
-            this.btnInDSNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInDSNV.Image = global::GUI.Properties.Resources.print_24;
-            this.btnInDSNV.Location = new System.Drawing.Point(771, 442);
-            this.btnInDSNV.Name = "btnInDSNV";
-            this.btnInDSNV.Size = new System.Drawing.Size(106, 26);
-            this.btnInDSNV.TabIndex = 18;
-            this.btnInDSNV.Text = "In Danh Sách";
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Image = global::GUI.Properties.Resources.refresh16;
+            this.btnRefresh.Location = new System.Drawing.Point(781, 440);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(94, 26);
+            this.btnRefresh.TabIndex = 18;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // UCtrlDSDatBan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnDatBan);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.btnCapNhat);
             this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.btnXoa);
-            this.Controls.Add(this.btnInDSNV);
             this.Name = "UCtrlDSDatBan";
             this.Size = new System.Drawing.Size(880, 480);
             this.Load += new System.EventHandler(this.UCtrlDSDatBan_Load);
@@ -347,7 +348,7 @@
         private DevExpress.XtraEditors.SimpleButton btnDatBan;
         private DevExpress.XtraEditors.SimpleButton btnCapNhat;
         private DevExpress.XtraEditors.SimpleButton btnXoa;
-        private DevExpress.XtraEditors.SimpleButton btnInDSNV;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
         private DevExpress.XtraGrid.GridControl gridDSDatBan;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_DatBan;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;

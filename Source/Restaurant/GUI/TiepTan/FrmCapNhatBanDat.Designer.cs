@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.calcEdit_ThoiGianDen = new DevExpress.XtraEditors.DateEdit();
             this.cbbHienTrang = new System.Windows.Forms.ComboBox();
             this.cbbKhachHang = new System.Windows.Forms.ComboBox();
             this.cbbBanAn = new System.Windows.Forms.ComboBox();
@@ -38,7 +39,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.calcEdit_ThoiGianDen = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit_ThoiGianDen.Properties.VistaTimeProperties)).BeginInit();
@@ -62,6 +62,18 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(347, 201);
             this.panelControl1.TabIndex = 1;
+            // 
+            // calcEdit_ThoiGianDen
+            // 
+            this.calcEdit_ThoiGianDen.EditValue = null;
+            this.calcEdit_ThoiGianDen.Location = new System.Drawing.Point(195, 101);
+            this.calcEdit_ThoiGianDen.Name = "calcEdit_ThoiGianDen";
+            this.calcEdit_ThoiGianDen.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit_ThoiGianDen.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.calcEdit_ThoiGianDen.Size = new System.Drawing.Size(121, 20);
+            this.calcEdit_ThoiGianDen.TabIndex = 30;
             // 
             // cbbHienTrang
             // 
@@ -144,18 +156,6 @@
             this.labelControl1.Size = new System.Drawing.Size(34, 13);
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Bàn Ăn";
-            // 
-            // calcEdit_ThoiGianDen
-            // 
-            this.calcEdit_ThoiGianDen.EditValue = null;
-            this.calcEdit_ThoiGianDen.Location = new System.Drawing.Point(195, 101);
-            this.calcEdit_ThoiGianDen.Name = "calcEdit_ThoiGianDen";
-            this.calcEdit_ThoiGianDen.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit_ThoiGianDen.Properties.VistaTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.calcEdit_ThoiGianDen.Size = new System.Drawing.Size(121, 20);
-            this.calcEdit_ThoiGianDen.TabIndex = 30;
             // 
             // FrmCapNhatBanDat
             // 
