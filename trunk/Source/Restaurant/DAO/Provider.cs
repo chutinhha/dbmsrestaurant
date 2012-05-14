@@ -9,13 +9,19 @@ namespace DAO
 {
     class Provider
     {
-        //public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
-        public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        //public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlConnection cnn;
         //public string str_connection = @"Server=.\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlCommand cm;
         //public SqlTransaction trans;
-
+        public Provider()
+        {
+        }
+        public Provider(SqlCommand cm)
+        {
+            this.cm = cm;
+        }
         public SqlCommand CreateCommandStringSql(string sql)
         {
             if(cnn==null)
@@ -24,6 +30,20 @@ namespace DAO
             //cnn.Open();
             cm.CommandType = System.Data.CommandType.Text;
             cm.CommandText = sql;
+            return cm;
+        }
+        public SqlCommand CreateCommand_CommitTran(string sql)
+        {
+            //if (cnn == null)
+            //    cnn = new SqlConnection(str_connection);
+            //cm = cnn.CreateCommand();
+            //cnn.Open();
+            try
+            {
+                cm.CommandType = System.Data.CommandType.Text;
+                cm.CommandText = sql;
+            }
+            catch { }
             return cm;
         }
         public SqlCommand CreateCommandStoreName(string StoreName)
@@ -49,9 +69,11 @@ namespace DAO
         {
             try
             {
-                cm.Connection.Open();
+                if(cm.Connection.State== ConnectionState.Closed)
+                    cm.Connection.Open();
                 int flag = cm.ExecuteNonQuery();
-                cm.Connection.Close();
+                if(cm.Connection.State== ConnectionState.Open)
+                    cm.Connection.Close();
                 return flag;
             }
             catch
@@ -63,7 +85,8 @@ namespace DAO
         public DataTable ExecSelectCommand_OpenConnection(SqlCommand cm)
         {
             DataTable table = new DataTable();
-            cm.Connection.Open();
+            if(cm.Connection.State!=ConnectionState.Open)
+                cm.Connection.Open();
             SqlDataReader read = cm.ExecuteReader();
             table.Load(read);
             read.Close();
