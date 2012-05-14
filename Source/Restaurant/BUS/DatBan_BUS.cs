@@ -11,7 +11,15 @@ namespace BUS
 {
     public class DatBan_BUS
     {
-        DatBan_DAO DatBan_DAO = new DatBan_DAO();
+        DatBan_DAO DatBan_DAO;
+        public DatBan_BUS(SqlCommand cm)
+        {
+            DatBan_DAO = new DatBan_DAO(cm);
+        }
+        public DatBan_BUS()
+        {
+            DatBan_DAO = new DatBan_DAO();
+        }
         public DataTable DocBanTrong(int maNH)
         {
             return DatBan_DAO.DocBanTrong(maNH);
@@ -32,6 +40,10 @@ namespace BUS
         public DataTable DocBanAn_CloseConnection(int maNH, string khuvuc, string succhua)
         {
             return DatBan_DAO.DocBanAn_CommitTran(maNH, khuvuc, succhua);
+        }
+        public DataTable DocBanAn_CloseConnection2(int maNH, string khuvuc, string succhua)
+        {
+            return DatBan_DAO.DocBanAn_CommitTran2(maNH, khuvuc, succhua);
         }
 
         public DataTable DocKhuVuc(int maNH)
@@ -67,6 +79,10 @@ namespace BUS
         public DataTable DocDanhSachBanDat(int maNH,string maBan,string khuVuc,string sucChua,string trangThai)
         {
             return DatBan_DAO.DocDanhSachBanDat(maNH, maBan, khuVuc, sucChua, trangThai);
+        }
+        public DataTable DocDanhSachBanDatRefresh(int maNH, string maBan, string khuVuc, string sucChua, string trangThai,ref SqlCommand cm)
+        {
+            return DatBan_DAO.DocDanhSachBanDat_BeginTran(maNH, maBan, khuVuc, sucChua, trangThai,ref cm);
         }
 
         public int UpdateDatBan(DatBan_DTO bandat,string maBan,string maNH,string thoigianden)
