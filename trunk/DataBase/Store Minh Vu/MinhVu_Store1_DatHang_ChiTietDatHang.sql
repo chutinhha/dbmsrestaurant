@@ -30,7 +30,10 @@ GO
 create proc InsertChiTietDatHang @MaHoaDon int,@MaNL int,@SoLuong int,@ThanhTien float
 as
 begin
+	begin tran
+	set transaction isolation level read uncommitted
 	insert into ChiTietDatHang values(@MaHoaDon,@MaNL,@SoLuong,@ThanhTien)
+	commit
 end
 GO
 
@@ -69,8 +72,11 @@ GO
 create proc InsertDatHang  @MaHoaDon int out, @MaNCC int,@MaNH nchar(10),@TongTien float,@ThoiGianDat datetime,@ThoiGianGiao datetime,@TinhTrang nvarchar(50)
 as
 begin
+	begin tran
+	set transaction isolation level read uncommitted
 	insert into DatHang values(@MaNCC,@MaNH,@TongTien,@ThoiGianDat,@ThoiGianGiao,@TinhTrang)
 	set @MaHoaDon = (select MaHoaDon from DatHang where MaNCC = @MaNCC and MaNH = @MaNH and ThoiGianDat = @ThoiGianDat)
+	commit tran
 end
 GO
 create proc UpdateDatHang @MaHoaDon int, @MaNCC int,@MaNH nchar(10),@TongTien float,@ThoiGianDat datetime,@ThoiGianGiao datetime,@TinhTrang nvarchar(50)

@@ -43,45 +43,51 @@ namespace DAO
             return ConvertToList(_provider.ExecSelectCommand(flag_connec,flag_tran));
         }
 
-        public int InsertNhaCungCap(NhaCungCap_DTO ncc)
+        public int InsertNhaCungCap(int flag_connec, int flag_tran, NhaCungCap_DTO ncc)
         {
             String store = "InsertNhaCungCap";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int).Direction = ParameterDirection.Output;
-            cm.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
-            cm.Parameters.Add("@sdt", SqlDbType.NVarChar);
-            cm.Parameters.Add("@DiaChi", SqlDbType.NVarChar);
-            cm.Parameters.Add("@DiemUuTien", SqlDbType.Int);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int).Direction = ParameterDirection.Output;
+            _provider.Command.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@sdt", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@DiaChi", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@DiemUuTien", SqlDbType.Int);
 
-            cm.Parameters["@TenNCC"].Value = ncc.TenNCC;
-            cm.Parameters["@sdt"].Value = ncc.sdt;
-            cm.Parameters["@DiaChi"].Value = ncc.DiaChi;
-            cm.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
+            _provider.Command.Parameters["@TenNCC"].Value = ncc.TenNCC;
+            _provider.Command.Parameters["@sdt"].Value = ncc.sdt;
+            _provider.Command.Parameters["@DiaChi"].Value = ncc.DiaChi;
+            _provider.Command.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
 
-            provider.ExecuteInsertUpdateDelete(cm);
-            return (int)cm.Parameters["@MaNCC"].Value;
+            _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
+            return (int)_provider.Command.Parameters["@MaNCC"].Value;
         }
-        public int UpdateNhaCungCap(String TenNCC,NhaCungCap_DTO ncc)
+        public int UpdateNhaCungCap(int flag_connec, int flag_tran, String TenNCC, NhaCungCap_DTO ncc)
         {
             String store = "UpdateNhaCungCap";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
-            cm.Parameters.Add("@TenNCC_old", SqlDbType.NVarChar);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-            cm.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
-            cm.Parameters.Add("@sdt", SqlDbType.NVarChar);
-            cm.Parameters.Add("@DiaChi", SqlDbType.NVarChar);
-            cm.Parameters.Add("@DiemUuTien", SqlDbType.Int);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
+            _provider.Command.Parameters.Add("@TenNCC_old", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@sdt", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@DiaChi", SqlDbType.NVarChar);
+            _provider.Command.Parameters.Add("@DiemUuTien", SqlDbType.Int);
 
-            cm.Parameters["@TenNCC_old"].Value = TenNCC;
-            cm.Parameters["@MaNCC"].Value = ncc.MaNCC;
-            cm.Parameters["@TenNCC"].Value = ncc.TenNCC;
-            cm.Parameters["@sdt"].Value = ncc.sdt;
-            cm.Parameters["@DiaChi"].Value = ncc.DiaChi;
-            cm.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
+            _provider.Command.Parameters["@TenNCC_old"].Value = TenNCC;
+            _provider.Command.Parameters["@MaNCC"].Value = ncc.MaNCC;
+            _provider.Command.Parameters["@TenNCC"].Value = ncc.TenNCC;
+            _provider.Command.Parameters["@sdt"].Value = ncc.sdt;
+            _provider.Command.Parameters["@DiaChi"].Value = ncc.DiaChi;
+            _provider.Command.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
 
-            provider.ExecuteInsertUpdateDelete(cm);
-            return (int)cm.Parameters["@Flag"].Value;
+            _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
+            return (int)_provider.Command.Parameters["@Flag"].Value;
         }
         public void DeleteNhaCungCap(int MaNCC)
         {

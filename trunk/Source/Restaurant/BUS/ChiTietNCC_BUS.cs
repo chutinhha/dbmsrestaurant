@@ -8,20 +8,43 @@ namespace BUS
 {
     public class ChiTietNCC_BUS
     {
-        public static int InsertChiTietNCC(int MaNL,int MaNCC,double Gia)
+        ChiTietNCC_DAO _ChiTietNCCDAO;
+        public ChiTietNCC_DAO ChiTietNCCDAO
         {
-            ChiTietNCC_DAO ctDAO = new ChiTietNCC_DAO();
-            return ctDAO.InsertChiTietNCC(MaNL, MaNCC,Gia);
+            get{return _ChiTietNCCDAO;}
+            set{_ChiTietNCCDAO = value;}
         }
-        public static int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
+        public ChiTietNCC_BUS()
         {
-            ChiTietNCC_DAO ctDAO = new ChiTietNCC_DAO();
-            return ctDAO.UpdateChiTietNCC(MaNL, MaNCC, Gia);
+            _ChiTietNCCDAO = new ChiTietNCC_DAO();
         }
-        public static void DeleteChiTietNCC(int MaNCC)
+        public ChiTietNCC_BUS(NhaCungCap_BUS ncc)
         {
-            ChiTietNCC_DAO ctDAO = new ChiTietNCC_DAO();
-            ctDAO.DeleteChiTietNCC_fromNCC(MaNCC);
+            _ChiTietNCCDAO = new ChiTietNCC_DAO();
+            _ChiTietNCCDAO.Provider = ncc.NhaCungCapDAO.Provider; 
+
+        }
+        public ChiTietNCC_BUS(NguyenLieu_BUS nl)
+        {
+            _ChiTietNCCDAO = new ChiTietNCC_DAO();
+            _ChiTietNCCDAO.Provider = nl.NguyenLieuDAO.Provider;
+
+        }
+        public int InsertChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
+        {
+            return _ChiTietNCCDAO.InsertChiTietNCC(flag_connec,flag_tran,MaNL, MaNCC, Gia);
+        }
+        public int UpdateChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
+        {
+            return _ChiTietNCCDAO.UpdateChiTietNCC(flag_connec,flag_tran,MaNL, MaNCC, Gia);
+        }
+        public int DeleteChiTietNCC_fromNCC(int flag_connec, int flag_tran, int MaNCC)
+        {
+            return _ChiTietNCCDAO.DeleteChiTietNCC_fromNCC(flag_connec,flag_tran,MaNCC);
+        }
+        public int DeleteChiTietNCC(int flag_connec, int flag_tran,int MaNL, int MaNCC)
+        {
+            return _ChiTietNCCDAO.DeleteChiTietNCC(flag_connec, flag_tran,MaNL, MaNCC);
         }
     }
 }

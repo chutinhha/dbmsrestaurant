@@ -19,6 +19,16 @@ namespace BUS
         {
             _NhaCungCapDAO = new NhaCungCap_DAO();
         }
+        public NhaCungCap_BUS(NguyenLieu_BUS nl)
+        {
+            _NhaCungCapDAO = new NhaCungCap_DAO();
+            _NhaCungCapDAO.Provider = nl.NguyenLieuDAO.Provider;
+        }
+        public NhaCungCap_BUS(ChiTietNCC_BUS ctncc)
+        {
+            _NhaCungCapDAO = new NhaCungCap_DAO();
+            _NhaCungCapDAO.Provider = ctncc.ChiTietNCCDAO.Provider;
+        }
         public static List<NhaCungCap_DTO> SelectNhaCungCap()
         {
             NhaCungCap_DAO NhaCungCapDAO = new NhaCungCap_DAO();
@@ -28,15 +38,13 @@ namespace BUS
         {
             return _NhaCungCapDAO.SelectNhaCungCap_fromNH(flag_connec,flag_tran, MaNH);
         }
-        public static int InsertNhaCungCap(NhaCungCap_DTO ncc)
+        public int InsertNhaCungCap(int flag_connec, int flag_tran, NhaCungCap_DTO ncc)
         {
-            NhaCungCap_DAO NhaCungCapDAO = new NhaCungCap_DAO();
-            return NhaCungCapDAO.InsertNhaCungCap(ncc);
+            return _NhaCungCapDAO.InsertNhaCungCap(flag_connec,flag_tran,ncc);
         }
-        public static int UpdatetNhaCungCap(String TenNCC,NhaCungCap_DTO ncc)
+        public int UpdatetNhaCungCap(int flag_connec, int flag_tran, String TenNCC, NhaCungCap_DTO ncc)
         {
-            NhaCungCap_DAO NhaCungCapDAO = new NhaCungCap_DAO();
-            return NhaCungCapDAO.UpdateNhaCungCap(TenNCC, ncc);
+            return _NhaCungCapDAO.UpdateNhaCungCap(flag_connec,flag_tran,TenNCC, ncc);
         }
         public static void DeleteNhaCungCap(int MaNCC)
         {

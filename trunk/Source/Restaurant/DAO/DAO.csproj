@@ -48,6 +48,8 @@
     <Compile Include="DatHang_DAO.cs" />
     <Compile Include="HoaDon_DAO.cs" />
     <Compile Include="KhachHang_DAO.cs" />
+    <Compile Include="KhuVuc_DAO.cs" />
+    <Compile Include="LoaiBanAn_DAO.cs" />
     <Compile Include="LoaiMonAn_DAO.cs" />
     <Compile Include="LoaiNhanVien_DAO.cs" />
     <Compile Include="MonAn_DAO.cs" />

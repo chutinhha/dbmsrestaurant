@@ -20,6 +20,8 @@ namespace GUI.QuanLyKho
             private List<NguyenLieu_DTO> lsNguyenLieu;
             private List<NguyenLieu_DTO> _lsNguyenLieuChon;
             BUS.NguyenLieu_BUS _NguyenLieuBUS;
+            BUS.NhaCungCap_BUS _NhaCungCapBUS;
+            BUS.ChiTietNCC_BUS _ChiTietNCCBUS;
         #endregion
 
         #region " Properties "
@@ -51,6 +53,8 @@ namespace GUI.QuanLyKho
             InitializeComponent();
             _NCC = new NhaCungCap_DTO();
             _NguyenLieuBUS = new NguyenLieu_BUS();
+            _NhaCungCapBUS = new NhaCungCap_BUS();
+            _ChiTietNCCBUS = new ChiTietNCC_BUS();
         }
         #endregion
 
@@ -89,21 +93,51 @@ namespace GUI.QuanLyKho
                 if (txtDiemUuTien.Text.Trim().Length == 0)
                     txtDiemUuTien.Text = "0";
             }
+            private void lvNguyenLieu_DoubleClick(object sender, EventArgs e)
+            {
+                try
+                {
+                    ThemNL();
+                }
+                catch (Exception)
+                {
+
+                }
+
+            }
+
+            private void lvNguyenLieuChon_DoubleClick(object sender, EventArgs e)
+            {
+                try
+                {
+                    XoaNL();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         #endregion
 
         #region "Cac ham xu ly"
             public void LoadNguyenLieu(int flag)
             {
-                if (flag == 1)
-                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu(2,-1,_MaNH);
-                else
-                    lsNguyenLieu = BUS.NguyenLieu_BUS.SelectNguyenLieu_NotIn_ChiTietNCC(_NCC.MaNCC,_MaNH);
+                if (flag == 1) // Them du lieu moi
+                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu(1, 1, _MaNH);
+                else //Cap nhat du lieu
+                {
+                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_NotIn_ChiTietNCC(1,1,_NCC.MaNCC, _MaNH);
+                    //Khoi tao ChiTietNCCBUS va cap nhat provider tu NguyenLieuBUS
+                    _ChiTietNCCBUS = new ChiTietNCC_BUS(_NguyenLieuBUS);
+                }
 
                 Load_lvNguyenLieu();
             }
             public void LoadNguyenLieuChon()
             {
-                lsNguyenLieuChon = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(2,-1,_NCC.MaNCC, _MaNH);
+                
+                lsNguyenLieuChon = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(-1,-1,_NCC.MaNCC, _MaNH);
                 Load_lvNguyenLieuChon();
             }
             public void Load_lvNguyenLieuChon()
@@ -129,6 +163,15 @@ namespace GUI.QuanLyKho
                 try
                 {
                     int index_NguyenLieu = lvNguyenLieu.SelectedIndices[0];
+                    //Neu la cap nhat nha cung cap - thi moi lan them nguyen lieu phai ghi xuong databse
+                    if (_flag != 1)
+                    {
+                        if (_ChiTietNCCBUS.InsertChiTietNCC(-1, -1, lsNguyenLieu[index_NguyenLieu].MaNL, _NCC.MaNCC, lsNguyenLieu[index_NguyenLieu].Gia) == 0)
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Không thể thêm nguyên liệu này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                     }
                     //Add List View Nguyen Lieu Chon
                     ListViewItem lvItem = new ListViewItem(new String[] { (lsNguyenLieuChon.Count + 1).ToString(), lsNguyenLieu[index_NguyenLieu].TenNL });
                     lvNguyenLieuChon.Items.Add(lvItem);
@@ -136,6 +179,7 @@ namespace GUI.QuanLyKho
                     //Delete List View Nguyen Lieu
                     lsNguyenLieu.RemoveAt(index_NguyenLieu);
                     Load_lvNguyenLieu();
+                    
                 }
                 catch (Exception)
                 {   
@@ -146,6 +190,15 @@ namespace GUI.QuanLyKho
                 try
                 {
                     int index_NguyenLieuChon = lvNguyenLieuChon.SelectedIndices[0];
+                    if (_flag != 1)
+                    {
+                        if (_ChiTietNCCBUS.DeleteChiTietNCC(-1, -1,lsNguyenLieuChon[index_NguyenLieuChon].MaNL, _NCC.MaNCC) == 0)
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa nguyên liệu này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
+                    }
+
                     //Add List View Nguyen Lieu
                     ListViewItem lvItem = new ListViewItem(new String[] { (lsNguyenLieu.Count + 1).ToString(), lsNguyenLieuChon[index_NguyenLieuChon].TenNL });
                     lvNguyenLieu.Items.Add(lvItem);
@@ -160,7 +213,6 @@ namespace GUI.QuanLyKho
             }
             public void Save()
             {
-                this.DialogResult = DialogResult.None;
                 if (txtTenNCC.Text.Trim().Length == 0)
                 {
                     DevExpress.XtraEditors.XtraMessageBox.Show("Bạn chưa nhập Tên Nhà Cung Cấp!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -183,74 +235,51 @@ namespace GUI.QuanLyKho
                             _NCC.TenNCC = txtTenNCC.Text.Trim();
                             _NCC.DiaChi = txtDiaChi.Text.Trim();
                             _NCC.sdt = txtSoDienThoai.Text.Trim();
+                           // Them du lieu 
                             if (_flag == 1)
                             {
-                                _NCC.MaNCC = BUS.NhaCungCap_BUS.InsertNhaCungCap(_NCC);
-                                if (_NCC.MaNCC == 0)
-                                {
-                                    DevExpress.XtraEditors.XtraMessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    txtTenNCC.Focus();
-                                    this.DialogResult = DialogResult.None;
-                                }
+                                _NhaCungCapBUS = new NhaCungCap_BUS(_NguyenLieuBUS);
+                                _NCC.MaNCC = _NhaCungCapBUS.InsertNhaCungCap(-1,-1,_NCC);
+                                if (_NCC.MaNCC == 0)                                    
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu Không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 else
                                 {
+                                    int flag_insertCtncc = 1;
                                     for (int i = 0; i < lsNguyenLieuChon.Count; i++)
                                     {
-                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC,0);
+                                        _ChiTietNCCBUS = new ChiTietNCC_BUS(_NhaCungCapBUS);
+                                        if (i < lsNguyenLieuChon.Count - 1)
+                                        {
+                                            if (_ChiTietNCCBUS.InsertChiTietNCC(-1, -1, lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
+                                            {
+                                                flag_insertCtncc = 0;
+                                                break;
+                                            }
+                                        }else
+                                            //Neu la Chi tiet nguyen lieu cuoi thi insert va commit tran sau do Close Connection
+                                            if (_ChiTietNCCBUS.InsertChiTietNCC(0, 0, lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
+                                            {
+                                                flag_insertCtncc = 0;
+                                                break;
+                                            }
+
                                     }
-                                    this.DialogResult = DialogResult.OK;
+                                    if(flag_insertCtncc ==1)
+                                        DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu  thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
-                            else
+                            else // Cap nhat du lieu
                             {
                                 _NCC.DiemUuTien = int.Parse(txtDiemUuTien.Text);
-                                int flag = BUS.NhaCungCap_BUS.UpdatetNhaCungCap(TenNCC_old,_NCC);
-                                if (flag == 0)
-                                {
-                                    DevExpress.XtraEditors.XtraMessageBox.Show("Tên nhà cung cấp này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    txtTenNCC.Focus();
-                                    this.DialogResult = DialogResult.None;
-                                }
+                                _NhaCungCapBUS = new NhaCungCap_BUS(_ChiTietNCCBUS);
+                                if (_NhaCungCapBUS.UpdatetNhaCungCap(0,0,TenNCC_old,_NCC) == 0)
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật dử liệu Không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 else
-                                {
-                                    BUS.ChiTietNCC_BUS.DeleteChiTietNCC(_NCC.MaNCC);
-                                    for (int i = 0; i < lsNguyenLieuChon.Count; i++)
-                                    {
-                                        BUS.ChiTietNCC_BUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, lsNguyenLieuChon[i].Gia);
-                                    }
-                                    this.DialogResult = DialogResult.OK;
-                                }
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật dử liệu  thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                
                             }
                         }  
             }
         #endregion
-
-            private void lvNguyenLieu_DoubleClick(object sender, EventArgs e)
-            {
-                try
-                {
-                    ThemNL();
-                }
-                catch (Exception)
-                {
-                    
-                }
-               
-            }
-
-            private void lvNguyenLieuChon_DoubleClick(object sender, EventArgs e)
-            {
-                try
-                {
-                    XoaNL();
-                }
-                catch (Exception)
-                {
-                    
-                    throw;
-                }
-            }
-
-
     }
 }

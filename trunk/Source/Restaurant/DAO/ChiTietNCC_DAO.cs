@@ -10,45 +10,77 @@ namespace DAO
     public class ChiTietNCC_DAO
     {
         Provider provider ;
+        Provider_Vu _provider;
         public ChiTietNCC_DAO()
         {
             provider = new Provider();
+            _provider = new Provider_Vu();
         }
-        public int InsertChiTietNCC(int MaNL,int MaNCC,double Gia)
+        public Provider_Vu Provider
+        {
+            get { return _provider; }
+            set { _provider = value; }
+        }
+        public int InsertChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
         {
             String store = "InsertChiTietNCC";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaNL", SqlDbType.Int);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-            cm.Parameters.Add("@Gia", SqlDbType.Float);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNL", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@Gia", SqlDbType.Float);
 
-            cm.Parameters["@MaNL"].Value = MaNL;
-            cm.Parameters["@MaNCC"].Value = MaNCC;
-            cm.Parameters["@Gia"].Value = Gia;
-            return  provider.ExecuteInsertUpdateDelete(cm);
+            _provider.Command.Parameters["@MaNL"].Value = MaNL;
+            _provider.Command.Parameters["@MaNCC"].Value = MaNCC;
+            _provider.Command.Parameters["@Gia"].Value = Gia;
+            return  _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
         }
-        public int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
+        public int UpdateChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
         {
             String store = "UpdateChiTietNCC";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaNL", SqlDbType.Int);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
-            cm.Parameters.Add("@Gia", SqlDbType.Float);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNL", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@Gia", SqlDbType.Float);
 
-            cm.Parameters["@MaNL"].Value = MaNL;
-            cm.Parameters["@MaNCC"].Value = MaNCC;
-            cm.Parameters["@Gia"].Value = Gia;
-            return provider.ExecuteInsertUpdateDelete(cm);
+            _provider.Command.Parameters["@MaNL"].Value = MaNL;
+            _provider.Command.Parameters["@MaNCC"].Value = MaNCC;
+            _provider.Command.Parameters["@Gia"].Value = Gia;
+            return _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
         }
-        public void DeleteChiTietNCC_fromNCC(int MaNCC)
+        public int DeleteChiTietNCC_fromNCC(int flag_connec, int flag_tran, int MaNCC)
         {
             String store = "DeleteChiTietNCC_fromNCC";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
-            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
 
-            cm.Parameters["@MaNCC"].Value = MaNCC;
+            _provider.Command.Parameters["@MaNCC"].Value = MaNCC;
 
-            provider.ExecuteInsertUpdateDelete(cm);
+            return _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
+        }
+        public int DeleteChiTietNCC(int flag_connec, int flag_tran,int MaNL, int MaNCC)
+        {
+            String store = "DeleteChiTietNCC";
+            if (flag_connec == 2 || flag_connec == 1)
+                _provider.CreateCommand();
+            _provider.Command.Parameters.Clear();
+            _provider.CreateCommand_StoreName(store);
+            _provider.Command.Parameters.Add("@MaNL", SqlDbType.Int);
+            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
+
+
+            _provider.Command.Parameters["@MaNL"].Value = MaNL;
+            _provider.Command.Parameters["@MaNCC"].Value = MaNCC;
+
+            return _provider.ExecuteInsertUpdateDelete(flag_connec, flag_tran);
         }
         private List<ChiTietNCC_DTO> ConvertToList(DataTable dt)
         {
