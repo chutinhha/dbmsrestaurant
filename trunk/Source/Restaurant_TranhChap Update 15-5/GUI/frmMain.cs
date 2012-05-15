@@ -47,7 +47,7 @@ namespace GUI
         public String MaNH
         {
             get { return maNH; }
-            set { maNH = MaNH; }
+            set { maNH = value; }
         }
         public NhanVien_DTO NhanVien
         {
