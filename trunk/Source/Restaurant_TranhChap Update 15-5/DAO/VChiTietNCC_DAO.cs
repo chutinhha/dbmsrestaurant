@@ -28,6 +28,7 @@ namespace DAO
             String store = "UpdateChiTietNCC";
 
             CreateCommand_StoreName(store);
+            cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@Gia", SqlDbType.Float);
@@ -35,7 +36,9 @@ namespace DAO
             cm.Parameters["@MaNL"].Value = MaNL;
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@Gia"].Value = Gia;
-            return ExecuteInsertUpdateDelete();
+
+            ExecuteInsertUpdateDelete();
+            return (int)cm.Parameters["@Flag"].Value;
         }
         public int DeleteChiTietNCC_fromNCC(int MaNCC)
         {

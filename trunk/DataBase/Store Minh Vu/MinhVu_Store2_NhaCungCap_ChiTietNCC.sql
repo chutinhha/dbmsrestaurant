@@ -1,20 +1,43 @@
-
+﻿
 use [QLNhaHang]
 GO
 --------------- table ChiTietNCC ---------------------------------------------------------
-
+-- Lấy danh sách nguyên liệu của nhà cung cấp
+-------------------------------------------------------------------------
 create proc InsertChiTietNCC @MaNL int,@MaNCC int ,@Gia float
 as
 begin
 	insert into ChiTietNCC values(@MaNL,@MaNCC,@Gia)
 end
 GO
-create proc UpdateChiTietNCC @MaNL int,@MaNCC int ,@Gia float
+-- Cập nhật giá nguyên liệu của nhà cung cấp
+-------------------------------------------------------------------------
+alter proc UpdateChiTietNCC @Flag int out,@MaNL int,@MaNCC int ,@Gia float
 as
 begin
-	update ChiTietNCC set Gia = @Gia
-	where MaNL = @MaNL and MaNCC = @MaNCC
+	set @Flag = 0
+	begin tran
+		set transaction isolation level read uncommitted
+		if((select count(*) from ChiTietNCC where MaNL = @MaNL and MaNCC = @MaNCC)=0)
+		begin
+			rollback tran
+			return
+		end
+
+		waitfor delay '00:00:05'
+		update ChiTietNCC set Gia = @Gia
+		where MaNL = @MaNL and MaNCC = @MaNCC
+		if(@@error <> 0)
+		begin
+			rollback tran
+			return
+		end
+		set @Flag =1					
+	commit tran
 end
+declare @a int 
+exec UpdateChiTietNCC @a out,53,11,11100
+print @a
 GO
 create proc DeleteChiTietNCC_fromNCC @MaNCC int
 as
@@ -35,7 +58,8 @@ begin
 end
 GO
 ------------- table NhaCungCap -----------------------------------------------------------
-
+-- Lấy danh sách nhà cung cấp
+-------------------------------------------------------------------------
 create proc SelectNhaCungCap
 as
 begin
@@ -43,20 +67,10 @@ begin
 		set transaction isolation level read uncommitted
 		select * 
 		from NhaCungCap
-	end tran
-end
-GO
--- Select nhung nha cung cap , co cung cap nguyen lieu cho nha hang dang xet
-create proc SelectNhaCungCap_fromNH @MaNH nchar(10)
-as
-begin
-	begin tran
-	select distinct ncc.*
-	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
-	where ncc.MaNCC = ct.MaNCC and nl.MaNL = ct.MaNL and NL.MANH = @MaNH
 	commit tran
 end
 GO
+
 create proc InsertNhaCungCap @MaNCC int out,@TenNCC nvarchar(50),@sdt nvarchar(50),@DiaChi nvarchar(50),@DiemUuTien int
 as
 begin
@@ -88,5 +102,17 @@ begin
 	exec DeleteChiTietNCC_fromNCC @MaNCC
 	delete NhaCungCap
 	where MaNCC=@MaNCC
+end
+
+GO
+-- Select nhung nha cung cap , co cung cap nguyen lieu cho nha hang dang xet
+create proc SelectNhaCungCap_fromNH @MaNH nchar(10)
+as
+begin
+	begin tran
+	select distinct ncc.*
+	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
+	where ncc.MaNCC = ct.MaNCC and nl.MaNL = ct.MaNL and NL.MANH = @MaNH
+	commit tran
 end
 GO
