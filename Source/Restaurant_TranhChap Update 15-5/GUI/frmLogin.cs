@@ -34,5 +34,10 @@ namespace GUI
         {
             //Kiem tra tai khoang dang nhap
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
