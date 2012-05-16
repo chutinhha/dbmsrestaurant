@@ -117,21 +117,29 @@ namespace GUI.QuanLyKho
         public void LoadNguyenLieu()
         {
             dtNguyenLieu.Rows.Clear();
-            dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_toDataTable(maNH);
-
-            int i = 0;
-            foreach (DataRow row in dtNguyenLieu_Source.Rows)
+            try
             {
-                DataRow row2 = dtNguyenLieu.NewRow();
-                row2["STT"] = i + 1;
-                row2["TenNL"] = row.ItemArray[2].ToString();
-                row2["DonVi"] = row.ItemArray[3].ToString();
-                row2["SoLuongTon"] = (int)row.ItemArray[4];
-                dtNguyenLieu.Rows.Add(row2);
+                dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_toDataTable(maNH);
 
-                i++;
+                int i = 0;
+                foreach (DataRow row in dtNguyenLieu_Source.Rows)
+                {
+                    DataRow row2 = dtNguyenLieu.NewRow();
+                    row2["STT"] = i + 1;
+                    row2["TenNL"] = row.ItemArray[2].ToString();
+                    row2["DonVi"] = row.ItemArray[3].ToString();
+                    row2["SoLuongTon"] = (int)row.ItemArray[4];
+                    dtNguyenLieu.Rows.Add(row2);
 
+                    i++;
+
+                }
             }
+            catch (Exception)
+            {
+                  DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+            }
+
         }
         public void ThemNguyenLieu()
         {

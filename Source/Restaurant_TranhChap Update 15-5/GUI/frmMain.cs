@@ -56,6 +56,7 @@ namespace GUI
         }
         #endregion
 
+        #region " Khoi tao form & Load "
         public frmMain()
         {
             InitializeComponent();
@@ -83,47 +84,54 @@ namespace GUI
             MybarAndDockingController.LookAndFeel.SkinName = strGiaoDien;
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = strGiaoDien;
         }
-        public void KhoiTaoUserControl()
-        {
-            UCtrl_TiepTan_XepBan = new TiepTan.UCtrlXepBan();
-            UCtrl_TiepTan_DSDatBan = new TiepTan.UCtrlDSDatBan();
-            UCtrl_TiepTan_DatBan = new TiepTan.UctrlDatBan();
-            UCtrl_ThuNgan_QLBanAn = new ThuNgan.UCtrlQLTBanAn();
-            UCtrl_ThuNgan_ThongKe = new ThuNgan.UCtrlThongKe();
-            UCtrl_QLKho_DatHang = new QuanLyKho.UCtrlTTDatHang();
-            UCtrl_QLKho_NhapKho = new QuanLyKho.UCtrlNhapKho();
-            UCtrl_QLKho_NCC = new QuanLyKho.UCtrlNhaCungCap();
-            UCtrl_QLKho_NguyenLieu = new QuanLyKho.UCtrlNguyenLieu();
-            UCtrl_QLNH_QLThucDon = new QuanLyNhaHang.UCtrlQLThucDon();
-            UCtrl_QLNH_QLNhanVien = new QuanLyNhaHang.UCtrlQLNhanVien();
-            UCtrl_QLNH_QLDSBanAn = new QuanLyNhaHang.UCtrlQLDanhSachBanAn();
-            UCtrl_QLNH_ThongKeDoanhThu = new QuanLyNhaHang.UCtrlThongKeDoanhThu();
-            UCtrl_TongQL_DSNhaHang = new TongQuanLy.UCtrlDSNhaHang();
-            UCtrl_TongQL_DSNhanVien = new TongQuanLy.UCtrlQLNhanVien();
-            UCtrl_TongQL_TongHopDoanhThu = new TongQuanLy.UCtrlTongHopDoanhThu();
-            UCtrl_QuanTri_QTNguoiDung = new QuanTri.UCtrlQuanTriNguoiDung();
-            UCtrl_QuanTtri_PhanQuyen = new QuanTri.UCtrlPhanQuyen();
-            UCtrl_QuanTri_CoSoDuLieu = new QuanTri.UCtrlCoSoDuLieu();
-            //--------------------
-            //--------------------
-            UCtrl_TiepTan_DSDatBan.DatBan = new TiepTan.UCtrlDSDatBan.deleDatBan(DatBan);
-
-        }
+       
         private void frm_Main_Load(object sender, EventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
         }
-        private void Add_UserControl(Control Panel, Control UCtrl)
-        {
-            Panel.Controls.Clear();
-            UCtrl.Dock = DockStyle.Fill;
-            Panel.Controls.Add(UCtrl);
-        }
+        #endregion
 
-        private void ThreadRun(Object Uctrl)
-        {
-            UCtrl_TiepTan_XepBan = new TiepTan.UCtrlXepBan();
-        }
+        #region "Cac ham xu ly"
+        public void KhoiTaoUserControl()
+            {
+                UCtrl_TiepTan_XepBan = new TiepTan.UCtrlXepBan();
+                UCtrl_TiepTan_DSDatBan = new TiepTan.UCtrlDSDatBan();
+                UCtrl_TiepTan_DatBan = new TiepTan.UctrlDatBan();
+                UCtrl_ThuNgan_QLBanAn = new ThuNgan.UCtrlQLTBanAn();
+                UCtrl_ThuNgan_ThongKe = new ThuNgan.UCtrlThongKe();
+                UCtrl_QLKho_DatHang = new QuanLyKho.UCtrlTTDatHang();
+                UCtrl_QLKho_NhapKho = new QuanLyKho.UCtrlNhapKho();
+                UCtrl_QLKho_NCC = new QuanLyKho.UCtrlNhaCungCap();
+                UCtrl_QLKho_NguyenLieu = new QuanLyKho.UCtrlNguyenLieu();
+                UCtrl_QLNH_QLThucDon = new QuanLyNhaHang.UCtrlQLThucDon();
+                UCtrl_QLNH_QLNhanVien = new QuanLyNhaHang.UCtrlQLNhanVien();
+                UCtrl_QLNH_QLDSBanAn = new QuanLyNhaHang.UCtrlQLDanhSachBanAn();
+                UCtrl_QLNH_ThongKeDoanhThu = new QuanLyNhaHang.UCtrlThongKeDoanhThu();
+                UCtrl_TongQL_DSNhaHang = new TongQuanLy.UCtrlDSNhaHang();
+                UCtrl_TongQL_DSNhanVien = new TongQuanLy.UCtrlQLNhanVien();
+                UCtrl_TongQL_TongHopDoanhThu = new TongQuanLy.UCtrlTongHopDoanhThu();
+                UCtrl_QuanTri_QTNguoiDung = new QuanTri.UCtrlQuanTriNguoiDung();
+                UCtrl_QuanTtri_PhanQuyen = new QuanTri.UCtrlPhanQuyen();
+                UCtrl_QuanTri_CoSoDuLieu = new QuanTri.UCtrlCoSoDuLieu();
+                //--------------------
+                //--------------------
+                UCtrl_TiepTan_DSDatBan.DatBan = new TiepTan.UCtrlDSDatBan.deleDatBan(DatBan);
+
+            }
+            private void Add_UserControl(Control Panel, Control UCtrl)
+            {
+                try
+                {
+                    Panel.Controls.Clear();
+                    UCtrl.Dock = DockStyle.Fill;
+                    Panel.Controls.Add(UCtrl);
+                }
+                catch (Exception)
+                {
+                    
+                }
+            }
+        #endregion
 
         #region " Tiep Tan "
         private void barBtn_TiepTan_XepBan_ItemClick(object sender, ItemClickEventArgs e)

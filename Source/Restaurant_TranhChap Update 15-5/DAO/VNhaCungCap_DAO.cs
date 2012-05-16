@@ -9,24 +9,13 @@ namespace DAO
 {
     public class VNhaCungCap_DAO:VProvider
     {
-        Provider provider ;
-        VProvider _provider;
-        public VProvider Provider
-        {
-            get { return _provider; }
-            set { _provider = value; }
-        }
-        public VNhaCungCap_DAO()
-        {
-            provider = new Provider();
-            _provider = new VProvider();
-        }
+
         public List<VNhaCungCap_DTO> SelectNhaCungCap()
         {
             String store = "SelectNhaCungCap";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
+            CreateCommand_StoreName(store);
 
-            return ConvertToList(provider.ExecSelectCommand(cm));
+            return ConvertToList(ExecSelectCommand());
         }
 
         public List<VNhaCungCap_DTO> SelectNhaCungCap_fromNH(String MaNH)
@@ -86,10 +75,10 @@ namespace DAO
         public void DeleteNhaCungCap(int MaNCC)
         {
             String store = "DeleteNhaCungCap";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
+            CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters["@MaNCC"].Value = MaNCC;
-            ConvertToList(provider.ExecSelectCommand(cm));
+            ConvertToList(ExecSelectCommand());
         }
         private List<VNhaCungCap_DTO> ConvertToList(DataTable dt)
         {

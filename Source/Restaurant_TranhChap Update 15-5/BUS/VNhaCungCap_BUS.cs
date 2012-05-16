@@ -6,7 +6,7 @@ using DAO;
 using DTO;
 namespace BUS
 {
-    public class VNhaCungCap_BUS:VBus
+    public class VNhaCungCap_BUS
     {
         VNhaCungCap_DAO daoNhaCungCap;
         public VNhaCungCap_BUS()
@@ -15,7 +15,7 @@ namespace BUS
         }
         public void CopyProvider(VBus b)
         {
-            daoNhaCungCap.Provider = b.Provider;
+            daoNhaCungCap.Copy(b.Provider);
         }
 
         public List<VNhaCungCap_DTO> SelectNhaCungCap()

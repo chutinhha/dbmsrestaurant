@@ -86,12 +86,12 @@ create proc SelectNguyenLieu_fromNCC @MaNCC int,@MaNH int
 as
 begin
 	begin tran
-	set transaction isolation level read uncommitted
-	select nl.*,ct.Gia
-	from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
-	where ct.MaNCC = @MaNCC and nl.MaNH = @MaNH 
-		  and ct.MaNL = nl.MaNL and ct.MaNCC = ncc.MaNCC
-	order by nl.TenNL
+		set transaction isolation level read uncommitted
+		select nl.*,ct.Gia
+		from NhaCungCap ncc,ChiTietNCC ct,NguyenLieu nl
+		where ct.MaNCC = @MaNCC and nl.MaNH = @MaNH 
+			  and ct.MaNL = nl.MaNL and ct.MaNCC = ncc.MaNCC
+		order by nl.TenNL
 	commit tran
 end
 GO

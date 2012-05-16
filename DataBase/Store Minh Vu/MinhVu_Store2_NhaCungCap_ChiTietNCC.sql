@@ -39,8 +39,11 @@ GO
 create proc SelectNhaCungCap
 as
 begin
-	select * 
-	from NhaCungCap
+	begin tran
+		set transaction isolation level read uncommitted
+		select * 
+		from NhaCungCap
+	end tran
 end
 GO
 -- Select nhung nha cung cap , co cung cap nguyen lieu cho nha hang dang xet

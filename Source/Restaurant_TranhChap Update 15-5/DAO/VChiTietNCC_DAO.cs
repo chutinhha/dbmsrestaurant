@@ -9,22 +9,10 @@ namespace DAO
 {
     public class VChiTietNCC_DAO:VProvider
     {
-        Provider provider ;
-        VProvider _provider;
-        public VChiTietNCC_DAO()
-        {
-            provider = new Provider();
-            _provider = new VProvider();
-        }
-        public VProvider Provider
-        {
-            get { return _provider; }
-            set { _provider = value; }
-        }
-        public int InsertChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
+
+        public int InsertChiTietNCC(int MaNL, int MaNCC, double Gia)
         {
             String store = "InsertChiTietNCC";
-
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
@@ -33,7 +21,7 @@ namespace DAO
             cm.Parameters["@MaNL"].Value = MaNL;
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@Gia"].Value = Gia;
-            return  ExecuteInsertUpdateDelete();
+            return ExecuteInsertUpdateDelete();
         }
         public int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
         {
@@ -47,7 +35,7 @@ namespace DAO
             cm.Parameters["@MaNL"].Value = MaNL;
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@Gia"].Value = Gia;
-            return _provider.ExecuteInsertUpdateDelete();
+            return ExecuteInsertUpdateDelete();
         }
         public int DeleteChiTietNCC_fromNCC(int MaNCC)
         {
@@ -58,7 +46,7 @@ namespace DAO
 
             cm.Parameters["@MaNCC"].Value = MaNCC;
 
-            return _provider.ExecuteInsertUpdateDelete();
+            return ExecuteInsertUpdateDelete();
         }
         public int DeleteChiTietNCC(int MaNL, int MaNCC)
         {
@@ -80,7 +68,7 @@ namespace DAO
             foreach (DataRow row in dt.Rows)
             {
                 VChiTietNCC_DTO ct = new VChiTietNCC_DTO();
-                ct.MaNL= (int)row.ItemArray[0];
+                ct.MaNL = (int)row.ItemArray[0];
                 ct.MaNCC = (int)row.ItemArray[1];
                 ct.Gia = (Double)row.ItemArray[2];
                 ct.TenNL = row.ItemArray[3].ToString();
