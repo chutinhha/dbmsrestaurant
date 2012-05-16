@@ -41,11 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BanAn_DAO.cs" />
-    <Compile Include="ChiTietDatHang_DAO.cs" />
     <Compile Include="ChiTietHoaDon_DAO.cs" />
     <Compile Include="ChiTietNCC_DAO.cs" />
     <Compile Include="DatBan_DAO.cs" />
-    <Compile Include="DatHang_DAO.cs" />
     <Compile Include="HoaDon_DAO.cs" />
     <Compile Include="KhachHang_DAO.cs" />
     <Compile Include="KhuVuc_DAO.cs" />
@@ -53,12 +51,15 @@
     <Compile Include="LoaiMonAn_DAO.cs" />
     <Compile Include="LoaiNhanVien_DAO.cs" />
     <Compile Include="MonAn_DAO.cs" />
-    <Compile Include="NguyenLieu_DAO.cs" />
-    <Compile Include="NhaCungCap_DAO.cs" />
     <Compile Include="NhanVien_DAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
-    <Compile Include="Provider_Vu.cs" />
+    <Compile Include="VChiTietDatHang_DAO.cs" />
+    <Compile Include="VChiTietNCC_DAO.cs" />
+    <Compile Include="VDatHang_DAO.cs" />
+    <Compile Include="VNguyenLieu_DAO.cs" />
+    <Compile Include="VNhaCungCap_DAO.cs" />
+    <Compile Include="VProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

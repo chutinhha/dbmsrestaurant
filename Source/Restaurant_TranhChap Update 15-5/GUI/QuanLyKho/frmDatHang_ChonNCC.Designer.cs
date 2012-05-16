@@ -78,7 +78,6 @@
             this.btnHuy.Size = new System.Drawing.Size(75, 32);
             this.btnHuy.TabIndex = 38;
             this.btnHuy.Text = "Hủy";
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnDongY
             // 

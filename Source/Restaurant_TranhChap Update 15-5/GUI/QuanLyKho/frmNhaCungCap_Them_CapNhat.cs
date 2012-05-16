@@ -16,12 +16,12 @@ namespace GUI.QuanLyKho
             private int _flag;   //flag = 1 :Them , flag =2 : Cap nhat
             private String _MaNH;
             private String TenNCC_old;
-            private NhaCungCap_DTO _NCC;
-            private List<NguyenLieu_DTO> lsNguyenLieu;
-            private List<NguyenLieu_DTO> _lsNguyenLieuChon;
-            BUS.NguyenLieu_BUS _NguyenLieuBUS;
-            BUS.NhaCungCap_BUS _NhaCungCapBUS;
-            BUS.ChiTietNCC_BUS _ChiTietNCCBUS;
+            private VNhaCungCap_DTO _NCC;
+            private List<VNguyenLieu_DTO> lsNguyenLieu;
+            private List<VNguyenLieu_DTO> _lsNguyenLieuChon;
+            BUS.VNguyenLieu_BUS _NguyenLieuBUS;
+            BUS.VNhaCungCap_BUS _NhaCungCapBUS;
+            BUS.VChiTietNCC_BUS _ChiTietNCCBUS;
         #endregion
 
         #region " Properties "
@@ -35,12 +35,12 @@ namespace GUI.QuanLyKho
                 get { return _MaNH; }
                 set { _MaNH = value; }
             }
-            public NhaCungCap_DTO NCC
+            public VNhaCungCap_DTO NCC
             {
                 get { return _NCC; }
                 set { _NCC = value; }
             }
-            public List<NguyenLieu_DTO>  lsNguyenLieuChon
+            public List<VNguyenLieu_DTO>  lsNguyenLieuChon
             {
                 get { return _lsNguyenLieuChon; }
                 set { _lsNguyenLieuChon = value; }
@@ -51,10 +51,10 @@ namespace GUI.QuanLyKho
             public frmNhaCungCap_Them_CapNhat()
         {
             InitializeComponent();
-            _NCC = new NhaCungCap_DTO();
-            _NguyenLieuBUS = new NguyenLieu_BUS();
-            _NhaCungCapBUS = new NhaCungCap_BUS();
-            _ChiTietNCCBUS = new ChiTietNCC_BUS();
+            _NCC = new VNhaCungCap_DTO();
+            _NguyenLieuBUS = new VNguyenLieu_BUS();
+            _NhaCungCapBUS = new VNhaCungCap_BUS();
+            _ChiTietNCCBUS = new VChiTietNCC_BUS();
         }
         #endregion
 
@@ -124,12 +124,11 @@ namespace GUI.QuanLyKho
             public void LoadNguyenLieu(int flag)
             {
                 if (flag == 1) // Them du lieu moi
-                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu(1, 1, _MaNH);
+                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu(_MaNH);
                 else //Cap nhat du lieu
                 {
-                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_NotIn_ChiTietNCC(1,1,_NCC.MaNCC, _MaNH);
-                    //Khoi tao ChiTietNCCBUS va cap nhat provider tu NguyenLieuBUS
-                    _ChiTietNCCBUS = new ChiTietNCC_BUS(_NguyenLieuBUS);
+                    lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_NotIn_ChiTietNCC(_NCC.MaNCC, _MaNH);
+ 
                 }
 
                 Load_lvNguyenLieu();
@@ -137,7 +136,7 @@ namespace GUI.QuanLyKho
             public void LoadNguyenLieuChon()
             {
                 
-                lsNguyenLieuChon = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(-1,-1,_NCC.MaNCC, _MaNH);
+                lsNguyenLieuChon = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(_NCC.MaNCC, _MaNH);
                 Load_lvNguyenLieuChon();
             }
             public void Load_lvNguyenLieuChon()
@@ -192,7 +191,7 @@ namespace GUI.QuanLyKho
                     int index_NguyenLieuChon = lvNguyenLieuChon.SelectedIndices[0];
                     if (_flag != 1)
                     {
-                        if (_ChiTietNCCBUS.DeleteChiTietNCC(-1, -1,lsNguyenLieuChon[index_NguyenLieuChon].MaNL, _NCC.MaNCC) == 0)
+                        if (_ChiTietNCCBUS.DeleteChiTietNCC(lsNguyenLieuChon[index_NguyenLieuChon].MaNL, _NCC.MaNCC) == 0)
                         {
                             DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa nguyên liệu này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
@@ -238,7 +237,6 @@ namespace GUI.QuanLyKho
                            // Them du lieu 
                             if (_flag == 1)
                             {
-                                _NhaCungCapBUS = new NhaCungCap_BUS(_NguyenLieuBUS);
                                 _NCC.MaNCC = _NhaCungCapBUS.InsertNhaCungCap(-1,-1,_NCC);
                                 if (_NCC.MaNCC == 0)                                    
                                     DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu Không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -247,7 +245,6 @@ namespace GUI.QuanLyKho
                                     int flag_insertCtncc = 1;
                                     for (int i = 0; i < lsNguyenLieuChon.Count; i++)
                                     {
-                                        _ChiTietNCCBUS = new ChiTietNCC_BUS(_NhaCungCapBUS);
                                         if (i < lsNguyenLieuChon.Count - 1)
                                         {
                                             if (_ChiTietNCCBUS.InsertChiTietNCC(-1, -1, lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
@@ -271,8 +268,7 @@ namespace GUI.QuanLyKho
                             else // Cap nhat du lieu
                             {
                                 _NCC.DiemUuTien = int.Parse(txtDiemUuTien.Text);
-                                _NhaCungCapBUS = new NhaCungCap_BUS(_ChiTietNCCBUS);
-                                if (_NhaCungCapBUS.UpdatetNhaCungCap(0,0,TenNCC_old,_NCC) == 0)
+                                if (_NhaCungCapBUS.UpdatetNhaCungCap(TenNCC_old,_NCC) == 0)
                                     DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật dử liệu Không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 else
                                     DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật dử liệu  thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

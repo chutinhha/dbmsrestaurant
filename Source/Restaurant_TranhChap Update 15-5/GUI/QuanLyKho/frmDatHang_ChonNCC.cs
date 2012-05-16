@@ -13,44 +13,45 @@ namespace GUI.QuanLyKho
     public partial class frmDatHang_ChonNCC : DevExpress.XtraEditors.XtraForm
     {
         #region " Thuoc tinh "
-        BUS.NhaCungCap_BUS _NhaCungCapBUS;
-        BUS.NguyenLieu_BUS _NguyenLieuBUS;
-        String _MaNH;
-        String _TenNCC;
+        VNhaCungCap_BUS busNhaCungCap;
+        VNguyenLieu_BUS busNguyenLieu;
+
+        String maNH;
+        String tenNCC;
         int index_NCC;
-        int _MaNCC;
-        List<NhaCungCap_DTO> lsNCC;
-        List<NguyenLieu_DTO> lsNguyenLieu;
+        int maNCC;
+        List<VNhaCungCap_DTO> lsNCC;
+        List<VNguyenLieu_DTO> lsNguyenLieu;
         DataTable dtNCC;
         #endregion
 
         #region " properties "
-        public NhaCungCap_BUS NhaCungCapBUS
+        public VNhaCungCap_BUS BusNhaCungCap
         {
-            get { return _NhaCungCapBUS; }
-            set { _NhaCungCapBUS = value; }
+            get { return busNhaCungCap; }
+            set { busNhaCungCap = value; }
         }
-        public NguyenLieu_BUS NguyenLieuBUS
+        public VNguyenLieu_BUS BusNguyenLieu
         {
-            get { return _NguyenLieuBUS; }
-            set { _NguyenLieuBUS = value; }
+            get { return busNguyenLieu; }
+            set { busNguyenLieu = value; }
         }
         public String MaNH
         {
-            get { return _MaNH; }
-            set { _MaNH = value; }
+            get { return maNH; }
+            set { maNH = value; }
         }
        
         public int MaNCC
         {
-            get { return _MaNCC; }
-            set { _MaNCC = value; }
+            get { return maNCC; }
+            set { maNCC = value; }
         }
         
         public String TenNCC
         {
-            get { return _TenNCC; }
-            set { _TenNCC = value; }
+            get { return tenNCC; }
+            set { tenNCC = value; }
         }
         #endregion
 
@@ -58,10 +59,10 @@ namespace GUI.QuanLyKho
         public frmDatHang_ChonNCC()
         {
             InitializeComponent();
-            _NhaCungCapBUS = new NhaCungCap_BUS();
-            _NguyenLieuBUS = new NguyenLieu_BUS();
+            busNhaCungCap = new VNhaCungCap_BUS();
+            busNguyenLieu = new VNguyenLieu_BUS();
             
-            lsNCC = new List<NhaCungCap_DTO>();
+            lsNCC = new List<VNhaCungCap_DTO>();
             dtNCC = new DataTable();
             index_NCC = -1;
             dtNCC.Columns.Add("STT", System.Type.GetType("System.Int16"));
@@ -69,19 +70,15 @@ namespace GUI.QuanLyKho
             dtNCC.Columns.Add("sdt", System.Type.GetType("System.String"));
             dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
 
-            lsNguyenLieu = new List<NguyenLieu_DTO>();
+            lsNguyenLieu = new List<VNguyenLieu_DTO>();
         }
         #endregion
 
         #region " Event control "
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            _MaNCC = lsNCC[index_NCC].MaNCC;
-            _TenNCC = lsNCC[index_NCC].TenNCC;
-        }
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            //this.Close();
+            maNCC = lsNCC[index_NCC].MaNCC;
+            tenNCC = lsNCC[index_NCC].TenNCC;
         }
         private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
@@ -95,9 +92,7 @@ namespace GUI.QuanLyKho
             {               
                 gridNCC.DataSource = null;
                 dtNCC.Rows.Clear();
-                lsNCC = _NhaCungCapBUS.SelectNhaCungCap_fromNH(1,1,_MaNH);
-                
-                _NguyenLieuBUS = new NguyenLieu_BUS(NhaCungCapBUS); // Gan lai provider cho nguyen lieu vi cung 1 tran
+                lsNCC = busNhaCungCap.SelectNhaCungCap_fromNH(maNH);
                 for (int i = 0; i < lsNCC.Count; i++)
                 {
                     DataRow row = dtNCC.NewRow();
@@ -112,8 +107,8 @@ namespace GUI.QuanLyKho
             public void LoadDanhSachNL(int MaNCC)
             {
                 lvNguyenLieu.Items.Clear();
-
-                lsNguyenLieu = NguyenLieuBUS.SelectNguyenLieu_fromNCC(-1,-1,MaNCC, _MaNH);
+                
+                lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, maNH);
                 for (int i = 0; i < lsNguyenLieu.Count; i++)
                 {
                     ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), lsNguyenLieu[i].TenNL, lsNguyenLieu[i].Gia.ToString() });

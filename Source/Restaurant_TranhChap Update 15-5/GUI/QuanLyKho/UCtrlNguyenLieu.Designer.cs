@@ -223,6 +223,8 @@
             // 
             this.txtSoLuongTon.Location = new System.Drawing.Point(117, 111);
             this.txtSoLuongTon.Name = "txtSoLuongTon";
+            this.txtSoLuongTon.Properties.Mask.EditMask = "f0";
+            this.txtSoLuongTon.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtSoLuongTon.Size = new System.Drawing.Size(173, 20);
             this.txtSoLuongTon.TabIndex = 1;
             // 
