@@ -15,11 +15,11 @@ namespace BUS
         }
         public void CopyProvider(VBus b)
         {
-            daoChiTietNCC.Provider = b.Provider;
+            daoChiTietNCC.Copy(b.Provider);
         }
-        public int InsertChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
+        public int InsertChiTietNCC(int MaNL, int MaNCC, double Gia)
         {
-            return daoChiTietNCC.InsertChiTietNCC(flag_connec,flag_tran,MaNL, MaNCC, Gia);
+            return daoChiTietNCC.InsertChiTietNCC(MaNL, MaNCC, Gia);
         }
         public int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
         {

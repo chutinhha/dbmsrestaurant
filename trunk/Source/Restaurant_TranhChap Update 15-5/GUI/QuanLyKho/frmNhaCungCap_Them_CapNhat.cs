@@ -165,7 +165,7 @@ namespace GUI.QuanLyKho
                     //Neu la cap nhat nha cung cap - thi moi lan them nguyen lieu phai ghi xuong databse
                     if (_flag != 1)
                     {
-                        if (_ChiTietNCCBUS.InsertChiTietNCC(-1, -1, lsNguyenLieu[index_NguyenLieu].MaNL, _NCC.MaNCC, lsNguyenLieu[index_NguyenLieu].Gia) == 0)
+                        if (_ChiTietNCCBUS.InsertChiTietNCC(lsNguyenLieu[index_NguyenLieu].MaNL, _NCC.MaNCC, lsNguyenLieu[index_NguyenLieu].Gia) == 0)
                         {
                             DevExpress.XtraEditors.XtraMessageBox.Show("Không thể thêm nguyên liệu này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             this.Close();
@@ -247,14 +247,14 @@ namespace GUI.QuanLyKho
                                     {
                                         if (i < lsNguyenLieuChon.Count - 1)
                                         {
-                                            if (_ChiTietNCCBUS.InsertChiTietNCC(-1, -1, lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
+                                            if (_ChiTietNCCBUS.InsertChiTietNCC(lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
                                             {
                                                 flag_insertCtncc = 0;
                                                 break;
                                             }
                                         }else
                                             //Neu la Chi tiet nguyen lieu cuoi thi insert va commit tran sau do Close Connection
-                                            if (_ChiTietNCCBUS.InsertChiTietNCC(0, 0, lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
+                                            if (_ChiTietNCCBUS.InsertChiTietNCC( lsNguyenLieuChon[i].MaNL, _NCC.MaNCC, 0) == 0)
                                             {
                                                 flag_insertCtncc = 0;
                                                 break;

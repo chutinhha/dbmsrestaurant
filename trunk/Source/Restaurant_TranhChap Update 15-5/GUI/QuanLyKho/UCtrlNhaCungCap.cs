@@ -29,6 +29,7 @@ namespace GUI.QuanLyKho
             VNguyenLieu_BUS busNguyenLieu;
             VChiTietNCC_BUS busChiTietNCC;
             VNhaCungCap_BUS busNhaCungCap;
+            VBus Mybus;
         #endregion
 
         #region " Khoi tao "
@@ -37,7 +38,7 @@ namespace GUI.QuanLyKho
                 busNguyenLieu = new VNguyenLieu_BUS();
                 busChiTietNCC = new VChiTietNCC_BUS();
                 busNhaCungCap = new VNhaCungCap_BUS();
-
+                Mybus = new VBus();
                 InitializeComponent();
                 lsNCC = new List<VNhaCungCap_DTO>();
                 dtNCC = new DataTable();            
@@ -114,34 +115,51 @@ namespace GUI.QuanLyKho
             {
                 gridNCC.DataSource =null;
                 dtNCC.Rows.Clear();
-                lsNCC = busNhaCungCap.SelectNhaCungCap();
-
-                for (int i = 0; i < lsNCC.Count; i++)
+                try
                 {
-                    DataRow row = dtNCC.NewRow();
-                    row["STT"] = i + 1;
-                    row["TenNCC"] = lsNCC[i].TenNCC;
-                    row["sdt"] = lsNCC[i].sdt;
-                    row["DiaChi"] = lsNCC[i].DiaChi;
-                    row["DiemUuTien"] = lsNCC[i].DiemUuTien;
-                    dtNCC.Rows.Add(row);
+                    lsNCC = busNhaCungCap.SelectNhaCungCap();
+
+                    for (int i = 0; i < lsNCC.Count; i++)
+                    {
+                        DataRow row = dtNCC.NewRow();
+                        row["STT"] = i + 1;
+                        row["TenNCC"] = lsNCC[i].TenNCC;
+                        row["sdt"] = lsNCC[i].sdt;
+                        row["DiaChi"] = lsNCC[i].DiaChi;
+                        row["DiemUuTien"] = lsNCC[i].DiemUuTien;
+                        dtNCC.Rows.Add(row);
+                    }
+                    gridNCC.DataSource = dtNCC;
                 }
-                gridNCC.DataSource = dtNCC;
+                catch (Exception)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Không đọc được dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+                }
+
             }
             public void LoadNguyenLieu(int MaNCC)
             {
                 gridNguyenLieu.DataSource = null;
                 dtNL.Rows.Clear();
-                lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC,_MaNH);
-                for (int i = 0; i < lsNguyenLieu.Count; i++)
+                try
                 {
-                    DataRow row = dtNL.NewRow();
-                    row["Stt"] = i + 1;
-                    row["TenNL"] = lsNguyenLieu[i].TenNL;
-                    row["Gia"] = lsNguyenLieu[i].Gia;
-                    dtNL.Rows.Add(row);
+                    lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, _MaNH);
+                    for (int i = 0; i < lsNguyenLieu.Count; i++)
+                    {
+                        DataRow row = dtNL.NewRow();
+                        row["Stt"] = i + 1;
+                        row["TenNL"] = lsNguyenLieu[i].TenNL;
+                        row["Gia"] = lsNguyenLieu[i].Gia;
+                        dtNL.Rows.Add(row);
+                    }
+                    gridNguyenLieu.DataSource = dtNL;
                 }
-                gridNguyenLieu.DataSource = dtNL;
+                catch (Exception)
+                {
+                    gridNCC.DataSource = null;
+                    dtNCC.Rows.Clear();
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Không đọc được dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+                }
             }
             public void ThemNhaCungCap()
             {
