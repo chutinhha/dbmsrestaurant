@@ -152,6 +152,7 @@ namespace GUI
         private void barBtn_TiepTan_DSDatBan_ItemClick(object sender, ItemClickEventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_DSDatBan);
+            UCtrl_TiepTan_DSDatBan.LoadForm();
         }
         //------------
         private void DatBan()
