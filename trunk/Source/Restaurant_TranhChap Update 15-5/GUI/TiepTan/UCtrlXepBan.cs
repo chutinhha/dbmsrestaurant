@@ -173,6 +173,10 @@ namespace GUI.TiepTan
         }
         private void btnXepBanAn_Click(object sender, EventArgs e)
         {
+            tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
+            LoadDuLieuListView();
+
+            //cho commit tran
             if (rowSelect != null)
             {
                 for (int i = 0; i < tbBanAn.Rows.Count; i++)
@@ -183,7 +187,7 @@ namespace GUI.TiepTan
                         if (int.Parse(row["TrangThai"].ToString()) != 1 && timeNow.Date == DateTime.Now.Date)
                         {
                             //cap nhat tinh trang xuong csdl
-                            DatBan_BUS.UpdateTrangThaiBanAn(int.Parse(row["MaBan"].ToString()), 1);
+                            DatBan_BUS.UpdateTrangThaiBanAn_CommitTran(int.Parse(row["MaBan"].ToString()), 1);
                             HoaDon_BUS.ThemHoaDon(int.Parse(row["MaBan"].ToString()), 1);//1: ma nhan vien
                             //neu co trong bang Datban thi cap nhat lai Tinh trang
                             if (tbBanDatTrongNgay.Rows.Count > 0)
