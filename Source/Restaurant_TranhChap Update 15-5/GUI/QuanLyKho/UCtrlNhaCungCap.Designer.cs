@@ -271,6 +271,8 @@
             this.txtGia.Name = "txtGia";
             this.txtGia.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
             this.txtGia.Properties.Appearance.Options.UseFont = true;
+            this.txtGia.Properties.Mask.EditMask = "f0";
+            this.txtGia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtGia.Size = new System.Drawing.Size(195, 24);
             this.txtGia.TabIndex = 26;
             this.txtGia.EditValueChanged += new System.EventHandler(this.txtGia_EditValueChanged);

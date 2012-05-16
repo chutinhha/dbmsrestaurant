@@ -13,11 +13,11 @@ namespace GUI.QuanLyKho
     public partial class UCtrlNhaCungCap : DevExpress.XtraEditors.XtraUserControl
     {
         #region " Thuoc tinh && Properties "
-            String _MaNH;
+            String maNH;
             public String MaNH
             {
-                get { return _MaNH; }
-                set { _MaNH = value; }
+                get { return maNH; }
+                set { maNH = value; }
             }
 
             List<VNhaCungCap_DTO> lsNCC;
@@ -25,7 +25,9 @@ namespace GUI.QuanLyKho
             DataTable dtNCC;
             DataTable dtNL;
             int indexNCC ;
-            int index_NL;
+            int indexNL;
+            int sttNCC;
+            int sttNL;
             VNguyenLieu_BUS busNguyenLieu;
             VChiTietNCC_BUS busChiTietNCC;
             VNhaCungCap_BUS busNhaCungCap;
@@ -51,7 +53,7 @@ namespace GUI.QuanLyKho
 
                 lsNguyenLieu = new List<VNguyenLieu_DTO>();
                 dtNL = new DataTable();
-                index_NL = -1;
+                indexNL = -1;
                 dtNL.Columns.Add("STT", System.Type.GetType("System.Int16"));
                 dtNL.Columns.Add("TenNL", System.Type.GetType("System.String"));
                 dtNL.Columns.Add("Gia", System.Type.GetType("System.Double"));
@@ -66,15 +68,21 @@ namespace GUI.QuanLyKho
             }
             private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
-                indexNCC = gvNCC.GetSelectedRows()[0];
-                LoadNguyenLieu(lsNCC[indexNCC].MaNCC);
+                if( gvNCC.GetSelectedRows().Length >0)
+                {
+                    indexNCC = gvNCC.GetSelectedRows()[0];
+                    sttNCC = int.Parse(gvNCC.GetDataRow(indexNCC)["STT"].ToString());
+                    LoadNguyenLieu(lsNCC[sttNCC-1].MaNCC);
+                }
+
             }
             private void gvNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
                 if (gvNguyenLieu.GetSelectedRows().Length > 0)
                 {
-                    index_NL = gvNguyenLieu.GetSelectedRows()[0];
-                    txtGia.Text = lsNguyenLieu[index_NL].Gia.ToString();
+                    indexNL = gvNguyenLieu.GetSelectedRows()[0];
+                    sttNL = int.Parse(gvNguyenLieu.GetDataRow(indexNL)["STT"].ToString());
+                    txtGia.Text = lsNguyenLieu[sttNL-1].Gia.ToString();
                 }
                
             }
@@ -92,8 +100,7 @@ namespace GUI.QuanLyKho
             }
             private void btnCapNhatGia_Click(object sender, EventArgs e)
             {
-                busChiTietNCC.UpdateChiTietNCC(lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
-                LoadNguyenLieu(lsNCC[indexNCC].MaNCC);
+                CapNhatGia();
             }
             private void btnRefresh_Click(object sender, EventArgs e)
             {
@@ -113,10 +120,10 @@ namespace GUI.QuanLyKho
         #region "Cac ham xu ly "
             public void LoadNhaCungCap()
             {
-                gridNCC.DataSource =null;
+                gridNCC.DataSource = null;
                 dtNCC.Rows.Clear();
-                try
-                {
+                //try
+                //{
                     lsNCC = busNhaCungCap.SelectNhaCungCap();
 
                     for (int i = 0; i < lsNCC.Count; i++)
@@ -130,20 +137,21 @@ namespace GUI.QuanLyKho
                         dtNCC.Rows.Add(row);
                     }
                     gridNCC.DataSource = dtNCC;
-                }
-                catch (Exception)
-                {
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Không đọc được dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
-                }
+                //}
+                //catch (Exception)
+                //{
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("Không đọc được dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+                //}
 
             }
             public void LoadNguyenLieu(int MaNCC)
             {
                 gridNguyenLieu.DataSource = null;
+                
                 dtNL.Rows.Clear();
-                try
-                {
-                    lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, _MaNH);
+                //try
+                //{
+                    lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, maNH);
                     for (int i = 0; i < lsNguyenLieu.Count; i++)
                     {
                         DataRow row = dtNL.NewRow();
@@ -153,39 +161,35 @@ namespace GUI.QuanLyKho
                         dtNL.Rows.Add(row);
                     }
                     gridNguyenLieu.DataSource = dtNL;
-                }
-                catch (Exception)
-                {
-                    gridNCC.DataSource = null;
-                    dtNCC.Rows.Clear();
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Không đọc được dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
-                }
+                    if(gvNguyenLieu.GetSelectedRows().Length > 0)
+                        txtGia.Text = lsNguyenLieu[sttNL-1].Gia.ToString();
+                //}
+                //catch (Exception)
+                //{
+                //    gridNCC.DataSource = null;
+                //    gridNguyenLieu.DataSource = null;
+                //    dtNCC.Rows.Clear();
+                //    dtNL.Rows.Clear();
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("Không đọc được dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+                //}
             }
             public void ThemNhaCungCap()
             {
                 frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
                 _frm.lsNguyenLieuChon = new List<VNguyenLieu_DTO>();
                 _frm.Flag = 1;
-                _frm.MaNH = _MaNH;
+                _frm.MaNH = maNH;
                 _frm.LoadNguyenLieu(1);
                 if(_frm.ShowDialog() == DialogResult.OK)
                 {
-                    DataRow row = dtNCC.NewRow();
-                    row["STT"] = dtNCC.Rows.Count + 1;
-                    row["TenNCC"] = _frm.NCC.TenNCC;
-                    row["sdt"] = _frm.NCC.sdt;
-                    row["DiaChi"] = _frm.NCC.DiaChi;
-                    row["DiemUuTien"] = _frm.NCC.DiemUuTien;
-                    dtNCC.Rows.Add(row);
-                    lsNCC.Add(_frm.NCC);
-                    gvNCC.FocusedRowHandle = dtNCC.Rows.Count - 1;
+                    
                 }
             }
             public void CapNhatNhaCungCap()
             {
                 frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
                 _frm.Flag = 2;
-                _frm.MaNH = _MaNH;
+                _frm.MaNH = maNH;
                 _frm.NCC = lsNCC[indexNCC];
                 _frm.lsNguyenLieuChon = lsNguyenLieu;
                 _frm.LoadNguyenLieu(2);
@@ -197,6 +201,17 @@ namespace GUI.QuanLyKho
                     gvNCC.FocusedRowHandle = indexNCC-1;
                     gvNCC.FocusedRowHandle = indexNCC+1;
                 }
+            }
+            public void CapNhatGia()
+            {
+                int result = busChiTietNCC.UpdateChiTietNCC(lsNguyenLieu[sttNL - 1].MaNL, lsNCC[sttNCC- 1].MaNCC, Double.Parse(txtGia.Text));
+                if (result != 0)
+                {
+                    LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật giá cho nguyên liệu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+                }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật giá không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
             }
             public void XoaNhaCungCap()
             {

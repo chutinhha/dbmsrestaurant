@@ -26,12 +26,17 @@ begin
 		set transaction isolation level read uncommitted
 		insert into NguyenLieu values (@MaNH,@TenNL,@DonVi,@SoLuongTon)
 		waitfor delay '00:00:05'		
-		if((select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH) = 1 )
+		if((select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH) <> 1 )
 		begin
-			set @Flag =1
+			rollback tran
+			return
 		end
-		else
-			rollback
+		if(@@error <> 0)
+		begin
+			rollback tran
+			return
+		end
+	set @Flag =1
 	commit
 end
 GO
@@ -47,13 +52,18 @@ begin
 		begin
 			waitfor delay '00:00:05'
 			update NguyenLieu set  MaNH=@MaNH,TenNL=@TenNL,DonVi=@Donvi,SoLuongTon=@SoLuongTon where MaNL=@MaNL
-			if((select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH) = 1 )
+			if((select count(*) from NguyenLieu where TenNL = @TenNL and MaNH =@MaNH) <> 1 )
 			begin
-				set @Flag =1
+				rollback tran
+				return
 			end
-			else
-				rollback
 		end
+		if(@@error <> 0)
+		begin
+			rollback tran
+			return
+		end
+	set @Flag =1	
 	commit tran
 end
 
@@ -72,17 +82,38 @@ begin
 			   (select count(*) from ChiTietDatHang where MaNL = @MaNL)=1)
 			begin
 				set @Flag = -1
+				rollback tran
 				return
 			end
-			delete from NguyenLieu where MaNL=@MaNL and MaNH=@MaNH
-			set @Flag = 1		
+			delete from NguyenLieu where MaNL=@MaNL and MaNH=@MaNH	
 		end
+		if(@@error <> 0)
+		begin
+			rollback tran
+			return
+		end
+	set @Flag =1
+	commit tran
+end
+GO
+
+--- lấy danh sách nguyên liệu của nhà cung cấp và
+--- danh sách nguyên liệu nhà cung cấp không cung cấp
+-------------------------------------------------------------------------------------
+alter proc SelectNguyenLieu_NCC @MaNCC int,@MaNH nchar(10)
+as
+begin
+	begin tran
+		set transaction isolation level read uncommitted
+		exec SelectNguyenLieu_In_NCC @MaNCC,@MaNH
+		waitfor delay '00:00:05'
+		exec SelectNguyenLieu_NotIn_NCC @MaNCC,@MaNH
 	commit tran
 end
 GO
 --- lấy danh sách nguyên liệu của một nhà cung cấp
 ------------------------------------------------------------------------------------- 
-create proc SelectNguyenLieu_fromNCC @MaNCC int,@MaNH int
+create proc SelectNguyenLieu_In_NCC @MaNCC int,@MaNH nchar(10)
 as
 begin
 	begin tran
@@ -97,7 +128,7 @@ end
 GO
 --- lấy danh sách nguyên liệu nhà cung cấp không cung cấp
 ------------------------------------------------------------------------------------- 
-create proc SelectNguyenLieu_NotIn_ChiTietNCC @MaNCC int ,@MaNH nchar(10) --Select danh sach nguyen lieu khong co trong chi tiet nha cung cap
+create proc SelectNguyenLieu_NotIn_NCC @MaNCC int ,@MaNH nchar(10)
 as
 begin
 	begin tran
@@ -132,4 +163,3 @@ begin
 end
 
 GO
-

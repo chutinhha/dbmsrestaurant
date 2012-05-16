@@ -58,7 +58,7 @@ namespace GUI.QuanLyKho
             if (gvNguyenLieu.GetSelectedRows().Length > 0)
             {
                 indexNL = gvNguyenLieu.GetSelectedRows()[0];
-                stt = int.Parse(gvNguyenLieu.GetRowCellValue(indexNL,"STT").ToString());
+                stt = int.Parse(gvNguyenLieu.GetDataRow(indexNL)["STT"].ToString());
 
                 txtTenNguyenLieu.Text = dtNguyenLieu.Rows[stt-1]["TenNL"].ToString();
                 txtDonVi.Text = dtNguyenLieu.Rows[stt-1]["DonVi"].ToString();
@@ -152,24 +152,27 @@ namespace GUI.QuanLyKho
         }
         public void XoaNguyenLieu()
         {
-            try
+            if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là xóa nguyên liệu này không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                int result = busNguyenLieu.DeleteNguyenLieu((int)dtNguyenLieu_Source.Rows[stt - 1][0], maNH);
-                if (result == 1)
+                try
                 {
-                    LoadNguyenLieu();
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                    if (result == -1)
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa nguyên liệu này \n Ghi chú :không thể xóa nguyên liệu khi thông tin nguyên liệu được sử dụng trong danh sách nguyên liệu của nhà cung cấp và trong đơn đặt hàng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    int result = busNguyenLieu.DeleteNguyenLieu((int)dtNguyenLieu_Source.Rows[stt - 1][0], maNH);
+                    if (result == 1)
+                    {
+                        LoadNguyenLieu();
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     else
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+                        if (result == -1)
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa nguyên liệu này \n Ghi chú :không thể xóa nguyên liệu khi thông tin nguyên liệu được sử dụng trong danh sách nguyên liệu của nhà cung cấp và trong đơn đặt hàng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            catch (Exception)
-            {
-                DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
-            } 
         }
         public void CapNhatNguyenLieu()
         {
@@ -220,8 +223,6 @@ namespace GUI.QuanLyKho
                     }
         }
         #endregion
-
- 
 
     }
 }
