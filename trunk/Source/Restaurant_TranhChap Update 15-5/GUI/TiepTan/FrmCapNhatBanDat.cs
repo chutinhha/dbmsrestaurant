@@ -18,6 +18,8 @@ namespace GUI.TiepTan
         public int flag = 0;
         DatBan_BUS DatBan_BUS;
         public SqlCommand cm;
+        int trangThaiOld;
+        int trangThaiNew;
 
         public FrmCapNhatBanDat()
         {
@@ -34,9 +36,15 @@ namespace GUI.TiepTan
                 cbbKhachHang.SelectedValue = bandat.MaKhachHang;
                 cbbBanAn.SelectedValue = bandat.MaBan;
                 if (bandat.TrangThai == "Chưa đến ăn")
+                {
                     cbbHienTrang.SelectedIndex = 1;
+                    trangThaiOld = 0;
+                }
                 else
+                {
                     cbbHienTrang.SelectedIndex = 0;
+                    trangThaiOld = 1;
+                }
                 calcEdit_ThoiGianDen.Text = bandat.ThoiGianDen;
             }
         }
@@ -61,10 +69,15 @@ namespace GUI.TiepTan
             bandat.MaBan = cbbBanAn.SelectedValue.ToString();
             bandat.MaKhachHang = cbbKhachHang.SelectedValue.ToString();
             bandat.TrangThai = cbbHienTrang.Text;
+            if (cbbHienTrang.Text == "Đã đến ăn")
+                trangThaiNew = 1;
             bandat.ThoiGianDen = DateTime.Parse( calcEdit_ThoiGianDen.Text).ToString("dd/MM/yyyy");
             bandat.TenKhachHang = cbbKhachHang.Text;
             DatBan_BUS datbancommit = new BUS.DatBan_BUS(cm);
             flag=datbancommit.UpdateDatBan(bandat,maBan,maNH,thoiGianDen);
+            if (trangThaiOld == 0 && trangThaiNew == 1)
+                HoaDon_BUS.ThemHoaDon(int.Parse(bandat.MaBan), 1);
+            
         }
     }
 }
