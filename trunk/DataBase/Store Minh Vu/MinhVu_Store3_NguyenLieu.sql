@@ -111,6 +111,7 @@ begin
 	commit tran
 end
 GO
+exec SelectNguyenLieu_NCC 8,'1'
 --- lấy danh sách nguyên liệu của một nhà cung cấp
 ------------------------------------------------------------------------------------- 
 create proc SelectNguyenLieu_In_NCC @MaNCC int,@MaNH nchar(10)
