@@ -13,34 +13,39 @@ namespace GUI.QuanLyKho
     public partial class UCtrlTTDatHang : DevExpress.XtraEditors.XtraUserControl
     {
         #region " Thuoc tinh && Properties "
-            BUS.NhaCungCap_BUS _NhaCungCapBUS;
-            BUS.DatHang_BUS _DatHangBUS;
-            BUS.ChiTietDatHang_BUS _ChiTietDatHangBUS;
-            BUS.NguyenLieu_BUS _NguyenLieuBUS;
+            VBus MyBus;
+            VNhaCungCap_BUS busNhaCungCap;
+            VDatHang_BUS busDatHang;
+            VChiTietDatHang_BUS busChiTietDatHang;
+            VNguyenLieu_BUS busNguyenLieu;
+
             DataTable dtDatHang;
             DataTable dtChiTietDH;
-            List<DatHang_DTO> lsDatHang;
-            List<ChiTietDatHang_DTO> lsChiTietDH;
+            List<VDatHang_DTO> lsDatHang;
+            List<VChiTietDatHang_DTO> lsChiTietDH;
             int index_DatHang;
 
-            String _MaNH;
+            String maNH;
 
             public String MaNH
             {
-                get { return _MaNH; }
-                set { _MaNH = value; }
+                get { return maNH; }
+                set { maNH = value; }
             }
         #endregion
 
         #region " Khoi tao "
             public UCtrlTTDatHang()
             {
-                _NhaCungCapBUS = new NhaCungCap_BUS();
-                _DatHangBUS = new DatHang_BUS();
-                _ChiTietDatHangBUS = new ChiTietDatHang_BUS();
-                _NguyenLieuBUS = new NguyenLieu_BUS();
                 InitializeComponent();
-                lsDatHang = new List<DatHang_DTO>();
+
+                MyBus = new VBus();
+                busNhaCungCap = new VNhaCungCap_BUS();
+                busDatHang = new VDatHang_BUS();
+                busChiTietDatHang = new VChiTietDatHang_BUS();
+                busNguyenLieu = new VNguyenLieu_BUS();
+
+                lsDatHang = new List<VDatHang_DTO>();
                 dtDatHang = new DataTable();
                 dtDatHang.Columns.Add("STT", System.Type.GetType("System.Int16"));
                 dtDatHang.Columns.Add("TenNCC", System.Type.GetType("System.String"));
@@ -49,7 +54,7 @@ namespace GUI.QuanLyKho
                 dtDatHang.Columns.Add("ThoiGianGiao", System.Type.GetType("System.DateTime"));
                 dtDatHang.Columns.Add("TinhTrang", System.Type.GetType("System.String"));
 
-                lsChiTietDH = new List<ChiTietDatHang_DTO>();
+                lsChiTietDH = new List<VChiTietDatHang_DTO>();
                 dtChiTietDH = new DataTable();
                 dtChiTietDH.Columns.Add("STT", System.Type.GetType("System.Int16"));
                 dtChiTietDH.Columns.Add("TenNL", System.Type.GetType("System.String"));
@@ -103,8 +108,7 @@ namespace GUI.QuanLyKho
             {
                 gridDatHang.DataSource = null;
                 dtDatHang.Rows.Clear();
-                lsDatHang = BUS.DatHang_BUS.SelectDatHang(_MaNH);
-            
+                lsDatHang = busDatHang.SelectDatHang(maNH);
                 for (int i = 0; i < lsDatHang.Count; i++)
                 {
                     DataRow row = dtDatHang.NewRow();
@@ -122,8 +126,7 @@ namespace GUI.QuanLyKho
             {
                 gridChiTietHD.DataSource = null;
                 dtChiTietDH.Rows.Clear();
-                lsChiTietDH = BUS.ChiTietDatHang_BUS.SelectChiTietDatHang(MaHoaDon);
-
+                lsChiTietDH = busChiTietDatHang.SelectChiTietDatHang(MaHoaDon);
                 for (int i = 0; i < lsChiTietDH.Count; i++)
                 {
                     DataRow row = dtChiTietDH.NewRow();
@@ -137,39 +140,95 @@ namespace GUI.QuanLyKho
             }
             public void ThemHDDatHang()
             {
-                frmDatHang_ChonNCC _frmChonNCC = new frmDatHang_ChonNCC();
-                _frmChonNCC.MaNH = _MaNH;
+                frmDatHang_ChonNCC frmChonNCC = new frmDatHang_ChonNCC(); // khoi tao form chon nha cung cap
+                frmChonNCC.MaNH = maNH;
+
+                /*
+                 * Bat dau giao tac them nha cung cap
+                 * khoi tao transaction 
+                 * sau khi khoi tao tran saction thi cac bien bus khac phai coppy provider cua mybus de giu ket noi
+                 */
+
+                //MyBus.BenginTran();
+
+                //frmChonNCC.BusNguyenLieu.CopyProvider(MyBus);
+                //frmChonNCC.BusNhaCungCap.CopyProvider(MyBus);
+                frmChonNCC.LoadDanhSachNCC();
                 
-                _frmChonNCC.LoadDanhSachNCC();
-                _frmChonNCC.NhaCungCapBUS = _NhaCungCapBUS;
 
-
-                while (_frmChonNCC.ShowDialog() == DialogResult.OK)  //Mo form chon Nha cung cap
+                while (frmChonNCC.ShowDialog() == DialogResult.OK)  //Mo form chon Nha cung cap
                 {
-                    frmDatHang _frmDatHang = new frmDatHang();
-                    _frmDatHang.ThongTinDH.MaNH = _MaNH;
-                    _frmDatHang.ThongTinDH.MaNCC = _frmChonNCC.MaNCC;
-                    _frmDatHang.ThongTinDH.TenNCC = _frmChonNCC.TenNCC;
-                    _frmDatHang.TenNCC = _frmChonNCC.TenNCC;
-                    _frmDatHang.NguyenLieuBUS = new NguyenLieu_BUS( _frmChonNCC.NguyenLieuBUS);
-                    _frmDatHang.LoadNguyenLieu();
+                    frmDatHang frmDatHang = new frmDatHang();
+                    frmDatHang.ThongTinDH.MaNH = maNH;
+                    frmDatHang.ThongTinDH.MaNCC = frmChonNCC.MaNCC;
+                    frmDatHang.ThongTinDH.TenNCC = frmChonNCC.TenNCC;
+                    frmDatHang.TenNCC = frmChonNCC.TenNCC;
+
+                    //frmDatHang.NguyenLieuBUS.CopyProvider(MyBus);
+                    //frmDatHang.NhaCungCapBUS.CopyProvider(MyBus);
+                    frmDatHang.LoadNguyenLieu();
 
 
-                    if (_frmDatHang.ShowDialog() == DialogResult.OK)     //Mo form chon nguyen lieu va thong tin dat hang
+                    if (frmDatHang.ShowDialog() == DialogResult.OK)     //Mo form chon nguyen lieu va thong tin dat hang
                     {
-                        _DatHangBUS = new DatHang_BUS(_frmDatHang.NguyenLieuBUS);
-                        int MaHD = _DatHangBUS.InsertDatHang(-1,-1,_frmDatHang.ThongTinDH);
-                        for(int i = 0;i<_frmDatHang.lsDSDatHang.Count;i++)
+                        //busDatHang.CopyProvider(MyBus);
+                        int MaHD = busDatHang.InsertDatHang(frmDatHang.ThongTinDH);
+                        for(int i = 0;i<frmDatHang.lsDSDatHang.Count;i++)
                         {
-                            _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                            _ChiTietDatHangBUS = new ChiTietDatHang_BUS(_DatHangBUS);
-                            if(i<_frmDatHang.lsDSDatHang.Count-1)
-                                _ChiTietDatHangBUS.InsertChiTietDatHang(-1,-1,_frmDatHang.lsDSDatHang[i]);
+                            frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+                            //busChiTietDatHang.CopyProvider(MyBus);
+                            if (i < frmDatHang.lsDSDatHang.Count - 1)
+                                busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
                             else
-                                _ChiTietDatHangBUS.InsertChiTietDatHang(0, 0, _frmDatHang.lsDSDatHang[i]);
+                               busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
                         }
+                        busNhaCungCap = new VNhaCungCap_BUS();
+                        busDatHang = new VDatHang_BUS();
+                        busChiTietDatHang = new VChiTietDatHang_BUS();
+                        busNguyenLieu = new VNguyenLieu_BUS();
+
                         LoadDSDatHang();
                         break;
+                    }
+                }
+            }
+            public void CapNhatHDDatHang()
+            {
+                if (index_DatHang != -1)
+                {
+                    if (lsDatHang[index_DatHang].TinhTrang == "Đã Giao" || lsDatHang[index_DatHang].TinhTrang == "Hủy")
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Không thể cập nhật đơn đặt hàng này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        frmDatHang _frmDatHang = new frmDatHang();
+                        _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
+                        _frmDatHang.LoadThongTinDatHang();
+
+
+                        _frmDatHang.lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, maNH);
+                        _frmDatHang.lsDSDatHang = busChiTietDatHang.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
+                       
+                       
+                        _frmDatHang.Load_gridDSDatHang();
+                        _frmDatHang.Load_lvNguyenLieu();
+
+                        if (_frmDatHang.ShowDialog() == DialogResult.OK)
+                        {
+                            if (busDatHang.UpdateDatHang(_frmDatHang.ThongTinDH) > 0)
+                            {
+                                int MaHD = lsDatHang[index_DatHang].MaHoaDon;
+                                busChiTietDatHang.DeleteChiTietDatHang(MaHD);
+                                for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
+                                {
+                                    _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+                                    //BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                                }
+                                LoadDSDatHang();
+                                LoadChiTietDH(MaHD);
+                            }
+                        }
                     }
                 }
             }
@@ -184,7 +243,7 @@ namespace GUI.QuanLyKho
                     else
                     {
                         int MaHD = lsDatHang[index_DatHang].MaHoaDon;
-                        BUS.DatHang_BUS.DeleteDatHang(MaHD);
+                        busDatHang.DeleteDatHang(MaHD);
                         LoadDSDatHang();
                         if (dtDatHang.Rows.Count == 0)
                             dtChiTietDH.Clear();
@@ -206,49 +265,14 @@ namespace GUI.QuanLyKho
                             if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là hủy đơn đặt hàng này không!", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 lsDatHang[index_DatHang].TinhTrang = "Hủy";
-                                BUS.DatHang_BUS.UpdateDatHang(lsDatHang[index_DatHang]);
+                                busDatHang.UpdateDatHang(lsDatHang[index_DatHang]);
                                 LoadDSDatHang();
                             }
                         }
                     }
                 }
             }
-            public void CapNhatHDDatHang()
-            {
-                if (index_DatHang != -1)
-                {
-                    if (lsDatHang[index_DatHang].TinhTrang == "Đã Giao" || lsDatHang[index_DatHang].TinhTrang == "Hủy")
-                    {
-                        DevExpress.XtraEditors.XtraMessageBox.Show("Không thể cập nhật đơn đặt hàng này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        frmDatHang _frmDatHang = new frmDatHang();
-                        _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
-                        _frmDatHang.LoadThongTinDatHang();
-                        _frmDatHang.lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_NotIn_ChiTietDatHang(2,-1,lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, _MaNH);
-                        _frmDatHang.lsDSDatHang = BUS.ChiTietDatHang_BUS.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
-                        _frmDatHang.Load_gridDSDatHang();
-                        _frmDatHang.Load_lvNguyenLieu();
-
-                        if (_frmDatHang.ShowDialog() == DialogResult.OK)
-                        {
-                            if (BUS.DatHang_BUS.UpdateDatHang(_frmDatHang.ThongTinDH) > 0)
-                            {
-                                int MaHD = lsDatHang[index_DatHang].MaHoaDon;
-                                BUS.ChiTietDatHang_BUS.DeleteChiTietDatHang(MaHD);
-                                for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
-                                {
-                                    _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                                    //BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
-                                }
-                                LoadDSDatHang();
-                                LoadChiTietDH(MaHD);
-                            }
-                        }
-                    }
-                }
-            }
+           
         #endregion
       
     }

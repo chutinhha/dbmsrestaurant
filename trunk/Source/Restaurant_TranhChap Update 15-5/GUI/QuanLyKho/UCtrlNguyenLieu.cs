@@ -14,23 +14,28 @@ namespace GUI.QuanLyKho
     public partial class UCtrlNguyenLieu : DevExpress.XtraEditors.XtraUserControl
     {
         #region " Thuoc Tinh & Properties"
-        String _MaNH;
+        String maNH;
         public String MaNH
         {
-            get { return _MaNH; }
-            set { _MaNH = value; }
+            get { return maNH; }
+            set { maNH = value; }
         }
 
-        String TenNL;
+        String tenNguyenLieu;
         DataTable dtNguyenLieu ;
         DataTable dtNguyenLieu_Source;
         int indexNL;
+        int stt;
+        VNguyenLieu_BUS busNguyenLieu;
         #endregion
 
         #region "Khoi tao UserControl"
         public UCtrlNguyenLieu()
         {
             InitializeComponent();
+
+            busNguyenLieu = new VNguyenLieu_BUS();
+
             dtNguyenLieu = new DataTable();
             indexNL = -1;
 
@@ -53,10 +58,12 @@ namespace GUI.QuanLyKho
             if (gvNguyenLieu.GetSelectedRows().Length > 0)
             {
                 indexNL = gvNguyenLieu.GetSelectedRows()[0];
-                txtTenNguyenLieu.Text = dtNguyenLieu.Rows[indexNL]["TenNL"].ToString();
-                txtDonVi.Text = dtNguyenLieu.Rows[indexNL]["DonVi"].ToString();
-                txtSoLuongTon.Text = dtNguyenLieu.Rows[indexNL]["SoLuongTon"].ToString();
-                TenNL = txtTenNguyenLieu.Text;
+                stt = int.Parse(gvNguyenLieu.GetRowCellValue(indexNL,"STT").ToString());
+
+                txtTenNguyenLieu.Text = dtNguyenLieu.Rows[stt-1]["TenNL"].ToString();
+                txtDonVi.Text = dtNguyenLieu.Rows[stt-1]["DonVi"].ToString();
+                txtSoLuongTon.Text = dtNguyenLieu.Rows[stt-1]["SoLuongTon"].ToString();
+                tenNguyenLieu = txtTenNguyenLieu.Text;
             }
         }
 
@@ -110,7 +117,7 @@ namespace GUI.QuanLyKho
         public void LoadNguyenLieu()
         {
             dtNguyenLieu.Rows.Clear();
-            dtNguyenLieu_Source = NguyenLieu_BUS.SelectNguyenLieu_toDataTable(_MaNH);
+            dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_toDataTable(maNH);
 
             int i = 0;
             foreach (DataRow row in dtNguyenLieu_Source.Rows)
@@ -129,7 +136,7 @@ namespace GUI.QuanLyKho
         public void ThemNguyenLieu()
         {
             frmNguyenLieu_ThemNL _frmThemNL = new frmNguyenLieu_ThemNL();
-            _frmThemNL.NguyenLieu.MaNH = _MaNH;
+            _frmThemNL.NguyenLieu.MaNH = maNH;
             if (_frmThemNL.ShowDialog() == DialogResult.OK)
             {
                 LoadNguyenLieu();
@@ -137,9 +144,24 @@ namespace GUI.QuanLyKho
         }
         public void XoaNguyenLieu()
         {
-            BUS.NguyenLieu_BUS.DeleteNguyenLieu((int)dtNguyenLieu_Source.Rows[indexNL][0], _MaNH);
-            dtNguyenLieu.Rows.RemoveAt(indexNL);
-            dtNguyenLieu_Source.Rows.RemoveAt(indexNL);
+            try
+            {
+                int result = busNguyenLieu.DeleteNguyenLieu((int)dtNguyenLieu_Source.Rows[stt - 1][0], maNH);
+                if (result == 1)
+                {
+                    LoadNguyenLieu();
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    if (result == -1)
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa nguyên liệu này \n Ghi chú :không thể xóa nguyên liệu khi thông tin nguyên liệu được sử dụng trong danh sách nguyên liệu của nhà cung cấp và trong đơn đặt hàng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+            }
+            catch (Exception)
+            {
+                DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
+            } 
         }
         public void CapNhatNguyenLieu()
         {
@@ -163,22 +185,30 @@ namespace GUI.QuanLyKho
                     else
                     {
 
-                        NguyenLieu_DTO temp = new NguyenLieu_DTO();
-                        temp.MaNL = (int)dtNguyenLieu_Source.Rows[indexNL][0];
-                        temp.MaNH = dtNguyenLieu_Source.Rows[indexNL][1].ToString();
+                        VNguyenLieu_DTO temp = new VNguyenLieu_DTO();
+                        temp.MaNL = (int)dtNguyenLieu_Source.Rows[stt-1][0];
+                        temp.MaNH = dtNguyenLieu_Source.Rows[stt-1][1].ToString();
                         temp.TenNL = txtTenNguyenLieu.Text.Trim();
                         temp.DonVi = txtDonVi.Text.Trim();
                         temp.SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
-                        int a = BUS.NguyenLieu_BUS.UpdateNguyenLieu(TenNL, temp);
-                        if (BUS.NguyenLieu_BUS.UpdateNguyenLieu(TenNL, temp) == 0)
+                        try
                         {
-                            MessageBox.Show("Tên nguyên liệu này đã có trong danh sách !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            txtTenNguyenLieu.Focus();
+                            if (busNguyenLieu.UpdateNguyenLieu(tenNguyenLieu, temp) == 0)
+                            {
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                LoadNguyenLieu();
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Đã cập nhật lại dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                
+                            }
                         }
-                        else
+                        catch (Exception)
                         {
-                            LoadNguyenLieu();
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+
                     }
         }
         #endregion

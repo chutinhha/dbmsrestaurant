@@ -13,25 +13,25 @@ namespace GUI.QuanLyKho
     public partial class frmDatHang : DevExpress.XtraEditors.XtraForm
     {
         #region " Thuoc Tinh " 
-            BUS.NhaCungCap_BUS _NhaCungCapBUS;
-            BUS.NguyenLieu_BUS _NguyenLieuBUS;
-            List<NguyenLieu_DTO> _lsNguyenLieu;
-            List<ChiTietDatHang_DTO> _lsDSDatHang;
+            BUS.VNhaCungCap_BUS _NhaCungCapBUS;
+            BUS.VNguyenLieu_BUS _NguyenLieuBUS;
+            List<VNguyenLieu_DTO> _lsNguyenLieu;
+            List<VChiTietDatHang_DTO> _lsDSDatHang;
             DataTable dtDSDatHang;
             int index_NL;
             int index_DSDatHang;
 
-            DatHang_DTO _ttdh;
+            VDatHang_DTO _ttdh;
             int _soluong_temp;
         #endregion 
 
         #region " Properties "
-            public NhaCungCap_BUS NhaCungCapBUS
+            public VNhaCungCap_BUS NhaCungCapBUS
             {
                 get { return _NhaCungCapBUS; }
                 set { _NhaCungCapBUS = value; }
             }
-            public NguyenLieu_BUS NguyenLieuBUS
+            public VNguyenLieu_BUS NguyenLieuBUS
             {
                 get { return _NguyenLieuBUS; }
                 set { _NguyenLieuBUS = value; }
@@ -52,17 +52,17 @@ namespace GUI.QuanLyKho
                 get { return txtTongTien.Text; }
                 set { txtTongTien.Text = value; }
             }
-            public DatHang_DTO ThongTinDH
+            public VDatHang_DTO ThongTinDH
             {
                 get { return _ttdh; }
                 set { _ttdh = value; }
             }
-            public List<NguyenLieu_DTO> lsNguyenLieu
+            public List<VNguyenLieu_DTO> lsNguyenLieu
             {
                 get { return _lsNguyenLieu; }
                 set { _lsNguyenLieu = value; }
             }
-            public List<ChiTietDatHang_DTO> lsDSDatHang
+            public List<VChiTietDatHang_DTO> lsDSDatHang
             {
                 get { return _lsDSDatHang; }
                 set { _lsDSDatHang = value; }
@@ -74,11 +74,11 @@ namespace GUI.QuanLyKho
             public frmDatHang()
             {
                 InitializeComponent();
-                _NhaCungCapBUS = new NhaCungCap_BUS();
-                _NguyenLieuBUS = new NguyenLieu_BUS();
-                _ttdh = new DatHang_DTO();
-                _lsNguyenLieu = new List<NguyenLieu_DTO>();
-                _lsDSDatHang = new List<ChiTietDatHang_DTO>();
+                _NhaCungCapBUS = new VNhaCungCap_BUS();
+                _NguyenLieuBUS = new VNguyenLieu_BUS();
+                _ttdh = new VDatHang_DTO();
+                _lsNguyenLieu = new List<VNguyenLieu_DTO>();
+                _lsDSDatHang = new List<VChiTietDatHang_DTO>();
 
                 dtDSDatHang = new DataTable();
                 dtDSDatHang.Columns.Add("STT", System.Type.GetType("System.Int16"));
@@ -199,7 +199,7 @@ namespace GUI.QuanLyKho
             public void LoadNguyenLieu()
             {
                 lvNguyenLieu.Items.Clear();
-                _lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(-1,-1,_ttdh.MaNCC,_ttdh.MaNH);
+                _lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(_ttdh.MaNCC,_ttdh.MaNH);
                 Load_lvNguyenLieu();
             }
             public void Load_lvNguyenLieu()
@@ -246,7 +246,7 @@ namespace GUI.QuanLyKho
                     {
                         //Add Grid DSDatHang
 
-                        ChiTietDatHang_DTO temp = new ChiTietDatHang_DTO();
+                        VChiTietDatHang_DTO temp = new VChiTietDatHang_DTO();
                         temp.MaNL = _lsNguyenLieu[index_NL].MaNL;
                         temp.ThanhTien = _lsNguyenLieu[index_NL].Gia;
                         temp.DonVi = _lsNguyenLieu[index_NL].DonVi;
@@ -286,7 +286,7 @@ namespace GUI.QuanLyKho
 
                 //Add List View Nguyen Lieu
 
-                NguyenLieu_DTO temp = new NguyenLieu_DTO();
+                VNguyenLieu_DTO temp = new VNguyenLieu_DTO();
                 temp.MaNL = _lsDSDatHang[index_DSDatHang].MaNL;
                 temp.TenNL = _lsDSDatHang[index_DSDatHang].TenNL;
                 temp.DonVi = _lsDSDatHang[index_DSDatHang].DonVi;

@@ -25,14 +25,7 @@ namespace GUI
                 //Gan gia tri dang nhap duoc cho form main o day
                 //frmMain.MaNH = frmLogin.MaNH;
                 //frmMain.NhanVien = frmLogin.NhanVien;
-                try
-                {
-                    Application.Run(frmMain);
-                }
-                catch (Exception)
-                {
-                }
-                
+                Application.Run(frmMain);                
             }
         }
     }

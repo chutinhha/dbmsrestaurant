@@ -12,8 +12,9 @@ namespace GUI.QuanLyKho
 {
     public partial class frmNguyenLieu_ThemNL : DevExpress.XtraEditors.XtraForm
     {
-        NguyenLieu_DTO _nguyenlieu;
-        public NguyenLieu_DTO NguyenLieu
+        VNguyenLieu_BUS busNguyenLieu;
+        VNguyenLieu_DTO _nguyenlieu;
+        public VNguyenLieu_DTO NguyenLieu
         {
             get { return _nguyenlieu; }
             set { _nguyenlieu = value; }
@@ -21,7 +22,9 @@ namespace GUI.QuanLyKho
         public frmNguyenLieu_ThemNL()
         {
             InitializeComponent();
-            _nguyenlieu = new NguyenLieu_DTO();
+
+            busNguyenLieu = new VNguyenLieu_BUS();
+            _nguyenlieu = new VNguyenLieu_DTO();
         }
 
         private void btnDongY_Click(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace GUI.QuanLyKho
                 {
                     _nguyenlieu.TenNL = txtTenNguyenLieu.Text.Trim();
                     _nguyenlieu.DonVi = txtDonVi.Text.Trim();
-                    if (BUS.NguyenLieu_BUS.InsertNguyenLieu(NguyenLieu) == 1)
+                    if (busNguyenLieu.InsertNguyenLieu(NguyenLieu) == 1)
                         DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

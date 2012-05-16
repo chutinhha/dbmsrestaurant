@@ -20,23 +20,26 @@ namespace GUI.QuanLyKho
                 set { _MaNH = value; }
             }
 
-            List<NhaCungCap_DTO> lsNCC;
-            List<NguyenLieu_DTO> lsNguyenLieu;
+            List<VNhaCungCap_DTO> lsNCC;
+            List<VNguyenLieu_DTO> lsNguyenLieu;
             DataTable dtNCC;
             DataTable dtNL;
             int indexNCC ;
             int index_NL;
-            BUS.NguyenLieu_BUS _NguyenLieuBUS;
-            BUS.ChiTietNCC_BUS _ChiTietNCCBUS;
+            VNguyenLieu_BUS busNguyenLieu;
+            VChiTietNCC_BUS busChiTietNCC;
+            VNhaCungCap_BUS busNhaCungCap;
         #endregion
 
         #region " Khoi tao "
             public UCtrlNhaCungCap()
             {
-                _NguyenLieuBUS = new NguyenLieu_BUS();
-                _ChiTietNCCBUS = new ChiTietNCC_BUS();
+                busNguyenLieu = new VNguyenLieu_BUS();
+                busChiTietNCC = new VChiTietNCC_BUS();
+                busNhaCungCap = new VNhaCungCap_BUS();
+
                 InitializeComponent();
-                lsNCC = new List<NhaCungCap_DTO>();
+                lsNCC = new List<VNhaCungCap_DTO>();
                 dtNCC = new DataTable();            
                 indexNCC = -1;            
                 dtNCC.Columns.Add("STT", System.Type.GetType("System.Int16"));
@@ -45,7 +48,7 @@ namespace GUI.QuanLyKho
                 dtNCC.Columns.Add("DiaChi", System.Type.GetType("System.String"));
                 dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
 
-                lsNguyenLieu = new List<NguyenLieu_DTO>();
+                lsNguyenLieu = new List<VNguyenLieu_DTO>();
                 dtNL = new DataTable();
                 index_NL = -1;
                 dtNL.Columns.Add("STT", System.Type.GetType("System.Int16"));
@@ -88,7 +91,7 @@ namespace GUI.QuanLyKho
             }
             private void btnCapNhatGia_Click(object sender, EventArgs e)
             {
-                _ChiTietNCCBUS.UpdateChiTietNCC(2,-1,lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
+                busChiTietNCC.UpdateChiTietNCC(lsNguyenLieu[index_NL].MaNL, lsNCC[indexNCC].MaNCC, Double.Parse(txtGia.Text));
                 LoadNguyenLieu(lsNCC[indexNCC].MaNCC);
             }
             private void btnRefresh_Click(object sender, EventArgs e)
@@ -111,7 +114,7 @@ namespace GUI.QuanLyKho
             {
                 gridNCC.DataSource =null;
                 dtNCC.Rows.Clear();
-                lsNCC = NhaCungCap_BUS.SelectNhaCungCap();
+                lsNCC = busNhaCungCap.SelectNhaCungCap();
 
                 for (int i = 0; i < lsNCC.Count; i++)
                 {
@@ -129,7 +132,7 @@ namespace GUI.QuanLyKho
             {
                 gridNguyenLieu.DataSource = null;
                 dtNL.Rows.Clear();
-                lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(2,-1,MaNCC,_MaNH);
+                lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC,_MaNH);
                 for (int i = 0; i < lsNguyenLieu.Count; i++)
                 {
                     DataRow row = dtNL.NewRow();
@@ -143,7 +146,7 @@ namespace GUI.QuanLyKho
             public void ThemNhaCungCap()
             {
                 frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
-                _frm.lsNguyenLieuChon = new List<NguyenLieu_DTO>();
+                _frm.lsNguyenLieuChon = new List<VNguyenLieu_DTO>();
                 _frm.Flag = 1;
                 _frm.MaNH = _MaNH;
                 _frm.LoadNguyenLieu(1);
@@ -179,7 +182,7 @@ namespace GUI.QuanLyKho
             }
             public void XoaNhaCungCap()
             {
-               BUS.NhaCungCap_BUS.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
+               busNhaCungCap.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
                lsNCC.RemoveAt(indexNCC);
                dtNCC.Rows.RemoveAt(indexNCC);
             }

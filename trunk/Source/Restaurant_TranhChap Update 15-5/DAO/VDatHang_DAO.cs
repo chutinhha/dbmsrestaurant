@@ -7,22 +7,22 @@ using System.Data.SqlClient;
 using DTO;
 namespace DAO
 {
-    public class DatHang_DAO
+    public class VDatHang_DAO:VProvider
     {
         Provider provider;
-        Provider_Vu _provider;
-        public Provider_Vu Provider
+        VProvider _provider;
+        public VProvider Provider
         {
             get { return _provider; }
             set { _provider = value; }
         }
-        public DatHang_DAO()
+        public VDatHang_DAO()
         {
             provider = new Provider();
-            _provider = new Provider_Vu();
+            _provider = new VProvider();
         }
       
-        public List<DatHang_DTO> SelectDatHang(String MaNH)
+        public List<VDatHang_DTO> SelectDatHang(String MaNH)
         {
             String store = "SelectDatHang";
             SqlCommand cm = provider.CreateCommandStoreName(store);
@@ -31,32 +31,30 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return  ConvertToList(provider.ExecSelectCommand(cm));
         }
-        public int InsertDatHang(int flag_connec, int flag_tran,DatHang_DTO dh)
+        public int InsertDatHang(VDatHang_DTO dh)
         {
             String store = "InsertDatHang";
-            if (flag_connec == 2 || flag_connec == 1)
-                _provider.CreateCommand();
-            _provider.Command.Parameters.Clear();
-            _provider.CreateCommand_StoreName(store);
-            _provider.Command.Parameters.Add("@MaHoaDon", SqlDbType.Int).Direction = ParameterDirection.Output;
-            _provider.Command.Parameters.Add("@MaNCC", SqlDbType.Int);
-            _provider.Command.Parameters.Add("@MaNH", SqlDbType.NChar);
-            _provider.Command.Parameters.Add("@TongTien", SqlDbType.Float);
-            _provider.Command.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
-            _provider.Command.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
-            _provider.Command.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
 
-            _provider.Command.Parameters["@MaNCC"].Value = dh.MaNCC;
-            _provider.Command.Parameters["@MaNH"].Value = dh.MaNH;
-            _provider.Command.Parameters["@TongTien"].Value = dh.TongTien;
-            _provider.Command.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
-            _provider.Command.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
-            _provider.Command.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int).Direction = ParameterDirection.Output;
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+            cm.Parameters.Add("@TongTien", SqlDbType.Float);
+            cm.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
+            cm.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
+            cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
 
-            _provider.ExecuteInsertUpdateDelete(flag_connec,flag_tran);
-            return (int)_provider.Command.Parameters["@MaHoaDon"].Value;
+            cm.Parameters["@MaNCC"].Value = dh.MaNCC;
+            cm.Parameters["@MaNH"].Value = dh.MaNH;
+            cm.Parameters["@TongTien"].Value = dh.TongTien;
+            cm.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
+            cm.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
+            cm.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+
+            ExecuteInsertUpdateDelete();
+            return (int)cm.Parameters["@MaHoaDon"].Value;
         }
-        public int UpdatetDatHang(DatHang_DTO dh)
+        public int UpdatetDatHang(VDatHang_DTO dh)
         {
             String store = "UpdateDatHang";
             SqlCommand cm = provider.CreateCommandStoreName(store);
@@ -88,12 +86,12 @@ namespace DAO
 
             return provider.ExecuteInsertUpdateDelete(cm);
         }
-        private List<DatHang_DTO> ConvertToList(DataTable dt)
+        private List<VDatHang_DTO> ConvertToList(DataTable dt)
         {
-            List<DatHang_DTO> ls = new List<DatHang_DTO>();
+            List<VDatHang_DTO> ls = new List<VDatHang_DTO>();
             foreach (DataRow row in dt.Rows)
             {
-                DatHang_DTO ttdh = new DatHang_DTO();
+                VDatHang_DTO ttdh = new VDatHang_DTO();
                 ttdh.MaHoaDon = (int)row.ItemArray[0];
                 ttdh.MaNCC = (int)row.ItemArray[1];
                 ttdh.MaNH = row.ItemArray[2].ToString();

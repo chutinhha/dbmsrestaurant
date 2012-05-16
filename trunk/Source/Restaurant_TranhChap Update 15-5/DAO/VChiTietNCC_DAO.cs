@@ -7,12 +7,24 @@ using System.Data.SqlClient;
 using DTO;
 namespace DAO
 {
-    public class ChiTietNCC_DAO:VProvider
+    public class VChiTietNCC_DAO:VProvider
     {
-        public ChiTietNCC_DAO():base() { }
-        public int InsertChiTietNCC( int MaNL, int MaNCC, double Gia)
+        Provider provider ;
+        VProvider _provider;
+        public VChiTietNCC_DAO()
+        {
+            provider = new Provider();
+            _provider = new VProvider();
+        }
+        public VProvider Provider
+        {
+            get { return _provider; }
+            set { _provider = value; }
+        }
+        public int InsertChiTietNCC(int flag_connec, int flag_tran, int MaNL, int MaNCC, double Gia)
         {
             String store = "InsertChiTietNCC";
+
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
@@ -35,9 +47,9 @@ namespace DAO
             cm.Parameters["@MaNL"].Value = MaNL;
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@Gia"].Value = Gia;
-            return ExecuteInsertUpdateDelete();
+            return _provider.ExecuteInsertUpdateDelete();
         }
-        public int DeleteChiTietNCC_fromNCC( int MaNCC)
+        public int DeleteChiTietNCC_fromNCC(int MaNCC)
         {
             String store = "DeleteChiTietNCC_fromNCC";
 
@@ -46,7 +58,7 @@ namespace DAO
 
             cm.Parameters["@MaNCC"].Value = MaNCC;
 
-            return ExecuteInsertUpdateDelete();
+            return _provider.ExecuteInsertUpdateDelete();
         }
         public int DeleteChiTietNCC(int MaNL, int MaNCC)
         {

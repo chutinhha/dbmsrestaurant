@@ -5,23 +5,23 @@ using System.Text;
 
 namespace DTO
 {
-    public class NhaCungCap_DTO
+    public class VNhaCungCap_DTO
     {
-        private int _MaNCC;
-        private String _TenNCC;
+        private int maNCC;
+        private String tenNCC;
         private String _sdt;
-        private String _DiaChi;
-        private int _DiemUuTien; 
+        private String diaChi;
+        private int diemUuTien; 
 
         public int MaNCC
         {
-            get { return _MaNCC; }
-            set { _MaNCC = value; }
+            get { return maNCC; }
+            set { maNCC = value; }
         }
         public String TenNCC
         {
-            get { return _TenNCC; }
-            set { _TenNCC = value; }
+            get { return tenNCC; }
+            set { tenNCC = value; }
         }
         public String sdt
         {
@@ -30,13 +30,13 @@ namespace DTO
         }
         public String DiaChi
         {
-            get { return _DiaChi; }
-            set { _DiaChi = value; }
+            get { return diaChi; }
+            set { diaChi = value; }
         }
         public int DiemUuTien
         {
-            get { return _DiemUuTien; }
-            set { _DiemUuTien = value; }
+            get { return diemUuTien; }
+            set { diemUuTien = value; }
         }
     }
 }
