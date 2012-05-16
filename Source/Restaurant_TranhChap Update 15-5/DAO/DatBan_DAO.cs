@@ -208,6 +208,7 @@ namespace DAO
                 string sqlBanAn = "update BanAn set TrangThai=1 where MaBan=" + bandat.MaBan;
                 SqlCommand cmBanAn = provider.CreateCommandStringSql(sqlBanAn);
                 provider.ExecuteInsertUpdateDelete(cmBanAn);
+               
             }
             return flag;
         }
