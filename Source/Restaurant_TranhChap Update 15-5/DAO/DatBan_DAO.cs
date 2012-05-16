@@ -170,7 +170,7 @@ namespace DAO
         {
             // Provider provider = new Provider();
             DataTable tb = new DataTable();
-            string sql = "update BanAn set TrangThai=" + trangthai + " where MaBan=" + MaBan+" commit tran";
+            string sql = " waitfor delay '0:0:10' update BanAn set TrangThai=" + trangthai + " where MaBan=" + MaBan+" commit tran";
             provider.cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete_CloseConnection(provider.cm);
         }
