@@ -13,6 +13,7 @@ namespace DAO
         Provider provider;
         public DatBan_DAO(SqlCommand cm)
         {
+           // IsolationLevel.Chaos
             provider = new Provider(cm);
         }
         public DatBan_DAO()
@@ -69,7 +70,7 @@ namespace DAO
         {
             //Provider provider = new Provider();
             DataTable tb = new DataTable();
-            string sql = "SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED begin tran select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            string sql = "SET TRANSACTION ISOLATION LEVEL repeatable read begin tran select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
             sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
             sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua;
             provider.cm = provider.CreateCommandStringSql(sql);
