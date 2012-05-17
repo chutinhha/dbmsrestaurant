@@ -16,8 +16,8 @@ namespace GUI.QuanLyKho
             private int flag;   //flag = 1 :Them , flag =2 : Cap nhat
             private String maNH;
             private VNhaCungCap_DTO dtoNCC;
-            private DataTable dtNguyenLieu;
-            private DataTable dtNguyenLieuChon;
+            private DataTable dtNguyenLieu_Source;
+            private DataTable dtNguyenLieuChon_Source;
             private DataTable dtChiTietNCC;
 
             VNguyenLieu_BUS busNguyenLieu;
@@ -44,13 +44,13 @@ namespace GUI.QuanLyKho
             }
             public DataTable DtNguyenLieu
             {
-                get { return dtNguyenLieu; }
-                set { dtNguyenLieu = value; }
+                get { return dtNguyenLieu_Source; }
+                set { dtNguyenLieu_Source = value; }
             }
             public DataTable DtNguyenLieuChon
             {
-                get { return dtNguyenLieuChon; }
-                set { dtNguyenLieuChon = value; }
+                get { return dtNguyenLieuChon_Source; }
+                set { dtNguyenLieuChon_Source = value; }
             }
             public DataTable DtChiTietNCC
             {
@@ -69,11 +69,11 @@ namespace GUI.QuanLyKho
                 busNCC = new VNhaCungCap_BUS();
                 busChiTietNCC = new VChiTietNCC_BUS();
 
-                dtNguyenLieu = new DataTable();
-                dtNguyenLieuChon = new DataTable();
-                dtNguyenLieuChon.Columns.Add("TenNL", System.Type.GetType("System.String"));
-                dtNguyenLieuChon.Columns.Add("MaNL", System.Type.GetType("System.Int32"));
-                dtNguyenLieuChon.Columns.Add("Gia", System.Type.GetType("System.Double"));
+                dtNguyenLieu_Source = new DataTable();
+                dtNguyenLieuChon_Source = new DataTable();
+                dtNguyenLieuChon_Source.Columns.Add("TenNL", System.Type.GetType("System.String"));
+                dtNguyenLieuChon_Source.Columns.Add("MaNL", System.Type.GetType("System.Int32"));
+                dtNguyenLieuChon_Source.Columns.Add("Gia", System.Type.GetType("System.Double"));
 
                 dtChiTietNCC = new DataTable();
                 DtChiTietNCC.Columns.Add("MaNL", System.Type.GetType("System.Int32"));
@@ -136,30 +136,30 @@ namespace GUI.QuanLyKho
             
             public void LoadNguyenLieu()
             {
-                dtNguyenLieu = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietNCC(dtoNCC.MaNCC, maNH);
+                dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietNCC(dtoNCC.MaNCC, maNH);
                 Load_lvNguyenLieu();
             }
             public void LoadNguyenLieuChon()
             {
                 
-                dtNguyenLieuChon = busNguyenLieu.SelectNguyenLieu_In_NCC(dtoNCC.MaNCC, maNH);
+                dtNguyenLieuChon_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(dtoNCC.MaNCC, maNH);
                 Load_lvNguyenLieuChon();
             }
             public void Load_lvNguyenLieuChon()
             {
                 lvNguyenLieuChon.Items.Clear();
-                for (int i = 0; i < dtNguyenLieuChon.Rows.Count; i++)
+                for (int i = 0; i < dtNguyenLieuChon_Source.Rows.Count; i++)
                 {
-                    ListViewItem lvItem = new ListViewItem(new String[] { (i + 1).ToString(), dtNguyenLieuChon.Rows[i]["TenNL"].ToString() });
+                    ListViewItem lvItem = new ListViewItem(new String[] { (i + 1).ToString(), dtNguyenLieuChon_Source.Rows[i]["TenNL"].ToString() });
                     lvNguyenLieuChon.Items.Add(lvItem);
                 }
             }
             public void Load_lvNguyenLieu()
             {
                 lvNguyenLieu.Items.Clear();
-                for (int i = 0; i < dtNguyenLieu.Rows.Count; i++)
+                for (int i = 0; i < dtNguyenLieu_Source.Rows.Count; i++)
                 {
-                    ListViewItem lvItem = new ListViewItem(new String[] { (i + 1).ToString(), dtNguyenLieu.Rows[i]["TenNL"].ToString() });
+                    ListViewItem lvItem = new ListViewItem(new String[] { (i + 1).ToString(), dtNguyenLieu_Source.Rows[i]["TenNL"].ToString() });
                     lvNguyenLieu.Items.Add(lvItem);
                 }
             }
@@ -168,7 +168,7 @@ namespace GUI.QuanLyKho
                 DataSet temp = new DataSet();
                 temp = busNguyenLieu.SelectNguyenLieu_NCC(dtoNCC.MaNCC, maNH);
                 DtNguyenLieu = temp.Tables[0];
-                dtNguyenLieuChon = temp.Tables[1];
+                dtNguyenLieuChon_Source = temp.Tables[1];
                 
                 Load_lvNguyenLieuChon();
                 Load_lvNguyenLieu();
@@ -180,13 +180,13 @@ namespace GUI.QuanLyKho
                 //{
                     int index_NguyenLieu = lvNguyenLieu.SelectedIndices[0];
                     //Add List View Nguyen Lieu Chon
-                    DataRow row = dtNguyenLieuChon.NewRow();
-                    row["TenNL"] = dtNguyenLieu.Rows[index_NguyenLieu]["TenNL"].ToString();
-                    row["MaNL"] = (int)dtNguyenLieu.Rows[index_NguyenLieu]["MaNL"];
-                    dtNguyenLieuChon.Rows.Add(row);
+                    DataRow row = dtNguyenLieuChon_Source.NewRow();
+                    row["TenNL"] = dtNguyenLieu_Source.Rows[index_NguyenLieu]["TenNL"].ToString();
+                    row["MaNL"] = (int)dtNguyenLieu_Source.Rows[index_NguyenLieu]["MaNL"];
+                    dtNguyenLieuChon_Source.Rows.Add(row);
                     Load_lvNguyenLieuChon();
                     //Delete List View Nguyen Lieu
-                    dtNguyenLieu.Rows.RemoveAt(index_NguyenLieu);
+                    dtNguyenLieu_Source.Rows.RemoveAt(index_NguyenLieu);
                     Load_lvNguyenLieu();
                     
             //    }
@@ -201,13 +201,13 @@ namespace GUI.QuanLyKho
                     int index_NguyenLieuChon = lvNguyenLieuChon.SelectedIndices[0];
 
                     //Add List View Nguyen Lieu
-                    DataRow row = dtNguyenLieu.NewRow();
-                    row["TenNL"] = dtNguyenLieuChon.Rows[index_NguyenLieuChon]["TenNL"].ToString();
-                    row["MaNL"] = (int)dtNguyenLieuChon.Rows[index_NguyenLieuChon]["MaNL"];
-                    dtNguyenLieu.Rows.Add(row);
+                    DataRow row = dtNguyenLieu_Source.NewRow();
+                    row["TenNL"] = dtNguyenLieuChon_Source.Rows[index_NguyenLieuChon]["TenNL"].ToString();
+                    row["MaNL"] = (int)dtNguyenLieuChon_Source.Rows[index_NguyenLieuChon]["MaNL"];
+                    dtNguyenLieu_Source.Rows.Add(row);
                     Load_lvNguyenLieu();
                     //Remove List View Nguyen Lieu Chon
-                    dtNguyenLieuChon.Rows.RemoveAt(index_NguyenLieuChon);
+                    dtNguyenLieuChon_Source.Rows.RemoveAt(index_NguyenLieuChon);
                     Load_lvNguyenLieuChon();
                 }
                 catch (Exception)
@@ -239,11 +239,11 @@ namespace GUI.QuanLyKho
                             dtoNCC.DiaChi = txtDiaChi.Text.Trim();
                             dtoNCC.sdt = txtSoDienThoai.Text.Trim();
                             dtoNCC.DiemUuTien = int.Parse(txtDiemUuTien.Text);
-                            for (int i = 0; i < dtNguyenLieuChon.Rows.Count; i++)
+                            for (int i = 0; i < dtNguyenLieuChon_Source.Rows.Count; i++)
                             {
                                 DataRow row = dtChiTietNCC.NewRow();
                                 row["MaNCC"] = dtoNCC.MaNCC;
-                                row["MaNL"] = dtNguyenLieuChon.Rows[i]["MaNL"].ToString();
+                                row["MaNL"] = dtNguyenLieuChon_Source.Rows[i]["MaNL"].ToString();
                                 row["Gia"] = 0;
                                 DtChiTietNCC.Rows.Add(row);
                             }
