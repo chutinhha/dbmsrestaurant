@@ -30,55 +30,59 @@ namespace DAO
             return ConvertToList(ExecSelectCommand());
         }
 
-        public int InsertNhaCungCap(VNhaCungCap_DTO ncc)
+        public int InsertNhaCungCap(VNhaCungCap_DTO ncc,DataTable ChiTiet)
         {
             String store = "InsertNhaCungCap";
-
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
             cm.Parameters.Add("@sdt", SqlDbType.NVarChar);
             cm.Parameters.Add("@DiaChi", SqlDbType.NVarChar);
             cm.Parameters.Add("@DiemUuTien", SqlDbType.Int);
+            cm.Parameters.Add("@ChiTiet", SqlDbType.Structured);
 
             cm.Parameters["@TenNCC"].Value = ncc.TenNCC;
             cm.Parameters["@sdt"].Value = ncc.sdt;
             cm.Parameters["@DiaChi"].Value = ncc.DiaChi;
             cm.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
+            cm.Parameters["@ChiTiet"].Value = ChiTiet;
 
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@MaNCC"].Value;
         }
-        public int UpdateNhaCungCap(String TenNCC, VNhaCungCap_DTO ncc)
+        public int UpdateNhaCungCap(VNhaCungCap_DTO ncc,DataTable ChiTiet)
         {
             String store = "UpdateNhaCungCap";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
-            cm.Parameters.Add("@TenNCC_old", SqlDbType.NVarChar);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
             cm.Parameters.Add("@sdt", SqlDbType.NVarChar);
             cm.Parameters.Add("@DiaChi", SqlDbType.NVarChar);
             cm.Parameters.Add("@DiemUuTien", SqlDbType.Int);
+            cm.Parameters.Add("@ChiTiet", SqlDbType.Structured);
 
-            cm.Parameters["@TenNCC_old"].Value = TenNCC;
             cm.Parameters["@MaNCC"].Value = ncc.MaNCC;
             cm.Parameters["@TenNCC"].Value = ncc.TenNCC;
             cm.Parameters["@sdt"].Value = ncc.sdt;
             cm.Parameters["@DiaChi"].Value = ncc.DiaChi;
             cm.Parameters["@DiemUuTien"].Value = ncc.DiemUuTien;
+            cm.Parameters["@ChiTiet"].Value = ChiTiet;
 
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public void DeleteNhaCungCap(int MaNCC)
+        public int DeleteNhaCungCap(int MaNCC)
         {
             String store = "DeleteNhaCungCap";
             CreateCommand_StoreName(store);
+            cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters["@MaNCC"].Value = MaNCC;
-            ConvertToList(ExecSelectCommand());
+
+            ExecuteInsertUpdateDelete();
+            return (int)cm.Parameters["@Flag"].Value;
         }
         private List<VNhaCungCap_DTO> ConvertToList(DataTable dt)
         {

@@ -204,15 +204,14 @@ namespace GUI.QuanLyKho
                         temp.SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
                         try
                         {
-                            if (busNguyenLieu.UpdateNguyenLieu(tenNguyenLieu, temp) == 0)
+                            if (busNguyenLieu.UpdateNguyenLieu(temp) == 0)
                             {
                                 DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
                                 LoadNguyenLieu();
-                                DevExpress.XtraEditors.XtraMessageBox.Show("Đã cập nhật lại dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Đã cập nhật lại dử liệu", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);    
                             }
                         }
                         catch (Exception)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAO;
 using DTO;
+using System.Data;
 namespace BUS
 {
     public class VNhaCungCap_BUS
@@ -26,17 +27,17 @@ namespace BUS
         {
             return  daoNhaCungCap.SelectNhaCungCap_fromNH( MaNH);
         }
-        public int InsertNhaCungCap(int flag_connec, int flag_tran, VNhaCungCap_DTO ncc)
+        public int InsertNhaCungCap( VNhaCungCap_DTO ncc,DataTable ChiTiet)
         {
-            return daoNhaCungCap.InsertNhaCungCap(ncc);
+            return daoNhaCungCap.InsertNhaCungCap(ncc,ChiTiet);
         }
-        public int UpdatetNhaCungCap( String TenNCC, VNhaCungCap_DTO ncc)
+        public int UpdatetNhaCungCap(VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
-            return daoNhaCungCap.UpdateNhaCungCap( TenNCC, ncc);
+            return daoNhaCungCap.UpdateNhaCungCap( ncc,ChiTiet);
         }
-        public void DeleteNhaCungCap(int MaNCC)
+        public int DeleteNhaCungCap(int MaNCC)
         {
-            daoNhaCungCap.DeleteNhaCungCap(MaNCC);
+            return daoNhaCungCap.DeleteNhaCungCap(MaNCC);
         }
     }
 }

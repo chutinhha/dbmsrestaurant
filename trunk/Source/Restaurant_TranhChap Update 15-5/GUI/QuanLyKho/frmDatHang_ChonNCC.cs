@@ -108,7 +108,7 @@ namespace GUI.QuanLyKho
             {
                 lvNguyenLieu.Items.Clear();
                 
-                lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, maNH);
+                //lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, maNH);
                 for (int i = 0; i < lsNguyenLieu.Count; i++)
                 {
                     ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), lsNguyenLieu[i].TenNL, lsNguyenLieu[i].Gia.ToString() });

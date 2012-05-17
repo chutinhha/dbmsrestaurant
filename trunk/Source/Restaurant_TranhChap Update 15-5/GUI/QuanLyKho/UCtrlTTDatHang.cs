@@ -207,7 +207,7 @@ namespace GUI.QuanLyKho
                         _frmDatHang.LoadThongTinDatHang();
 
 
-                        _frmDatHang.lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, maNH);
+                        //_frmDatHang.lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, maNH);
                         _frmDatHang.lsDSDatHang = busChiTietDatHang.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
                        
                        
