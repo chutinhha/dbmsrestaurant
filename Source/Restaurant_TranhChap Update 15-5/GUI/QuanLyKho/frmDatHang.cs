@@ -199,7 +199,7 @@ namespace GUI.QuanLyKho
             public void LoadNguyenLieu()
             {
                 lvNguyenLieu.Items.Clear();
-                _lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(_ttdh.MaNCC,_ttdh.MaNH);
+               // _lsNguyenLieu = _NguyenLieuBUS.SelectNguyenLieu_fromNCC(_ttdh.MaNCC,_ttdh.MaNH);
                 Load_lvNguyenLieu();
             }
             public void Load_lvNguyenLieu()

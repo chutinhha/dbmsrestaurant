@@ -12,7 +12,8 @@ namespace DAO
         protected SqlConnection cnn;
         protected SqlCommand cm;
         protected SqlTransaction tran;
-
+        protected SqlDataReader read;
+        protected SqlDataAdapter adapter;
         #region "Properties"
         public SqlConnection Connection
         {
@@ -102,7 +103,7 @@ namespace DAO
 
             DataTable table = new DataTable();
             
-            SqlDataReader read = cm.ExecuteReader();
+            read = cm.ExecuteReader();
             table.Load(read);
             read.Close();
 
@@ -111,7 +112,28 @@ namespace DAO
 
             return table;
         }
+   
+        public DataSet FillDataSet()
+        {
+            int flag = 0;
+            if (cnn.State != ConnectionState.Open)
+            {
+                OpenConnection();
+                flag = 1;
+            }
 
+            List<DataTable> lsData = new List<DataTable>();
+            adapter = new SqlDataAdapter(cm);
+            
+            DataSet dtset = new DataSet();
+            adapter.Fill(dtset);
+  
+
+            if (flag == 1)
+                CloseConnection();
+
+            return dtset;
+        }
         public int ExecuteInsertUpdateDelete()
         {
             int flag = 0;

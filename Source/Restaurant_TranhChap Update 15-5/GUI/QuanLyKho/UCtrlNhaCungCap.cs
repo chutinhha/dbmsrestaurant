@@ -21,8 +21,8 @@ namespace GUI.QuanLyKho
             }
 
             List<VNhaCungCap_DTO> lsNCC;
-            List<VNguyenLieu_DTO> lsNguyenLieu;
             DataTable dtNCC;
+            DataTable dtNL_Source;
             DataTable dtNL;
             int indexNCC ;
             int indexNL;
@@ -51,7 +51,6 @@ namespace GUI.QuanLyKho
                 dtNCC.Columns.Add("DiaChi", System.Type.GetType("System.String"));
                 dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
 
-                lsNguyenLieu = new List<VNguyenLieu_DTO>();
                 dtNL = new DataTable();
                 indexNL = -1;
                 dtNL.Columns.Add("STT", System.Type.GetType("System.Int16"));
@@ -68,23 +67,24 @@ namespace GUI.QuanLyKho
             }
             private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
-                if( gvNCC.GetSelectedRows().Length >0)
-                {
+                try 
+	            {
                     indexNCC = gvNCC.GetSelectedRows()[0];
                     sttNCC = int.Parse(gvNCC.GetDataRow(indexNCC)["STT"].ToString());
-                    LoadNguyenLieu(lsNCC[sttNCC-1].MaNCC);
-                }
-
+                    LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
+	            }
+	            catch (Exception){}
             }
             private void gvNguyenLieu_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
-                if (gvNguyenLieu.GetSelectedRows().Length > 0)
+                try
                 {
                     indexNL = gvNguyenLieu.GetSelectedRows()[0];
                     sttNL = int.Parse(gvNguyenLieu.GetDataRow(indexNL)["STT"].ToString());
-                    txtGia.Text = lsNguyenLieu[sttNL-1].Gia.ToString();
+                    txtGia.Text = dtNL_Source.Rows[sttNL - 1]["Gia"].ToString();
                 }
-               
+                catch (Exception) { }                 
+                               
             }
             private void btnThemNCC_Click(object sender, EventArgs e)
             {
@@ -151,18 +151,19 @@ namespace GUI.QuanLyKho
                 dtNL.Rows.Clear();
                 //try
                 //{
-                    lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, maNH);
-                    for (int i = 0; i < lsNguyenLieu.Count; i++)
+                    dtNL_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(MaNCC, maNH);
+                   for (int i = 0; i < dtNL_Source.Rows.Count; i++)
                     {
                         DataRow row = dtNL.NewRow();
-                        row["Stt"] = i + 1;
-                        row["TenNL"] = lsNguyenLieu[i].TenNL;
-                        row["Gia"] = lsNguyenLieu[i].Gia;
+
+                        row["STT"] = i + 1;
+                        row["TenNL"] = dtNL_Source.Rows[i]["TenNL"].ToString();
+                        row["Gia"] = dtNL_Source.Rows[i]["Gia"];
                         dtNL.Rows.Add(row);
                     }
                     gridNguyenLieu.DataSource = dtNL;
                     if(gvNguyenLieu.GetSelectedRows().Length > 0)
-                        txtGia.Text = lsNguyenLieu[sttNL-1].Gia.ToString();
+                        txtGia.Text = dtNL_Source.Rows[sttNL-1]["Gia"].ToString();
                 //}
                 //catch (Exception)
                 //{
@@ -176,12 +177,32 @@ namespace GUI.QuanLyKho
             public void ThemNhaCungCap()
             {
                 frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
-                _frm.lsNguyenLieuChon = new List<VNguyenLieu_DTO>();
+                //_frm.lsNguyenLieuChon = new List<VNguyenLieu_DTO>();
                 _frm.Flag = 1;
                 _frm.MaNH = maNH;
-                _frm.LoadNguyenLieu(1);
                 if(_frm.ShowDialog() == DialogResult.OK)
                 {
+                    DataTable dtNguyenLieu = _frm.DtNguyenLieuChon;
+                    VNhaCungCap_DTO dtoNCC = _frm.DtoNCC;
+                    try
+                    {
+                        int result = busNhaCungCap.InsertNhaCungCap(_frm.DtoNCC, _frm.DtChiTietNCC);
+                        if (result == -1)
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Thêm nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            LoadNhaCungCap();
+                            if (dtNCC.Rows.Count > 0)
+                                gvNCC.SelectRow(0);
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Đã thêm nhà cung cấp mới", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Thêm nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     
                 }
             }
@@ -190,21 +211,33 @@ namespace GUI.QuanLyKho
                 frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
                 _frm.Flag = 2;
                 _frm.MaNH = maNH;
-                _frm.NCC = lsNCC[indexNCC];
-                _frm.lsNguyenLieuChon = lsNguyenLieu;
-                _frm.LoadNguyenLieu(2);
-                _frm.LoadNguyenLieuChon();
-                
+                _frm.DtoNCC = lsNCC[indexNCC];                
                 if (_frm.ShowDialog() == DialogResult.OK)
                 {
-                    lsNCC[indexNCC] = _frm.NCC;
-                    gvNCC.FocusedRowHandle = indexNCC-1;
-                    gvNCC.FocusedRowHandle = indexNCC+1;
+                    DataTable dtNguyenLieu = _frm.DtNguyenLieuChon;
+                    VNhaCungCap_DTO dtoNCC = _frm.DtoNCC;
+                    try
+                    {
+                        int result = busNhaCungCap.UpdatetNhaCungCap(_frm.DtoNCC, _frm.DtChiTietNCC);
+                        if (result == 0)
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            LoadNhaCungCap();
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             public void CapNhatGia()
             {
-                int result = busChiTietNCC.UpdateChiTietNCC(lsNguyenLieu[sttNL - 1].MaNL, lsNCC[sttNCC- 1].MaNCC, Double.Parse(txtGia.Text));
+                int result = busChiTietNCC.UpdateChiTietNCC((int)dtNL_Source.Rows[sttNL - 1]["MaNL"], lsNCC[sttNCC- 1].MaNCC, Double.Parse(txtGia.Text));
                 if (result != 0)
                 {
                     LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
@@ -215,9 +248,29 @@ namespace GUI.QuanLyKho
             }
             public void XoaNhaCungCap()
             {
-               busNhaCungCap.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
-               lsNCC.RemoveAt(indexNCC);
-               dtNCC.Rows.RemoveAt(indexNCC);
+                if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là xóa nhà cung cấp này không", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //try
+                    //{
+                        int result = busNhaCungCap.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
+                        if (result == 1)
+                        {
+                            LoadNhaCungCap();
+                            
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Đã xóa nhà cung cấp", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                            if (result == -1)
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa nhà cung cấp này \n Ghi chú :không thể xóa nhà cung cấp khi thông tin nhà cung cấp được sử dụng trong đơn đặt hàng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            else
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Xóa  nhà cung cấp thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nhà cung cấp thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                }
+              
             }
             public void InDSNCC()
             {

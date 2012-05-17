@@ -214,6 +214,8 @@
             // 
             this.txtDiemUuTien.Location = new System.Drawing.Point(471, 68);
             this.txtDiemUuTien.Name = "txtDiemUuTien";
+            this.txtDiemUuTien.Properties.Mask.EditMask = "f0";
+            this.txtDiemUuTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtDiemUuTien.Size = new System.Drawing.Size(125, 20);
             this.txtDiemUuTien.TabIndex = 1;
             this.txtDiemUuTien.TextChanged += new System.EventHandler(this.txtDiemUuTien_TextChanged);

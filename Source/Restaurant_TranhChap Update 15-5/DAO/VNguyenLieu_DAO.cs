@@ -46,19 +46,17 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int UpdateNguyenLieu(String TenNL, VNguyenLieu_DTO nl)
+        public int UpdateNguyenLieu(VNguyenLieu_DTO nl)
         {
             String store = "UpdateNguyenLieu";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
-            cm.Parameters.Add("@TenNL_old", SqlDbType.NVarChar);
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
             cm.Parameters.Add("@TenNL", SqlDbType.NVarChar);
             cm.Parameters.Add("@DonVi", SqlDbType.NVarChar);
             cm.Parameters.Add("@SoLuongTon", SqlDbType.Int);
 
-            cm.Parameters["@TenNL_old"].Value = TenNL;
             cm.Parameters["@MaNL"].Value = nl.MaNL;
             cm.Parameters["@MaNH"].Value = nl.MaNH;
             cm.Parameters["@TenNL"].Value = nl.TenNL;
@@ -75,36 +73,49 @@ namespace DAO
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
-
+            
             cm.Parameters["@MaNL"].Value = MaNL;
             cm.Parameters["@MaNH"].Value = MaNH;
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
 
-        public List<VNguyenLieu_DTO> SelectNguyenLieu_fromNCC(int MaNCC, String MaNH)
+
+        public DataSet SelectNguyenLieu_NCC(int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_fromNCC";
+            String store = "SelectNguyenLieu_NCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
 
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@MaNH"].Value = MaNH;
-            return ConvertToList(ExecSelectCommand());
+
+            return   FillDataSet(); 
         }
-        public List<VNguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietNCC(int MaNCC, String MaNH)
+        public DataTable SelectNguyenLieu_In_NCC(int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_NotIn_ChiTietNCC";
+            String store = "SelectNguyenLieu_In_NCC";
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+
+            cm.Parameters["@MaNCC"].Value = MaNCC;
+            cm.Parameters["@MaNH"].Value = MaNH;
+            return ExecSelectCommand();
+        }
+        public DataTable SelectNguyenLieu_NotIn_NCC(int MaNCC, String MaNH)
+        {
+            String store = "SelectNguyenLieu_NotIn_NCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@maNH"].Value = MaNH;
-            return ConvertToList(ExecSelectCommand());
+            return ExecSelectCommand();
         }
-        public List<VNguyenLieu_DTO> SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon, int MaNCC, String MaNH)
+        public DataTable SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_NotIn_ChiTietDatHang";
             CreateCommand_StoreName(store);
@@ -115,7 +126,7 @@ namespace DAO
             cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
             cm.Parameters["@MaNCC"].Value = MaNCC;
             cm.Parameters["@MaNH"].Value = MaNH;
-            return ConvertToList(ExecSelectCommand());
+            return ExecSelectCommand();
         }
  
         private List<VNguyenLieu_DTO> ConvertToList(DataTable dt)
