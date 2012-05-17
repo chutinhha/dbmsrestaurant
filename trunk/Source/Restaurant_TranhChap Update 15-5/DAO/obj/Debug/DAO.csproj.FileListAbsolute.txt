@@ -1,0 +1,7 @@
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DAO.dll
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DAO.pdb
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DTO.dll
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DTO.pdb
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\obj\Debug\ResolveAssemblyReference.cache
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\obj\Debug\DAO.dll
+F:\HCMUS\HCDH\01_HeQuanTriCSDL\04_DeAn\Project NhaHang\dbmsrestaurant\Source\Restaurant_TranhChap Update 15-5\DAO\obj\Debug\DAO.pdb
