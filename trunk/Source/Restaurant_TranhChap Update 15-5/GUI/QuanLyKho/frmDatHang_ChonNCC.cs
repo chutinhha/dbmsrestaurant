@@ -19,9 +19,9 @@ namespace GUI.QuanLyKho
         String maNH;
         String tenNCC;
         int index_NCC;
+        int sttNCC;
         int maNCC;
         List<VNhaCungCap_DTO> lsNCC;
-        List<VNguyenLieu_DTO> lsNguyenLieu;
         DataTable dtNCC;
         #endregion
 
@@ -70,20 +70,25 @@ namespace GUI.QuanLyKho
             dtNCC.Columns.Add("sdt", System.Type.GetType("System.String"));
             dtNCC.Columns.Add("DiemUuTien", System.Type.GetType("System.Int32"));
 
-            lsNguyenLieu = new List<VNguyenLieu_DTO>();
         }
         #endregion
 
         #region " Event control "
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            maNCC = lsNCC[index_NCC].MaNCC;
-            tenNCC = lsNCC[index_NCC].TenNCC;
+            maNCC = lsNCC[sttNCC - 1].MaNCC;
+            tenNCC = lsNCC[sttNCC - 1].TenNCC;
         }
         private void gvNCC_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
-            index_NCC = gvNCC.GetSelectedRows()[0];
-            LoadDanhSachNL(lsNCC[index_NCC].MaNCC);
+            try
+            {
+                index_NCC = gvNCC.GetSelectedRows()[0];
+                sttNCC = int.Parse(gvNCC.GetDataRow(index_NCC)["STT"].ToString());
+                LoadDanhSachNL(lsNCC[sttNCC - 1].MaNCC);
+            }
+            catch (Exception) { }
+            
         }
         #endregion
 
@@ -108,10 +113,10 @@ namespace GUI.QuanLyKho
             {
                 lvNguyenLieu.Items.Clear();
                 
-                //lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_fromNCC(MaNCC, maNH);
-                for (int i = 0; i < lsNguyenLieu.Count; i++)
+                DataTable dtNL = busNguyenLieu.SelectNguyenLieu_In_NCC(MaNCC, maNH);
+                for (int i = 0; i < dtNL.Rows.Count; i++)
                 {
-                    ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), lsNguyenLieu[i].TenNL, lsNguyenLieu[i].Gia.ToString() });
+                    ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), dtNL.Rows[i]["TenNL"].ToString(),dtNL.Rows[i]["Gia"].ToString() });
                     lvNguyenLieu.Items.Add(item);
                 }
             }

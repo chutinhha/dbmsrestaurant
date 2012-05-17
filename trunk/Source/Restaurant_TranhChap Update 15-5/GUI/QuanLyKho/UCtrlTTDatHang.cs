@@ -143,16 +143,8 @@ namespace GUI.QuanLyKho
                 frmDatHang_ChonNCC frmChonNCC = new frmDatHang_ChonNCC(); // khoi tao form chon nha cung cap
                 frmChonNCC.MaNH = maNH;
 
-                /*
-                 * Bat dau giao tac them nha cung cap
-                 * khoi tao transaction 
-                 * sau khi khoi tao tran saction thi cac bien bus khac phai coppy provider cua mybus de giu ket noi
-                 */
 
-                //MyBus.BenginTran();
 
-                //frmChonNCC.BusNguyenLieu.CopyProvider(MyBus);
-                //frmChonNCC.BusNhaCungCap.CopyProvider(MyBus);
                 frmChonNCC.LoadDanhSachNCC();
                 
 
@@ -164,24 +156,20 @@ namespace GUI.QuanLyKho
                     frmDatHang.ThongTinDH.TenNCC = frmChonNCC.TenNCC;
                     frmDatHang.TenNCC = frmChonNCC.TenNCC;
 
-                    //frmDatHang.NguyenLieuBUS.CopyProvider(MyBus);
-                    //frmDatHang.NhaCungCapBUS.CopyProvider(MyBus);
                     frmDatHang.LoadNguyenLieu();
-
 
                     if (frmDatHang.ShowDialog() == DialogResult.OK)     //Mo form chon nguyen lieu va thong tin dat hang
                     {
-                        //busDatHang.CopyProvider(MyBus);
-                        int MaHD = busDatHang.InsertDatHang(frmDatHang.ThongTinDH);
-                        for(int i = 0;i<frmDatHang.lsDSDatHang.Count;i++)
-                        {
-                            frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                            //busChiTietDatHang.CopyProvider(MyBus);
-                            if (i < frmDatHang.lsDSDatHang.Count - 1)
-                                busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
-                            else
-                               busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
-                        }
+                       // int MaHD = busDatHang.InsertDatHang(frmDatHang.ThongTinDH);
+                        //for(int i = 0;i<frmDatHang.lsDSDatHang.Count;i++)
+                        //{
+                        //    frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+
+                        //    if (i < frmDatHang.lsDSDatHang.Count - 1)
+                        //        busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
+                        //    else
+                        //       busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
+                        //}
                         busNhaCungCap = new VNhaCungCap_BUS();
                         busDatHang = new VDatHang_BUS();
                         busChiTietDatHang = new VChiTietDatHang_BUS();
@@ -208,7 +196,7 @@ namespace GUI.QuanLyKho
 
 
                         //_frmDatHang.lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, maNH);
-                        _frmDatHang.lsDSDatHang = busChiTietDatHang.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
+                      //  _frmDatHang.lsDSDatHang = busChiTietDatHang.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
                        
                        
                         _frmDatHang.Load_gridDSDatHang();
@@ -220,11 +208,11 @@ namespace GUI.QuanLyKho
                             {
                                 int MaHD = lsDatHang[index_DatHang].MaHoaDon;
                                 busChiTietDatHang.DeleteChiTietDatHang(MaHD);
-                                for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
-                                {
-                                    _frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                                    //BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
-                                }
+                                //for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
+                                //{
+                                //    //_frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
+                                //    //BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
+                                //}
                                 LoadDSDatHang();
                                 LoadChiTietDH(MaHD);
                             }

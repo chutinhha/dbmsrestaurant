@@ -6,20 +6,20 @@ create type ChiTietNCC_TableType as table
 (MaNL int ,MaNCC int ,Gia float);
 go
 --------------- table ChiTietNCC ---------------------------------------------------------
--- Lay danh sach nguyen lieu cua nha cung cap
+
 -------------------------------------------------------------------------
-create proc InsertChiTietNCC @MaNL int,@MaNCC int ,@Gia float
-as
-begin
-    insert into ChiTietNCC
-    values
-      (
-        @MaNL
-       ,@MaNCC
-       ,@Gia
-      )
-end
-go
+--create proc InsertChiTietNCC @MaNL int,@MaNCC int ,@Gia float
+--as
+--begin
+--    insert into ChiTietNCC
+--    values
+--      (
+--        @MaNL
+--       ,@MaNCC
+--       ,@Gia
+--      )
+--end
+--go
 -- cap nhat gia nguyen nguyen lieu cua nha cung cap
 -------------------------------------------------------------------------
 alter proc UpdateChiTietNCC @Flag int out,@MaNL int,@MaNCC int ,@Gia float
@@ -28,14 +28,8 @@ begin
     set @Flag = 0
     begin tran
     set transaction isolation level read uncommitted
-    if (
-           (
-               select count(*)
-               from   ChiTietNCC
-               where  MaNL = @MaNL
-                      and MaNCC = @MaNCC
-           )=0
-       )
+    if (( select count(*)from ChiTietNCC 
+          where  MaNL = @MaNL and MaNCC = @MaNCC )=0 )
     begin
         rollback tran
         return
@@ -79,22 +73,22 @@ begin
 	commit tran
 end
 go
-create proc DeleteChiTietNCC_fromNL @MaNL int
-as
-begin
-    begin tran
-	set transaction isolation level read uncommitted
-		  delete ChiTietNCC
-    where  MaNL = @MaNL
+--create proc DeleteChiTietNCC_fromNL @MaNL int
+--as
+--begin
+--    begin tran
+--	set transaction isolation level read uncommitted
+--		  delete ChiTietNCC
+--    where  MaNL = @MaNL
 			   
-		if(@@error<>0)
-        begin
-            rollback
-            return
-        end 
-	commit tran
-end
-go
+--		if(@@error<>0)
+--        begin
+--            rollback
+--            return
+--        end 
+--	commit tran
+--end
+--go
 --create proc DeleteChiTietNCC @MaNL int,@MaNCC int
 --as
 --begin
@@ -283,13 +277,14 @@ create proc SelectNhaCungCap_fromNH @MaNH nchar(10)
 as
 begin
     begin tran
-    select distinct ncc.*
-    from   NhaCungCap ncc
-          ,ChiTietNCC ct
-          ,NguyenLieu nl
-    where  ncc.MaNCC = ct.MaNCC
-           and nl.MaNL = ct.MaNL
-           and NL.MANH = @MaNH
+    set transaction isolation level read uncommitted
+		select distinct ncc.*
+		from   NhaCungCap ncc
+			  ,ChiTietNCC ct
+			  ,NguyenLieu nl
+		where  ncc.MaNCC = ct.MaNCC
+			   and nl.MaNL = ct.MaNL
+			   and NL.MANH = @MaNH
     
     commit tran
 end
