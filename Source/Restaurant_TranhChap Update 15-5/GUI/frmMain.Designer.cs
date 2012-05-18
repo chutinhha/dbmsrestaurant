@@ -62,7 +62,7 @@ namespace GUI
             this.barBtn_TiepTan_DSDatBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_XepBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
-            this.rbPage_TiepTan_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rbPage_TiepTan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPage_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -133,7 +133,7 @@ namespace GUI
             this.rbControl_Main.MaxItemId = 44;
             this.rbControl_Main.Name = "rbControl_Main";
             this.rbControl_Main.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.rbPage_TiepTan_ThuNgan,
+            this.rbPage_TiepTan,
             this.rbPage_ThuNgan,
             this.rbPage_QLKho,
             this.rbPage_QLNhaHang,
@@ -402,12 +402,12 @@ namespace GUI
             // 
             // rbPage_TiepTan_ThuNgan
             // 
-            this.rbPage_TiepTan_ThuNgan.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.rbPageGroup_TiepTan2,
-            this.rbPageGroup_TiepTan1});
-            this.rbPage_TiepTan_ThuNgan.Name = "rbPage_TiepTan_ThuNgan";
-            this.rbPage_TiepTan_ThuNgan.Text = "Tiếp Tân ";
-            this.rbPage_TiepTan_ThuNgan.Visible = false;
+            this.rbPage_TiepTan.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rbPageGroup_TiepTan1,
+            this.rbPageGroup_TiepTan2});
+            this.rbPage_TiepTan.Name = "rbPage_TiepTan_ThuNgan";
+            this.rbPage_TiepTan.Text = "Tiếp Tân ";
+            this.rbPage_TiepTan.Visible = false;
             // 
             // rbPageGroup_TiepTan2
             // 
@@ -566,7 +566,7 @@ namespace GUI
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl rbControl_Main;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TiepTan_ThuNgan;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TiepTan;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TiepTan1;
         private DevExpress.XtraBars.Ribbon.ApplicationMenu MyapplicationMenu;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_QLNhaHang;
