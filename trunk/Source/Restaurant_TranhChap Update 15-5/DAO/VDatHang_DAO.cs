@@ -9,29 +9,16 @@ namespace DAO
 {
     public class VDatHang_DAO:VProvider
     {
-        Provider provider;
-        VProvider _provider;
-        public VProvider Provider
-        {
-            get { return _provider; }
-            set { _provider = value; }
-        }
-        public VDatHang_DAO()
-        {
-            provider = new Provider();
-            _provider = new VProvider();
-        }
-      
         public List<VDatHang_DTO> SelectDatHang(String MaNH)
         {
             String store = "SelectDatHang";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
+           CreateCommand_StoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
             cm.Parameters["@maNH"].Value = MaNH;
-            return  ConvertToList(provider.ExecSelectCommand(cm));
+            return  ConvertToList(ExecSelectCommand());
         }
-        public int InsertDatHang(VDatHang_DTO dh)
+        public int InsertDatHang(VDatHang_DTO dh,DataTable ChiTiet)
         {
             String store = "InsertDatHang";
 
@@ -43,6 +30,7 @@ namespace DAO
             cm.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
             cm.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
             cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+            cm.Parameters.Add("@ChiTiet", SqlDbType.Structured);
 
             cm.Parameters["@MaNCC"].Value = dh.MaNCC;
             cm.Parameters["@MaNH"].Value = dh.MaNH;
@@ -50,14 +38,16 @@ namespace DAO
             cm.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
             cm.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
             cm.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+            cm.Parameters["@ChiTiet"].Value = ChiTiet;
 
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@MaHoaDon"].Value;
         }
-        public int UpdatetDatHang(VDatHang_DTO dh)
+        public int UpdatetDatHang(VDatHang_DTO dh, DataTable ChiTiet)
         {
             String store = "UpdateDatHang";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
@@ -65,6 +55,7 @@ namespace DAO
             cm.Parameters.Add("@ThoiGianDat", SqlDbType.DateTime);
             cm.Parameters.Add("@ThoiGianGiao", SqlDbType.DateTime);
             cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+            cm.Parameters.Add("@ChiTiet", SqlDbType.Structured);
 
             cm.Parameters["@MaHoaDon"].Value = dh.MaHoaDon;
             cm.Parameters["@MaNCC"].Value = dh.MaNCC;
@@ -73,18 +64,33 @@ namespace DAO
             cm.Parameters["@ThoiGianDat"].Value = dh.ThoiGianDat;
             cm.Parameters["@ThoiGianGiao"].Value = dh.ThoiGianGiao;
             cm.Parameters["@TinhTrang"].Value = dh.TinhTrang;
+            cm.Parameters["@ChiTiet"].Value = ChiTiet;
 
-            return provider.ExecuteInsertUpdateDelete(cm);
+            ExecuteInsertUpdateDelete();
+            return (int)cm.Parameters["@Flag"].Value;
+        }
+        public int UpdatetTinhTrangDatHang(int MaHoaDon, String tinhtrang)
+        {
+            String store = "UpdateTinhTrangDatHang";
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+            cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+
+            cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
+            cm.Parameters["@TinhTrang"].Value = tinhtrang;
+            return ExecuteInsertUpdateDelete();
         }
         public int DeleteDatHang(int MaHoaDon)
         {
             String store = "DeleteDatHang";
-            SqlCommand cm = provider.CreateCommandStoreName(store);
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
 
             cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
 
-            return provider.ExecuteInsertUpdateDelete(cm);
+            ExecuteInsertUpdateDelete();
+            return (int)cm.Parameters["@Flag"].Value;
         }
         private List<VDatHang_DTO> ConvertToList(DataTable dt)
         {
