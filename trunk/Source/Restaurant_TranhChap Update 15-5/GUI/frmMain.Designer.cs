@@ -63,8 +63,8 @@ namespace GUI
             this.barBtn_TiepTan_XepBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
             this.rbPage_TiepTan_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPage_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_ThuNgan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPage_QLKho = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -407,11 +407,7 @@ namespace GUI
             this.rbPageGroup_TiepTan1});
             this.rbPage_TiepTan_ThuNgan.Name = "rbPage_TiepTan_ThuNgan";
             this.rbPage_TiepTan_ThuNgan.Text = "Tiếp Tân ";
-            // 
-            // rbPageGroup_TiepTan1
-            // 
-            this.rbPageGroup_TiepTan1.ItemLinks.Add(this.barBtn_TiepTan_XepBan);
-            this.rbPageGroup_TiepTan1.Name = "rbPageGroup_TiepTan1";
+            this.rbPage_TiepTan_ThuNgan.Visible = false;
             // 
             // rbPageGroup_TiepTan2
             // 
@@ -419,12 +415,18 @@ namespace GUI
             this.rbPageGroup_TiepTan2.ItemLinks.Add(this.barBtn_TiepTan_DSDatBan);
             this.rbPageGroup_TiepTan2.Name = "rbPageGroup_TiepTan2";
             // 
+            // rbPageGroup_TiepTan1
+            // 
+            this.rbPageGroup_TiepTan1.ItemLinks.Add(this.barBtn_TiepTan_XepBan);
+            this.rbPageGroup_TiepTan1.Name = "rbPageGroup_TiepTan1";
+            // 
             // rbPage_ThuNgan
             // 
             this.rbPage_ThuNgan.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rbPageGroup_ThuNgan1});
             this.rbPage_ThuNgan.Name = "rbPage_ThuNgan";
             this.rbPage_ThuNgan.Text = "Thu Ngân";
+            this.rbPage_ThuNgan.Visible = false;
             // 
             // rbPageGroup_ThuNgan1
             // 
@@ -440,6 +442,7 @@ namespace GUI
             this.rbPageGroup_QLKho1});
             this.rbPage_QLKho.Name = "rbPage_QLKho";
             this.rbPage_QLKho.Text = "Quản Lý Kho";
+            this.rbPage_QLKho.Visible = false;
             // 
             // rbPageGroup_QLKho1
             // 
@@ -455,6 +458,7 @@ namespace GUI
             this.rbPageGroup_QuanLyNhaHang1});
             this.rbPage_QLNhaHang.Name = "rbPage_QLNhaHang";
             this.rbPage_QLNhaHang.Text = "Quản Lý Nhà Hàng";
+            this.rbPage_QLNhaHang.Visible = false;
             // 
             // rbPageGroup_QuanLyNhaHang1
             // 
@@ -471,6 +475,7 @@ namespace GUI
             this.rbPageGroup_TongQuanLy1});
             this.rbPage_TongQuanLy.Name = "rbPage_TongQuanLy";
             this.rbPage_TongQuanLy.Text = "Tổng Quản Lý";
+            this.rbPage_TongQuanLy.Visible = false;
             // 
             // rbPageGroup_TongQuanLy1
             // 
@@ -485,6 +490,7 @@ namespace GUI
             this.rbPageGroup_QuanTriNhaHang1});
             this.rbPage_QuanTri.Name = "rbPage_QuanTri";
             this.rbPage_QuanTri.Text = "Quản Trị ";
+            this.rbPage_QuanTri.Visible = false;
             // 
             // rbPageGroup_QuanTriNhaHang1
             // 

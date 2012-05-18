@@ -39,16 +39,10 @@ namespace GUI
         //-----------------------------------------------------------
         String strGiaoDien = "";
         //-------------------------------------
-        String maNH ;
         NhanVien_DTO nhanVien;
         #endregion
 
         #region "Properties"
-        public String MaNH
-        {
-            get { return maNH; }
-            set { maNH = value; }
-        }
         public NhanVien_DTO NhanVien
         {
             get { return nhanVien; }
@@ -87,7 +81,33 @@ namespace GUI
        
         private void frm_Main_Load(object sender, EventArgs e)
         {
-            Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
+            //Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
+            switch (nhanVien.MaLoaiNhanVien.Trim())
+            {
+                case "1":
+                    rbPage_QLNhaHang.Visible = true;
+                    rbPage_QLKho.Visible = true;
+                    rbPage_TiepTan_ThuNgan.Visible = true;
+                    rbPage_ThuNgan.Visible = true;
+                    break;
+                case "2":
+                    rbPage_QLKho.Visible = true; break;
+                case "3":
+                    rbPage_TiepTan_ThuNgan.Visible = true; break;
+                case "4":
+                    rbPage_ThuNgan.Visible = true; break;
+                case "7":
+                    rbPage_TongQuanLy.Visible = true;
+                    rbPage_QLNhaHang.Visible = true;
+                    rbPage_QLKho.Visible = true;
+                    rbPage_TiepTan_ThuNgan.Visible = true;
+                    rbPage_ThuNgan.Visible = true;
+                    break;
+                case "6":
+                    rbPage_QuanTri.Visible = true; break;
+                default: break;
+            }
+            rbPage_TuyChon.Visible = true;
         }
         #endregion
 
@@ -165,6 +185,7 @@ namespace GUI
         private void barBtn_ThuNgan_QLBanAn_ItemClick(object sender, ItemClickEventArgs e)
         {
             Add_UserControl(panelCtrl_Main, UCtrl_ThuNgan_QLBanAn);
+            UCtrl_ThuNgan_QLBanAn.load_ListBoxBanAn();
         }
 
         private void barBtn_ThuNgan_ChuyenBan_ItemClick(object sender, ItemClickEventArgs e)
@@ -189,7 +210,7 @@ namespace GUI
         #region " Quan Ly Kho "
         private void barBtn_QLKho_DatHang_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UCtrl_QLKho_DatHang.MaNH = maNH;
+            UCtrl_QLKho_DatHang.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_DatHang);
             
         }
@@ -199,13 +220,13 @@ namespace GUI
         }
         private void barBtn_QLKho_QLNCC_ItemClick(object sender, ItemClickEventArgs e)
         {
-            UCtrl_QLKho_NCC.MaNH = maNH;
+            UCtrl_QLKho_NCC.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NCC);
             
         }
         private void barBtn_QLNguyenLieu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            UCtrl_QLKho_NguyenLieu.MaNH = maNH;
+            UCtrl_QLKho_NguyenLieu.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NguyenLieu);
             
         }

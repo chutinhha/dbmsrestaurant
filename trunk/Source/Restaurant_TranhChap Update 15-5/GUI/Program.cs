@@ -18,15 +18,29 @@ namespace GUI
             frmLogin frmLogin = new frmLogin();
             frmMain frmMain = new frmMain(); ;
             Thread thread = new Thread(frmMain.KhoiTaoUserControl);
-            thread.Start();            
-            if(frmLogin.ShowDialog() == DialogResult.OK)
+            thread.Start();
+
+            while (frmLogin.flag == 0)
             {
-                frmMain.MaNH = "1";
-                //Gan gia tri dang nhap duoc cho form main o day
-                //frmMain.MaNH = frmLogin.MaNH;
-                //frmMain.NhanVien = frmLogin.NhanVien;
-                Application.Run(frmMain);                
+                if (frmLogin.ShowDialog() == DialogResult.OK)
+                {
+
+                    frmMain.NhanVien = frmLogin.NhanVien;
+
+                }
+                else
+                {
+                    return;
+                }
             }
+            try
+            {
+                Application.Run(frmMain);
+            }
+            catch (Exception)
+            {
+            }
+
         }
     }
 }

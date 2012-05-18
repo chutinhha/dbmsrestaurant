@@ -20,6 +20,13 @@ namespace DAO
             DataTable tb = new DataTable();
             return provider.ExecSelectCommand(cm);
         }
+        public static DataTable DocNhanVienTheoUsername(string username)
+        {
+            Provider provider = new Provider();
+            string str_sql = "select * from NhanVien where Username = '" + username + "'";
+            SqlCommand cm = provider.CreateCommandStringSql(str_sql);
+            return provider.ExecSelectCommand(cm);
+        }
 
         public static DataTable LayLoaiNhanVien()
         {

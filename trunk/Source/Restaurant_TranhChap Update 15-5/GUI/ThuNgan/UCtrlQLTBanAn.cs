@@ -101,7 +101,7 @@ namespace GUI.ThuNgan
             TextEditTongTien.Text = String.Format("{0:n}", TongTienMonAn + double.Parse(textEditTT2.Text) - double.Parse(textEditTT3.Text));
 
         }
-        private void load_ListBoxBanAn()
+        public void load_ListBoxBanAn()
         {
             lsBanAn = BanAn_BUS.selectBanAnTheoTrangThai(1, 1);
             listBoxBanAn.Items.Clear();

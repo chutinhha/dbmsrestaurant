@@ -53,6 +53,7 @@
     <Compile Include="NhanVien_DAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider.cs" />
+    <Compile Include="QLNguoiDung_DAO.cs" />
     <Compile Include="VChiTietDatHang_DAO.cs" />
     <Compile Include="VChiTietNCC_DAO.cs">
       <SubType>Code</SubType>
