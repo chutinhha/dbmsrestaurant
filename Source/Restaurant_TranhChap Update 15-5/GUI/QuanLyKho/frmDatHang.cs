@@ -58,15 +58,15 @@ namespace GUI.QuanLyKho
                 get { return ttdh; }
                 set { ttdh = value; }
             }
-            public DataTable lsNguyenLieu
+            public DataTable DtNguyenLieu
             {
                 get { return dtNguyenLieu_Source; }
                 set { dtNguyenLieu_Source = value; }
             }
-            public DataTable lsDSDatHang
+            public DataTable DtChiTietDatHang
             {
-                get { return dtChiTietDatHang_Source; }
-                set { dtChiTietDatHang_Source = value; }
+                get { return dtChiTietDatHang; }
+                set { dtChiTietDatHang = value; }
             }
 
         #endregion
@@ -81,15 +81,16 @@ namespace GUI.QuanLyKho
                 dtNguyenLieu_Source = new DataTable();
                 dtChiTietDatHang_Source = new DataTable();
                 dtChiTietDatHang_Source.Columns.Add("STT", System.Type.GetType("System.Int16"));
+                dtChiTietDatHang_Source.Columns.Add("MaHoaDon", System.Type.GetType("System.Int16"));
                 dtChiTietDatHang_Source.Columns.Add("MaNL", System.Type.GetType("System.Int16"));
-                dtChiTietDatHang_Source.Columns.Add("TenNL", System.Type.GetType("System.String"));
                 dtChiTietDatHang_Source.Columns.Add("SoLuong", System.Type.GetType("System.Int16"));
                 dtChiTietDatHang_Source.Columns.Add("ThanhTien", System.Type.GetType("System.Double"));
+                dtChiTietDatHang_Source.Columns.Add("TenNL", System.Type.GetType("System.String"));
                 dtChiTietDatHang_Source.Columns.Add("DonVi", System.Type.GetType("System.String"));
 
                 dtChiTietDatHang = new DataTable();
-                dtChiTietDatHang.Columns.Add("STT", System.Type.GetType("System.Int16"));
-                dtChiTietDatHang.Columns.Add("TenNL", System.Type.GetType("System.String"));
+                dtChiTietDatHang.Columns.Add("MaHoaDon", System.Type.GetType("System.Int16"));
+                dtChiTietDatHang.Columns.Add("MaNL", System.Type.GetType("System.Int32"));
                 dtChiTietDatHang.Columns.Add("SoLuong", System.Type.GetType("System.Int16"));
                 dtChiTietDatHang.Columns.Add("ThanhTien", System.Type.GetType("System.Double"));
                 gridDSDatHang.DataSource = dtChiTietDatHang;
@@ -172,11 +173,6 @@ namespace GUI.QuanLyKho
             {
                 DongY();
             }
-            private void btnHuy_Click(object sender, EventArgs e)
-            {
-                //this.Close();
-            }
-
             private void lvNguyenLieu_DoubleClick(object sender, EventArgs e)
             {
                 ThemNguyenLieu();
@@ -189,9 +185,18 @@ namespace GUI.QuanLyKho
         #endregion
 
         #region " Cac ham xu ly "
-            public void LoadNguyenLieu()
+            public void LoadDuLieu(int flag)
             {
-                dtNguyenLieu_Source= busNguyenLieu.SelectNguyenLieu_In_NCC(ttdh.MaNCC,ttdh.MaNH);
+                if (flag == 1)
+                    dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(ttdh.MaNCC, ttdh.MaNH);
+                else
+                {
+                    DataSet dtset = busNguyenLieu.SelectNguyenLieu_DatHang(ttdh.MaHoaDon,ttdh.MaNCC,ttdh.MaNH);
+                    dtNguyenLieu_Source = dtset.Tables[0];
+                    dtChiTietDatHang_Source = dtset.Tables[1];
+                    dtChiTietDatHang_Source.Columns.Add("STT", System.Type.GetType("System.Int16"));
+                    Load_gridDSDatHang();
+                }
                 Load_lvNguyenLieu();
             }
             public void Load_lvNguyenLieu()
@@ -212,13 +217,15 @@ namespace GUI.QuanLyKho
                 for (int i = 0; i < dtChiTietDatHang_Source.Rows.Count; i++)
                 {
                     DataRow row = dtChiTietDatHang.NewRow();
-                    row["STT"] = dtChiTietDatHang.Rows.Count + 1;
-                    row["TenNL"] = dtChiTietDatHang_Source.Rows[i]["TenNL"];
+                    row["MaHoaDon"] = ttdh.MaHoaDon;
+                    row["MaNL"] = dtChiTietDatHang_Source.Rows[i]["MaNL"];
                     row["SoLuong"] = dtChiTietDatHang_Source.Rows[i]["SoLuong"];
                     row["ThanhTien"] = dtChiTietDatHang_Source.Rows[i]["ThanhTien"];
                     dtChiTietDatHang.Rows.Add(row);
+
+                    dtChiTietDatHang_Source.Rows[i]["STT"] = (i+1);
                 }
-                gridDSDatHang.DataSource = dtChiTietDatHang;
+                gridDSDatHang.DataSource = dtChiTietDatHang_Source;
             }
             public void LoadThongTinDatHang()
             {
@@ -296,7 +303,7 @@ namespace GUI.QuanLyKho
                     dtChiTietDatHang.Rows[sttDSDatHang-1]["ThanhTien"] = ((double)dtChiTietDatHang_Source.Rows[sttDSDatHang-1]["ThanhTien"] / soluong_temp) * int.Parse(txtSoLuong.Text);
 
                     dtChiTietDatHang_Source.Rows[sttDSDatHang-1]["SoLuong"] = int.Parse(txtSoLuong.Text);
-                    dtChiTietDatHang_Source.Rows[sttDSDatHang-1]["ThanhTien"] = (double)dtNguyenLieu_Source.Rows[index_NL-1]["Gia"] * int.Parse(txtSoLuong.Text);
+                    dtChiTietDatHang_Source.Rows[sttDSDatHang-1]["ThanhTien"] = (double)dtNguyenLieu_Source.Rows[sttDSDatHang-1]["Gia"] * int.Parse(txtSoLuong.Text);
                 }
             }
             public void DongY()

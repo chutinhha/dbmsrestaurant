@@ -23,8 +23,8 @@ namespace GUI.QuanLyKho
             DataTable dtChiTietDH;
             List<VDatHang_DTO> lsDatHang;
             List<VChiTietDatHang_DTO> lsChiTietDH;
-            int index_DatHang;
-
+            int sttDH;
+            int indexDH;
             String maNH;
 
             public String MaNH
@@ -74,13 +74,13 @@ namespace GUI.QuanLyKho
             }
             private void gvDatHang_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
             {
-                if (gvDatHang.GetSelectedRows().Length > 0)
-                {
-                    index_DatHang = gvDatHang.GetSelectedRows()[0];
-                    LoadChiTietDH(lsDatHang[index_DatHang].MaHoaDon);
-                }
-                else
-                    index_DatHang = -1;
+               try 
+	            {	        
+		            indexDH = gvDatHang.GetSelectedRows()[0];
+                    sttDH = int.Parse(gvDatHang.GetDataRow(indexDH)["STT"].ToString());
+                    LoadChiTietDH(lsDatHang[sttDH-1].MaHoaDon);
+	            }
+	            catch (Exception){ sttDH =-1;}
             }
             private void btnDatHang_Click(object sender, EventArgs e)
             {
@@ -156,65 +156,68 @@ namespace GUI.QuanLyKho
                     frmDatHang.ThongTinDH.TenNCC = frmChonNCC.TenNCC;
                     frmDatHang.TenNCC = frmChonNCC.TenNCC;
 
-                    frmDatHang.LoadNguyenLieu();
+                    frmDatHang.LoadDuLieu(1);
 
                     if (frmDatHang.ShowDialog() == DialogResult.OK)     //Mo form chon nguyen lieu va thong tin dat hang
                     {
-                       // int MaHD = busDatHang.InsertDatHang(frmDatHang.ThongTinDH);
-                        //for(int i = 0;i<frmDatHang.lsDSDatHang.Count;i++)
-                        //{
-                        //    frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-
-                        //    if (i < frmDatHang.lsDSDatHang.Count - 1)
-                        //        busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
-                        //    else
-                        //       busChiTietDatHang.InsertChiTietDatHang(frmDatHang.lsDSDatHang[i]);
-                        //}
-                        busNhaCungCap = new VNhaCungCap_BUS();
-                        busDatHang = new VDatHang_BUS();
-                        busChiTietDatHang = new VChiTietDatHang_BUS();
-                        busNguyenLieu = new VNguyenLieu_BUS();
-
-                        LoadDSDatHang();
-                        break;
+                        try
+                        {
+                            int MaHD = busDatHang.InsertDatHang(frmDatHang.ThongTinDH,frmDatHang.DtChiTietDatHang);
+                            if (MaHD == -1)
+                            {
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Đặt hàng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                LoadDSDatHang();
+                                if (dtDatHang.Rows.Count > 0)
+                                    gvDatHang.SelectRow(0);
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Đã thêm đơn đặt hàng mới", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            DevExpress.XtraEditors.XtraMessageBox.Show("Đặt hàng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
+                    break;
                 }
             }
             public void CapNhatHDDatHang()
             {
-                if (index_DatHang != -1)
+                if (sttDH != -1)
                 {
-                    if (lsDatHang[index_DatHang].TinhTrang == "Đã Giao" || lsDatHang[index_DatHang].TinhTrang == "Hủy")
+                    if (lsDatHang[sttDH - 1].TinhTrang == "Đã Giao" || lsDatHang[sttDH - 1].TinhTrang == "Hủy")
                     {
                         DevExpress.XtraEditors.XtraMessageBox.Show("Không thể cập nhật đơn đặt hàng này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        frmDatHang _frmDatHang = new frmDatHang();
-                        _frmDatHang.ThongTinDH = lsDatHang[index_DatHang];
-                        _frmDatHang.LoadThongTinDatHang();
+                        frmDatHang frmDatHang = new frmDatHang();
+                        frmDatHang.ThongTinDH = lsDatHang[sttDH - 1];
+                        frmDatHang.LoadThongTinDatHang();
 
+                        frmDatHang.LoadDuLieu(2);
 
-                        //_frmDatHang.lsNguyenLieu = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon, lsDatHang[index_DatHang].MaNCC, maNH);
-                      //  _frmDatHang.lsDSDatHang = busChiTietDatHang.SelectChiTietDatHang(lsDatHang[index_DatHang].MaHoaDon);
-                       
-                       
-                        _frmDatHang.Load_gridDSDatHang();
-                        _frmDatHang.Load_lvNguyenLieu();
-
-                        if (_frmDatHang.ShowDialog() == DialogResult.OK)
+                        if (frmDatHang.ShowDialog() == DialogResult.OK)
                         {
-                            if (busDatHang.UpdateDatHang(_frmDatHang.ThongTinDH) > 0)
+                            
+                            try
                             {
-                                int MaHD = lsDatHang[index_DatHang].MaHoaDon;
-                                busChiTietDatHang.DeleteChiTietDatHang(MaHD);
-                                //for (int i = 0; i < _frmDatHang.lsDSDatHang.Count; i++)
-                                //{
-                                //    //_frmDatHang.lsDSDatHang[i].MaHoaDon = MaHD;
-                                //    //BUS.ChiTietDatHang_BUS.InsertChiTietDatHang(_frmDatHang.lsDSDatHang[i]);
-                                //}
-                                LoadDSDatHang();
-                                LoadChiTietDH(MaHD);
+                                int result = busDatHang.UpdateDatHang(frmDatHang.ThongTinDH, frmDatHang.DtChiTietDatHang);
+                                if (result == -1)
+                                {
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật thông tin đặt hàng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    LoadDSDatHang();
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Đã cập nhật đơn đặt hàng", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật thông tin đặt hàng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
@@ -222,29 +225,37 @@ namespace GUI.QuanLyKho
             }
             public void XoaDatHang()
             {
-                if (index_DatHang != -1)
+                if (sttDH != -1)
                 {
-                    if (lsDatHang[index_DatHang].TinhTrang == "Chưa Giao")
+                    if (lsDatHang[sttDH - 1].TinhTrang == "Chưa Giao")
                     {
                         DevExpress.XtraEditors.XtraMessageBox.Show("Đơn đặt hàng chưa giao không thể xóa \n Bạn phải hủy đơn đặt hàng này mới được xóa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        int MaHD = lsDatHang[index_DatHang].MaHoaDon;
-                        busDatHang.DeleteDatHang(MaHD);
-                        LoadDSDatHang();
-                        if (dtDatHang.Rows.Count == 0)
-                            dtChiTietDH.Clear();
+                        int MaHD = lsDatHang[sttDH - 1].MaHoaDon;
+                        if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là xóa đơn đặt hàng này không!", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            if (busDatHang.DeleteDatHang(MaHD) == 1)
+                            {
+                                LoadDSDatHang();
+                                if (dtDatHang.Rows.Count == 0)
+                                    dtChiTietDH.Clear();
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Đã xóa đơn đặt hàng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Xóa đặt hàng không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                }                   
+                }
             }
             public void HuyDatHang()
             {
-                if (index_DatHang != -1)
+                if (sttDH != -1)
                 {
-                    if (lsDatHang[index_DatHang].TinhTrang != "Hủy")
+                    if (lsDatHang[sttDH-1].TinhTrang != "Hủy")
                     {
-                        if (lsDatHang[index_DatHang].TinhTrang == "Đã Giao")
+                        if (lsDatHang[sttDH-1].TinhTrang == "Đã Giao")
                         {
                             DevExpress.XtraEditors.XtraMessageBox.Show("Không thể Hủy đơn đặt hàng này!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -252,9 +263,13 @@ namespace GUI.QuanLyKho
                         {
                             if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là hủy đơn đặt hàng này không!", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                lsDatHang[index_DatHang].TinhTrang = "Hủy";
-                                busDatHang.UpdateDatHang(lsDatHang[index_DatHang]);
-                                LoadDSDatHang();
+                                if (busDatHang.UpdateTinhTrangDatHang(lsDatHang[sttDH - 1].MaHoaDon, "Hủy") == 1)
+                                {
+                                    LoadDSDatHang();
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Đã hủy đơn đặt hàng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                    DevExpress.XtraEditors.XtraMessageBox.Show("Hủy đặt hàng không thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
                             }
                         }
                     }

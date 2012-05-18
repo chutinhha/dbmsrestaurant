@@ -51,9 +51,13 @@ namespace BUS
         {
             return daoNguyenLieu.SelectNguyenLieu_NotIn_NCC( MaNCC, maNH);
         }
-        public DataTable SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon, int MaNCC, String MaNH)
+        public DataSet SelectNguyenLieu_DatHang(int MaHoaDon,int MaNCC, String MaNH)
         {
-            return daoNguyenLieu.SelectNguyenLieu_NotIn_ChiTietDatHang(MaHoaDon, MaNCC, MaNH);
+            return daoNguyenLieu.SelectNguyenLieu_DatHang(MaHoaDon,MaNCC, MaNH);
+        }
+        public DataTable SelectNguyenLieu_NotIn_DatHang(int MaHoaDon, int MaNCC, String MaNH)
+        {
+            return daoNguyenLieu.SelectNguyenLieu_NotIn_DatHang(MaHoaDon, MaNCC, MaNH);
         }
 
     }
