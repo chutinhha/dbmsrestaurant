@@ -115,9 +115,24 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return ExecSelectCommand();
         }
-        public DataTable SelectNguyenLieu_NotIn_ChiTietDatHang(int MaHoaDon, int MaNCC, String MaNH)
+
+        public DataSet SelectNguyenLieu_DatHang(int MaHoaDon,int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_NotIn_ChiTietDatHang";
+            String store = "SelectNguyenLieu_DatHang";
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
+            cm.Parameters.Add("@MaNCC", SqlDbType.Int);
+            cm.Parameters.Add("@MaNH", SqlDbType.NChar);
+
+            cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
+            cm.Parameters["@MaNCC"].Value = MaNCC;
+            cm.Parameters["@MaNH"].Value = MaNH;
+
+            return FillDataSet();
+        }
+        public DataTable SelectNguyenLieu_NotIn_DatHang(int MaHoaDon, int MaNCC, String MaNH)
+        {
+            String store = "SelectNguyenLieu_NotIn_DatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
