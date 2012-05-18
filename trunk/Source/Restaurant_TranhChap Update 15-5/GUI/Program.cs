@@ -20,26 +20,21 @@ namespace GUI
             Thread thread = new Thread(frmMain.KhoiTaoUserControl);
             thread.Start();
 
-            while (frmLogin.flag == 0)
+            if (frmLogin.ShowDialog() == DialogResult.OK)
             {
-                if (frmLogin.ShowDialog() == DialogResult.OK)
-                {
 
-                    frmMain.NhanVien = frmLogin.NhanVien;
-
-                }
-                else
+                frmMain.NhanVien = frmLogin.NhanVien;
+                try
                 {
-                    return;
+                    Application.Run(frmMain);
                 }
+                catch (Exception) {}
             }
-            try
+            else
             {
-                Application.Run(frmMain);
+                return;
             }
-            catch (Exception)
-            {
-            }
+            
 
         }
     }
