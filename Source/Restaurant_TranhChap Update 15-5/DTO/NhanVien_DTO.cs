@@ -48,5 +48,11 @@ namespace DTO
             get { return sdt; }
             set { sdt = value; }
         }
+        string username;
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
     }
 }

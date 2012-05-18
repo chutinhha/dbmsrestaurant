@@ -38,5 +38,9 @@ namespace BUS
         {
             return NhanVien_DAO.XoaNhanVien(MaNV);
         }
+        public static DataTable DocNhanVienTheoUsername(string username)
+        {
+            return NhanVien_DAO.DocNhanVienTheoUsername(username);
+        }
     }
 }
