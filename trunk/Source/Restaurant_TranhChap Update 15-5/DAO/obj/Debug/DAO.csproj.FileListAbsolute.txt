@@ -1,0 +1,7 @@
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DAO.dll
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DAO.pdb
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DTO.dll
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\bin\Debug\DTO.pdb
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\obj\Debug\ResolveAssemblyReference.cache
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\obj\Debug\DAO.dll
+D:\00Restaurant\Source\Restaurant_TranhChap Update 15-5\DAO\obj\Debug\DAO.pdb
