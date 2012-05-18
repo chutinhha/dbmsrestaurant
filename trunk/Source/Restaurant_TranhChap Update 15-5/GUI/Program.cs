@@ -24,11 +24,11 @@ namespace GUI
             {
 
                 frmMain.NhanVien = frmLogin.NhanVien;
-                try
-                {
+                //try
+                //{
                     Application.Run(frmMain);
-                }
-                catch (Exception) {}
+                //}
+                //catch (Exception) {}
             }
             else
             {
