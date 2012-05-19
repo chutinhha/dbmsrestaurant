@@ -208,7 +208,7 @@ begin
 end
 	
 GO
-create proc DeleteDatHang 
+alter proc DeleteDatHang 
 	@Flag int out,
 	@MaHoaDon int
 as
