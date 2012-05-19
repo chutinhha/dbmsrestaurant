@@ -38,6 +38,7 @@ namespace GUI
         TongQuanLy.UCtrlTongHopDoanhThu UCtrl_TongQL_TongHopDoanhThu;
         //-----------------------------------------------------------
         String strGiaoDien = "";
+        int mode =0; //default
         //-------------------------------------
         NhanVien_DTO nhanVien;
         #endregion
@@ -334,6 +335,53 @@ namespace GUI
             UCtrl_QLKho_NguyenLieu.LoadNguyenLieu();
         }
         #endregion
+
+        private void barDefault_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (barDefault.Checked == true)
+            {
+                mode = 0;
+                changeMode();
+                this.Text = "Quản Lý Nhà Hàng - Default";
+                MessageBox.Show("Chế độ bình thường");
+                barError.Checked = false;
+                barFix.Checked = false;
+            }
+        }
+
+        private void barError_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (barError.Checked == true)
+            {
+                mode = 1;
+                changeMode();
+                this.Text = "Quản Lý Nhà Hàng - Error";
+                MessageBox.Show("Chế độ giả lập tranh chấp với waitfor delay");
+                barDefault.Checked = false;
+                barFix.Checked = false;
+            }
+        }
+
+        private void barFix_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (barFix.Checked == true)
+            {
+                mode = 2;
+                changeMode();
+                this.Text = "Quản Lý Nhà Hàng - Fix";
+                MessageBox.Show("Chế độ fix lỗi xung đột ");
+                barError.Checked = false;
+                barDefault.Checked = false;
+            }
+        }
+        private void changeMode()
+        {
+            UCtrl_QLKho_DatHang.Mode = mode;
+            UCtrl_QLKho_NCC.Mode = mode;
+            UCtrl_QLKho_NguyenLieu.Mode = mode;
+            UCtrl_QLKho_NhapKho.Mode = mode;
+            
+        }
 
 
     }

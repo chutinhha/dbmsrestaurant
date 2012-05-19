@@ -13,6 +13,12 @@ namespace GUI.QuanLyKho
     public partial class UCtrlTTDatHang : DevExpress.XtraEditors.XtraUserControl
     {
         #region " Thuoc tinh && Properties "
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
             VBus MyBus;
             VNhaCungCap_BUS busNhaCungCap;
             VDatHang_BUS busDatHang;

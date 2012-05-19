@@ -13,6 +13,12 @@ namespace GUI.QuanLyKho
     public partial class frmNhaCungCap_Them_CapNhat : DevExpress.XtraEditors.XtraForm
     {
         #region " Thuoc Tinh & properties "
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
             private int flag;   //flag = 1 :Them , flag =2 : Cap nhat
             private String maNH;
             private VNhaCungCap_DTO dtoNCC;

@@ -33,8 +33,6 @@ namespace GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.rbControl_Main = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.MybarAndDockingController = new DevExpress.XtraBars.BarAndDockingController(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_QLKho_QLNCC = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_DatBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_ThuNgan_QLBanAn = new DevExpress.XtraBars.BarButtonItem();
@@ -62,9 +60,13 @@ namespace GUI
             this.barBtn_TiepTan_DSDatBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_XepBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
-            this.rbPage_TiepTan = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.barLeftMenu = new DevExpress.XtraBars.BarSubItem();
+            this.barDefault = new DevExpress.XtraBars.BarCheckItem();
+            this.barError = new DevExpress.XtraBars.BarCheckItem();
+            this.barFix = new DevExpress.XtraBars.BarCheckItem();
+            this.rbPage_TiepTan_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPage_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_ThuNgan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPage_QLKho = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -79,12 +81,24 @@ namespace GUI
             this.rbPageGroup_TuyChon1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TuyChon2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TuyChon3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.repositoryItemRadioGroup1 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            this.repositoryItemRadioGroup2 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemRadioGroup3 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            this.repositoryItemRadioGroup4 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            this.repositoryItemRadioGroup5 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.panelCtrl_Main = new DevExpress.XtraEditors.PanelControl();
+            this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCtrl_Main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // rbControl_Main
@@ -100,8 +114,6 @@ namespace GUI
             this.rbControl_Main.ImeMode = System.Windows.Forms.ImeMode.On;
             this.rbControl_Main.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.rbControl_Main.ExpandCollapseItem,
-            this.barButtonItem1,
-            this.barButtonItem2,
             this.barBtn_QLKho_QLNCC,
             this.barBtn_TiepTan_DatBan,
             this.barBtn_ThuNgan_QLBanAn,
@@ -128,18 +140,30 @@ namespace GUI
             this.barBtn_QLNhaHang_DSBanAn,
             this.barBtn_TiepTan_DSDatBan,
             this.barBtn_TiepTan_XepBan,
-            this.barBtnThongKeMonAn});
+            this.barBtnThongKeMonAn,
+            this.barLeftMenu,
+            this.barDefault,
+            this.barError,
+            this.barFix});
             this.rbControl_Main.Location = new System.Drawing.Point(0, 0);
-            this.rbControl_Main.MaxItemId = 44;
+            this.rbControl_Main.MaxItemId = 59;
             this.rbControl_Main.Name = "rbControl_Main";
+            this.rbControl_Main.PageHeaderItemLinks.Add(this.barLeftMenu);
             this.rbControl_Main.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.rbPage_TiepTan,
+            this.rbPage_TiepTan_ThuNgan,
             this.rbPage_ThuNgan,
             this.rbPage_QLKho,
             this.rbPage_QLNhaHang,
             this.rbPage_TongQuanLy,
             this.rbPage_QuanTri,
             this.rbPage_TuyChon});
+            this.rbControl_Main.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemRadioGroup1,
+            this.repositoryItemRadioGroup2,
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemRadioGroup3,
+            this.repositoryItemRadioGroup4,
+            this.repositoryItemRadioGroup5});
             this.rbControl_Main.Size = new System.Drawing.Size(898, 143);
             // 
             // MybarAndDockingController
@@ -147,18 +171,6 @@ namespace GUI
             this.MybarAndDockingController.LookAndFeel.SkinName = "The Asphalt World";
             this.MybarAndDockingController.LookAndFeel.UseDefaultLookAndFeel = false;
             this.MybarAndDockingController.PropertiesBar.AllowLinkLighting = false;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 1;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 2;
-            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barBtn_QLKho_QLNCC
             // 
@@ -400,25 +412,58 @@ namespace GUI
             this.barBtnThongKeMonAn.LargeWidth = 120;
             this.barBtnThongKeMonAn.Name = "barBtnThongKeMonAn";
             // 
+            // barLeftMenu
+            // 
+            this.barLeftMenu.Caption = "Chế độ test";
+            this.barLeftMenu.Id = 55;
+            this.barLeftMenu.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M));
+            this.barLeftMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barDefault),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barError),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barFix)});
+            this.barLeftMenu.Name = "barLeftMenu";
+            // 
+            // barDefault
+            // 
+            this.barDefault.Caption = "Chế độ bình thường";
+            this.barDefault.Checked = true;
+            this.barDefault.Id = 56;
+            this.barDefault.Name = "barDefault";
+            this.barDefault.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barDefault_CheckedChanged);
+            // 
+            // barError
+            // 
+            this.barError.Caption = "Giả lập tranh chấp - wailfor delay";
+            this.barError.Id = 57;
+            this.barError.Name = "barError";
+            this.barError.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barError_CheckedChanged);
+            // 
+            // barFix
+            // 
+            this.barFix.Caption = "Xử lý tranh chấp";
+            this.barFix.Id = 58;
+            this.barFix.Name = "barFix";
+            this.barFix.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barFix_CheckedChanged);
+            // 
             // rbPage_TiepTan_ThuNgan
             // 
-            this.rbPage_TiepTan.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rbPage_TiepTan_ThuNgan.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rbPageGroup_TiepTan1,
             this.rbPageGroup_TiepTan2});
-            this.rbPage_TiepTan.Name = "rbPage_TiepTan_ThuNgan";
-            this.rbPage_TiepTan.Text = "Tiếp Tân ";
-            this.rbPage_TiepTan.Visible = false;
+            this.rbPage_TiepTan_ThuNgan.Name = "rbPage_TiepTan_ThuNgan";
+            this.rbPage_TiepTan_ThuNgan.Text = "Tiếp Tân ";
+            this.rbPage_TiepTan_ThuNgan.Visible = false;
+            // 
+            // rbPageGroup_TiepTan1
+            // 
+            this.rbPageGroup_TiepTan1.ItemLinks.Add(this.barBtn_TiepTan_XepBan);
+            this.rbPageGroup_TiepTan1.Name = "rbPageGroup_TiepTan1";
             // 
             // rbPageGroup_TiepTan2
             // 
             this.rbPageGroup_TiepTan2.ItemLinks.Add(this.barBtn_TiepTan_DatBan);
             this.rbPageGroup_TiepTan2.ItemLinks.Add(this.barBtn_TiepTan_DSDatBan);
             this.rbPageGroup_TiepTan2.Name = "rbPageGroup_TiepTan2";
-            // 
-            // rbPageGroup_TiepTan1
-            // 
-            this.rbPageGroup_TiepTan1.ItemLinks.Add(this.barBtn_TiepTan_XepBan);
-            this.rbPageGroup_TiepTan1.Name = "rbPageGroup_TiepTan1";
             // 
             // rbPage_ThuNgan
             // 
@@ -527,10 +572,30 @@ namespace GUI
             this.rbPageGroup_TuyChon3.Name = "rbPageGroup_TuyChon3";
             this.rbPageGroup_TuyChon3.Text = "Giao Diện";
             // 
-            // MyapplicationMenu
+            // repositoryItemRadioGroup1
             // 
-            this.MyapplicationMenu.Name = "MyapplicationMenu";
-            this.MyapplicationMenu.Ribbon = this.rbControl_Main;
+            this.repositoryItemRadioGroup1.Name = "repositoryItemRadioGroup1";
+            // 
+            // repositoryItemRadioGroup2
+            // 
+            this.repositoryItemRadioGroup2.Name = "repositoryItemRadioGroup2";
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // repositoryItemRadioGroup3
+            // 
+            this.repositoryItemRadioGroup3.Name = "repositoryItemRadioGroup3";
+            // 
+            // repositoryItemRadioGroup4
+            // 
+            this.repositoryItemRadioGroup4.Name = "repositoryItemRadioGroup4";
+            // 
+            // repositoryItemRadioGroup5
+            // 
+            this.repositoryItemRadioGroup5.Name = "repositoryItemRadioGroup5";
             // 
             // panelCtrl_Main
             // 
@@ -539,6 +604,11 @@ namespace GUI
             this.panelCtrl_Main.Name = "panelCtrl_Main";
             this.panelCtrl_Main.Size = new System.Drawing.Size(898, 456);
             this.panelCtrl_Main.TabIndex = 2;
+            // 
+            // MyapplicationMenu
+            // 
+            this.MyapplicationMenu.Name = "MyapplicationMenu";
+            this.MyapplicationMenu.Ribbon = this.rbControl_Main;
             // 
             // frmMain
             // 
@@ -553,12 +623,18 @@ namespace GUI
             this.Name = "frmMain";
             this.Ribbon = this.rbControl_Main;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản Lý Nhà Hàng";
+            this.Text = "Quản Lý Nhà Hàng - Default";
             this.Load += new System.EventHandler(this.frm_Main_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCtrl_Main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -568,12 +644,9 @@ namespace GUI
         private DevExpress.XtraBars.Ribbon.RibbonControl rbControl_Main;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TiepTan;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TiepTan1;
-        private DevExpress.XtraBars.Ribbon.ApplicationMenu MyapplicationMenu;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_QLNhaHang;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_QLKho;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_QLKho1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barBtn_QLKho_QLNCC;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TuyChon;
         private DevExpress.XtraBars.BarButtonItem barBtn_TiepTan_DatBan;
@@ -594,7 +667,6 @@ namespace GUI
         private DevExpress.XtraBars.RibbonGalleryBarItem rbGalleryBarItem_TuyChon_GiaoDien;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TuyChon1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TuyChon2;
-        private DevExpress.XtraBars.BarAndDockingController MybarAndDockingController;
         private DevExpress.XtraBars.BarButtonItem barBtn_TuyChon_DoiMatKhau;
         private DevExpress.XtraBars.BarButtonItem barBtn_TuyChon_Thoat;
         private DevExpress.XtraBars.BarButtonItem barBtn_QuanTri_QuantrCoSoDuLieu;
@@ -615,6 +687,19 @@ namespace GUI
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TiepTan2;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_ThuNgan;
         private DevExpress.XtraBars.BarButtonItem barBtnThongKeMonAn;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup4;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TiepTan_ThuNgan;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup5;
+        private DevExpress.XtraBars.BarAndDockingController MybarAndDockingController;
+        private DevExpress.XtraBars.BarSubItem barLeftMenu;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu MyapplicationMenu;
+        private DevExpress.XtraBars.BarCheckItem barDefault;
+        private DevExpress.XtraBars.BarCheckItem barError;
+        private DevExpress.XtraBars.BarCheckItem barFix;
     }
 }
 
