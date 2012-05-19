@@ -122,7 +122,6 @@ namespace DAO
                 flag = 1;
             }
 
-            List<DataTable> lsData = new List<DataTable>();
             adapter = new SqlDataAdapter(cm);
             
             DataSet dtset = new DataSet();
