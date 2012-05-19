@@ -247,7 +247,11 @@ namespace GUI.QuanLyKho
             }
             public void CapNhatGia()
             {
+                DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm();
+                frmWailt.Show();
+                frmWailt.Caption = " Đang cập nhật dữ liệu ! ";
                 int result = busChiTietNCC.UpdateChiTietNCC((int)dtNL_Source.Rows[sttNL - 1]["MaNL"], lsNCC[sttNCC- 1].MaNCC, Double.Parse(txtGia.Text));
+                frmWailt.Close();
                 if (result != 0)
                 {
                     LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
@@ -262,7 +266,11 @@ namespace GUI.QuanLyKho
                 {
                     //try
                     //{
+                        DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm();
+                        frmWailt.Show();
+                        frmWailt.Caption = " Đang cập nhật dữ liệu ! ";
                         int result = busNhaCungCap.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
+                        frmWailt.Close();
                         if (result == 1)
                         {
                             LoadNhaCungCap();
