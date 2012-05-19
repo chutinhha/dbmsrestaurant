@@ -124,7 +124,7 @@ begin
                and MaNH = @MaNH
     end
     
-    if (@@error<>0)
+    if (@@ERROR<>0)
     begin
         rollback tran
         return
@@ -199,11 +199,48 @@ begin
     commit tran
 end
 go
+alter proc SelectNguyenLieu_DatHang @MaHoaDon int,@MaNCC int,@MaNH nchar(10)
+as
+begin
+    begin tran
+    set transaction isolation level read uncommitted   
+    exec SelectNguyenLieu_NotIn_DatHang @MaHoaDon,@MaNCC,@MaNH
+    --waitfor delay '00:00:05'
+    exec SelectNguyenLieu_In_DatHang @MaHoaDon,@MaNH
+    
+    commit tran
+end
+go
+--- lay danh sach nguyen lieu cua mot nha cung cap
+------------------------------------------------------------------------------------- 
+alter proc SelectNguyenLieu_In_DatHang @MaHoaDon int,@MaNH nchar(10)
+as
+begin
+    begin tran
+    set transaction isolation level read uncommitted
+    select nl.*
+          ,ct.SoLuong
+          ,ct.ThanhTien
+    from   DatHang dh
+          ,ChiTietDatHang ct
+          ,NguyenLieu nl
+    where  ct.MaHoaDon = @MaHoaDon
+           and nl.MaNH = @MaNH
+           and ct.MaNL = nl.MaNL
+           and ct.MaHoaDon = dh.MaHoaDon
+    order by
+           nl.TenNL
+    --SET  @Count = @@ROWCOUNT
+    commit tran
+end
+go
 ---lay danh sach nguyen lieu cua nha cung cap
 ---khong co trong don dat hang voi nha cung cap do
 ------------------------------------------------------------------------------------- 
-create proc SelectNguyenLieu_NotIn_ChiTietDatHang @MaHoaDon int,@MaNCC int,@MaNH 
-nchar(10)
+alter proc SelectNguyenLieu_NotIn_DatHang 
+	@MaHoaDon int,
+	@MaNCC int,
+	@MaNH nchar(10)
 as
 begin
     begin tran

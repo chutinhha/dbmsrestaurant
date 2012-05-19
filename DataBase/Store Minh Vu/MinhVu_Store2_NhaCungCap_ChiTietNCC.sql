@@ -2,7 +2,7 @@
 
 use [QLNhaHang]
 go
-create type ChiTietNCC_TableType as table
+create type TableType_ChiTietNCC as table
 (MaNL int ,MaNCC int ,Gia float);
 go
 --------------- table ChiTietNCC ---------------------------------------------------------
@@ -128,7 +128,7 @@ alter proc InsertNhaCungCap
 	@sdt nvarchar(50),
 	@DiaChi nvarchar(50),
 	@DiemUuTien int,
-	@ChiTiet ChiTietNCC_TableType readonly
+	@ChiTiet TableType_ChiTietNCC readonly
 as
 begin
     set @MaNCC = -1
@@ -153,7 +153,7 @@ begin
 			return
 		end
         
-        if (@@error<>0)
+        if (@@ERROR<>0)
         begin
             set @MaNCC = -1
             rollback
@@ -167,7 +167,7 @@ begin
               ,Gia
         from   @ChiTiet
         
-        if (@@error<>0)
+        if (@@ERROR<>0)
         begin
             set @MaNCC = -1
             rollback
@@ -184,7 +184,7 @@ alter  proc UpdateNhaCungCap
 	@sdt nvarchar(50),
 	@DiaChi nvarchar(50),
 	@DiemUuTien int,
-	@ChiTiet ChiTietNCC_TableType readonly
+	@ChiTiet TableType_ChiTietNCC readonly
 as
 begin
     set @Flag = 0
@@ -201,7 +201,7 @@ begin
               ,DiemUuTien = @DiemUuTien
         where  MaNCC = @MaNCC
          waitfor delay '00:00:04'
-        if(@@error<>0)
+        if(@@ERROR<>0)
         begin
             set @Flag = 0
             rollback
@@ -217,7 +217,7 @@ begin
                        where  ctn.MaNCC = @MaNCC
                               and ctn.MaNL not in (select MaNL
                                                    from   @ChiTiet))
-        if(@@error<>0)
+        if(@@ERROR<>0)
         begin
             set @Flag = 0
             rollback
@@ -233,7 +233,7 @@ begin
                             from   ChiTietNCC ctn
                             where  ctn.MaNCC = @MaNCC)
                             
-        if(@@error<>0)
+        if(@@ERROR<>0)
         begin
             set @Flag = 0
             rollback
@@ -253,7 +253,7 @@ begin
 	begin tran
 	set transaction isolation level read uncommitted
 		exec DeleteChiTietNCC_fromNCC @MaNCC
-		if(@@error<>0)
+		if(@@ERROR<>0)
         begin
             rollback
             return
@@ -262,7 +262,7 @@ begin
 		delete NhaCungCap
 		where  MaNCC = @MaNCC
 		
-		if(@@error<>0)
+		if(@@ERROR<>0)
         begin
             rollback
             return
