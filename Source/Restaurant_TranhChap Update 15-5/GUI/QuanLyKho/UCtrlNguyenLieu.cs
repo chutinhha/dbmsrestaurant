@@ -132,13 +132,9 @@ namespace GUI.QuanLyKho
                     dtNguyenLieu.Rows.Add(row2);
 
                     i++;
-
                 }
             }
-            catch (Exception)
-            {
-                  DevExpress.XtraEditors.XtraMessageBox.Show("Xóa nguyên liệu thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                  
-            }
+            catch (Exception) { }
 
         }
         public void ThemNguyenLieu()

@@ -156,7 +156,7 @@ namespace GUI
                 //--------------------
                 //--------------------
                 UCtrl_TiepTan_DSDatBan.DatBan = new TiepTan.UCtrlDSDatBan.deleDatBan(DatBan);
-
+                UCtrl_QLKho_NhapKho.evenNhapKho = new QuanLyKho.UCtrlNhapKho.deleNhapKho(evenNhapKho);
             }
             private void Add_UserControl(Control Panel, Control UCtrl)
             {
@@ -227,6 +227,7 @@ namespace GUI
         }
         private void barBtn_NhapKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            UCtrl_QLKho_NhapKho.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLKho_NhapKho);
         }
         private void barBtn_QLKho_QLNCC_ItemClick(object sender, ItemClickEventArgs e)
@@ -321,6 +322,16 @@ namespace GUI
         {
             MybarAndDockingController.LookAndFeel.SkinName = e.Item.Tag.ToString();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = e.Item.Tag.ToString();
+        }
+        #endregion
+
+        #region "Even delegate"
+        public void evenNhapKho()
+        {
+            UCtrl_QLKho_DatHang.LoadDSDatHang();
+            UCtrl_QLKho_DatHang.LoadChiTietDH(UCtrl_QLKho_DatHang.LsDatHang[UCtrl_QLKho_DatHang.SttDH - 1].MaHoaDon);
+
+            UCtrl_QLKho_NguyenLieu.LoadNguyenLieu();
         }
         #endregion
 

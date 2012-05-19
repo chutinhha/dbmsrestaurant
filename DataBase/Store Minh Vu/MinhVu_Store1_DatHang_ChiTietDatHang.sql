@@ -48,7 +48,23 @@ begin
 		where MaNH = @MaNH and dh.MaNCC = ncc.MaNCC
 	commit tran
 end
-
+go
+create proc SelectDatHang_TinhTrang  
+	@MaNH nchar(10),
+	@TinhTrang nvarchar(50)
+as
+begin
+	begin tran
+	set transaction isolation level read uncommitted
+		select dh.*
+		      ,ncc.TenNCC
+		from   DatHang dh
+		      ,NhaCungCap ncc
+		where  MaNH = @MaNH
+		       and dh.MaNCC = ncc.MaNCC
+		       and dh.TinhTrang = @TinhTrang
+	commit tran
+end
 GO
 alter proc InsertDatHang  
 	@MaHoaDon int out,
@@ -171,39 +187,80 @@ begin
 				return
 			end               
 			fetch next from @cur into @manl,@soluong,@thanhtien
-		end
-                                      
-        --Them cac nguyen lieu moi cap nhat
-        --insert into ChiTietDatHang
-        --select ct.MaHoaDon
-        --      ,ct.MaNL
-        --      ,ct.SoLuong
-        --      ,ct.ThanhTien
-        --from   @ChiTiet ct
-        --where  ct.MaNL not in (select ctdh.MaNL
-        --                    from   ChiTietDatHang ctdh
-        --                    where  ctdh.MaHoaDon = @MaHoaDon)
-                            
-        --if(@@ERROR<>0)
-        --begin
-        --    set @Flag = 0
-        --    rollback
-        --    return
-        --end                      
+		end                     
     end
     set @Flag = 1
     commit tran
 end
 go
-create proc UpdateTinhTrangDatHang
+alter proc UpdateTinhTrangDatHang
+	@Flag int out,
 	@MaHoaDon int,
 	@TinhTrang nvarchar(50)
 as
 begin
+	set @Flag = 0
 	begin tran
 	set transaction isolation level read uncommitted
-		update DatHang set TinhTrang = @TinhTrang 
+	if(@TinhTrang <> N'Đã Giao')
+	begin
+	    update DatHang set TinhTrang = @TinhTrang 
 		where MaHoaDon = @MaHoaDon
+			
+		if(@@ERROR<>0)
+		begin
+			set @Flag = 0
+			rollback
+			return
+		end         
+	end
+	else
+	begin
+			update DatHang set TinhTrang = @TinhTrang 
+			where MaHoaDon = @MaHoaDon
+			if(@@ERROR<>0)
+			begin
+				set @Flag = 0
+				rollback
+				return
+			end  			
+			--Cap nhat so luong nguyen lieu ton
+			declare @soluongton int,
+					@soluongthem int,
+					@MaNL int
+			declare @cur cursor
+			set @cur =  cursor for 
+			select MaNL
+			from   ChiTietDatHang ctdh
+			where  ctdh.MaHoaDon = @MaHoaDon
+			
+			open @cur 
+			fetch next from @cur into @MaNL
+			while @@FETCH_STATUS = 0
+			begin
+				set @soluongthem = (
+				        select ctdh.SoLuong
+				        from   ChiTietDatHang ctdh
+				        where  ctdh.MaHoaDon = @MaHoaDon
+				               and MaNL = @MaNL)
+				set @soluongton =(select SoLuongTon
+				                  from   NguyenLieu
+				                  where  MaNL = @MaNL)
+				waitfor delay '00:00:06'                  
+				update NguyenLieu
+				set    SoLuongTon = @soluongthem+@soluongton
+				where MaNL = @MaNL
+				
+				if(@@ERROR<>0)
+				begin
+					set @Flag = 0
+					rollback
+					return
+				end  
+				fetch next from @cur into @MaNL
+			end
+		end
+	set @Flag = 1	
 	commit tran 
 end
 	

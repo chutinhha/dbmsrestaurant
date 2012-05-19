@@ -40,9 +40,9 @@
             this.clTongTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clThoiGianDat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.clThoiGianGiao = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.TinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.glTinhTrang = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.gridChiTietHD = new DevExpress.XtraGrid.GridControl();
+            this.gridChiTietDH = new DevExpress.XtraGrid.GridControl();
             this.gvChiTietDH = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.STT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TeNL = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -55,7 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvDatHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridChiTietHD)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridChiTietDH)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvChiTietDH)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,7 +136,7 @@
             this.clTongTien,
             this.clThoiGianDat,
             this.clThoiGianGiao,
-            this.TinhTrang});
+            this.glTinhTrang});
             this.gvDatHang.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gvDatHang.GridControl = this.gridDatHang;
             this.gvDatHang.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -177,13 +177,10 @@
             // clThoiGianDat
             // 
             this.clThoiGianDat.Caption = "Thời Gian Đặt";
-            this.clThoiGianDat.DisplayFormat.FormatString = "dd/MM/yyyy";
-            this.clThoiGianDat.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.clThoiGianDat.FieldName = "ThoiGianDat";
             this.clThoiGianDat.Name = "clThoiGianDat";
             this.clThoiGianDat.Visible = true;
             this.clThoiGianDat.VisibleIndex = 3;
-            this.clThoiGianDat.Width = 85;
             // 
             // clThoiGianGiao
             // 
@@ -196,35 +193,34 @@
             this.clThoiGianGiao.VisibleIndex = 4;
             this.clThoiGianGiao.Width = 85;
             // 
-            // TinhTrang
+            // glTinhTrang
             // 
-            this.TinhTrang.Caption = "Tình Trạng";
-            this.TinhTrang.FieldName = "TinhTrang";
-            this.TinhTrang.Name = "TinhTrang";
-            this.TinhTrang.Visible = true;
-            this.TinhTrang.VisibleIndex = 5;
-            this.TinhTrang.Width = 96;
+            this.glTinhTrang.Caption = "Tình Trạng";
+            this.glTinhTrang.FieldName = "TinhTrang";
+            this.glTinhTrang.Name = "glTinhTrang";
+            this.glTinhTrang.Visible = true;
+            this.glTinhTrang.VisibleIndex = 5;
             // 
             // groupControl1
             // 
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupControl1.Controls.Add(this.gridChiTietHD);
+            this.groupControl1.Controls.Add(this.gridChiTietDH);
             this.groupControl1.Location = new System.Drawing.Point(3, 12);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(325, 422);
+            this.groupControl1.Size = new System.Drawing.Size(325, 424);
             this.groupControl1.TabIndex = 24;
             this.groupControl1.Text = "Chi Tiết Đặt Hàng";
             // 
-            // gridChiTietHD
+            // gridChiTietDH
             // 
-            this.gridChiTietHD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridChiTietHD.Location = new System.Drawing.Point(2, 22);
-            this.gridChiTietHD.MainView = this.gvChiTietDH;
-            this.gridChiTietHD.Name = "gridChiTietHD";
-            this.gridChiTietHD.Size = new System.Drawing.Size(321, 398);
-            this.gridChiTietHD.TabIndex = 3;
-            this.gridChiTietHD.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridChiTietDH.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridChiTietDH.Location = new System.Drawing.Point(2, 22);
+            this.gridChiTietDH.MainView = this.gvChiTietDH;
+            this.gridChiTietDH.Name = "gridChiTietDH";
+            this.gridChiTietDH.Size = new System.Drawing.Size(321, 400);
+            this.gridChiTietDH.TabIndex = 3;
+            this.gridChiTietDH.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvChiTietDH});
             // 
             // gvChiTietDH
@@ -237,7 +233,7 @@
             this.SoLuong,
             this.ThanhTien});
             this.gvChiTietDH.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gvChiTietDH.GridControl = this.gridChiTietHD;
+            this.gvChiTietDH.GridControl = this.gridChiTietDH;
             this.gvChiTietDH.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.None, "TenNhaHang", null, "")});
             this.gvChiTietDH.Name = "gvChiTietDH";
@@ -314,7 +310,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvDatHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridChiTietHD)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridChiTietDH)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvChiTietDH)).EndInit();
             this.ResumeLayout(false);
 
@@ -332,17 +328,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn clSTT;
         private DevExpress.XtraGrid.Columns.GridColumn clTenNCC;
         private DevExpress.XtraGrid.Columns.GridColumn clTongTien;
-        private DevExpress.XtraGrid.Columns.GridColumn clThoiGianDat;
         private DevExpress.XtraGrid.Columns.GridColumn clThoiGianGiao;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraGrid.Columns.GridColumn TinhTrang;
-        private DevExpress.XtraGrid.GridControl gridChiTietHD;
+        private DevExpress.XtraGrid.GridControl gridChiTietDH;
         private DevExpress.XtraGrid.Views.Grid.GridView gvChiTietDH;
         private DevExpress.XtraGrid.Columns.GridColumn STT;
         private DevExpress.XtraGrid.Columns.GridColumn TeNL;
         private DevExpress.XtraGrid.Columns.GridColumn SoLuong;
         private DevExpress.XtraGrid.Columns.GridColumn ThanhTien;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
+        private DevExpress.XtraGrid.Columns.GridColumn clThoiGianDat;
+        private DevExpress.XtraGrid.Columns.GridColumn glTinhTrang;
 
 
     }
