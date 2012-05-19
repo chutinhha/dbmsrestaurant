@@ -15,6 +15,14 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Thread th1 = new Thread(run);
+            th1.Start();
+            Thread th2 = new Thread(run);
+            th2.Start();
+
+        }
+        static void run()
+        {
             frmLogin frmLogin = new frmLogin();
             frmMain frmMain = new frmMain(); ;
             Thread thread = new Thread(frmMain.KhoiTaoUserControl);
@@ -26,7 +34,7 @@ namespace GUI
                 frmMain.NhanVien = frmLogin.NhanVien;
                 //try
                 //{
-                    Application.Run(frmMain);
+                Application.Run(frmMain);
                 //}
                 //catch (Exception) {}
             }
@@ -34,8 +42,6 @@ namespace GUI
             {
                 return;
             }
-            
-
         }
     }
 }

@@ -6,11 +6,13 @@ go
 ------------------- Table Nguyen Lieu -----------------------------------------------------------------
 --- Lay danh sach nguyen lieu
 ------------------------------------------------------------------------------------- 
-create proc SelectNguyenLieu @MaNH nchar(10)
+alter proc SelectNguyenLieu 
+	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     select *
     from   NguyenLieu nl
     where  nl.MaNH = @MaNH
@@ -22,8 +24,12 @@ end
 go
 --- Them nguyen lieu moi
 ------------------------------------------------------------------------------------- 
-create proc InsertNguyenLieu @Flag int out,@MaNH nchar(10),@TenNL nvarchar(50),@DonVi 
-nvarchar(20),@SoLuongTon int
+alter proc InsertNguyenLieu 
+	@Flag int out,
+	@MaNH nchar(10),
+	@TenNL nvarchar(50),
+	@DonVi nvarchar(20),
+	@SoLuongTon int
 as
 begin
     set @Flag = 0
@@ -38,8 +44,11 @@ begin
        ,@SoLuongTon
       )
     waitfor delay '00:00:05'		
-    if ((select count(*)from NguyenLieu 
-         where TenNL = @TenNL and MaNH = @MaNH)<>1)
+    if ((select count(*)
+         from   NguyenLieu
+         where  TenNL = @TenNL
+				and DonVi = @DonVi
+                and MaNH = @MaNH)<>1)
     begin
         rollback tran
         return
@@ -57,14 +66,22 @@ end
 go
 --- cap nhat thong tin mot nguyen lieu
 ------------------------------------------------------------------------------------- 
-create proc UpdateNguyenLieu @Flag int out,@MaNL int,@MaNH nchar(10),@TenNL 
-nvarchar(50),@DonVi nvarchar(20),@SoLuongTon int
+create proc UpdateNguyenLieu 
+	@Flag int out,
+	@MaNL int,
+	@MaNH nchar(10),
+	@TenNL nvarchar(50),
+	@DonVi nvarchar(20),
+	@SoLuongTon int
 as
 begin
     set @Flag = 0
     begin tran
-    set transaction isolation level read uncommitted
-    if ( (select count(*) from   NguyenLieu where  MaNL = @MaNL)=1)
+    set transaction isolation level 
+    read uncommitted
+    if ( (select count(*)
+          from   NguyenLieu
+          where  MaNL = @MaNL)=1)
     begin
         waitfor delay '00:00:06'
         update NguyenLieu
@@ -73,32 +90,25 @@ begin
               ,DonVi = @Donvi
               ,SoLuongTon = @SoLuongTon
         where  MaNL = @MaNL
-        
-        waitfor delay '00:00:04'
-        if (
-               (
-                   select count(*)
-                   from   NguyenLieu
-                   where  TenNL = @TenNL
-                          and MaNH = @MaNH
-               )<>1
-           )
+       waitfor delay '00:00:04'
+       if ((select count(*)
+            from   NguyenLieu
+            where  TenNL = @TenNL
+                   and DonVi = @DonVi
+                   and MaNH = @MaNH)<>1)
         begin
             rollback tran
             return
         end
     end
-    
     if (@@error<>0)
     begin
         rollback tran
         return
-    end
-    
+    end  
     set @Flag = 1 
     commit tran
 end
-
 go
 --- xoa nguyen lieu
 ------------------------------------------------------------------------------------- 
@@ -138,16 +148,17 @@ go
 --- lay danh sach nguyen lieu cua nha cung cap
 --- va danh sanh nguyen lieu nha cung cap khong co
 -------------------------------------------------------------------------------------
-alter proc SelectNguyenLieu_NCC @MaNCC int,@MaNH nchar(10)
+create proc SelectNguyenLieu_NCC 
+	@MaNCC int,
+	@MaNH nchar(10)
 as
 begin
     begin tran
     set transaction isolation level read uncommitted
-    
    
     exec SelectNguyenLieu_NotIn_NCC @MaNCC
         ,@MaNH
-    waitfor delay '00:00:05'
+   -- waitfor delay '00:00:05'
     exec SelectNguyenLieu_In_NCC @MaNCC
     ,@MaNH
     

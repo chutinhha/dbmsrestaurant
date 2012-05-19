@@ -160,16 +160,9 @@ namespace GUI
             }
             private void Add_UserControl(Control Panel, Control UCtrl)
             {
-                try
-                {
                     Panel.Controls.Clear();
                     UCtrl.Dock = DockStyle.Fill;
                     Panel.Controls.Add(UCtrl);
-                }
-                catch (Exception)
-                {
-                    
-                }
             }
         #endregion
 
