@@ -104,7 +104,10 @@ namespace GUI.QuanLyKho
             }
             private void btnRefresh_Click(object sender, EventArgs e)
             {
+
                 LoadNhaCungCap();
+                
+                LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
             }
             private void txtGia_EditValueChanged(object sender, EventArgs e)
             {
@@ -226,6 +229,7 @@ namespace GUI.QuanLyKho
                         else
                         {
                             LoadNhaCungCap();
+                            LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
                             DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
