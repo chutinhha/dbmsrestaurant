@@ -148,20 +148,21 @@ go
 --- lay danh sach nguyen lieu cua nha cung cap
 --- va danh sanh nguyen lieu nha cung cap khong co
 -------------------------------------------------------------------------------------
-create proc SelectNguyenLieu_NCC 
+alter proc SelectNguyenLieu_NCC 
 	@MaNCC int,
 	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted
-   
-    exec SelectNguyenLieu_NotIn_NCC @MaNCC
+    set transaction isolation level 
+    read uncommitted  
+    exec SelectNguyenLieu_In_NCC 
+		@MaNCC
         ,@MaNH
-   -- waitfor delay '00:00:05'
-    exec SelectNguyenLieu_In_NCC @MaNCC
-    ,@MaNH
-    
+    waitfor delay '00:00:05'
+    exec SelectNguyenLieu_NotIn_NCC 
+		@MaNCC
+		,@MaNH
     commit tran
 end
 go
@@ -181,8 +182,7 @@ begin
            and nl.MaNH = @MaNH
            and ct.MaNL = nl.MaNL
            and ct.MaNCC = ncc.MaNCC
-    order by
-           nl.TenNL
+    order by nl.TenNL
     --SET  @Count = @@ROWCOUNT
     commit tran
 end
@@ -198,14 +198,14 @@ begin
     select *
     from   NguyenLieu nl1
     where  nl1.MaNH = @MaNH
-           and nl1.MaNL not in (select nl.MaNL
-                                from   NguyenLieu nl
-                                      ,ChiTietNCC ct
-                                where  ct.MaNCC = @MaNCC
-                                       and nl.MaNH = @MaNH
-                                       and nl.MaNL = ct.MaNL)
-    order by
-           nl1.TenNL
+           and nl1.MaNL not in 
+           (select nl.MaNL
+            from   NguyenLieu nl
+                  ,ChiTietNCC ct
+            where  ct.MaNCC = @MaNCC
+                   and nl.MaNH = @MaNH
+                   and nl.MaNL = ct.MaNL)
+    order by nl1.TenNL
     
     commit tran
 end

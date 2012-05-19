@@ -22,7 +22,10 @@ namespace BUS
         {
             return daoDatHang.SelectDatHang(MaNH);
         }
-
+        public List<VDatHang_DTO> SelectDatHang_TinhTrang(String MaNH,String TinhTrang)
+        {
+            return daoDatHang.SelectDatHang_TinhTrang(MaNH,TinhTrang);
+        }
         public int InsertDatHang(VDatHang_DTO dh,DataTable chitiet )
         {
             return daoDatHang.InsertDatHang(dh,chitiet);

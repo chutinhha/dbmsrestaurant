@@ -179,7 +179,7 @@ begin
     commit tran
 end
 go
-alter  proc UpdateNhaCungCap 
+create proc UpdateNhaCungCap 
 	@Flag int out,
 	@MaNCC int,
 	@TenNCC nvarchar(50),
@@ -191,18 +191,20 @@ as
 begin
     set @Flag = 0
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     
-    if(( select count(*) from  NhaCungCap where  MaNCC = @MaNCC )<>0)
+    if(( select count(*) from  NhaCungCap 
+         where  MaNCC = @MaNCC )<>0)
     begin
-    	 waitfor delay '00:00:06'
+    	-- waitfor delay '00:00:06'
         update NhaCungCap
         set    TenNCC = @TenNCC
               ,sdt = @sdt
               ,DiaChi = @DiaChi
               ,DiemUuTien = @DiemUuTien
         where  MaNCC = @MaNCC
-         waitfor delay '00:00:04'
+         --waitfor delay '00:00:04'
         if(@@ERROR<>0)
         begin
             set @Flag = 0
@@ -213,12 +215,13 @@ begin
         --Xoa nguyen lieu da bi mat trong danh sach
         delete ChiTietNCC
         where  MaNCC = @MaNCC
-               and MaNL in (
-                       select ctn.MaNL
-                       from   ChiTietNCC ctn
-                       where  ctn.MaNCC = @MaNCC
-                              and ctn.MaNL not in (select MaNL
-                                                   from   @ChiTiet))
+               and MaNL in 
+              (select ctn.MaNL
+               from   ChiTietNCC ctn
+               where  ctn.MaNCC = @MaNCC
+                      and ctn.MaNL not in 
+                      (select MaNL
+                       from   @ChiTiet))
         if(@@ERROR<>0)
         begin
             set @Flag = 0
@@ -231,9 +234,10 @@ begin
               ,ct.MaNCC
               ,ct.Gia
         from   @ChiTiet ct
-        where  ct.MaNL not in (select ctn.MaNL
-                            from   ChiTietNCC ctn
-                            where  ctn.MaNCC = @MaNCC)
+        where  ct.MaNL not in 
+			  (select ctn.MaNL
+			   from   ChiTietNCC ctn
+			   where  ctn.MaNCC = @MaNCC)
                             
         if(@@ERROR<>0)
         begin

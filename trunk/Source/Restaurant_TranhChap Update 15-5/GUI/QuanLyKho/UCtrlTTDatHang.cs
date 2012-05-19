@@ -32,6 +32,16 @@ namespace GUI.QuanLyKho
                 get { return maNH; }
                 set { maNH = value; }
             }
+            public List<VDatHang_DTO> LsDatHang
+            {
+                get { return lsDatHang; }
+                set { lsDatHang = value; }
+            }
+            public int SttDH
+            {
+                get { return sttDH; }
+                set { sttDH = value; }
+            }
         #endregion
 
         #region " Khoi tao "
@@ -124,7 +134,7 @@ namespace GUI.QuanLyKho
             }
             public void LoadChiTietDH(int MaHoaDon)
             {
-                gridChiTietHD.DataSource = null;
+                gridChiTietDH.DataSource = null;
                 dtChiTietDH.Rows.Clear();
                 lsChiTietDH = busChiTietDatHang.SelectChiTietDatHang(MaHoaDon);
                 for (int i = 0; i < lsChiTietDH.Count; i++)
@@ -136,7 +146,7 @@ namespace GUI.QuanLyKho
                     row["ThanhTien"] = lsChiTietDH[i].ThanhTien;
                     dtChiTietDH.Rows.Add(row);
                 }
-                gridChiTietHD.DataSource = dtChiTietDH;
+                gridChiTietDH.DataSource = dtChiTietDH;
             }
             public void ThemHDDatHang()
             {

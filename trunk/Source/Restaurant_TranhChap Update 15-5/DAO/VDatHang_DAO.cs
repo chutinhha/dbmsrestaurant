@@ -18,6 +18,18 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return  ConvertToList(ExecSelectCommand());
         }
+        public List<VDatHang_DTO> SelectDatHang_TinhTrang(String MaNH,String TinhTrang)
+        {
+            String store = "SelectDatHang_TinhTrang";
+            CreateCommand_StoreName(store);
+            cm.Parameters.Add("@maNH", SqlDbType.NChar);
+            cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
+
+            cm.Parameters["@maNH"].Value = MaNH;
+            cm.Parameters["@TinhTrang"].Value = TinhTrang;
+
+            return ConvertToList(ExecSelectCommand());
+        }
         public int InsertDatHang(VDatHang_DTO dh,DataTable ChiTiet)
         {
             String store = "InsertDatHang";
@@ -73,12 +85,15 @@ namespace DAO
         {
             String store = "UpdateTinhTrangDatHang";
             CreateCommand_StoreName(store);
+            cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
             cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
 
             cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
             cm.Parameters["@TinhTrang"].Value = tinhtrang;
-            return ExecuteInsertUpdateDelete();
+
+            ExecuteInsertUpdateDelete();
+            return (int)cm.Parameters["@Flag"].Value;
         }
         public int DeleteDatHang(int MaHoaDon)
         {
