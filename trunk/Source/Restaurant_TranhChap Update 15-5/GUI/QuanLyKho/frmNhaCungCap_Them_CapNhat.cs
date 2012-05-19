@@ -167,8 +167,9 @@ namespace GUI.QuanLyKho
             {
                 DataSet temp = new DataSet();
                 temp = busNguyenLieu.SelectNguyenLieu_NCC(dtoNCC.MaNCC, maNH);
-                DtNguyenLieu = temp.Tables[0];
-                dtNguyenLieuChon_Source = temp.Tables[1];
+                dtNguyenLieuChon_Source = temp.Tables[0];
+                DtNguyenLieu = temp.Tables[1];
+                
                 
                 Load_lvNguyenLieuChon();
                 Load_lvNguyenLieu();

@@ -28,8 +28,10 @@ begin
     set @Flag = 0
     begin tran
     set transaction isolation level read uncommitted
-    if (( select count(*)from ChiTietNCC 
-          where  MaNL = @MaNL and MaNCC = @MaNCC )=0 )
+    if((select count(*)
+        from   ChiTietNCC
+        where  MaNL = @MaNL
+               and MaNCC = @MaNCC)=0)
     begin
         rollback tran
         return
