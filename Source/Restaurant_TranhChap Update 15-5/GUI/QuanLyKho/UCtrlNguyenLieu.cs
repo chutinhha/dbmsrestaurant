@@ -14,6 +14,13 @@ namespace GUI.QuanLyKho
     public partial class UCtrlNguyenLieu : DevExpress.XtraEditors.XtraUserControl
     {
         #region " Thuoc Tinh & Properties"
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         String maNH;
         public String MaNH
         {

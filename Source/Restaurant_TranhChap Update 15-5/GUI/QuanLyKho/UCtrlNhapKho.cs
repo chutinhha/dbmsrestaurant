@@ -12,6 +12,12 @@ namespace GUI.QuanLyKho
 {
     public partial class UCtrlNhapKho : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
         //Khai bao delegate
         public delegate void deleNhapKho();
         public deleNhapKho evenNhapKho;

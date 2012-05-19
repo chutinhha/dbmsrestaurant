@@ -13,6 +13,12 @@ namespace GUI.QuanLyKho
     public partial class frmDatHang_ChonNCC : DevExpress.XtraEditors.XtraForm
     {
         #region " Thuoc tinh "
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
         VNhaCungCap_BUS busNhaCungCap;
         VNguyenLieu_BUS busNguyenLieu;
 

@@ -12,6 +12,12 @@ namespace GUI.QuanLyKho
 {
     public partial class frmLapPhieuNhapKho : DevExpress.XtraEditors.XtraForm
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
         VDatHang_BUS busDatHang;
         VChiTietDatHang_BUS busChiTietDatHang;
         VNguyenLieu_BUS busNguyenLieu;

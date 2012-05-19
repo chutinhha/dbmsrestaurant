@@ -12,6 +12,12 @@ namespace GUI.QuanLyKho
 {
     public partial class frmNguyenLieu_ThemNL : DevExpress.XtraEditors.XtraForm
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
         VNguyenLieu_BUS busNguyenLieu;
         VNguyenLieu_DTO _nguyenlieu;
         public VNguyenLieu_DTO NguyenLieu
