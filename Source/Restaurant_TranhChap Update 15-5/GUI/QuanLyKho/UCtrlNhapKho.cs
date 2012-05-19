@@ -128,7 +128,9 @@ namespace GUI.QuanLyKho
 
         private void btnLapBieuDo_Click(object sender, EventArgs e)
         {
-
+            frmNhapKho_ThongKe frmNhapKhoThongKe = new frmNhapKho_ThongKe();
+            frmNhapKhoThongKe.MaNH = maNH;
+            frmNhapKhoThongKe.ShowDialog();
         }
 
         #endregion

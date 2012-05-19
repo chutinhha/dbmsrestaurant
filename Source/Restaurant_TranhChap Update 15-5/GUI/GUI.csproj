@@ -37,6 +37,9 @@
     <Reference Include="DevExpress.BonusSkins.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=95fc6c5621878f0a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Charts.v11.1.Core, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Data.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
@@ -47,6 +50,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.XtraBars.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v11.1.UI, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.XtraEditors.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
@@ -131,6 +140,12 @@
     </Compile>
     <Compile Include="QuanLyKho\frmNhaCungCap_Them_CapNhat.Designer.cs">
       <DependentUpon>frmNhaCungCap_Them_CapNhat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKho\frmNhapKho_ThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKho\frmNhapKho_ThongKe.Designer.cs">
+      <DependentUpon>frmNhapKho_ThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyNhaHang\Form_ThemBanAn.cs">
       <SubType>Form</SubType>
@@ -359,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho\frmNhaCungCap_Them_CapNhat.resx">
       <DependentUpon>frmNhaCungCap_Them_CapNhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKho\frmNhapKho_ThongKe.resx">
+      <DependentUpon>frmNhapKho_ThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKho\UCtrlNhapKho.resx">
       <DependentUpon>UCtrlNhapKho.cs</DependentUpon>
