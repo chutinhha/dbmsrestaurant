@@ -336,8 +336,14 @@ namespace GUI
         }
         #endregion
 
+        #region " Menu MODE "
         private void barDefault_CheckedChanged(object sender, ItemClickEventArgs e)
         {
+            if (barError.Checked == false &&
+                barXuLy.Checked == false &&
+                barDeadLock.Checked == false)
+                barDefault.Checked = true;
+            else
             if (barDefault.Checked == true)
             {
                 mode = 0;
@@ -346,11 +352,17 @@ namespace GUI
                 MessageBox.Show("Chế độ bình thường");
                 barError.Checked = false;
                 barXuLy.Checked = false;
+                barDeadLock.Checked = false;
             }
         }
 
         private void barError_CheckedChanged(object sender, ItemClickEventArgs e)
         {
+            if (barDefault.Checked == false &&
+                barXuLy.Checked == false &&
+                barDeadLock.Checked == false)
+                barError.Checked = true;
+            else
             if (barError.Checked == true)
             {
                 mode = 1;
@@ -359,21 +371,46 @@ namespace GUI
                 MessageBox.Show("Chế độ giả lập tranh chấp với waitfor delay");
                 barDefault.Checked = false;
                 barXuLy.Checked = false;
+                barDeadLock.Checked = false;
             }
         }
-
+        private void barDeadLock_CheckedChanged(object sender, ItemClickEventArgs e)
+        {
+            if (barError.Checked == false &&
+                barDefault.Checked == false &&
+                barXuLy.Checked == false)
+                barDeadLock.Checked = true;
+            else
+                if (barDeadLock.Checked == true)
+                {
+                    mode = 2;
+                    changeMode();
+                    this.Text = "Quản Lý Nhà Hàng - Fix";
+                    MessageBox.Show("Chế độ giả lập deadlock");
+                    barError.Checked = false;
+                    barDefault.Checked = false;
+                    barXuLy.Checked = false;
+                }
+        }
         private void barFix_CheckedChanged(object sender, ItemClickEventArgs e)
         {
+            if (barError.Checked == false &&
+                barDefault.Checked == false &&
+                barDeadLock.Checked == false)
+                barXuLy.Checked = true;
+            else
             if (barXuLy.Checked == true)
             {
-                mode = 2;
+                mode = 3;
                 changeMode();
                 this.Text = "Quản Lý Nhà Hàng - Fix";
                 MessageBox.Show("Chế độ fix lỗi xung đột ");
                 barError.Checked = false;
                 barDefault.Checked = false;
+                barDeadLock.Checked = false;
             }
         }
+        
         private void changeMode()
         {
             UCtrl_QLKho_DatHang.Mode = mode;
@@ -381,6 +418,8 @@ namespace GUI
             UCtrl_QLKho_NguyenLieu.Mode = mode;
             UCtrl_QLKho_NhapKho.Mode = mode;
         }
+        #endregion
+
 
 
     }
