@@ -124,7 +124,7 @@ namespace GUI.QuanLyKho
             {
                 gridDatHang.DataSource = null;
                 dtDatHang.Rows.Clear();
-                lsDatHang = busDatHang.SelectDatHang(maNH);
+                lsDatHang = busDatHang.SelectDatHang(mode, maNH);
                 for (int i = 0; i < lsDatHang.Count; i++)
                 {
                     DataRow row = dtDatHang.NewRow();
@@ -142,7 +142,7 @@ namespace GUI.QuanLyKho
             {
                 gridChiTietDH.DataSource = null;
                 dtChiTietDH.Rows.Clear();
-                lsChiTietDH = busChiTietDatHang.SelectChiTietDatHang(MaHoaDon);
+                lsChiTietDH = busChiTietDatHang.SelectChiTietDatHang(mode, MaHoaDon);
                 for (int i = 0; i < lsChiTietDH.Count; i++)
                 {
                     DataRow row = dtChiTietDH.NewRow();
@@ -178,7 +178,7 @@ namespace GUI.QuanLyKho
                     {
                         try
                         {
-                            int MaHD = busDatHang.InsertDatHang(frmDatHang.ThongTinDH,frmDatHang.DtChiTietDatHang);
+                            int MaHD = busDatHang.InsertDatHang(mode, frmDatHang.ThongTinDH, frmDatHang.DtChiTietDatHang);
                             if (MaHD == -1)
                             {
                                 DevExpress.XtraEditors.XtraMessageBox.Show("Đặt hàng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -220,7 +220,7 @@ namespace GUI.QuanLyKho
                             
                             try
                             {
-                                int result = busDatHang.UpdateDatHang(frmDatHang.ThongTinDH, frmDatHang.DtChiTietDatHang);
+                                int result = busDatHang.UpdateDatHang(mode, frmDatHang.ThongTinDH, frmDatHang.DtChiTietDatHang);
                                 if (result == -1)
                                 {
                                     DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật thông tin đặt hàng thất bại", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -252,7 +252,7 @@ namespace GUI.QuanLyKho
                         int MaHD = lsDatHang[sttDH - 1].MaHoaDon;
                         if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là xóa đơn đặt hàng này không!", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if (busDatHang.DeleteDatHang(MaHD) == 1)
+                            if (busDatHang.DeleteDatHang(mode, MaHD) == 1)
                             {
                                 LoadDSDatHang();
                                 if (dtDatHang.Rows.Count == 0)
@@ -279,7 +279,7 @@ namespace GUI.QuanLyKho
                         {
                             if (DevExpress.XtraEditors.XtraMessageBox.Show("Bạn có chắc là hủy đơn đặt hàng này không!", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
-                                if (busDatHang.UpdateTinhTrangDatHang(lsDatHang[sttDH - 1].MaHoaDon, "Hủy") == 1)
+                                if (busDatHang.UpdateTinhTrangDatHang(mode, lsDatHang[sttDH - 1].MaHoaDon, "Hủy") == 1)
                                 {
                                     LoadDSDatHang();
                                     DevExpress.XtraEditors.XtraMessageBox.Show("Đã hủy đơn đặt hàng!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

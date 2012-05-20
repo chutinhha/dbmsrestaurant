@@ -142,13 +142,13 @@ namespace GUI.QuanLyKho
             
             public void LoadNguyenLieu()
             {
-                dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietNCC(dtoNCC.MaNCC, maNH);
+                dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_NotIn_ChiTietNCC(mode, dtoNCC.MaNCC, maNH);
                 Load_lvNguyenLieu();
             }
             public void LoadNguyenLieuChon()
             {
-                
-                dtNguyenLieuChon_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(dtoNCC.MaNCC, maNH);
+
+                dtNguyenLieuChon_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(mode, dtoNCC.MaNCC, maNH);
                 Load_lvNguyenLieuChon();
             }
             public void Load_lvNguyenLieuChon()
@@ -172,7 +172,7 @@ namespace GUI.QuanLyKho
             public void LoadDuLieu()
             {
                 DataSet temp = new DataSet();
-                temp = busNguyenLieu.SelectNguyenLieu_NCC(dtoNCC.MaNCC, maNH);
+                temp = busNguyenLieu.SelectNguyenLieu_NCC(mode, dtoNCC.MaNCC, maNH);
 
                 dtNguyenLieuChon_Source = temp.Tables[0];
                 DtNguyenLieu = temp.Tables[1];

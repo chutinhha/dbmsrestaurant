@@ -63,7 +63,12 @@ namespace GUI
             this.barLeftMenu = new DevExpress.XtraBars.BarSubItem();
             this.barDefault = new DevExpress.XtraBars.BarCheckItem();
             this.barError = new DevExpress.XtraBars.BarCheckItem();
-            this.barFix = new DevExpress.XtraBars.BarCheckItem();
+            this.barXuLy = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItem3 = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItem4 = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItem5 = new DevExpress.XtraBars.BarCheckItem();
             this.rbPage_TiepTan_ThuNgan = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rbPageGroup_TiepTan1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbPageGroup_TiepTan2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -89,11 +94,7 @@ namespace GUI
             this.repositoryItemRadioGroup5 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.panelCtrl_Main = new DevExpress.XtraEditors.PanelControl();
             this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
-            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem3 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem4 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem5 = new DevExpress.XtraBars.BarCheckItem();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).BeginInit();
@@ -104,6 +105,7 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCtrl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // rbControl_Main
@@ -149,14 +151,14 @@ namespace GUI
             this.barLeftMenu,
             this.barDefault,
             this.barError,
-            this.barFix,
+            this.barXuLy,
             this.barCheckItem1,
             this.barCheckItem2,
             this.barCheckItem3,
             this.barCheckItem4,
             this.barCheckItem5});
             this.rbControl_Main.Location = new System.Drawing.Point(0, 0);
-            this.rbControl_Main.MaxItemId = 64;
+            this.rbControl_Main.MaxItemId = 65;
             this.rbControl_Main.Name = "rbControl_Main";
             this.rbControl_Main.PageHeaderItemLinks.Add(this.barLeftMenu);
             this.rbControl_Main.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -173,7 +175,8 @@ namespace GUI
             this.repositoryItemCheckEdit1,
             this.repositoryItemRadioGroup3,
             this.repositoryItemRadioGroup4,
-            this.repositoryItemRadioGroup5});
+            this.repositoryItemRadioGroup5,
+            this.repositoryItemProgressBar1});
             this.rbControl_Main.Size = new System.Drawing.Size(898, 143);
             // 
             // MybarAndDockingController
@@ -430,12 +433,7 @@ namespace GUI
             this.barLeftMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barDefault),
             new DevExpress.XtraBars.LinkPersistInfo(this.barError),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barFix),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem5)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barXuLy)});
             this.barLeftMenu.Name = "barLeftMenu";
             // 
             // barDefault
@@ -448,17 +446,47 @@ namespace GUI
             // 
             // barError
             // 
-            this.barError.Caption = "Giả lập tranh chấp - wailfor delay";
+            this.barError.Caption = "Giả lập tranh chấp - waitfor delay";
             this.barError.Id = 57;
             this.barError.Name = "barError";
             this.barError.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barError_CheckedChanged);
             // 
-            // barFix
+            // barXuLy
             // 
-            this.barFix.Caption = "Fix Dirty Read";
-            this.barFix.Id = 58;
-            this.barFix.Name = "barFix";
-            this.barFix.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barFix_CheckedChanged);
+            this.barXuLy.Caption = "Xử lý tranh chấp";
+            this.barXuLy.Id = 58;
+            this.barXuLy.Name = "barXuLy";
+            this.barXuLy.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barFix_CheckedChanged);
+            // 
+            // barCheckItem1
+            // 
+            this.barCheckItem1.Caption = "Fix Unrepeatable Read";
+            this.barCheckItem1.Id = 59;
+            this.barCheckItem1.Name = "barCheckItem1";
+            // 
+            // barCheckItem2
+            // 
+            this.barCheckItem2.Caption = "Fix Phantom";
+            this.barCheckItem2.Id = 60;
+            this.barCheckItem2.Name = "barCheckItem2";
+            // 
+            // barCheckItem3
+            // 
+            this.barCheckItem3.Caption = "Fix LostUpdate";
+            this.barCheckItem3.Id = 61;
+            this.barCheckItem3.Name = "barCheckItem3";
+            // 
+            // barCheckItem4
+            // 
+            this.barCheckItem4.Caption = "Fix DeadLock";
+            this.barCheckItem4.Id = 62;
+            this.barCheckItem4.Name = "barCheckItem4";
+            // 
+            // barCheckItem5
+            // 
+            this.barCheckItem5.Caption = "Fix All";
+            this.barCheckItem5.Id = 63;
+            this.barCheckItem5.Name = "barCheckItem5";
             // 
             // rbPage_TiepTan_ThuNgan
             // 
@@ -617,7 +645,7 @@ namespace GUI
             this.panelCtrl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCtrl_Main.Location = new System.Drawing.Point(0, 143);
             this.panelCtrl_Main.Name = "panelCtrl_Main";
-            this.panelCtrl_Main.Size = new System.Drawing.Size(898, 456);
+            this.panelCtrl_Main.Size = new System.Drawing.Size(898, 453);
             this.panelCtrl_Main.TabIndex = 2;
             // 
             // MyapplicationMenu
@@ -625,41 +653,15 @@ namespace GUI
             this.MyapplicationMenu.Name = "MyapplicationMenu";
             this.MyapplicationMenu.Ribbon = this.rbControl_Main;
             // 
-            // barCheckItem1
+            // repositoryItemProgressBar1
             // 
-            this.barCheckItem1.Caption = "Fix Unrepeatable Read";
-            this.barCheckItem1.Id = 59;
-            this.barCheckItem1.Name = "barCheckItem1";
-            // 
-            // barCheckItem2
-            // 
-            this.barCheckItem2.Caption = "Fix Phantom";
-            this.barCheckItem2.Id = 60;
-            this.barCheckItem2.Name = "barCheckItem2";
-            // 
-            // barCheckItem3
-            // 
-            this.barCheckItem3.Caption = "Fix LostUpdate";
-            this.barCheckItem3.Id = 61;
-            this.barCheckItem3.Name = "barCheckItem3";
-            // 
-            // barCheckItem4
-            // 
-            this.barCheckItem4.Caption = "Fix DeadLock";
-            this.barCheckItem4.Id = 62;
-            this.barCheckItem4.Name = "barCheckItem4";
-            // 
-            // barCheckItem5
-            // 
-            this.barCheckItem5.Caption = "Fix All";
-            this.barCheckItem5.Id = 63;
-            this.barCheckItem5.Name = "barCheckItem5";
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(898, 599);
+            this.ClientSize = new System.Drawing.Size(898, 596);
             this.Controls.Add(this.panelCtrl_Main);
             this.Controls.Add(this.rbControl_Main);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -680,6 +682,7 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCtrl_Main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -744,12 +747,13 @@ namespace GUI
         private DevExpress.XtraBars.Ribbon.ApplicationMenu MyapplicationMenu;
         private DevExpress.XtraBars.BarCheckItem barDefault;
         private DevExpress.XtraBars.BarCheckItem barError;
-        private DevExpress.XtraBars.BarCheckItem barFix;
+        private DevExpress.XtraBars.BarCheckItem barXuLy;
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
         private DevExpress.XtraBars.BarCheckItem barCheckItem2;
         private DevExpress.XtraBars.BarCheckItem barCheckItem3;
         private DevExpress.XtraBars.BarCheckItem barCheckItem4;
         private DevExpress.XtraBars.BarCheckItem barCheckItem5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
     }
 }
 

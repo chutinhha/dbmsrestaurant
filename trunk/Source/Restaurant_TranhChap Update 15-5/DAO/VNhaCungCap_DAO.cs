@@ -10,7 +10,7 @@ namespace DAO
     public class VNhaCungCap_DAO:VProvider
     {
 
-        public List<VNhaCungCap_DTO> SelectNhaCungCap()
+        public List<VNhaCungCap_DTO> SelectNhaCungCap(int mode)
         {
             String store = "SelectNhaCungCap";
             CreateCommand_StoreName(store);
@@ -18,7 +18,7 @@ namespace DAO
             return ConvertToList(ExecSelectCommand());
         }
 
-        public List<VNhaCungCap_DTO> SelectNhaCungCap_fromNH(String MaNH)
+        public List<VNhaCungCap_DTO> SelectNhaCungCap_fromNH(int mode,String MaNH)
         {
             String store = "SelectNhaCungCap_fromNH";
 
@@ -30,7 +30,7 @@ namespace DAO
             return ConvertToList(ExecSelectCommand());
         }
 
-        public int InsertNhaCungCap(VNhaCungCap_DTO ncc,DataTable ChiTiet)
+        public int InsertNhaCungCap(int mode, VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
             String store = "InsertNhaCungCap";
             CreateCommand_StoreName(store);
@@ -50,7 +50,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@MaNCC"].Value;
         }
-        public int UpdateNhaCungCap(VNhaCungCap_DTO ncc,DataTable ChiTiet)
+        public int UpdateNhaCungCap(int mode, VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
             String store = "UpdateNhaCungCap";
 
@@ -73,7 +73,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int DeleteNhaCungCap(int MaNCC)
+        public int DeleteNhaCungCap(int mode, int MaNCC)
         {
             String store = "DeleteNhaCungCap";
             CreateCommand_StoreName(store);

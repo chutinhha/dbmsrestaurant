@@ -12,7 +12,7 @@ namespace DAO
         public VChiTietDatHang_DAO() : base() { }
         public VChiTietDatHang_DAO(VProvider v)
             : base(v){}
-        public List<VChiTietDatHang_DTO> SelectChiTietDatDang(int MaHoaDon)
+        public List<VChiTietDatHang_DTO> SelectChiTietDatDang(int mode, int MaHoaDon)
         {
             String store = "SelectChiTietDatHang";
             CreateCommand_StoreName(store);
@@ -21,7 +21,7 @@ namespace DAO
             cm.Parameters["@MaHoaDon"].Value = MaHoaDon;
             return ConvertToList(ExecSelectCommand());
         }
-        public int InsertChiTietDatHang(VChiTietDatHang_DTO ctdh)
+        public int InsertChiTietDatHang(int mode, VChiTietDatHang_DTO ctdh)
         {
             String store = "InsertChiTietDatHang";
 
@@ -38,7 +38,7 @@ namespace DAO
 
             return ExecuteInsertUpdateDelete();
         }
-        public int DeleteChiTietDatDang(int MaHoaDon)
+        public int DeleteChiTietDatDang(int mode, int MaHoaDon)
         {
             String store = "DeleteChiTietDatHang";
             CreateCommand_StoreName(store);

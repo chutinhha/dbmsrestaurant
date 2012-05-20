@@ -103,7 +103,7 @@ namespace GUI.QuanLyKho
             {               
                 gridNCC.DataSource = null;
                 dtNCC.Rows.Clear();
-                lsNCC = busNhaCungCap.SelectNhaCungCap_fromNH(maNH);
+                lsNCC = busNhaCungCap.SelectNhaCungCap_fromNH(mode, maNH);
                 for (int i = 0; i < lsNCC.Count; i++)
                 {
                     DataRow row = dtNCC.NewRow();
@@ -118,8 +118,8 @@ namespace GUI.QuanLyKho
             public void LoadDanhSachNL(int MaNCC)
             {
                 lvNguyenLieu.Items.Clear();
-                
-                DataTable dtNL = busNguyenLieu.SelectNguyenLieu_In_NCC(MaNCC, maNH);
+
+                DataTable dtNL = busNguyenLieu.SelectNguyenLieu_In_NCC(mode, MaNCC, maNH);
                 for (int i = 0; i < dtNL.Rows.Count; i++)
                 {
                     ListViewItem item = new ListViewItem(new String[] { (i + 1).ToString(), dtNL.Rows[i]["TenNL"].ToString(),dtNL.Rows[i]["Gia"].ToString() });

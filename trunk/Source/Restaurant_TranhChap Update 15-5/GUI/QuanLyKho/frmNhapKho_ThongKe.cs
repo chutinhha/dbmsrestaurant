@@ -15,6 +15,13 @@ namespace GUI.QuanLyKho
 {
     public partial class frmNhapKho_ThongKe : DevExpress.XtraEditors.XtraForm
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         DataTable dtDS;
         List<VDatHang_DTO> lsHoaDon;
         String maNH;
@@ -54,7 +61,7 @@ namespace GUI.QuanLyKho
         public void LoadDS()
         {
             dtDS.Rows.Clear();
-            lsHoaDon = busDatHang.SelectDatHang_TinhTrang(maNH, "Đã Giao");
+            lsHoaDon = busDatHang.SelectDatHang_TinhTrang(mode, maNH, "Đã Giao");
             for (int i = 0; i < lsHoaDon.Count; i++)
             {
                 DataRow row = dtDS.NewRow();

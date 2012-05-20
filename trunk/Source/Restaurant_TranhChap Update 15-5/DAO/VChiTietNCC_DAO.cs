@@ -10,7 +10,7 @@ namespace DAO
     public class VChiTietNCC_DAO:VProvider
     {
 
-        public int InsertChiTietNCC(int MaNL, int MaNCC, double Gia)
+        public int InsertChiTietNCC(int mode, int MaNL, int MaNCC, double Gia)
         {
             String store = "InsertChiTietNCC";
             CreateCommand_StoreName(store);
@@ -23,7 +23,7 @@ namespace DAO
             cm.Parameters["@Gia"].Value = Gia;
             return ExecuteInsertUpdateDelete();
         }
-        public int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
+        public int UpdateChiTietNCC(int mode, int MaNL, int MaNCC, double Gia)
         {
             String store = "UpdateChiTietNCC";
 
@@ -40,7 +40,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int DeleteChiTietNCC_fromNCC(int MaNCC)
+        public int DeleteChiTietNCC_fromNCC(int mode, int MaNCC)
         {
             String store = "DeleteChiTietNCC_fromNCC";
 
@@ -51,7 +51,7 @@ namespace DAO
 
             return ExecuteInsertUpdateDelete();
         }
-        public int DeleteChiTietNCC(int MaNL, int MaNCC)
+        public int DeleteChiTietNCC(int mode, int MaNL, int MaNCC)
         {
             String store = "DeleteChiTietNCC";
 

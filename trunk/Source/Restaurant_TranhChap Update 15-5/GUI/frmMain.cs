@@ -345,7 +345,7 @@ namespace GUI
                 this.Text = "Quản Lý Nhà Hàng - Default";
                 MessageBox.Show("Chế độ bình thường");
                 barError.Checked = false;
-                barFix.Checked = false;
+                barXuLy.Checked = false;
             }
         }
 
@@ -358,13 +358,13 @@ namespace GUI
                 this.Text = "Quản Lý Nhà Hàng - Error";
                 MessageBox.Show("Chế độ giả lập tranh chấp với waitfor delay");
                 barDefault.Checked = false;
-                barFix.Checked = false;
+                barXuLy.Checked = false;
             }
         }
 
         private void barFix_CheckedChanged(object sender, ItemClickEventArgs e)
         {
-            if (barFix.Checked == true)
+            if (barXuLy.Checked == true)
             {
                 mode = 2;
                 changeMode();
@@ -380,7 +380,6 @@ namespace GUI
             UCtrl_QLKho_NCC.Mode = mode;
             UCtrl_QLKho_NguyenLieu.Mode = mode;
             UCtrl_QLKho_NhapKho.Mode = mode;
-            
         }
 
 

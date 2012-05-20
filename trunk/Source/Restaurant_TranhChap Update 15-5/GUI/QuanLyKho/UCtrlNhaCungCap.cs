@@ -133,7 +133,7 @@ namespace GUI.QuanLyKho
                 dtNCC.Rows.Clear();
                 //try
                 //{
-                    lsNCC = busNhaCungCap.SelectNhaCungCap();
+                    lsNCC = busNhaCungCap.SelectNhaCungCap(mode);
 
                     for (int i = 0; i < lsNCC.Count; i++)
                     {
@@ -160,7 +160,7 @@ namespace GUI.QuanLyKho
                 dtNL.Rows.Clear();
                 //try
                 //{
-                    dtNL_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(MaNCC, maNH);
+                dtNL_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(mode, MaNCC, maNH);
                    for (int i = 0; i < dtNL_Source.Rows.Count; i++)
                     {
                         DataRow row = dtNL.NewRow();
@@ -195,7 +195,7 @@ namespace GUI.QuanLyKho
                     VNhaCungCap_DTO dtoNCC = _frm.DtoNCC;
                     try
                     {
-                        int result = busNhaCungCap.InsertNhaCungCap(_frm.DtoNCC, _frm.DtChiTietNCC);
+                        int result = busNhaCungCap.InsertNhaCungCap(mode, _frm.DtoNCC, _frm.DtChiTietNCC);
                         if (result == -1)
                         {
                             DevExpress.XtraEditors.XtraMessageBox.Show("Thêm nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -227,7 +227,7 @@ namespace GUI.QuanLyKho
                     VNhaCungCap_DTO dtoNCC = _frm.DtoNCC;
                     try
                     {
-                        int result = busNhaCungCap.UpdatetNhaCungCap(_frm.DtoNCC, _frm.DtChiTietNCC);
+                        int result = busNhaCungCap.UpdatetNhaCungCap(mode, _frm.DtoNCC, _frm.DtChiTietNCC);
                         if (result == 0)
                         {
                             DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -250,7 +250,7 @@ namespace GUI.QuanLyKho
                 DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm();
                 frmWailt.Show();
                 frmWailt.Caption = " Đang cập nhật dữ liệu ! ";
-                int result = busChiTietNCC.UpdateChiTietNCC((int)dtNL_Source.Rows[sttNL - 1]["MaNL"], lsNCC[sttNCC- 1].MaNCC, Double.Parse(txtGia.Text));
+                int result = busChiTietNCC.UpdateChiTietNCC(mode, (int)dtNL_Source.Rows[sttNL - 1]["MaNL"], lsNCC[sttNCC - 1].MaNCC, Double.Parse(txtGia.Text));
                 frmWailt.Close();
                 if (result != 0)
                 {
@@ -267,9 +267,9 @@ namespace GUI.QuanLyKho
                     //try
                     //{
                         DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm();
-                        frmWailt.Show();
                         frmWailt.Caption = " Đang cập nhật dữ liệu ! ";
-                        int result = busNhaCungCap.DeleteNhaCungCap(lsNCC[indexNCC].MaNCC);
+                        frmWailt.Show();
+                        int result = busNhaCungCap.DeleteNhaCungCap(mode, lsNCC[indexNCC].MaNCC);
                         frmWailt.Close();
                         if (result == 1)
                         {

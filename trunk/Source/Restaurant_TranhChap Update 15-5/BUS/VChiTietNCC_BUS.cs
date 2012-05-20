@@ -17,21 +17,21 @@ namespace BUS
         {
             daoChiTietNCC.Copy(b.Provider);
         }
-        public int InsertChiTietNCC(int MaNL, int MaNCC, double Gia)
+        public int InsertChiTietNCC(int mode, int MaNL, int MaNCC, double Gia)
         {
-            return daoChiTietNCC.InsertChiTietNCC(MaNL, MaNCC, Gia);
+            return daoChiTietNCC.InsertChiTietNCC(mode, MaNL, MaNCC, Gia);
         }
-        public int UpdateChiTietNCC(int MaNL, int MaNCC, double Gia)
+        public int UpdateChiTietNCC(int mode, int MaNL, int MaNCC, double Gia)
         {
-            return daoChiTietNCC.UpdateChiTietNCC(MaNL, MaNCC, Gia);
+            return daoChiTietNCC.UpdateChiTietNCC( mode,MaNL, MaNCC, Gia);
         }
-        public int DeleteChiTietNCC_fromNCC(int flag_connec, int flag_tran, int MaNCC)
+        public int DeleteChiTietNCC_fromNCC(int mode, int flag_connec, int flag_tran, int MaNCC)
         {
-            return daoChiTietNCC.DeleteChiTietNCC_fromNCC(MaNCC);
+            return daoChiTietNCC.DeleteChiTietNCC_fromNCC( mode,MaNCC);
         }
-        public int DeleteChiTietNCC(int MaNL, int MaNCC)
+        public int DeleteChiTietNCC(int mode, int MaNL, int MaNCC)
         {
-            return daoChiTietNCC.DeleteChiTietNCC(MaNL, MaNCC);
+            return daoChiTietNCC.DeleteChiTietNCC(mode, MaNL, MaNCC);
         }
     }
 }
