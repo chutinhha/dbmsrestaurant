@@ -36,11 +36,12 @@ namespace GUI
         TongQuanLy.UCtrlDSNhaHang UCtrl_TongQL_DSNhaHang;
         TongQuanLy.UCtrlQLNhanVien UCtrl_TongQL_DSNhanVien;
         TongQuanLy.UCtrlTongHopDoanhThu UCtrl_TongQL_TongHopDoanhThu;
+
         //-----------------------------------------------------------
         String strGiaoDien = "";
         int mode =0; //default
         //-------------------------------------
-        NhanVien_DTO nhanVien;
+        public static NhanVien_DTO nhanVien;
         #endregion
 
         #region "Properties"
