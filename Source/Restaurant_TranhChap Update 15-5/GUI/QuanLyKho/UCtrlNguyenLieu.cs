@@ -126,7 +126,7 @@ namespace GUI.QuanLyKho
             dtNguyenLieu.Rows.Clear();
             try
             {
-                dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_toDataTable(maNH);
+                dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_toDataTable(mode, maNH);
 
                 int i = 0;
                 foreach (DataRow row in dtNguyenLieu_Source.Rows)
@@ -159,7 +159,7 @@ namespace GUI.QuanLyKho
             {
                 try
                 {
-                    int result = busNguyenLieu.DeleteNguyenLieu((int)dtNguyenLieu_Source.Rows[stt - 1][0], maNH);
+                    int result = busNguyenLieu.DeleteNguyenLieu(mode, (int)dtNguyenLieu_Source.Rows[stt - 1][0], maNH);
                     if (result == 1)
                     {
                         LoadNguyenLieu();
@@ -207,7 +207,7 @@ namespace GUI.QuanLyKho
                         temp.SoLuongTon = int.Parse(txtSoLuongTon.Text.Trim());
                         try
                         {
-                            if (busNguyenLieu.UpdateNguyenLieu(temp) == 0)
+                            if (busNguyenLieu.UpdateNguyenLieu(mode, temp) == 0)
                             {
                                 DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }

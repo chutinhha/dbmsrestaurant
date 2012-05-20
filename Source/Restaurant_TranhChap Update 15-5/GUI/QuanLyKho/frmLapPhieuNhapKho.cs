@@ -80,7 +80,7 @@ namespace GUI.QuanLyKho
         {
             gridDatHang.DataSource = null;
             dtDatHang.Rows.Clear();
-            lsDatHang = busDatHang.SelectDatHang_TinhTrang(maNH, "Chưa Giao") ;
+            lsDatHang = busDatHang.SelectDatHang_TinhTrang(mode, maNH, "Chưa Giao");
             for (int i = 0; i < lsDatHang.Count; i++)
             {
                 DataRow row = dtDatHang.NewRow();
@@ -96,7 +96,7 @@ namespace GUI.QuanLyKho
         {
             gridChiTietDH.DataSource = null;
             dtChiTietDH.Rows.Clear();
-            lsChiTietDH = busChiTietDatHang.SelectChiTietDatHang(MaHoaDon);
+            lsChiTietDH = busChiTietDatHang.SelectChiTietDatHang(mode, MaHoaDon);
             for (int i = 0; i < lsChiTietDH.Count; i++)
             {
                 DataRow row = dtChiTietDH.NewRow();
@@ -113,7 +113,7 @@ namespace GUI.QuanLyKho
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            if (busDatHang.UpdateTinhTrangDatHang(lsDatHang[sttDH - 1].MaHoaDon, "Đã Giao") == 1)
+            if (busDatHang.UpdateTinhTrangDatHang(mode, lsDatHang[sttDH - 1].MaHoaDon, "Đã Giao") == 1)
             {
                 
                 DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

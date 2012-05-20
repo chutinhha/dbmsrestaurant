@@ -129,6 +129,7 @@ namespace GUI.QuanLyKho
         private void btnLapBieuDo_Click(object sender, EventArgs e)
         {
             frmNhapKho_ThongKe frmNhapKhoThongKe = new frmNhapKho_ThongKe();
+            frmNhapKhoThongKe.Mode = mode;
             frmNhapKhoThongKe.MaNH = maNH;
             frmNhapKhoThongKe.ShowDialog();
         }
@@ -139,7 +140,7 @@ namespace GUI.QuanLyKho
         {
             gridHoaDon.DataSource = null;
             dtHoaDon.Rows.Clear();
-            lsHoaDon = busDatHang.SelectDatHang_TinhTrang(maNH,"Đã Giao");
+            lsHoaDon = busDatHang.SelectDatHang_TinhTrang(mode, maNH, "Đã Giao");
             for (int i = 0; i < lsHoaDon.Count; i++)
             {
                 DataRow row = dtHoaDon.NewRow();
@@ -155,7 +156,7 @@ namespace GUI.QuanLyKho
         {
             gridChiTietHD.DataSource = null;
             dtChiTietHD.Rows.Clear();
-            lsChiTietHD = busChiTietDatHang.SelectChiTietDatHang(MaHoaDon);
+            lsChiTietHD = busChiTietDatHang.SelectChiTietDatHang(mode, MaHoaDon);
             for (int i = 0; i < lsChiTietHD.Count; i++)
             {
                 DataRow row = dtChiTietHD.NewRow();

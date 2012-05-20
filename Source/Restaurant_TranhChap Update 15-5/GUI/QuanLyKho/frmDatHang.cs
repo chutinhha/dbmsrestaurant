@@ -194,10 +194,10 @@ namespace GUI.QuanLyKho
             public void LoadDuLieu(int flag)
             {
                 if (flag == 1)
-                    dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(ttdh.MaNCC, ttdh.MaNH);
+                    dtNguyenLieu_Source = busNguyenLieu.SelectNguyenLieu_In_NCC(mode, ttdh.MaNCC, ttdh.MaNH);
                 else
                 {
-                    DataSet dtset = busNguyenLieu.SelectNguyenLieu_DatHang(ttdh.MaHoaDon,ttdh.MaNCC,ttdh.MaNH);
+                    DataSet dtset = busNguyenLieu.SelectNguyenLieu_DatHang(mode, ttdh.MaHoaDon, ttdh.MaNCC, ttdh.MaNH);
                     dtNguyenLieu_Source = dtset.Tables[0];
                     dtChiTietDatHang_Source = dtset.Tables[1];
                     dtChiTietDatHang_Source.Columns.Add("STT", System.Type.GetType("System.Int16"));

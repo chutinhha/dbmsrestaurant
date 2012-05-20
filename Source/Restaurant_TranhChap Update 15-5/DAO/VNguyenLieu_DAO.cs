@@ -10,7 +10,7 @@ namespace DAO
 {
     public class VNguyenLieu_DAO:VProvider
     {
-        public List<VNguyenLieu_DTO> SelectNguyenLieu(String MaNH)
+        public List<VNguyenLieu_DTO> SelectNguyenLieu(int mode, String MaNH)
         {
             String store = "SelectNguyenLieu";
             CreateCommand_StoreName(store);
@@ -19,7 +19,7 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return ConvertToList(ExecSelectCommand());
         }
-        public DataTable SelectNguyenLieu_toDataTable(String MaNH)
+        public DataTable SelectNguyenLieu_toDataTable(int mode, String MaNH)
         {
             String store = "SelectNguyenLieu";
             CreateCommand_StoreName(store);
@@ -28,7 +28,7 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return ExecSelectCommand();
         }
-        public int InsertNguyenLieu(VNguyenLieu_DTO nl)
+        public int InsertNguyenLieu(int mode, VNguyenLieu_DTO nl)
         {
             String store = "InsertNguyenLieu";
             CreateCommand_StoreName(store);
@@ -46,7 +46,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int UpdateNguyenLieu(VNguyenLieu_DTO nl)
+        public int UpdateNguyenLieu(int mode, VNguyenLieu_DTO nl)
         {
             String store = "UpdateNguyenLieu";
             CreateCommand_StoreName(store);
@@ -66,7 +66,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int DeleteNguyenLieu(int MaNL, String MaNH)
+        public int DeleteNguyenLieu(int mode, int MaNL, String MaNH)
         {
             String store = "DeleteNguyenLieu";
             CreateCommand_StoreName(store);
@@ -81,7 +81,7 @@ namespace DAO
         }
 
 
-        public DataSet SelectNguyenLieu_NCC(int MaNCC, String MaNH)
+        public DataSet SelectNguyenLieu_NCC(int mode, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_NCC";
             CreateCommand_StoreName(store);
@@ -93,7 +93,7 @@ namespace DAO
 
             return   FillDataSet(); 
         }
-        public DataTable SelectNguyenLieu_In_NCC(int MaNCC, String MaNH)
+        public DataTable SelectNguyenLieu_In_NCC(int mode, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_In_NCC";
             CreateCommand_StoreName(store);
@@ -104,7 +104,7 @@ namespace DAO
             cm.Parameters["@MaNH"].Value = MaNH;
             return ExecSelectCommand();
         }
-        public DataTable SelectNguyenLieu_NotIn_NCC(int MaNCC, String MaNH)
+        public DataTable SelectNguyenLieu_NotIn_NCC(int mode, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_NotIn_NCC";
             CreateCommand_StoreName(store);
@@ -116,7 +116,7 @@ namespace DAO
             return ExecSelectCommand();
         }
 
-        public DataSet SelectNguyenLieu_DatHang(int MaHoaDon,int MaNCC, String MaNH)
+        public DataSet SelectNguyenLieu_DatHang(int mode, int MaHoaDon, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_DatHang";
             CreateCommand_StoreName(store);
@@ -130,7 +130,7 @@ namespace DAO
 
             return FillDataSet();
         }
-        public DataTable SelectNguyenLieu_NotIn_DatHang(int MaHoaDon, int MaNCC, String MaNH)
+        public DataTable SelectNguyenLieu_NotIn_DatHang(int mode, int MaHoaDon, int MaNCC, String MaNH)
         {
             String store = "SelectNguyenLieu_NotIn_DatHang";
             CreateCommand_StoreName(store);
@@ -143,7 +143,7 @@ namespace DAO
             cm.Parameters["@MaNH"].Value = MaNH;
             return ExecSelectCommand();
         }
- 
+
         private List<VNguyenLieu_DTO> ConvertToList(DataTable dt)
         {
             List<VNguyenLieu_DTO> ls = new List<VNguyenLieu_DTO>();

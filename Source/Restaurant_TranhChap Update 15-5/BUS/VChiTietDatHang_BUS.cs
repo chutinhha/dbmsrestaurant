@@ -22,19 +22,19 @@ namespace BUS
         {
             daoChiTietDatHang = new VChiTietDatHang_DAO(b.Provider);
         }
-        public  List<VChiTietDatHang_DTO> SelectChiTietDatHang(int MaHoaDon)
+        public List<VChiTietDatHang_DTO> SelectChiTietDatHang(int mode, int MaHoaDon)
         {
-            return ((VChiTietDatHang_DAO)daoChiTietDatHang).SelectChiTietDatDang(MaHoaDon);
+            return ((VChiTietDatHang_DAO)daoChiTietDatHang).SelectChiTietDatDang(mode, MaHoaDon);
         }
 
-        public int InsertChiTietDatHang(VChiTietDatHang_DTO ctdh)
+        public int InsertChiTietDatHang(int mode, VChiTietDatHang_DTO ctdh)
         {
-            
-            return ((VChiTietDatHang_DAO)daoChiTietDatHang).InsertChiTietDatHang(ctdh);
+
+            return ((VChiTietDatHang_DAO)daoChiTietDatHang).InsertChiTietDatHang(mode, ctdh);
         }
-        public  int DeleteChiTietDatHang(int MaHoaDon)
+        public int DeleteChiTietDatHang(int mode, int MaHoaDon)
         {
-            return daoChiTietDatHang.DeleteChiTietDatDang(MaHoaDon);
+            return daoChiTietDatHang.DeleteChiTietDatDang(mode,MaHoaDon);
         }
 
     }

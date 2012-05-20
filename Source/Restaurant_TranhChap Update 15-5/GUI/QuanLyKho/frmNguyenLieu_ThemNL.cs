@@ -50,7 +50,7 @@ namespace GUI.QuanLyKho
                 {
                     _nguyenlieu.TenNL = txtTenNguyenLieu.Text.Trim();
                     _nguyenlieu.DonVi = txtDonVi.Text.Trim();
-                    if (busNguyenLieu.InsertNguyenLieu(NguyenLieu) == 1)
+                    if (busNguyenLieu.InsertNguyenLieu(mode, NguyenLieu) == 1)
                         DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -9,7 +9,7 @@ namespace DAO
 {
     public class VDatHang_DAO:VProvider
     {
-        public List<VDatHang_DTO> SelectDatHang(String MaNH)
+        public List<VDatHang_DTO> SelectDatHang(int mode, String MaNH)
         {
             String store = "SelectDatHang";
            CreateCommand_StoreName(store);
@@ -18,7 +18,7 @@ namespace DAO
             cm.Parameters["@maNH"].Value = MaNH;
             return  ConvertToList(ExecSelectCommand());
         }
-        public List<VDatHang_DTO> SelectDatHang_TinhTrang(String MaNH,String TinhTrang)
+        public List<VDatHang_DTO> SelectDatHang_TinhTrang(int mode, String MaNH, String TinhTrang)
         {
             String store = "SelectDatHang_TinhTrang";
             CreateCommand_StoreName(store);
@@ -30,7 +30,7 @@ namespace DAO
 
             return ConvertToList(ExecSelectCommand());
         }
-        public int InsertDatHang(VDatHang_DTO dh,DataTable ChiTiet)
+        public int InsertDatHang(int mode, VDatHang_DTO dh, DataTable ChiTiet)
         {
             String store = "InsertDatHang";
 
@@ -55,7 +55,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@MaHoaDon"].Value;
         }
-        public int UpdatetDatHang(VDatHang_DTO dh, DataTable ChiTiet)
+        public int UpdatetDatHang(int mode, VDatHang_DTO dh, DataTable ChiTiet)
         {
             String store = "UpdateDatHang";
             CreateCommand_StoreName(store);
@@ -81,7 +81,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int UpdatetTinhTrangDatHang(int MaHoaDon, String tinhtrang)
+        public int UpdatetTinhTrangDatHang(int mode, int MaHoaDon, String tinhtrang)
         {
             String store = "UpdateTinhTrangDatHang";
             CreateCommand_StoreName(store);
@@ -95,7 +95,7 @@ namespace DAO
             ExecuteInsertUpdateDelete();
             return (int)cm.Parameters["@Flag"].Value;
         }
-        public int DeleteDatHang(int MaHoaDon)
+        public int DeleteDatHang(int mode, int MaHoaDon)
         {
             String store = "DeleteDatHang";
             CreateCommand_StoreName(store);

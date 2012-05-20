@@ -19,25 +19,25 @@ namespace BUS
             daoNhaCungCap.Copy(b.Provider);
         }
 
-        public List<VNhaCungCap_DTO> SelectNhaCungCap()
+        public List<VNhaCungCap_DTO> SelectNhaCungCap(int mode)
         {
-            return daoNhaCungCap.SelectNhaCungCap();
+            return daoNhaCungCap.SelectNhaCungCap(mode);
         }
-        public List<VNhaCungCap_DTO> SelectNhaCungCap_fromNH(String MaNH)
+        public List<VNhaCungCap_DTO> SelectNhaCungCap_fromNH(int mode, String MaNH)
         {
-            return  daoNhaCungCap.SelectNhaCungCap_fromNH( MaNH);
+            return  daoNhaCungCap.SelectNhaCungCap_fromNH( mode, MaNH);
         }
-        public int InsertNhaCungCap( VNhaCungCap_DTO ncc,DataTable ChiTiet)
+        public int InsertNhaCungCap(int mode, VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
-            return daoNhaCungCap.InsertNhaCungCap(ncc,ChiTiet);
+            return daoNhaCungCap.InsertNhaCungCap( mode,ncc,ChiTiet);
         }
-        public int UpdatetNhaCungCap(VNhaCungCap_DTO ncc, DataTable ChiTiet)
+        public int UpdatetNhaCungCap(int mode, VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
-            return daoNhaCungCap.UpdateNhaCungCap( ncc,ChiTiet);
+            return daoNhaCungCap.UpdateNhaCungCap( mode,ncc,ChiTiet);
         }
-        public int DeleteNhaCungCap(int MaNCC)
+        public int DeleteNhaCungCap(int mode, int MaNCC)
         {
-            return daoNhaCungCap.DeleteNhaCungCap(MaNCC);
+            return daoNhaCungCap.DeleteNhaCungCap(mode,MaNCC);
         }
     }
 }
