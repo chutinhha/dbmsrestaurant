@@ -12,7 +12,12 @@ namespace DAO
     {
         public List<VNguyenLieu_DTO> SelectNguyenLieu(int mode, String MaNH)
         {
-            String store = "SelectNguyenLieu";
+            String store = "SPoV_SelectNguyenLieu";
+
+            //Goi store theo Mode
+            if (mode == 2) //che do delay
+                store = "SPoV_FIX_SelectNguyenLieu";
+
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
@@ -21,7 +26,12 @@ namespace DAO
         }
         public DataTable SelectNguyenLieu_toDataTable(int mode, String MaNH)
         {
-            String store = "SelectNguyenLieu";
+            String store = "SPoV_SelectNguyenLieu";
+
+            //Goi store theo Mode
+            if (mode == 2) //che do delay
+                store = "SPoV_FIX_SelectNguyenLieu";
+
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
@@ -30,7 +40,14 @@ namespace DAO
         }
         public int InsertNguyenLieu(int mode, VNguyenLieu_DTO nl)
         {
-            String store = "InsertNguyenLieu";
+
+            String store = "SPoV_InsertNguyenLieu"; // che do default
+
+            //Goi store theo Mode
+            if (mode == 1) //che do delay
+                store = "SPoV_Delay_InsertNguyenLieu";
+            
+
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
@@ -48,7 +65,7 @@ namespace DAO
         }
         public int UpdateNguyenLieu(int mode, VNguyenLieu_DTO nl)
         {
-            String store = "UpdateNguyenLieu";
+            String store = "SPoV_UpdateNguyenLieu";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
@@ -68,7 +85,7 @@ namespace DAO
         }
         public int DeleteNguyenLieu(int mode, int MaNL, String MaNH)
         {
-            String store = "DeleteNguyenLieu";
+            String store = "SPoV_DeleteNguyenLieu";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
@@ -83,7 +100,14 @@ namespace DAO
 
         public DataSet SelectNguyenLieu_NCC(int mode, int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_NCC";
+            String store = "SPoV_SelectNguyenLieu_NCC"; //che do default
+
+            //Goi store theo Mode
+            if (mode == 1) //che do delay
+                store = "SPoV_Delay_SelectNguyenLieu_NCC";
+            else
+                if(mode ==2)//Che do fix loi
+                    store = "SPoV_FIX_SelectNguyenLieu_NCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
@@ -95,7 +119,7 @@ namespace DAO
         }
         public DataTable SelectNguyenLieu_In_NCC(int mode, int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_In_NCC";
+            String store = "SPoV_SelectNguyenLieu_In_NCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
@@ -106,7 +130,7 @@ namespace DAO
         }
         public DataTable SelectNguyenLieu_NotIn_NCC(int mode, int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_NotIn_NCC";
+            String store = "SPoV_SelectNguyenLieu_NotIn_NCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
@@ -118,7 +142,7 @@ namespace DAO
 
         public DataSet SelectNguyenLieu_DatHang(int mode, int MaHoaDon, int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_DatHang";
+            String store = "SPoV_SelectNguyenLieu_DatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
@@ -132,7 +156,7 @@ namespace DAO
         }
         public DataTable SelectNguyenLieu_NotIn_DatHang(int mode, int MaHoaDon, int MaNCC, String MaNH)
         {
-            String store = "SelectNguyenLieu_NotIn_DatHang";
+            String store = "SPoV_SelectNguyenLieu_NotIn_DatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);

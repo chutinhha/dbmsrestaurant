@@ -189,6 +189,7 @@ namespace GUI.QuanLyKho
                 //_frm.lsNguyenLieuChon = new List<VNguyenLieu_DTO>();
                 _frm.Flag = 1;
                 _frm.MaNH = maNH;
+                _frm.Mode = mode;
                 if(_frm.ShowDialog() == DialogResult.OK)
                 {
                     DataTable dtNguyenLieu = _frm.DtNguyenLieuChon;
@@ -220,7 +221,8 @@ namespace GUI.QuanLyKho
                 frmNhaCungCap_Them_CapNhat _frm = new frmNhaCungCap_Them_CapNhat();
                 _frm.Flag = 2;
                 _frm.MaNH = maNH;
-                _frm.DtoNCC = lsNCC[indexNCC];                
+                _frm.DtoNCC = lsNCC[indexNCC];
+                _frm.Mode = mode;
                 if (_frm.ShowDialog() == DialogResult.OK)
                 {
                     DataTable dtNguyenLieu = _frm.DtNguyenLieuChon;

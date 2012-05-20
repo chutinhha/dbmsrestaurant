@@ -12,7 +12,7 @@ namespace DAO
 
         public List<VNhaCungCap_DTO> SelectNhaCungCap(int mode)
         {
-            String store = "SelectNhaCungCap";
+            String store = "SPoV_SelectNhaCungCap";
             CreateCommand_StoreName(store);
 
             return ConvertToList(ExecSelectCommand());
@@ -20,7 +20,7 @@ namespace DAO
 
         public List<VNhaCungCap_DTO> SelectNhaCungCap_fromNH(int mode,String MaNH)
         {
-            String store = "SelectNhaCungCap_fromNH";
+            String store = "SPoV_SelectNhaCungCap_fromNH";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNH", SqlDbType.NChar);
@@ -32,7 +32,7 @@ namespace DAO
 
         public int InsertNhaCungCap(int mode, VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
-            String store = "InsertNhaCungCap";
+            String store = "SPoV_InsertNhaCungCap";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@TenNCC", SqlDbType.NVarChar);
@@ -52,7 +52,7 @@ namespace DAO
         }
         public int UpdateNhaCungCap(int mode, VNhaCungCap_DTO ncc, DataTable ChiTiet)
         {
-            String store = "UpdateNhaCungCap";
+            String store = "SPoV_UpdateNhaCungCap";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -75,7 +75,7 @@ namespace DAO
         }
         public int DeleteNhaCungCap(int mode, int MaNCC)
         {
-            String store = "DeleteNhaCungCap";
+            String store = "SPoV_DeleteNhaCungCap";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);

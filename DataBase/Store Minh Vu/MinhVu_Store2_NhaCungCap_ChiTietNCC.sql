@@ -1,5 +1,4 @@
 ﻿
-
 use [QLNhaHang]
 go
 create type TableType_ChiTietNCC as table
@@ -22,12 +21,17 @@ go
 --go
 -- cap nhat gia nguyen nguyen lieu cua nha cung cap
 -------------------------------------------------------------------------
-alter proc UpdateChiTietNCC @Flag int out,@MaNL int,@MaNCC int ,@Gia float
+create proc SPoV_UpdateChiTietNCC 
+	@Flag int out,
+	@MaNL int,
+	@MaNCC int ,
+	@Gia float
 as
 begin
     set @Flag = 0
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     if((select count(*)
         from   ChiTietNCC
         where  MaNL = @MaNL
@@ -37,41 +41,38 @@ begin
         return
     end
     
-    waitfor delay '00:00:06'
+    --waitfor delay '00:00:06'
     update ChiTietNCC
     set    Gia = @Gia
     where  MaNL = @MaNL
            and MaNCC = @MaNCC
     
-    waitfor delay '00:00:03'
+    --waitfor delay '00:00:03'
     if (@@error<>0)
     begin
         rollback tran
         return
     end
-    else
-        set @Flag = 1
-    
+    set @Flag = 1
     commit tran
 end
---declare @a int 
---exec UpdateChiTietNCC @a out,53,11,12
---print @a
---select * from ChiTietNCC where MaNL = 53 and MaNCC = 11
 go
-create proc DeleteChiTietNCC_fromNCC @MaNCC int
+create proc SPoV_DeleteChiTietNCC_fromNCC 
+	@MaNCC int
 as
 begin
     begin tran
-	set transaction isolation level read uncommitted
-		delete ChiTietNCC
-		where  MaNCC = @MaNCC
-			   
-		if(@@error<>0)
-        begin
-            rollback
-            return
-        end 
+	set transaction isolation level 
+	read uncommitted
+	
+	delete ChiTietNCC
+	where  MaNCC = @MaNCC
+		   
+	if(@@error<>0)
+    begin
+        rollback
+        return
+    end 
 	commit tran
 end
 go
@@ -111,7 +112,7 @@ go
 ------------- table NhaCungCap -----------------------------------------------------------
 -- lay danh sach nha cung cap
 -------------------------------------------------------------------------
-create proc SelectNhaCungCap
+create proc SPoV_SelectNhaCungCap
 as
 begin
     begin tran
@@ -124,7 +125,7 @@ go
 
 -- them nha cung cap moi dong thoi them chi tiet nha cung cap
 ---------------------------------------------------------------------------------------
-alter proc InsertNhaCungCap 
+create proc SPoV_InsertNhaCungCap 
 	@MaNCC int out,
 	@TenNCC nvarchar(50),
 	@sdt nvarchar(50),
@@ -135,51 +136,53 @@ as
 begin
     set @MaNCC = -1
     begin tran
-    set transaction isolation level read uncommitted
-        --Insert Nha Cung Cap
-        insert into NhaCungCap
-        values
-          (
-            @TenNCC
-           ,@sdt
-           ,@DiaChi
-           ,@DiemUuTien
-          )
-        set @MaNCC = (select scope_identity())
-        waitfor delay '00:00:05'
-		if ((select count(*)from NhaCungCap
-			 where TenNCC = @TenNCC)<>1)
-		begin
-			set @MaNCC = -1
-			rollback tran
-			return
-		end
-        
-        if (@@ERROR<>0)
-        begin
-            set @MaNCC = -1
-            rollback
-            return
-        end
-        
-        --Insert Chi Tiet NCC
-        insert into ChiTietNCC
-        select MaNL
-              ,MaNCC = @MaNCC
-              ,Gia
-        from   @ChiTiet
-        
-        if (@@ERROR<>0)
-        begin
-            set @MaNCC = -1
-            rollback
-            return
-        end
+    set transaction isolation level 
+    read uncommitted
+
+    --Insert Nha Cung Cap
+    insert into NhaCungCap
+    values
+      (
+        @TenNCC
+       ,@sdt
+       ,@DiaChi
+       ,@DiemUuTien
+      )
+    set @MaNCC = (select scope_identity())
+    --waitfor delay '00:00:05'
+	if ((select count(*)from NhaCungCap
+		 where TenNCC = @TenNCC)<>1)
+	begin
+		set @MaNCC = -1
+		rollback tran
+		return
+	end
+    
+    if (@@ERROR<>0)
+    begin
+        set @MaNCC = -1
+        rollback
+        return
+    end
+    
+    --Insert Chi Tiet NCC
+    insert into ChiTietNCC
+    select MaNL
+          ,MaNCC = @MaNCC
+          ,Gia
+    from   @ChiTiet
+    
+    if (@@ERROR<>0)
+    begin
+        set @MaNCC = -1
+        rollback
+        return
+    end
     
     commit tran
 end
 go
-create proc UpdateNhaCungCap 
+create proc SPoV_UpdateNhaCungCap 
 	@Flag int out,
 	@MaNCC int,
 	@TenNCC nvarchar(50),
@@ -250,47 +253,52 @@ begin
     commit tran
 end
 GO
-create proc DeleteNhaCungCap 
+create proc SPoV_DeleteNhaCungCap 
 	@Flag int out,
 	@MaNCC int
 as
 begin
 	set @Flag = 0
 	begin tran
-	set transaction isolation level read uncommitted
-		exec DeleteChiTietNCC_fromNCC @MaNCC
-		if(@@ERROR<>0)
-        begin
-            rollback
-            return
-        end 
-        
-		delete NhaCungCap
-		where  MaNCC = @MaNCC
-		
-		if(@@ERROR<>0)
-        begin
-            rollback
-            return
-        end 
+	set transaction isolation level 
+	read uncommitted
+	
+	exec SPoV_DeleteChiTietNCC_fromNCC @MaNCC
+	if(@@ERROR<>0)
+    begin
+        rollback
+        return
+    end 
+    
+	delete NhaCungCap
+	where  MaNCC = @MaNCC
+	
+	if(@@ERROR<>0)
+    begin
+        rollback
+        return
+    end 
     set @Flag = 1  
 	commit tran
 end
 
 go
 -- Select nhung nha cung cap , co cung cap nguyen lieu cho nha hang dang xet
-create proc SelectNhaCungCap_fromNH @MaNH nchar(10)
+create proc SPoV_SelectNhaCungCap_fromNH 
+	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted
-		select distinct ncc.*
-		from   NhaCungCap ncc
-			  ,ChiTietNCC ct
-			  ,NguyenLieu nl
-		where  ncc.MaNCC = ct.MaNCC
-			   and nl.MaNL = ct.MaNL
-			   and NL.MANH = @MaNH
+    set transaction isolation level 
+    read uncommitted
+
+	select distinct ncc.*
+	from   NhaCungCap ncc
+		  ,ChiTietNCC ct
+		  ,NguyenLieu nl
+	where  ncc.MaNCC = ct.MaNCC
+		   and nl.MaNL = ct.MaNL
+		   and NL.MANH = @MaNH
     
     commit tran
 end

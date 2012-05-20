@@ -71,6 +71,7 @@ namespace GUI.QuanLyKho
         {
             frmLapPhieuNhapKho _frmLapPhieuNhapKho = new frmLapPhieuNhapKho();
             _frmLapPhieuNhapKho.MaNH = maNH;
+            _frmLapPhieuNhapKho.Mode = mode;
             if (_frmLapPhieuNhapKho.ShowDialog() == DialogResult.OK)
             {
                 LoadDSHD();
