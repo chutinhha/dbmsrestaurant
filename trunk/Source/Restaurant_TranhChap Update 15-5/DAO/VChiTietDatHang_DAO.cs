@@ -9,12 +9,9 @@ namespace DAO
 {
     public class VChiTietDatHang_DAO:VProvider
     {
-        public VChiTietDatHang_DAO() : base() { }
-        public VChiTietDatHang_DAO(VProvider v)
-            : base(v){}
         public List<VChiTietDatHang_DTO> SelectChiTietDatDang(int mode, int MaHoaDon)
         {
-            String store = "SelectChiTietDatHang";
+            String store = "SPoV_SelectChiTietDatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
 
@@ -23,7 +20,7 @@ namespace DAO
         }
         public int InsertChiTietDatHang(int mode, VChiTietDatHang_DTO ctdh)
         {
-            String store = "InsertChiTietDatHang";
+            String store = "SPoV_InsertChiTietDatHang";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
@@ -40,7 +37,7 @@ namespace DAO
         }
         public int DeleteChiTietDatDang(int mode, int MaHoaDon)
         {
-            String store = "DeleteChiTietDatHang";
+            String store = "SPoV_DeleteChiTietDatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
 

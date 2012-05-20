@@ -8,27 +8,35 @@ go
 
 -- Select chi tiết đặt hàng theo Mã Hóa Đơn
 ---------------------------------------------------------------
-create proc SelectChiTietDatHang @MaHoaDon int
+create proc SPoV_SelectChiTietDatHang 
+	@MaHoaDon int
 as
 begin
 	begin tran
-	set transaction isolation level read uncommitted
-		select ct.*,nl.TenNL,nl.DonVi
-		from ChiTietDatHang ct,NguyenLieu nl
-		where MaHoaDon = @MaHoaDon and ct.MaNL = nl.MaNL
+	set transaction isolation level 
+	read uncommitted
+	
+	select ct.*,nl.TenNL,nl.DonVi
+	from ChiTietDatHang ct,NguyenLieu nl
+	where MaHoaDon = @MaHoaDon and ct.MaNL = nl.MaNL
+	
 	commit tran
 end
 GO
 
 -- Delete chi tiết đặt hàng theo Mã Hóa Đơn
 -----------------------------------------------------------------
-create proc DeleteChiTietDatHang  @MaHoaDon int
+create proc SPoV_DeleteChiTietDatHang  
+	@MaHoaDon int
 as
 begin
 	begin tran
-	set transaction isolation level read uncommitted
-		delete ChiTietDatHang
-		where MaHoaDon=@MaHoaDon
+	set transaction isolation level 
+	read uncommitted
+	
+	delete ChiTietDatHang
+	where MaHoaDon=@MaHoaDon
+	
 	commit tran
 end
 GO
@@ -39,34 +47,41 @@ GO
 
 -- Slect đơn đặt hàng theo Mã Nhà Hàng
 ----------------------------------------------------------------
-create proc SelectDatHang  @MaNH nchar(10)
+create proc SPoV_SelectDatHang  
+	@MaNH nchar(10)
 as
 begin
 	begin tran
-	set transaction isolation level read uncommitted
-		select dh.*,ncc.TenNCC from DatHang dh,NhaCungCap ncc 
-		where MaNH = @MaNH and dh.MaNCC = ncc.MaNCC
+	set transaction isolation level 
+	read uncommitted
+	
+	select dh.*,ncc.TenNCC from DatHang dh,NhaCungCap ncc 
+	where MaNH = @MaNH and dh.MaNCC = ncc.MaNCC
+		
 	commit tran
 end
 go
-create proc SelectDatHang_TinhTrang  
+create proc SPoV_SelectDatHang_TinhTrang  
 	@MaNH nchar(10),
 	@TinhTrang nvarchar(50)
 as
 begin
 	begin tran
-	set transaction isolation level read uncommitted
-		select dh.*
-		      ,ncc.TenNCC
-		from   DatHang dh
-		      ,NhaCungCap ncc
-		where  MaNH = @MaNH
-		       and dh.MaNCC = ncc.MaNCC
-		       and dh.TinhTrang = @TinhTrang
+	set transaction isolation level 
+	read uncommitted
+	
+	select dh.*
+	      ,ncc.TenNCC
+	from   DatHang dh
+	      ,NhaCungCap ncc
+	where  MaNH = @MaNH
+	       and dh.MaNCC = ncc.MaNCC
+	       and dh.TinhTrang = @TinhTrang
+	       
 	commit tran
 end
 GO
-alter proc InsertDatHang  
+create proc SPoV_InsertDatHang  
 	@MaHoaDon int out,
 	@MaNCC int,
 	@MaNH nchar(10),
@@ -79,39 +94,48 @@ as
 begin
 	set @MaHoaDon = -1
     begin tran
-    set transaction isolation level read uncommitted
-        --Insert Nha Cung Cap
-        insert into DatHang
-        values(@MaNCC,@MaNH,@TongTien,@ThoiGianDat,@ThoiGianGiao,@TinhTrang)
-        	
-        set @MaHoaDon = (select scope_identity())
-        --waitfor delay '00:00:05'
-        
-        if (@@ERROR<>0)
-        begin
-            set @MaHoaDon = -1
-            rollback
-            return
-        end
-        
-        --Insert Chi Tiet NCC
-        insert into ChiTietDatHang
-        select MaHoaDon = @MaHoaDon
-              ,MaNL
-              ,SoLuong
-              ,ThanhTien
-        from   @ChiTiet
-        
-        if (@@ERROR<>0)
-        begin
-            set @MaHoaDon= -1
-            rollback
-            return
-        end
+    set transaction isolation level 
+    read uncommitted
+    --Insert Nha Cung Cap
+    insert into DatHang
+    values
+      (
+        @MaNCC
+       ,@MaNH
+       ,@TongTien
+       ,@ThoiGianDat
+       ,@ThoiGianGiao
+       ,@TinhTrang
+      )
+    	
+    set @MaHoaDon = (select scope_identity())
+    --waitfor delay '00:00:05'
+    
+    if (@@ERROR<>0)
+    begin
+        set @MaHoaDon = -1
+        rollback
+        return
+    end
+    
+    --Insert Chi Tiet NCC
+    insert into ChiTietDatHang
+    select MaHoaDon = @MaHoaDon
+          ,MaNL
+          ,SoLuong
+          ,ThanhTien
+    from   @ChiTiet
+    
+    if (@@ERROR<>0)
+    begin
+        set @MaHoaDon= -1
+        rollback
+        return
+    end
     commit tran
 end
 GO
-alter proc UpdateDatHang 
+create proc SPoV_UpdateDatHang 
 	@Flag int out,
 	@MaHoaDon int,
 	@MaNCC int,
@@ -125,9 +149,12 @@ as
 begin 
 	set @Flag = 0
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     
-    if(( select count(*) from  DatHang where  MaHoaDon = @MaHoaDon )<>0)
+    if(( select count(*)
+         from   DatHang
+         where  MaHoaDon = @MaHoaDon )<>0)
     begin
     	--waitfor delay '00:00:06'
         update DatHang
@@ -150,11 +177,12 @@ begin
         delete ChiTietDatHang
         where  MaHoaDon = @MaHoaDon
                and MaNL in (
-                       select ct.MaNL
-                       from   ChiTietDatHang ct
-                       where  ct.MaHoaDon = @MaHoaDon
-                              and ct.MaNL not in (select MaNL
-                                                   from   @ChiTiet))
+               select ct.MaNL
+               from   ChiTietDatHang ct
+               where  ct.MaHoaDon = @MaHoaDon
+                      and ct.MaNL not in (
+                      	select MaNL
+                        from   @ChiTiet))
         if(@@ERROR<>0)
         begin
             set @Flag = 0
@@ -163,22 +191,39 @@ begin
         end      
         --cap nhat so luong va thanh tien cho nguyen lieu
         --dong thoi them nguyen lieu vua cap nhat trong don dat hang
-        declare @manl int,@soluong int,@thanhtien int
+        declare @manl int,
+				@soluong int,
+				@thanhtien int
 		declare @cur cursor 
-		set @cur = cursor for select MaNL,SoLuong,ThanhTien from @ChiTiet
+		set @cur =  cursor for 
+		select MaNL
+		      ,SoLuong
+		      ,ThanhTien
+		from   @ChiTiet
+		
 		open @cur
 		fetch next from @cur into @manl,@soluong,@thanhtien
 		while @@FETCH_STATUS=0
 		begin
 			if(exists(select * from ChiTietDatHang 
-					  where MaHoaDon = @MaHoaDon and MaNL = @manl))
+					  where MaHoaDon = @MaHoaDon 
+					  and MaNL = @manl))
 			begin
 				update ChiTietDatHang set 
-				SoLuong = @soluong,ThanhTien = @thanhtien 
-				where MaNL = @manl and MaHoaDon = @MaHoaDon
+					SoLuong = @soluong,
+					ThanhTien = @thanhtien 
+				where MaNL = @manl 
+				and MaHoaDon = @MaHoaDon
 			end
 			else
-				insert into ChiTietDatHang values(@MaHoaDon,@manl,@soluong,@thanhtien) 
+				insert into ChiTietDatHang
+				values
+				  (
+				    @MaHoaDon
+				   ,@manl
+				   ,@soluong
+				   ,@thanhtien
+				  ) 
 				
 			if(@@ERROR<>0)
 			begin
@@ -193,7 +238,7 @@ begin
     commit tran
 end
 go
-create proc UpdateTinhTrangDatHang
+create proc SPoV_UpdateTinhTrangDatHang
 	@Flag int out,
 	@MaHoaDon int,
 	@TinhTrang nvarchar(50)
@@ -250,7 +295,7 @@ begin
 				 (select SoLuongTon
                   from   NguyenLieu
                   where  MaNL = @MaNL)
-			waitfor delay '00:00:06'                  
+			--waitfor delay '00:00:06'                  
 			update NguyenLieu
 			set	SoLuongTon=@soluongthem+@soluongton
 			where MaNL = @MaNL
@@ -269,29 +314,32 @@ begin
 end
 	
 GO
-alter proc DeleteDatHang 
+create proc SPoV_DeleteDatHang 
 	@Flag int out,
 	@MaHoaDon int
 as
 begin	
 	set @Flag = 0
 	begin tran
-	set transaction isolation level read uncommitted
-		exec DeleteChiTietDatHang @MaHoaDon
-		if(@@ERROR<>0)
-        begin
-            rollback
-            return
-        end 
-        
-		delete DatHang
-		where MaHoaDon=@MaHoaDon
-		
-		if(@@ERROR<>0)
-        begin
-            rollback
-            return
-        end 
+	set transaction isolation level 
+	read uncommitted
+
+	exec SPoV_DeleteChiTietDatHang 
+		@MaHoaDon
+	if(@@ERROR<>0)
+    begin
+        rollback
+        return
+    end 
+    
+	delete DatHang
+	where MaHoaDon=@MaHoaDon
+	
+	if(@@ERROR<>0)
+    begin
+        rollback
+        return
+    end 
     set @Flag = 1  
 	commit tran
 end

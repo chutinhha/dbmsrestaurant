@@ -11,7 +11,7 @@ namespace DAO
     {
         public List<VDatHang_DTO> SelectDatHang(int mode, String MaNH)
         {
-            String store = "SelectDatHang";
+            String store = "SPoV_SelectDatHang";
            CreateCommand_StoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
 
@@ -20,7 +20,7 @@ namespace DAO
         }
         public List<VDatHang_DTO> SelectDatHang_TinhTrang(int mode, String MaNH, String TinhTrang)
         {
-            String store = "SelectDatHang_TinhTrang";
+            String store = "SPoV_SelectDatHang_TinhTrang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@maNH", SqlDbType.NChar);
             cm.Parameters.Add("@TinhTrang", SqlDbType.NVarChar);
@@ -32,7 +32,7 @@ namespace DAO
         }
         public int InsertDatHang(int mode, VDatHang_DTO dh, DataTable ChiTiet)
         {
-            String store = "InsertDatHang";
+            String store = "SPoV_InsertDatHang";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -57,7 +57,7 @@ namespace DAO
         }
         public int UpdatetDatHang(int mode, VDatHang_DTO dh, DataTable ChiTiet)
         {
-            String store = "UpdateDatHang";
+            String store = "SPoV_UpdateDatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
@@ -83,7 +83,15 @@ namespace DAO
         }
         public int UpdatetTinhTrangDatHang(int mode, int MaHoaDon, String tinhtrang)
         {
-            String store = "UpdateTinhTrangDatHang";
+            String store = "SPoV_UpdateTinhTrangDatHang"; // deffault
+
+            //Goi store theo Mode
+            if (mode == 1) //che do delay
+                store = "SPoV_DeLay_UpdateTinhTrangDatHang";
+            else
+                if (mode == 2) //che do fix loi
+                    store = "SPoV_FIX_UpdateTinhTrangDatHang";
+
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);
@@ -97,7 +105,7 @@ namespace DAO
         }
         public int DeleteDatHang(int mode, int MaHoaDon)
         {
-            String store = "DeleteDatHang";
+            String store = "SPoV_DeleteDatHang";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@MaHoaDon", SqlDbType.Int);

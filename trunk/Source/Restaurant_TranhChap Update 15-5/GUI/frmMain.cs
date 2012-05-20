@@ -88,7 +88,7 @@ namespace GUI
                 case "1":
                     rbPage_QLNhaHang.Visible = true;
                     rbPage_QLKho.Visible = true;
-                    rbPage_TiepTan.Visible = true;
+                    rbPage_TiepTan_ThuNgan.Visible = true;
                     rbPage_ThuNgan.Visible = true;
                     Add_UserControl(panelCtrl_Main, UCtrl_QLNH_QLThucDon);
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[3];
@@ -101,7 +101,7 @@ namespace GUI
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[2];
                     break;
                 case "3":
-                    rbPage_TiepTan.Visible = true;
+                    rbPage_TiepTan_ThuNgan.Visible = true;
                     Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
                     UCtrl_TiepTan_XepBan.LoadForm();
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[0];
@@ -116,7 +116,7 @@ namespace GUI
                     rbPage_TongQuanLy.Visible = true;
                     rbPage_QLNhaHang.Visible = true;
                     rbPage_QLKho.Visible = true;
-                    rbPage_TiepTan.Visible = true;
+                    rbPage_TiepTan_ThuNgan.Visible = true;
                     rbPage_ThuNgan.Visible = true;
                     Add_UserControl(panelCtrl_Main, UCtrl_TongQL_DSNhaHang);
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[4];

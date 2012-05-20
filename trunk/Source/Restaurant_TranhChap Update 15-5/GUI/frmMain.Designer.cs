@@ -92,9 +92,9 @@ namespace GUI
             this.repositoryItemRadioGroup3 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.repositoryItemRadioGroup4 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.repositoryItemRadioGroup5 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.panelCtrl_Main = new DevExpress.XtraEditors.PanelControl();
             this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
-            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).BeginInit();
@@ -103,9 +103,9 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCtrl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // rbControl_Main
@@ -640,6 +640,10 @@ namespace GUI
             // 
             this.repositoryItemRadioGroup5.Name = "repositoryItemRadioGroup5";
             // 
+            // repositoryItemProgressBar1
+            // 
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            // 
             // panelCtrl_Main
             // 
             this.panelCtrl_Main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -652,10 +656,6 @@ namespace GUI
             // 
             this.MyapplicationMenu.Name = "MyapplicationMenu";
             this.MyapplicationMenu.Ribbon = this.rbControl_Main;
-            // 
-            // repositoryItemProgressBar1
-            // 
-            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
             // 
             // frmMain
             // 
@@ -680,9 +680,9 @@ namespace GUI
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelCtrl_Main)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MyapplicationMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             this.ResumeLayout(false);
 
         }

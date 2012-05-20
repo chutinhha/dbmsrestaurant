@@ -1,12 +1,10 @@
 ﻿
-
-
 use [QLNhaHang]
 go
 ------------------- Table Nguyen Lieu -----------------------------------------------------------------
 --- Lay danh sach nguyen lieu
 ------------------------------------------------------------------------------------- 
-alter proc SelectNguyenLieu 
+create proc SPoV_SelectNguyenLieu 
 	@MaNH nchar(10)
 as
 begin
@@ -24,7 +22,7 @@ end
 go
 --- Them nguyen lieu moi
 ------------------------------------------------------------------------------------- 
-alter proc InsertNguyenLieu 
+create proc SPoV_InsertNguyenLieu 
 	@Flag int out,
 	@MaNH nchar(10),
 	@TenNL nvarchar(50),
@@ -34,7 +32,8 @@ as
 begin
     set @Flag = 0
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     insert into NguyenLieu
     values
       (
@@ -43,7 +42,7 @@ begin
        ,@DonVi
        ,@SoLuongTon
       )
-    waitfor delay '00:00:05'		
+    --waitfor delay '00:00:05'		
     if ((select count(*)
          from   NguyenLieu
          where  TenNL = @TenNL
@@ -66,7 +65,7 @@ end
 go
 --- cap nhat thong tin mot nguyen lieu
 ------------------------------------------------------------------------------------- 
-create proc UpdateNguyenLieu 
+create proc SPoV_UpdateNguyenLieu 
 	@Flag int out,
 	@MaNL int,
 	@MaNH nchar(10),
@@ -83,14 +82,14 @@ begin
           from   NguyenLieu
           where  MaNL = @MaNL)=1)
     begin
-        waitfor delay '00:00:06'
+        --waitfor delay '00:00:06'
         update NguyenLieu
         set    MaNH = @MaNH
               ,TenNL = @TenNL
               ,DonVi = @Donvi
               ,SoLuongTon = @SoLuongTon
         where  MaNL = @MaNL
-       waitfor delay '00:00:04'
+      -- waitfor delay '00:00:04'
        if ((select count(*)
             from   NguyenLieu
             where  TenNL = @TenNL
@@ -112,16 +111,26 @@ end
 go
 --- xoa nguyen lieu
 ------------------------------------------------------------------------------------- 
-create proc DeleteNguyenLieu  @Flag int out,@MaNL int,@MaNH nchar(10)
+create proc SPoV_DeleteNguyenLieu  
+	@Flag int out,
+	@MaNL int,
+	@MaNH nchar(10)
 as
 begin
     set @Flag = 0
     begin tran
-    set transaction isolation level read uncommitted
-    if ((select count(*) from   NguyenLieu where  MaNL = @MaNL)=1 )
+    set transaction isolation level 
+    read uncommitted
+    if ((select count(*)
+         from   NguyenLieu
+         where  MaNL = @MaNL)=1 )
     begin
-        if (( select count(*)from   ChiTietNCC where  MaNL = @MaNL)=1
-               or (select count(*) from ChiTietDatHang where  MaNL = @MaNL )=1)
+        if (( select count(*)
+              from   ChiTietNCC
+              where  MaNL = @MaNL)=1
+              or ( select count(*)
+                   from   ChiTietDatHang
+                   where  MaNL = @MaNL )=1)
         begin
             set @Flag = -1
             rollback tran
@@ -145,34 +154,16 @@ begin
 end
 go
 
---- lay danh sach nguyen lieu cua nha cung cap
---- va danh sanh nguyen lieu nha cung cap khong co
--------------------------------------------------------------------------------------
-alter proc SelectNguyenLieu_NCC 
+--- lay danh sach nguyen lieu cua mot nha cung cap
+------------------------------------------------------------------------------------- 
+create  proc SPoV_SelectNguyenLieu_In_NCC 
 	@MaNCC int,
 	@MaNH nchar(10)
 as
 begin
     begin tran
     set transaction isolation level 
-    read uncommitted  
-    exec SelectNguyenLieu_In_NCC 
-		@MaNCC
-        ,@MaNH
-    waitfor delay '00:00:05'
-    exec SelectNguyenLieu_NotIn_NCC 
-		@MaNCC
-		,@MaNH
-    commit tran
-end
-go
---- lay danh sach nguyen lieu cua mot nha cung cap
-------------------------------------------------------------------------------------- 
-alter  proc SelectNguyenLieu_In_NCC @MaNCC int,@MaNH nchar(10)
-as
-begin
-    begin tran
-    set transaction isolation level read uncommitted
+    read uncommitted
     select nl.*
           ,ct.Gia
     from   NhaCungCap ncc
@@ -190,11 +181,14 @@ go
 
 --- lay danh sach nguyen lieu nha cung cap khong co
 ------------------------------------------------------------------------------------- 
-create proc SelectNguyenLieu_NotIn_NCC @MaNCC int ,@MaNH nchar(10)
+create proc SPoV_SelectNguyenLieu_NotIn_NCC 
+	@MaNCC int ,
+	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     select *
     from   NguyenLieu nl1
     where  nl1.MaNH = @MaNH
@@ -210,25 +204,38 @@ begin
     commit tran
 end
 go
-alter proc SelectNguyenLieu_DatHang @MaHoaDon int,@MaNCC int,@MaNH nchar(10)
+--- lay danh sach nguyen lieu cua nha cung cap
+--- va danh sanh nguyen lieu nha cung cap khong co
+-------------------------------------------------------------------------------------
+create proc SPoV_SelectNguyenLieu_NCC 
+	@MaNCC int,
+	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted   
-    exec SelectNguyenLieu_NotIn_DatHang @MaHoaDon,@MaNCC,@MaNH
+    set transaction isolation level 
+    read uncommitted  
+    exec SPoV_SelectNguyenLieu_In_NCC 
+		@MaNCC
+        ,@MaNH
     --waitfor delay '00:00:05'
-    exec SelectNguyenLieu_In_DatHang @MaHoaDon,@MaNH
-    
+    exec SPoV_SelectNguyenLieu_NotIn_NCC 
+		@MaNCC
+		,@MaNH
     commit tran
 end
 go
+
 --- lay danh sach nguyen lieu cua mot nha cung cap
 ------------------------------------------------------------------------------------- 
-alter proc SelectNguyenLieu_In_DatHang @MaHoaDon int,@MaNH nchar(10)
+create proc SPoV_SelectNguyenLieu_In_DatHang 
+	@MaHoaDon int,
+	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     select nl.*
           ,ct.SoLuong
           ,ct.ThanhTien
@@ -248,14 +255,15 @@ go
 ---lay danh sach nguyen lieu cua nha cung cap
 ---khong co trong don dat hang voi nha cung cap do
 ------------------------------------------------------------------------------------- 
-alter proc SelectNguyenLieu_NotIn_DatHang 
+create proc SPoV_SelectNguyenLieu_NotIn_DatHang 
 	@MaHoaDon int,
 	@MaNCC int,
 	@MaNH nchar(10)
 as
 begin
     begin tran
-    set transaction isolation level read uncommitted
+    set transaction isolation level 
+    read uncommitted
     select nl1.*
           ,ctncc.Gia
     from   NguyenLieu nl1
@@ -263,12 +271,13 @@ begin
     where  nl1.MaNL = ctncc.MaNL
            and nl1.MaNH = @MaNH
            and ctncc.MaNCC = @MaNCC
-           and nl1.MaNL not in (select nl.MaNL
-                                from   NguyenLieu nl
-                                      ,ChiTietDatHang ct
-                                where  nl.MaNL = ct.MaNL
-                                       and ct.MaHoaDon = @MaHoaDon
-                                       and nl.MaNH = @MaNH)
+           and nl1.MaNL not in 
+           (select nl.MaNL
+            from   NguyenLieu nl
+                  ,ChiTietDatHang ct
+            where  nl.MaNL = ct.MaNL
+                   and ct.MaHoaDon = @MaHoaDon
+                   and nl.MaNH = @MaNH)
     order by
            nl1.TenNL
     
@@ -277,3 +286,22 @@ end
 
 go
 
+create proc SPoV_SelectNguyenLieu_DatHang 
+	@MaHoaDon int,
+	@MaNCC int,
+	@MaNH nchar(10)
+as
+begin
+    begin tran
+    set transaction isolation level read uncommitted   
+    exec SPoV_SelectNguyenLieu_NotIn_DatHang 
+		@MaHoaDon,@MaNCC,
+		@MaNH
+    --waitfor delay '00:00:05'
+    exec SPoV_SelectNguyenLieu_In_DatHang 
+		@MaHoaDon,
+		@MaNH
+    
+    commit tran
+end
+go

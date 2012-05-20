@@ -158,7 +158,7 @@ namespace GUI.QuanLyKho
             {
                 frmDatHang_ChonNCC frmChonNCC = new frmDatHang_ChonNCC(); // khoi tao form chon nha cung cap
                 frmChonNCC.MaNH = maNH;
-
+                frmChonNCC.Mode = mode;
 
 
                 frmChonNCC.LoadDanhSachNCC();
@@ -168,6 +168,8 @@ namespace GUI.QuanLyKho
                 {
                     frmDatHang frmDatHang = new frmDatHang();
                     frmDatHang.ThongTinDH.MaNH = maNH;
+                    frmDatHang.Mode = mode;
+
                     frmDatHang.ThongTinDH.MaNCC = frmChonNCC.MaNCC;
                     frmDatHang.ThongTinDH.TenNCC = frmChonNCC.TenNCC;
                     frmDatHang.TenNCC = frmChonNCC.TenNCC;
@@ -211,6 +213,8 @@ namespace GUI.QuanLyKho
                     {
                         frmDatHang frmDatHang = new frmDatHang();
                         frmDatHang.ThongTinDH = lsDatHang[sttDH - 1];
+                        frmDatHang.Mode = mode;
+
                         frmDatHang.LoadThongTinDatHang();
 
                         frmDatHang.LoadDuLieu(2);

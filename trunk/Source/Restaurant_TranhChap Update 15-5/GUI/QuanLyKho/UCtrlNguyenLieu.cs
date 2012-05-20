@@ -148,6 +148,7 @@ namespace GUI.QuanLyKho
         {
             frmNguyenLieu_ThemNL _frmThemNL = new frmNguyenLieu_ThemNL();
             _frmThemNL.NguyenLieu.MaNH = maNH;
+            _frmThemNL.Mode = mode;
             if (_frmThemNL.ShowDialog() == DialogResult.OK)
             {
                 LoadNguyenLieu();

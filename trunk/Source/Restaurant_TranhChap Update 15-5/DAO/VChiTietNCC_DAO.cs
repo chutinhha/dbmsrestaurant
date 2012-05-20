@@ -12,7 +12,7 @@ namespace DAO
 
         public int InsertChiTietNCC(int mode, int MaNL, int MaNCC, double Gia)
         {
-            String store = "InsertChiTietNCC";
+            String store = "SPoV_InsertChiTietNCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
@@ -25,7 +25,7 @@ namespace DAO
         }
         public int UpdateChiTietNCC(int mode, int MaNL, int MaNCC, double Gia)
         {
-            String store = "UpdateChiTietNCC";
+            String store = "SPoV_UpdateChiTietNCC";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -42,7 +42,7 @@ namespace DAO
         }
         public int DeleteChiTietNCC_fromNCC(int mode, int MaNCC)
         {
-            String store = "DeleteChiTietNCC_fromNCC";
+            String store = "SPoV_DeleteChiTietNCC_fromNCC";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);
@@ -53,7 +53,7 @@ namespace DAO
         }
         public int DeleteChiTietNCC(int mode, int MaNL, int MaNCC)
         {
-            String store = "DeleteChiTietNCC";
+            String store = "SPoV_DeleteChiTietNCC";
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNL", SqlDbType.Int);
