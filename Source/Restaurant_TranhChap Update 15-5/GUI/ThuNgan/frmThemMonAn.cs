@@ -52,7 +52,7 @@ namespace GUI.ThuNgan
             int index = cboLoaiMonAn.SelectedIndex;
             String maLoaiMonAn = (String)dtLoaiMonAn.Rows[index].ItemArray[0];
 
-            dtMonAn = MonAn_BUS.SelectMonAnTheoLoai(maLoaiMonAn, "1");
+            dtMonAn = MonAn_BUS.SelectMonAnTheoLoai(maLoaiMonAn, frmMain.nhanVien.MaNH.Trim());
             listViewDSMonAn.Items.Clear();
             foreach (DataRow row in dtMonAn.Rows)
             {

@@ -103,7 +103,7 @@ namespace GUI.ThuNgan
         }
         public void load_ListBoxBanAn()
         {
-            lsBanAn = BanAn_BUS.selectBanAnTheoTrangThai(1, 1);
+            lsBanAn = BanAn_BUS.selectBanAnTheoTrangThai(1, int.Parse(frmMain.nhanVien.MaNH.Trim()));
             listBoxBanAn.Items.Clear();
             int sl = lsBanAn.Count;
             for (int i = 0; i < sl; i++)
