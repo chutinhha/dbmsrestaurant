@@ -113,14 +113,24 @@ namespace GUI.QuanLyKho
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
-            if (busDatHang.UpdateTinhTrangDatHang(mode, lsDatHang[sttDH - 1].MaHoaDon, "Đã Giao") == 1)
+            try
             {
-                
-                DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (busDatHang.UpdateTinhTrangDatHang(mode, lsDatHang[sttDH - 1].MaHoaDon, "Đã Giao") == 1)
+                {
+
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
+              
             }
-            else
-                DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
-                           
+            catch (Exception ex)
+            {
+
+                DevExpress.XtraEditors.XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
+              
+            }
+                         
         }
 
     }
