@@ -36,7 +36,7 @@ namespace GUI.ThuNgan
             
             //thực tế thì có thể ghép các bàn đang ăn vào 1 bàn đang ăn
             //nhưng ở đây chỉ cho ghép vào 1 bàn trống => xuất hiện lost update
-            lsBan = BanAn_BUS.selectBanAnTheoTrangThai(0, 1);
+            lsBan = BanAn_BUS.selectBanAnTheoTrangThai(0, int.Parse(frmMain.nhanVien.MaNH.Trim()));
             load_CbboxBanTrong();
         }
 

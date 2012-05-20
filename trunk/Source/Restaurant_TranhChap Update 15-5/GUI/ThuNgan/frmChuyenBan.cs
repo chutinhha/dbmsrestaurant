@@ -31,7 +31,7 @@ namespace GUI.ThuNgan
         
         private void frmChuyenBan_Load(object sender, EventArgs e)
         {
-            lsBanDangAn = BanAn_BUS.selectBanAnTheoTrangThai(1, 1);
+            lsBanDangAn = BanAn_BUS.selectBanAnTheoTrangThai(1, int.Parse(frmMain.nhanVien.MaNH.Trim()));
             ComboBoxItemCollection coll = cbbox_BanCanChuyen.Properties.Items;
             coll.BeginUpdate();
 
@@ -42,7 +42,7 @@ namespace GUI.ThuNgan
                 coll.EndUpdate();
             }
 
-            lsBanTrong = BanAn_BUS.selectBanAnTheoTrangThai(0, 1);
+            lsBanTrong = BanAn_BUS.selectBanAnTheoTrangThai(0, int.Parse(frmMain.nhanVien.MaNH.Trim()));
             ComboBoxItemCollection coll2 = cbbox_ChuyenSangBan.Properties.Items;
             coll2.BeginUpdate();
 
