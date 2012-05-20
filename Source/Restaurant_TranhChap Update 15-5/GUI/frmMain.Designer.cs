@@ -60,7 +60,7 @@ namespace GUI
             this.barBtn_TiepTan_DSDatBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtn_TiepTan_XepBan = new DevExpress.XtraBars.BarButtonItem();
             this.barBtnThongKeMonAn = new DevExpress.XtraBars.BarButtonItem();
-            this.barLeftMenu = new DevExpress.XtraBars.BarSubItem();
+            this.barModeMenu = new DevExpress.XtraBars.BarSubItem();
             this.barDefault = new DevExpress.XtraBars.BarCheckItem();
             this.barError = new DevExpress.XtraBars.BarCheckItem();
             this.barXuLy = new DevExpress.XtraBars.BarCheckItem();
@@ -95,6 +95,7 @@ namespace GUI
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.panelCtrl_Main = new DevExpress.XtraEditors.PanelControl();
             this.MyapplicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this.barDeadLock = new DevExpress.XtraBars.BarCheckItem();
             ((System.ComponentModel.ISupportInitialize)(this.rbControl_Main)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MybarAndDockingController)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRadioGroup1)).BeginInit();
@@ -148,7 +149,7 @@ namespace GUI
             this.barBtn_TiepTan_DSDatBan,
             this.barBtn_TiepTan_XepBan,
             this.barBtnThongKeMonAn,
-            this.barLeftMenu,
+            this.barModeMenu,
             this.barDefault,
             this.barError,
             this.barXuLy,
@@ -156,11 +157,12 @@ namespace GUI
             this.barCheckItem2,
             this.barCheckItem3,
             this.barCheckItem4,
-            this.barCheckItem5});
+            this.barCheckItem5,
+            this.barDeadLock});
             this.rbControl_Main.Location = new System.Drawing.Point(0, 0);
-            this.rbControl_Main.MaxItemId = 65;
+            this.rbControl_Main.MaxItemId = 66;
             this.rbControl_Main.Name = "rbControl_Main";
-            this.rbControl_Main.PageHeaderItemLinks.Add(this.barLeftMenu);
+            this.rbControl_Main.PageHeaderItemLinks.Add(this.barModeMenu);
             this.rbControl_Main.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rbPage_TiepTan_ThuNgan,
             this.rbPage_ThuNgan,
@@ -425,16 +427,17 @@ namespace GUI
             this.barBtnThongKeMonAn.LargeWidth = 120;
             this.barBtnThongKeMonAn.Name = "barBtnThongKeMonAn";
             // 
-            // barLeftMenu
+            // barModeMenu
             // 
-            this.barLeftMenu.Caption = "Chế độ test";
-            this.barLeftMenu.Id = 55;
-            this.barLeftMenu.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M));
-            this.barLeftMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barModeMenu.Caption = "Chế độ test";
+            this.barModeMenu.Id = 55;
+            this.barModeMenu.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M));
+            this.barModeMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barDefault),
             new DevExpress.XtraBars.LinkPersistInfo(this.barError),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barDeadLock),
             new DevExpress.XtraBars.LinkPersistInfo(this.barXuLy)});
-            this.barLeftMenu.Name = "barLeftMenu";
+            this.barModeMenu.Name = "barModeMenu";
             // 
             // barDefault
             // 
@@ -453,7 +456,7 @@ namespace GUI
             // 
             // barXuLy
             // 
-            this.barXuLy.Caption = "Xử lý tranh chấp";
+            this.barXuLy.Caption = "Fix lỗi xung đột";
             this.barXuLy.Id = 58;
             this.barXuLy.Name = "barXuLy";
             this.barXuLy.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barFix_CheckedChanged);
@@ -657,6 +660,13 @@ namespace GUI
             this.MyapplicationMenu.Name = "MyapplicationMenu";
             this.MyapplicationMenu.Ribbon = this.rbControl_Main;
             // 
+            // barDeadLock
+            // 
+            this.barDeadLock.Caption = "Giả lập deadlock";
+            this.barDeadLock.Id = 65;
+            this.barDeadLock.Name = "barDeadLock";
+            this.barDeadLock.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barDeadLock_CheckedChanged);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,7 +753,7 @@ namespace GUI
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup3;
         private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup5;
         private DevExpress.XtraBars.BarAndDockingController MybarAndDockingController;
-        private DevExpress.XtraBars.BarSubItem barLeftMenu;
+        private DevExpress.XtraBars.BarSubItem barModeMenu;
         private DevExpress.XtraBars.Ribbon.ApplicationMenu MyapplicationMenu;
         private DevExpress.XtraBars.BarCheckItem barDefault;
         private DevExpress.XtraBars.BarCheckItem barError;
@@ -754,6 +764,7 @@ namespace GUI
         private DevExpress.XtraBars.BarCheckItem barCheckItem4;
         private DevExpress.XtraBars.BarCheckItem barCheckItem5;
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
+        private DevExpress.XtraBars.BarCheckItem barDeadLock;
     }
 }
 

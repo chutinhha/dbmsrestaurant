@@ -42,7 +42,7 @@ begin
     commit tran
 end
 go
-create proc SPoV_FIX_UpdateTinhTrangDatHang
+alter proc SPoV_FIX_UpdateTinhTrangDatHang
 	@Flag int out,
 	@MaHoaDon int,
 	@TinhTrang nvarchar(50)
@@ -51,7 +51,7 @@ begin
 	set @Flag = 0
 	begin tran
 	set transaction isolation level 
-	serializable
+	repeatable read
 	if(@TinhTrang <> N'Đã Giao')
 	begin
 	    update DatHang 

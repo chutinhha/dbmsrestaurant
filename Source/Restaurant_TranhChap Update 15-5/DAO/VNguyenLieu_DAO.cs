@@ -15,7 +15,7 @@ namespace DAO
             String store = "SPoV_SelectNguyenLieu";
 
             //Goi store theo Mode
-            if (mode == 2) //che do delay
+            if (mode == 3) //che do fix loi
                 store = "SPoV_FIX_SelectNguyenLieu";
 
             CreateCommand_StoreName(store);
@@ -29,7 +29,7 @@ namespace DAO
             String store = "SPoV_SelectNguyenLieu";
 
             //Goi store theo Mode
-            if (mode == 2) //che do delay
+            if (mode == 3) //che do fix loi
                 store = "SPoV_FIX_SelectNguyenLieu";
 
             CreateCommand_StoreName(store);
@@ -46,7 +46,9 @@ namespace DAO
             //Goi store theo Mode
             if (mode == 1) //che do delay
                 store = "SPoV_Delay_InsertNguyenLieu";
-            
+            else
+                if (mode == 3) // do che do fix loi chi can thay doi isolation o giao tac khac
+                    store = "SPoV_Delay_InsertNguyenLieu"; // nen van goi store delay
 
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@Flag", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -106,7 +108,7 @@ namespace DAO
             if (mode == 1) //che do delay
                 store = "SPoV_Delay_SelectNguyenLieu_NCC";
             else
-                if(mode ==2)//Che do fix loi
+                if(mode ==3)//Che do fix loi
                     store = "SPoV_FIX_SelectNguyenLieu_NCC";
             CreateCommand_StoreName(store);
             cm.Parameters.Add("@MaNCC", SqlDbType.Int);

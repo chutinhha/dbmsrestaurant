@@ -89,7 +89,10 @@ namespace DAO
             if (mode == 1) //che do delay
                 store = "SPoV_DeLay_UpdateTinhTrangDatHang";
             else
-                if (mode == 2) //che do fix loi
+                if(mode ==2) //Che do gia lap loi deadlock
+                    store = "SPoV_DeadLock_UpdateTinhTrangDatHang";
+            else
+                if (mode == 3) //che do fix loi
                     store = "SPoV_FIX_UpdateTinhTrangDatHang";
 
             CreateCommand_StoreName(store);
