@@ -5,14 +5,15 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 
+
 namespace DAO
 {
     class Provider
     {
-        //public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         //public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlConnection cnn;
-        public string str_connection = @"Server=.\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        //public string str_connection = @"Server=.\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlCommand cm;
         //public SqlTransaction trans;
         public Provider()
@@ -105,17 +106,19 @@ namespace DAO
         }
         public int ExecuteInsertUpdateDelete_CloseConnection(SqlCommand cm)
         {
-            //try
-            //{
+            try
+            {
                 //cm.Connection.Open();
                 int flag = cm.ExecuteNonQuery();
                 cm.Connection.Close();
                 return flag;
-            //}
-            //catch
-            //{
-            //    return 0;
-            //}
+            }
+            catch(Exception ex)
+            {
+                if (ex.Message.IndexOf("deadlocked on lock")>0)
+                    return 10;
+                return 0;
+            }
 
         }
        
