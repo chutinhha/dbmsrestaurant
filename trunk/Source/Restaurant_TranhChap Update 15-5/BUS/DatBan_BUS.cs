@@ -33,6 +33,10 @@ namespace BUS
             return DatBan_DAO.DocBanAn(maNH,khuvuc,succhua,mode);
         }
 
+        public DataTable DocBanAn_OpenConnection(int maNH, string khuvuc, string succhua,int mode)
+        {
+            return DatBan_DAO.DocBanAn_BeginTran(maNH, khuvuc, succhua,mode);
+        }
         public DataTable DocBanAn_OpenConnection(int maNH, string khuvuc, string succhua)
         {
             return DatBan_DAO.DocBanAn_BeginTran(maNH, khuvuc, succhua);
@@ -54,6 +58,11 @@ namespace BUS
         public DataTable DSBanDatTrongNgay(int maNH, DateTime timeNow)
         {
             return DatBan_DAO.DSBanDatTrongNgay(maNH, timeNow);
+        }
+
+        public DataTable DSBanDatTrongNgay_OpenConnection(int maNH, DateTime timeNow,int mode)
+        {
+            return DatBan_DAO.DSBanDatTrongNgay_BeginTran(maNH, timeNow,mode);
         }
 
         public DataTable DSBanDatTrongNgay_OpenConnection(int maNH, DateTime timeNow)
@@ -80,9 +89,9 @@ namespace BUS
         {
             return DatBan_DAO.DocDanhSachBanDat(maNH, maBan, khuVuc, sucChua, trangThai,mode);
         }
-        public DataTable DocDanhSachBanDatRefresh(int maNH, string maBan, string khuVuc, string sucChua, string trangThai,ref SqlCommand cm)
+        public DataTable DocDanhSachBanDatRefresh(int maNH, string maBan, string khuVuc, string sucChua, string trangThai,ref SqlCommand cm,int mode)
         {
-            return DatBan_DAO.DocDanhSachBanDat_BeginTran(maNH, maBan, khuVuc, sucChua, trangThai,ref cm);
+            return DatBan_DAO.DocDanhSachBanDat_BeginTran(maNH, maBan, khuVuc, sucChua, trangThai,ref cm,mode);
         }
 
         public int UpdateDatBan(DatBan_DTO bandat,string maBan,string maNH,string thoigianden)
