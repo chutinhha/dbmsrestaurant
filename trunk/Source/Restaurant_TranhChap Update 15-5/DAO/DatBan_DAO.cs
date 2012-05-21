@@ -25,12 +25,15 @@ namespace DAO
         public DataTable DocBanTrong(int maNH)
         {        
             DataTable tb = new DataTable();
-            string sql = "SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            string sql = " ";
+            sql += " SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED";
+            sql = " select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
             sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
             sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH="+maNH;
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
+
         public DataTable DocBanAn(int maNH,string khuvuc,string succhua)
         {
             //Provider provider = new Provider();
@@ -39,6 +42,25 @@ namespace DAO
             sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
             sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua;
             sql+="  and b.maban not in(select MaBan from DatBan where MaNH=1 and ThoiGianDen=CONVERT(nvarchar,GETDATE(),101) and TrangThai=0)";
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand(cm);
+        }
+        public DataTable DocBanAn(int maNH, string khuvuc, string succhua,int mode)
+        {
+            //Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql="";
+          
+            sql += "SET TRANSACTION ISOLATION LEVEL READ COMMITTED";
+            sql = " select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
+            sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua;
+            if(mode==1)
+                sql += "  and b.maban not in(select MaBan from DatBan";
+            else
+                sql += "  and b.maban not in(select MaBan from DatBan with (rowlock,readcommitted) ";
+
+            sql += " where MaNH=1 and ThoiGianDen=CONVERT(nvarchar,GETDATE(),101) and TrangThai=0)";
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
@@ -54,6 +76,23 @@ namespace DAO
             provider.cm = provider.CreateCommandStringSql (sql);
             return provider.ExecSelectCommand_CloseConnection(provider.cm);
         }
+        public DataTable DocBanAn_CommitTran2(int maNH, string khuvuc, string succhua,int mode)
+        {
+            //Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "waitfor delay '0:0:10' select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
+            sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
+            sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua;
+            if (mode == 1)
+                sql += "  and b.maban not in(select MaBan from DatBan";
+            else
+                sql += "  and b.maban not in(select MaBan from DatBan with (rowlock,readcommitted) ";
+
+            sql += " where MaNH=" + maNH + " and ThoiGianDen=CONVERT(nvarchar,GETDATE(),101) and TrangThai=0)";
+            sql += " commit tran";
+            provider.cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand_CloseConnection(provider.cm);
+        }
         public DataTable DocBanAn_CommitTran2(int maNH, string khuvuc, string succhua)
         {
             //Provider provider = new Provider();
@@ -61,7 +100,8 @@ namespace DAO
             string sql = "waitfor delay '0:0:10' select b.MaBan,k.TenKhuVuc,k.ViTri,lb.SucChua,b.TrangThai,nh.TenNH";
             sql += " from BanAn b,KhuVuc k,NhaHang n,LoaiBan lb,NhaHang nh";
             sql += " where b.MaKhuVuc=k.MaKhuVuc and b.LoaiBan=lb.MaLoai and nh.MaNH=n.MaNH and n.MaNH=" + maNH + khuvuc + succhua;
-            sql += " and b.maban not in(select MaBan from DatBan where MaNH=" + maNH + " and ThoiGianDen=CONVERT(nvarchar,GETDATE(),101) and TrangThai=0)";
+            sql += " and b.maban not in(select MaBan from DatBan";
+            sql += " where MaNH=" + maNH + " and ThoiGianDen=CONVERT(nvarchar,GETDATE(),101) and TrangThai=0)";
             sql += " commit tran";
             provider.cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand_CloseConnection(provider.cm);
@@ -80,7 +120,7 @@ namespace DAO
         {
            // Provider provider = new Provider();
             DataTable tb = new DataTable();
-            string sql = "SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED select MaBan from DatBan where MaNH=" + maNH + " and ThoiGianDen='" + timeNow.ToString("MM/dd/yyyy") + "' and TrangThai=0";
+            string sql = "SET TRANSACTION ISOLATION LEVEL READ COMMITTED select MaBan from DatBan where MaNH=" + maNH + " and ThoiGianDen='" + timeNow.ToString("MM/dd/yyyy") + "' and TrangThai=0";
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
@@ -88,10 +128,11 @@ namespace DAO
         {
             // Provider provider = new Provider();
             DataTable tb = new DataTable();
-            string sql = "SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED begin tran select MaBan from DatBan where MaNH=" + maNH + " and ThoiGianDen='" + timeNow.ToString("MM/dd/yyyy") + "' and TrangThai=0";
+            string sql = "SET TRANSACTION ISOLATION LEVEL READ COMMITTED begin tran select MaBan from DatBan where MaNH=" + maNH + " and ThoiGianDen='" + timeNow.ToString("MM/dd/yyyy") + "' and TrangThai=0";
             provider.cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand_OpenConnection(provider.cm);
         }
+       
         public DataTable DocSucChua(int maNH)
         {
            // Provider provider = new Provider();
@@ -127,6 +168,21 @@ namespace DAO
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
+        public DataTable DocDanhSachBanDat(int maNH, string maBan, string khuVuc, string sucChua, string trangThai,int mode)
+        {
+            // Provider provider = new Provider();
+            DataTable tb = new DataTable();
+            string sql = "SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED select b.MaBan,TenKhachHang,TenKhuVuc,ViTri,SucChua,ThoiGianDat,ThoiGianDen,d.MaKhachHang, ";
+            sql += " case(d.TrangThai) when 0 then N'Chưa đến ăn' else N'Đã đến ăn' end as TrangThai";
+            if(mode ==1)
+                sql += " from banan b,khuvuc k,loaiban l,datban d, khachhang kh ";
+            else
+                sql += " from banan b,khuvuc k,loaiban l,datban d with (rowlock,readcommitted), khachhang kh ";
+
+            sql += " where b.maban=d.maban and b.makhuvuc=k.makhuvuc and b.loaiban=l.maloai and d.maKhachHang=kh.cmnd and d.manh=" + maNH + maBan + khuVuc + sucChua + trangThai;
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand(cm);
+        }
         public DataTable DocDanhSachBanDat_BeginTran(int maNH, string maBan, string khuVuc, string sucChua, string trangThai,ref SqlCommand cm)
         {
            // Provider provider = new Provider();
@@ -157,7 +213,6 @@ namespace DAO
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
-
         //cập nhật lại tình trang bên bảng Bàn Ăn khi có 1 bàn được đặt
         public int UpdateTrangThaiBanAn(int MaBan,int trangthai)
         {
