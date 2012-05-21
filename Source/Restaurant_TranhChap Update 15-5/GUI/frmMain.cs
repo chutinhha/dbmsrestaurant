@@ -417,7 +417,12 @@ namespace GUI
             UCtrl_QLKho_DatHang.Mode = mode;
             UCtrl_QLKho_NCC.Mode = mode;
             UCtrl_QLKho_NguyenLieu.Mode = mode;
+            //Ngoc
             UCtrl_QLKho_NhapKho.Mode = mode;
+            UCtrl_TiepTan_DatBan.Mode = mode;
+            UCtrl_TiepTan_DSDatBan.Mode = mode;
+            UCtrl_TiepTan_XepBan.Mode = mode;
+            ////
         }
         #endregion
 
