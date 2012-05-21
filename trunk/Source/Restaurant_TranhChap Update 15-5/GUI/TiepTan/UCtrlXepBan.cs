@@ -43,7 +43,7 @@ namespace GUI.TiepTan
         }
         public void LoadForm()
         {
-            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
+            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow,mode);
             tbBanAn = DatBan_BUS.DocBanAn_CloseConnection (maNH,khuvuc,succhua);
            
             LoadDuLieuListView();
@@ -180,7 +180,7 @@ namespace GUI.TiepTan
         }
         private void btnXepBanAn_Click(object sender, EventArgs e)
         {
-            tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua,mode);
             LoadDuLieuListView();
 
             //cho commit tran
@@ -194,7 +194,9 @@ namespace GUI.TiepTan
                         if (int.Parse(row["TrangThai"].ToString()) != 1 && timeNow.Date == DateTime.Now.Date)
                         {
                             //cap nhat tinh trang xuong csdl
-                            DatBan_BUS.UpdateTrangThaiBanAn_CommitTran(int.Parse(row["MaBan"].ToString()), 1);
+                            int t = DatBan_BUS.UpdateTrangThaiBanAn_CommitTran(int.Parse(row["MaBan"].ToString()), 1);
+                            if (t == 10)
+                                DevExpress.XtraEditors.XtraMessageBox.Show("Conversion Deadlock", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             HoaDon_BUS.ThemHoaDon(int.Parse(row["MaBan"].ToString()), 1);//1: ma nhan vien
                             //neu co trong bang Datban thi cap nhat lai Tinh trang
                             if (tbBanDatTrongNgay.Rows.Count > 0)
@@ -202,7 +204,8 @@ namespace GUI.TiepTan
                                 for (int j = 0; j < tbBanDatTrongNgay.Rows.Count; j++)
                                     if (int.Parse(row["MaBan"].ToString()) == int.Parse(tbBanDatTrongNgay.Rows[j]["MaBan"].ToString()))
                                     {
-                                        DatBan_BUS.UpdateTrangThaiDatBan(maNH, int.Parse(tbBanDatTrongNgay.Rows[j]["MaBan"].ToString()), 1, DateTime.Now);
+                                         DatBan_BUS.UpdateTrangThaiDatBan(maNH, int.Parse(tbBanDatTrongNgay.Rows[j]["MaBan"].ToString()), 1, DateTime.Now);
+                                        
                                     }
                             }
                             //
@@ -264,7 +267,7 @@ namespace GUI.TiepTan
         private void btnDocDatBan_Click(object sender, EventArgs e)
         {
            // tbBanAn = DatBan_BUS.DocBanAn_OpenConnection(maNH, khuvuc, succhua);
-            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
+            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow,mode);
             lv_BanAn.Items.Clear();
             lv_BanDat.Items.Clear();
             if (tbBanDatTrongNgay.Rows.Count > 0)
@@ -329,7 +332,7 @@ namespace GUI.TiepTan
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow);
+            tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_OpenConnection(maNH, timeNow,mode);
             lv_BanAn.Items.Clear();
             lv_BanDat.Items.Clear();
             if (tbBanDatTrongNgay.Rows.Count > 0)
