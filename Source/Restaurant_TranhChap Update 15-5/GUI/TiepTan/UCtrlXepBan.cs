@@ -224,7 +224,7 @@ namespace GUI.TiepTan
             {
                 khuvuc = " and tenkhuvuc=N'" + cbbKhuVuc.Text+"'" ;
             }
-            tbBanAn = DatBan_BUS.DocBanAn(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn(maNH, khuvuc, succhua,mode);
             LoadDuLieuListView();
         }
 
@@ -234,13 +234,13 @@ namespace GUI.TiepTan
                 succhua = " ";
             else
                 succhua = " and succhua="+cbbSucChua.Text;
-            tbBanAn = DatBan_BUS.DocBanAn(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn(maNH, khuvuc, succhua,mode);
             LoadDuLieuListView();
         }
 
         private void btnDocBanAn_Click(object sender, EventArgs e)
         {
-            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection2(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection2(maNH, khuvuc, succhua,mode);
            // tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
            lv_BanAn.Items.Clear();
             if (tbBanAn.Rows.Count > 0)
@@ -350,7 +350,7 @@ namespace GUI.TiepTan
                 }
             }
 
-            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection2(maNH, khuvuc, succhua);
+            tbBanAn = DatBan_BUS.DocBanAn_CloseConnection2(maNH, khuvuc, succhua,mode);
             // tbBanDatTrongNgay = DatBan_BUS.DSBanDatTrongNgay_CloseConnection(maNH, timeNow);
             lv_BanAn.Items.Clear();
             if (tbBanAn.Rows.Count > 0)
