@@ -13,6 +13,13 @@ namespace GUI.TiepTan
 {
     public partial class UCtrlXepBan : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
         int maNH = 1;
         DataTable tbBanAn = new DataTable();
         DateTime timeNow = new DateTime();
