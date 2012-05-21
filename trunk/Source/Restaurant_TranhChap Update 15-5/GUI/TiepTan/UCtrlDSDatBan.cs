@@ -15,6 +15,13 @@ namespace GUI.TiepTan
 {
     public partial class UCtrlDSDatBan : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
         int maNH = 1;
         int vitri;
         DataTable tbDatBan = new DataTable();
