@@ -270,7 +270,7 @@ namespace GUI.TiepTan
         }
         private void DocDatBanRefresh(ref SqlCommand cm)
         {
-            DataTable tbTemp = DatBan_BUS.DocDanhSachBanDatRefresh(maNH, maBan, khuVuc, sucChua, trangThai,ref cm);
+            DataTable tbTemp = DatBan_BUS.DocDanhSachBanDatRefresh(maNH, maBan, khuVuc, sucChua, trangThai,ref cm,mode);
             if (tbTemp.Rows.Count > 0)
             {
 
