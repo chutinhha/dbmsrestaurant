@@ -120,7 +120,7 @@ namespace GUI.TiepTan
         }
         private void DocDatBan()
         {
-            DataTable tbTemp = DatBan_BUS.DocDanhSachBanDat(maNH,maBan,khuVuc,sucChua,trangThai);
+            DataTable tbTemp = DatBan_BUS.DocDanhSachBanDat(maNH,maBan,khuVuc,sucChua,trangThai,mode);
             if (tbTemp.Rows.Count > 0)
             {
                 
