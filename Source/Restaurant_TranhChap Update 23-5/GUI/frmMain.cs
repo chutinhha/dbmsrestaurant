@@ -425,7 +425,10 @@ namespace GUI
             //Tan
             UCtrl_ThuNgan_QLBanAn.Mode = mode;
             //Nghia
-
+            UCtrl_QLNH_QLDSBanAn.Mode = mode;
+            UCtrl_QLNH_QLNhanVien.Mode = mode;
+            UCtrl_QLNH_QLThucDon.Mode = mode;
+            UCtrl_QLNH_ThongKeDoanhThu.Mode = mode;
 
         }
         #endregion
