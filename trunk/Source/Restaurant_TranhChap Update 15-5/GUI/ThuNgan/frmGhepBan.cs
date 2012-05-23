@@ -21,7 +21,7 @@ namespace GUI.ThuNgan
         }
         DataTable dtBanDangAn;      //maban, tglap, mahd
         int indexBanDangAn;
-
+        public int Mode;
 
 
         List<BanAn_DTO> lsBan;
@@ -36,7 +36,7 @@ namespace GUI.ThuNgan
             
             //thực tế thì có thể ghép các bàn đang ăn vào 1 bàn đang ăn
             //nhưng ở đây chỉ cho ghép vào 1 bàn trống => xuất hiện lost update
-            lsBan = BanAn_BUS.selectBanAnTheoTrangThai(0, int.Parse(frmMain.nhanVien.MaNH.Trim()));
+            lsBan = BanAn_BUS.selectBanAnTheoTrangThai(0, int.Parse(frmMain.nhanVien.MaNH.Trim()), Mode);
             load_CbboxBanTrong();
         }
 
@@ -188,7 +188,7 @@ namespace GUI.ThuNgan
                 BanAn_BUS.UpdateTrangThaiBanAn(mabanNew, 1);
                 //insert cac cthd moi
                 foreach(DataRow row in dtCthdChon.Rows ){
-                    ChiTietHoaDon_BUS.insertCTHD((int)row.ItemArray[0], (int)row.ItemArray[1], (int)row.ItemArray[2]);
+                    ChiTietHoaDon_BUS.insertCTHD((int)row.ItemArray[0], (int)row.ItemArray[1], (int)row.ItemArray[2], Mode);
                 }
 
                 reloadListboxBanAn();

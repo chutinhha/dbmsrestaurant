@@ -17,10 +17,10 @@ namespace BUS
             return dao.SelectCTHDtheoMaHD(mahd);
         }
 
-        public static void insertCTHD(int mahd, int mamon, int soluong)
+        public static void insertCTHD(int mahd, int mamon, int soluong, int mode)
         {
             ChiTietHoaDon_DAO dao = new ChiTietHoaDon_DAO();
-            dao.insertCTHD(mahd, mamon, soluong);
+            dao.insertCTHD(mahd, mamon, soluong, mode);
         }
         public static void DeleteCTHD(int mahd, int mamon)
         {
@@ -28,10 +28,10 @@ namespace BUS
             dao.DeleteCTHD(mahd, mamon);
         }
 
-        public static void UpdateSoLuongCTHD(int mahd, int mamon, int soluong)
+        public static void UpdateSoLuongCTHD(int mahd, int mamon, int soluong, int mode)
         {
             ChiTietHoaDon_DAO dao = new ChiTietHoaDon_DAO();
-            dao.UpdateSoLuongCTHD(mahd, mamon, soluong);
+            dao.UpdateSoLuongCTHD(mahd, mamon, soluong, mode);
         }
 
         public static DataTable SelectTableCTHD(int mahd)

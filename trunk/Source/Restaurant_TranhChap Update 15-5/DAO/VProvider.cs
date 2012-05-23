@@ -8,7 +8,8 @@ namespace DAO
 {
     public class VProvider
     {
-        protected string connectionString = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        //protected string connectionString = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        protected string connectionString = @"Server=.\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         protected SqlConnection cnn;
         protected SqlCommand cm;
         protected SqlTransaction tran;
