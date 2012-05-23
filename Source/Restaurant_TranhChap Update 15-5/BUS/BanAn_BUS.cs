@@ -11,10 +11,10 @@ namespace BUS
 {
     public class BanAn_BUS
     {
-        public static List<BanAn_DTO> selectBanAnTheoTrangThai(int trangthai, int manh)
+        public static List<BanAn_DTO> selectBanAnTheoTrangThai(int trangthai, int manh, int mode)
         {
             BanAn_DAO bananDAO = new BanAn_DAO();
-            return bananDAO.SelectBanAnTheoTrangThai(trangthai, manh);
+            return bananDAO.SelectBanAnTheoTrangThai(trangthai, manh, mode);
         }
 
         public static void UpdateTrangThaiBanAn(int maban, int trangthai)

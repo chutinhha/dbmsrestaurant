@@ -36,8 +36,22 @@ namespace DAO
             return provider.ExecSelectCommand(cm);
         }
 
-        public void insertCTHD(int mahd, int mamon, int soluong)
+        public void insertCTHD(int mahd, int mamon, int soluong, int mode)
         {
+            String store = "sp_insertCTHD_0";
+            switch (mode)
+            {
+                case 0:
+                    store = "sp_insertCTHD_0";
+                    break;
+                case 1:
+                    store = "sp_insertCTHD_1";
+                    break;
+                case 3:
+                    store = "sp_insertCTHD_3";   //unrepeatable read
+                    break;
+            }
+
             SqlCommand cm = provider.CreateCommandStoreName("sp_insertCTHD");
             cm.Parameters.Add("@mahd", SqlDbType.Int);
             cm.Parameters["@mahd"].Value = mahd;
@@ -61,9 +75,19 @@ namespace DAO
             provider.ExecuteInsertUpdateDelete(cm);
         }
 
-        public void UpdateSoLuongCTHD(int mahd, int mamon, int soluong)
+        public void UpdateSoLuongCTHD(int mahd, int mamon, int soluong, int mode)
         {
-            SqlCommand cm = provider.CreateCommandStoreName("sp_UpdateSoLuongCTHD");
+            String store = "sp_UpdateSoLuongCTHD_0";
+            switch (mode)
+            {
+                case 0:
+                    store = "sp_UpdateSoLuongCTHD_0";
+                    break;
+                case 2:
+                    store = "sp_UpdateSoLuongCTHD_2";   //deadlock
+                    break;
+            }
+            SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@mahd", SqlDbType.Int);
             cm.Parameters["@mahd"].Value = mahd;
 

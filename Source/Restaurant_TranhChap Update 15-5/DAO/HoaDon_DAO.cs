@@ -76,9 +76,26 @@ namespace DAO
             provider.ExecuteInsertUpdateDelete(cm);
         }
 
-        public int ChuyenBan(int mabanOLD, int mabanNEW, int mahd)
+        public int ChuyenBan(int mabanOLD, int mabanNEW, int mahd, int mode)
         {
-            SqlCommand cm = provider.CreateCommandStoreName("sp_ChuyenBan");
+            String store = "sp_ChuyenBan_0";
+            switch (mode)
+            {
+                case 0:
+                    store = "sp_ChuyenBan_0";
+                    break;
+                case 1:
+                    store = "sp_ChuyenBan_1";
+                    break;
+                case 2:
+                    store = "sp_ChuyenBan_2";
+                    break;
+                case 3:
+                    store = "sp_ChuyenBan_3";   //deadlock
+                    break;
+            }
+
+            SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@kq", SqlDbType.Int).Direction = ParameterDirection.Output;
             cm.Parameters.Add("@mahd", SqlDbType.Int);
             cm.Parameters.Add("@mabanOLD", SqlDbType.Int);

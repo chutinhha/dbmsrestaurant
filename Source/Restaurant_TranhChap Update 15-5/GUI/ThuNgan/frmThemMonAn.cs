@@ -21,6 +21,7 @@ namespace GUI.ThuNgan
             InitializeComponent();
         }
 
+        public int Mode;
         public int maHD;
         private DataTable dtLoaiMonAn;
         DataTable dtMonAn;
@@ -127,7 +128,7 @@ namespace GUI.ThuNgan
             foreach(DataRow row in dtMonAnChon.Rows ){
                 int mamon = (int)row.ItemArray[0];
                 int soluong = (int)row.ItemArray[3];
-                ChiTietHoaDon_BUS.insertCTHD(maHD, mamon, soluong);
+                ChiTietHoaDon_BUS.insertCTHD(maHD, mamon, soluong, Mode);
             }
             reloadGridViewCTHD();
             this.Close();

@@ -43,10 +43,10 @@ namespace BUS
             HoaDon_DAO dao = new HoaDon_DAO();
             dao.DeleteHoaDon(mahd);
         }
-        public static int ChuyenBan(int mabanOLD, int mabanNEW, int mahd)
+        public static int ChuyenBan(int mabanOLD, int mabanNEW, int mahd, int mode)
         {
             HoaDon_DAO dao = new HoaDon_DAO();
-            return dao.ChuyenBan(mabanOLD, mabanNEW, mahd);
+            return dao.ChuyenBan(mabanOLD, mabanNEW, mahd, mode);
         }
     }
 }

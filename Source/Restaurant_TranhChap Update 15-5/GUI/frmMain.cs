@@ -422,7 +422,9 @@ namespace GUI
             UCtrl_TiepTan_DatBan.Mode = mode;
             UCtrl_TiepTan_DSDatBan.Mode = mode;
             UCtrl_TiepTan_XepBan.Mode = mode;
-            ////
+            //Tan
+            UCtrl_ThuNgan_QLBanAn.Mode = mode;
+
         }
         #endregion
 

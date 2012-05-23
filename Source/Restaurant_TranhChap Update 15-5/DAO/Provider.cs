@@ -10,10 +10,10 @@ namespace DAO
 {
     class Provider
     {
-        public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        //public string str_connection = @"Server=PC\SQLSEVER; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         //public string str_connection = @"Server=MinhVu-LapTop\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlConnection cnn;
-        //public string str_connection = @"Server=.\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
+        public string str_connection = @"Server=.\SQLExpress; DataBase=QLNhaHang ; Integrated Security=SSPI ";
         public SqlCommand cm;
         //public SqlTransaction trans;
         public Provider()

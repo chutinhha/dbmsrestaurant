@@ -19,9 +19,20 @@ namespace DAO
             tbBanAn = new DataTable();
         }
 
-        public List<BanAn_DTO> SelectBanAnTheoTrangThai(int trangthai, int manh)
+        public List<BanAn_DTO> SelectBanAnTheoTrangThai(int trangthai, int manh, int mode)
         {
-            SqlCommand cm = provider.CreateCommandStoreName("sp_selectBanAn");
+            String store = "sp_selectBanAn_0";
+            switch (mode)
+            {
+                case 0:
+                    store = "sp_selectBanAn_0";
+                    break;
+                case 3:
+                    store = "sp_selectBanAn_3";
+                    break;
+            }
+
+            SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@trangthai", SqlDbType.Int);
             cm.Parameters.Add("@manh", SqlDbType.Int);
 

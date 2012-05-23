@@ -13,6 +13,7 @@ namespace GUI.ThuNgan
 {
     public partial class UCtrlQLTBanAn : DevExpress.XtraEditors.XtraUserControl
     {
+        public int Mode;
         List<BanAn_DTO> lsBanAn;
         int indexBanAn;
         
@@ -41,6 +42,7 @@ namespace GUI.ThuNgan
             if (maHD != -1)
             {
                 frmThemMonAn _frmThemMonAn = new frmThemMonAn();
+                _frmThemMonAn.Mode = Mode;
                 _frmThemMonAn.reloadGridViewCTHD = new frmThemMonAn.common_void_delegate(load_GridviewCTHD);
                 _frmThemMonAn.maHD = maHD;
                 _frmThemMonAn.Show();
@@ -103,7 +105,8 @@ namespace GUI.ThuNgan
         }
         public void load_ListBoxBanAn()
         {
-            lsBanAn = BanAn_BUS.selectBanAnTheoTrangThai(1, int.Parse(frmMain.nhanVien.MaNH.Trim()));
+            lsBanAn = BanAn_BUS.selectBanAnTheoTrangThai(1, int.Parse(frmMain.nhanVien.MaNH.Trim()), Mode);
+            
             listBoxBanAn.Items.Clear();
             int sl = lsBanAn.Count;
             for (int i = 0; i < sl; i++)
@@ -146,7 +149,7 @@ namespace GUI.ThuNgan
                 ChiTiet_SoLuong++;
                 DataRow row = dtCTHD.Rows[indexChiTiet];
                 int mamon = (int)row.ItemArray[0];
-                ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, ChiTiet_SoLuong);
+                ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, ChiTiet_SoLuong, Mode);
                 load_GridviewCTHD();
             }
         }
@@ -162,7 +165,7 @@ namespace GUI.ThuNgan
                     ChiTiet_SoLuong--;
                     DataRow row = dtCTHD.Rows[indexChiTiet];
                     int mamon = (int)row.ItemArray[0];
-                    ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, ChiTiet_SoLuong);
+                    ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, ChiTiet_SoLuong, Mode);
                     load_GridviewCTHD();
                 }
             }
@@ -209,6 +212,7 @@ namespace GUI.ThuNgan
 
         public void ShowFormChuyenBan(){
             frmChuyenBan _frmchuyenban = new frmChuyenBan();
+            _frmchuyenban.Mode = Mode;
             _frmchuyenban.reloadListboxBanAn = new frmChuyenBan.common_void_delegate(load_ListBoxBanAn);
             _frmchuyenban.Show();
             //duoc goi tu frmMain
@@ -216,6 +220,7 @@ namespace GUI.ThuNgan
 
         public void ShowFormGhepBan(){
             frmGhepBan _frmGhepBan = new frmGhepBan();
+            _frmGhepBan.Mode = Mode;
             _frmGhepBan.reloadListboxBanAn = new frmGhepBan.common_void_delegate(load_ListBoxBanAn);
             _frmGhepBan.Show();
         }

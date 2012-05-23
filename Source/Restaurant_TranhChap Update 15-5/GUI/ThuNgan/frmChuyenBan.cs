@@ -17,6 +17,7 @@ namespace GUI.ThuNgan
 {
     public partial class frmChuyenBan : DevExpress.XtraEditors.XtraForm
     {
+        public int Mode;
         List<BanAn_DTO> lsBanDangAn;
         int indexBanDangAn;
         List<BanAn_DTO> lsBanTrong;
@@ -31,7 +32,7 @@ namespace GUI.ThuNgan
         
         private void frmChuyenBan_Load(object sender, EventArgs e)
         {
-            lsBanDangAn = BanAn_BUS.selectBanAnTheoTrangThai(1, int.Parse(frmMain.nhanVien.MaNH.Trim()));
+            lsBanDangAn = BanAn_BUS.selectBanAnTheoTrangThai(1, int.Parse(frmMain.nhanVien.MaNH.Trim()), Mode);
             ComboBoxItemCollection coll = cbbox_BanCanChuyen.Properties.Items;
             coll.BeginUpdate();
 
@@ -42,7 +43,7 @@ namespace GUI.ThuNgan
                 coll.EndUpdate();
             }
 
-            lsBanTrong = BanAn_BUS.selectBanAnTheoTrangThai(0, int.Parse(frmMain.nhanVien.MaNH.Trim()));
+            lsBanTrong = BanAn_BUS.selectBanAnTheoTrangThai(0, int.Parse(frmMain.nhanVien.MaNH.Trim()), Mode);
             ComboBoxItemCollection coll2 = cbbox_ChuyenSangBan.Properties.Items;
             coll2.BeginUpdate();
 
@@ -62,7 +63,7 @@ namespace GUI.ThuNgan
 
             int mahd = HoaDon_BUS.SelectMaHoaDonTheoBan(mabanOLD);
             
-            int kq = HoaDon_BUS.ChuyenBan(mabanOLD, mabanNEW, mahd);
+            int kq = HoaDon_BUS.ChuyenBan(mabanOLD, mabanNEW, mahd, Mode);
 
             reloadListboxBanAn();
             if (kq == 0)
