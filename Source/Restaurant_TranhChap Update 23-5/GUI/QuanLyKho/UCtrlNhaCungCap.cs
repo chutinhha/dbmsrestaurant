@@ -227,8 +227,11 @@ namespace GUI.QuanLyKho
                 {
                     DataTable dtNguyenLieu = _frm.DtNguyenLieuChon;
                     VNhaCungCap_DTO dtoNCC = _frm.DtoNCC;
+                    DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm(""," Đang Cập Nhật Thông Tin Nhà Cung Cấp ");
+                    frmWailt.LookAndFeel.SetSkinStyle("Seven Classic");
                     try
                     {
+                        frmWailt.Show();
                         int result = busNhaCungCap.UpdatetNhaCungCap(mode, _frm.DtoNCC, _frm.DtChiTietNCC);
                         if (result == 0)
                         {
@@ -236,6 +239,7 @@ namespace GUI.QuanLyKho
                         }
                         else
                         {
+                            frmWailt.Close();
                             LoadNhaCungCap();
                             LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
                             DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -243,17 +247,17 @@ namespace GUI.QuanLyKho
                     }
                     catch (Exception)
                     {
+                        frmWailt.Close();
                         DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật nhà cung cấp không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             public void CapNhatGia()
             {
-                DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm();
-                frmWailt.Show();
-                frmWailt.Caption = " Đang cập nhật dữ liệu ! ";
+                //DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm("Đang Cập Nhật Giá ...");
+                //frmWailt.Show();
                 int result = busChiTietNCC.UpdateChiTietNCC(mode, (int)dtNL_Source.Rows[sttNL - 1]["MaNL"], lsNCC[sttNCC - 1].MaNCC, Double.Parse(txtGia.Text));
-                frmWailt.Close();
+                //frmWailt.Close();
                 if (result != 0)
                 {
                     LoadNguyenLieu(lsNCC[sttNCC - 1].MaNCC);
