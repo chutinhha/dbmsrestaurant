@@ -50,11 +50,20 @@ namespace GUI.QuanLyKho
                 {
                     _nguyenlieu.TenNL = txtTenNguyenLieu.Text.Trim();
                     _nguyenlieu.DonVi = txtDonVi.Text.Trim();
+                    DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm("...", "Đang thêm nguyên liệu mới ");
+                    frmWailt.LookAndFeel.SetSkinStyle("Seven Classic");
+                    frmWailt.Show();
                     if (busNguyenLieu.InsertNguyenLieu(mode, NguyenLieu) == 1)
+                    {
+                        frmWailt.Close();
                         DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     else
+                    {
+                        frmWailt.Close();
                         DevExpress.XtraEditors.XtraMessageBox.Show("Thêm dử liệu thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }          
+                    }
+                }      
         }
     }
 }

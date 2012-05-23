@@ -172,8 +172,11 @@ namespace GUI.QuanLyKho
             public void LoadDuLieu()
             {
                 DataSet temp = new DataSet();
+                DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm("...","Đang Load Dử liệu ");
+                frmWailt.LookAndFeel.SetSkinStyle("Seven Classic");
+                frmWailt.Show();
                 temp = busNguyenLieu.SelectNguyenLieu_NCC(mode, dtoNCC.MaNCC, maNH);
-
+                frmWailt.Close();
                 dtNguyenLieuChon_Source = temp.Tables[0];
                 DtNguyenLieu = temp.Tables[1];
                 

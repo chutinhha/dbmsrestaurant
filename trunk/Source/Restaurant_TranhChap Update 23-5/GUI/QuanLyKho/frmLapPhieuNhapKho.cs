@@ -74,6 +74,7 @@ namespace GUI.QuanLyKho
             catch (Exception) { sttDH = -1; }
         }
         #endregion 
+
         #region "Cac ham xu ly"
 
         public void LoadDSDatHang()
@@ -113,20 +114,26 @@ namespace GUI.QuanLyKho
         private void btnNhapHang_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            DevExpress.Utils.WaitDialogForm frmWailt = new DevExpress.Utils.WaitDialogForm("...", "Đang thêm phiếu nhập kho mới ");
+            frmWailt.LookAndFeel.SetSkinStyle("Seven Classic");
+          
             try
             {
+                frmWailt.Show();
                 if (busDatHang.UpdateTinhTrangDatHang(mode, lsDatHang[sttDH - 1].MaHoaDon, "Đã Giao") == 1)
                 {
-
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmWailt.Close();
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Thêm phiếu nhập kho thành công!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Lập hóa đơn đặt hàng thất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
-              
+                {
+                    frmWailt.Close();
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Thêm phiếu nhập khothất bại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
-
+                frmWailt.Close();
                 DevExpress.XtraEditors.XtraMessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);                                
               
             }

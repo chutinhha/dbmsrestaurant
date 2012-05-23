@@ -72,6 +72,8 @@ namespace GUI.QuanLyKho
             frmLapPhieuNhapKho _frmLapPhieuNhapKho = new frmLapPhieuNhapKho();
             _frmLapPhieuNhapKho.MaNH = maNH;
             _frmLapPhieuNhapKho.Mode = mode;
+
+           
             if (_frmLapPhieuNhapKho.ShowDialog() == DialogResult.OK)
             {
                 LoadDSHD();
@@ -136,6 +138,7 @@ namespace GUI.QuanLyKho
         }
 
         #endregion
+
         #region "Cac ham xu ly "
         public void LoadDSHD()
         {
