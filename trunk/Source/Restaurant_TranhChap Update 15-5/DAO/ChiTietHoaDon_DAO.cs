@@ -52,7 +52,7 @@ namespace DAO
                     break;
             }
 
-            SqlCommand cm = provider.CreateCommandStoreName("sp_insertCTHD");
+            SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@mahd", SqlDbType.Int);
             cm.Parameters["@mahd"].Value = mahd;
             cm.Parameters.Add("@mamon", SqlDbType.Int);
