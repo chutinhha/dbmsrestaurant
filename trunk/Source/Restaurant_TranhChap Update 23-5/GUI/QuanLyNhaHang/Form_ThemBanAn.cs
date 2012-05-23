@@ -13,6 +13,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemBanAn : Form
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         int[] ArrayMaKV;
         string[] ArrayLoaiBan;
         string[] ArrayMaNH;

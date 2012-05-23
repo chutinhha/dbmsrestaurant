@@ -13,6 +13,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemLoaiNhanVien : Form
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public LoaiNhanVien_DTO loaiNV = new LoaiNhanVien_DTO();
         public Form_ThemLoaiNhanVien()
         {

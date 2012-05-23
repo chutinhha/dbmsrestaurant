@@ -12,6 +12,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemLoaiBanAn : Form
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public LoaiBanAn_DTO LoaiBA = new LoaiBanAn_DTO();
         public Form_ThemLoaiBanAn()
         {

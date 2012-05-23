@@ -13,6 +13,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlQLThucDon : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         DatBan_DTO banDat = new DatBan_DTO();
         MonAn_DTO MonAn = new MonAn_DTO();
         int chon;
@@ -114,6 +121,7 @@ namespace GUI.QuanLyNhaHang
         private void ThemLoaiMonAn()
         {
             Form_ThemLoaiMonAn openForm = new Form_ThemLoaiMonAn();
+            openForm.Mode = mode;
             if (openForm.ShowDialog() == DialogResult.OK)
             {
                 if (chkTest.Checked == true)
@@ -163,6 +171,7 @@ namespace GUI.QuanLyNhaHang
         public void ThemMonAn()
         {
             Form_ThemMonAn openf = new Form_ThemMonAn();
+            openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
                 MonAn_BUS.ThemMonAn(openf.MonAn);

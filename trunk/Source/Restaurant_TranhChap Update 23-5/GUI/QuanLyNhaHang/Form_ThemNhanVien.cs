@@ -12,6 +12,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemNhanVien : Form
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public NhanVien_DTO NhanVien = new NhanVien_DTO();
         string[] ArrayLoaiNV;
         string[] ArrayNhaHang;

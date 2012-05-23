@@ -12,6 +12,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemKhuVuc : Form
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         string[] ArrayMaNH;
         public KhuVuc_DTO KhuVuc = new KhuVuc_DTO();
         public Form_ThemKhuVuc()

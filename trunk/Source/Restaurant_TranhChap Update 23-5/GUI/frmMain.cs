@@ -424,6 +424,8 @@ namespace GUI
             UCtrl_TiepTan_XepBan.Mode = mode;
             //Tan
             UCtrl_ThuNgan_QLBanAn.Mode = mode;
+            //Nghia
+
 
         }
         #endregion

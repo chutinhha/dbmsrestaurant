@@ -13,6 +13,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlQLNhanVien : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         int chon;
         int[] ArrayMaNV;
         public UCtrlQLNhanVien()
@@ -46,6 +53,7 @@ namespace GUI.QuanLyNhaHang
         public void ThemLoaiNhanVien()
         {
             Form_ThemLoaiNhanVien openForm = new Form_ThemLoaiNhanVien();
+            openForm.Mode = mode;
             if (openForm.ShowDialog() == DialogResult.OK)
             {
                 if (LoaiNhanVien_BUS.KiemTraMaLoai(openForm.loaiNV.MaLoaiNV) == 1||LoaiNhanVien_BUS.KiemTraTenLoai(openForm.loaiNV.TenLoaiNV)==1)
@@ -113,6 +121,7 @@ namespace GUI.QuanLyNhaHang
         private void btnThemNV_Click(object sender, EventArgs e)
         {
             Form_ThemNhanVien openForm = new Form_ThemNhanVien();
+            openForm.Mode = mode;
             if (openForm.ShowDialog() == DialogResult.OK)
             {
                NhanVien_BUS.ThemNhanVien(openForm.NhanVien);
