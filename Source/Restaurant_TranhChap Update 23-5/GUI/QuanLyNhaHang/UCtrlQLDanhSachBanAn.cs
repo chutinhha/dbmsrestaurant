@@ -12,6 +12,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlQLDanhSachBanAn : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public string[] ArrayMaBan;
         public UCtrlQLDanhSachBanAn()
         {
@@ -45,6 +52,7 @@ namespace GUI.QuanLyNhaHang
         public void ThemLoaiBanAn()
         {
             Form_ThemLoaiBanAn openf = new Form_ThemLoaiBanAn();
+            openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
                 LoaiBanAn_BUS.ThemLoaiBanAn(openf.LoaiBA);
@@ -106,6 +114,7 @@ namespace GUI.QuanLyNhaHang
         private void btnThemKhuVuc_Click(object sender, EventArgs e)
         {
             Form_ThemKhuVuc openf = new Form_ThemKhuVuc();
+            openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
                 KhuVuc_BUS.ThemKhuVuc(openf.KhuVuc);
@@ -169,6 +178,7 @@ namespace GUI.QuanLyNhaHang
         private void btnThemBanAn_Click(object sender, EventArgs e)
         {
             Form_ThemBanAn openf = new Form_ThemBanAn();
+            openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
                 BanAn_BUS.ThemBanAn(openf.BanAn);

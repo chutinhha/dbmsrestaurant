@@ -11,6 +11,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlThongKeDoanhThu : DevExpress.XtraEditors.XtraUserControl
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public UCtrlThongKeDoanhThu()
         {
             InitializeComponent();

@@ -13,6 +13,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemMonAn : Form
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public MonAn_DTO MonAn = new MonAn_DTO();
         string[] ArrayMaMon;
         string[] ArrayMaNH;

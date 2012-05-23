@@ -12,6 +12,13 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class Form_ThemLoaiMonAn : DevExpress.XtraEditors.XtraForm
     {
+        int mode;
+        public int Mode
+        {
+            get { return mode; }
+            set { mode = value; }
+        }
+
         public LoaiMonAn_DTO loaiMonAn = new LoaiMonAn_DTO();
         public Form_ThemLoaiMonAn()
         {

@@ -12,6 +12,7 @@ namespace DAO
     {
         public List<VNguyenLieu_DTO> SelectNguyenLieu(int mode, String MaNH)
         {
+            // chuoi store default
             String store = "SPoV_SelectNguyenLieu";
 
             //Goi store theo Mode
