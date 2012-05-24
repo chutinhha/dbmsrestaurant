@@ -71,6 +71,35 @@ namespace GUI.QuanLyNhaHang
             }
         }
 
+        public void LoadForm()
+        {
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode, maNH);
+
+
+            DataTable dt = MonAn_BUS.DocMonAn(mode, maNH);
+            if (dt.Rows.Count > 0)
+            {
+                ArrayMaMon = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    ArrayMaMon[i] = (int)dr[0];
+                }
+            }
+
+            cbbChiTietTK.Properties.Items.Clear();
+            DataTable dt1 = MonAn_BUS.LayLoaiMon();
+            if (dt1.Rows.Count > 0)
+            {
+                ArrayLoaiMon = new string[dt.Rows.Count];
+                for (int i = 0; i < dt1.Rows.Count; i++)
+                {
+                    DataRow dr = dt1.Rows[i];
+                    cbbChiTietTK.Properties.Items.Add(dr[1]);
+                    ArrayLoaiMon[i] = dr[0].ToString();
+                }
+            }
+        }
         private void btnThemLoaiMA_Click(object sender, EventArgs e)
         {
             ThemLoaiMonAn();
@@ -90,7 +119,8 @@ namespace GUI.QuanLyNhaHang
         private void btnXoaMonAn_Click(object sender, EventArgs e)
         {
             XoaMonAn();
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            //gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            LoadForm();
         }
 
         #region cac Ham ThemXoaSua
@@ -177,7 +207,8 @@ namespace GUI.QuanLyNhaHang
         private void btnThemMonAn_Click(object sender, EventArgs e)
         {
             ThemMonAn();
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            //gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            LoadForm();
         }
 
         public void ThemMonAn()
@@ -205,7 +236,8 @@ namespace GUI.QuanLyNhaHang
         private void btnCapNhatMonAn_Click(object sender, EventArgs e)
         {
             CapNhatMonAn();
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            //gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            LoadForm();
         }
 
         public void CapNhatMonAn()
@@ -262,6 +294,7 @@ namespace GUI.QuanLyNhaHang
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+            LoadForm();
         }
 
         //private void btnLoad_Click(object sender, EventArgs e)
