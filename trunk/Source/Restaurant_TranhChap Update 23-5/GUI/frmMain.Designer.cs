@@ -700,7 +700,7 @@ namespace GUI
         #endregion
 
         private DevExpress.XtraBars.Ribbon.RibbonControl rbControl_Main;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TiepTan;
+        //private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_TiepTan;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbPageGroup_TiepTan1;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_QLNhaHang;
         private DevExpress.XtraBars.Ribbon.RibbonPage rbPage_QLKho;

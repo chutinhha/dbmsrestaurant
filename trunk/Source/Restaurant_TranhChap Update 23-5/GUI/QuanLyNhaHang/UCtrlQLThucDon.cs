@@ -13,11 +13,18 @@ namespace GUI.QuanLyNhaHang
 {
     public partial class UCtrlQLThucDon : DevExpress.XtraEditors.XtraUserControl
     {
+
         int mode;
         public int Mode
         {
             get { return mode; }
             set { mode = value; }
+        }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
         }
 
         DatBan_DTO banDat = new DatBan_DTO();
@@ -25,6 +32,8 @@ namespace GUI.QuanLyNhaHang
         int chon;
         int tt;
         int[] ArrayMaMon;
+        string[] ArrayLoaiMon;
+
         public UCtrlQLThucDon()
         {
             InitializeComponent();
@@ -35,9 +44,10 @@ namespace GUI.QuanLyNhaHang
          
             gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
             
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
-
-            DataTable dt = MonAn_BUS.DocMonAn();
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+           
+            
+            DataTable dt = MonAn_BUS.DocMonAn(mode,maNH);
             if (dt.Rows.Count > 0)
             {
                 ArrayMaMon = new int[dt.Rows.Count];
@@ -45,6 +55,18 @@ namespace GUI.QuanLyNhaHang
                 {
                     DataRow dr = dt.Rows[i];
                     ArrayMaMon[i] = (int)dr[0];
+                }
+            }
+
+            DataTable dt1 = MonAn_BUS.LayLoaiMon();
+            if (dt1.Rows.Count > 0)
+            {
+                ArrayLoaiMon = new string[dt.Rows.Count];
+                for (int i = 0; i < dt1.Rows.Count; i++)
+                {
+                    DataRow dr = dt1.Rows[i];
+                    cbbChiTietTK.Properties.Items.Add(dr[1]);
+                    ArrayLoaiMon[i] = dr[0].ToString();
                 }
             }
         }
@@ -55,15 +77,9 @@ namespace GUI.QuanLyNhaHang
         }
         private void btnCapNhatLoaiMA_Click(object sender, EventArgs e)
         {
-            if (chkTest.Checked == true)
-            {
-                gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
-            }
-            else
-            {
+          
                 CapNhatLoaiMonAn();
                 gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
-            }
             
         }
         private void btnXoaLoaiMA_Click(object sender, EventArgs e)
@@ -74,7 +90,7 @@ namespace GUI.QuanLyNhaHang
         private void btnXoaMonAn_Click(object sender, EventArgs e)
         {
             XoaMonAn();
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
         }
 
         #region cac Ham ThemXoaSua
@@ -113,8 +129,8 @@ namespace GUI.QuanLyNhaHang
                 }
                 if (flag != 0)
                     DevExpress.XtraEditors.XtraMessageBox.Show("Xóa thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Loại món ăn khi còn món ăn trong Loại món ăn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //else
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Loại món ăn khi còn món ăn trong Loại món ăn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
            
         }
@@ -124,16 +140,12 @@ namespace GUI.QuanLyNhaHang
             openForm.Mode = mode;
             if (openForm.ShowDialog() == DialogResult.OK)
             {
-                if (chkTest.Checked == true)
-                {
+                
+                   
+               
                     LoaiMonAn_BUS.ThemLoaiMonAn(openForm.loaiMonAn);
                     gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
-                }
-                else
-                {
-                    LoaiMonAn_BUS.ThemLoaiMonAn(openForm.loaiMonAn);
-                    gridLoaiMonAn.DataSource = LoaiMonAn_BUS.DocLoaiMonAn();
-                }
+                
                 
             }
         }
@@ -148,14 +160,14 @@ namespace GUI.QuanLyNhaHang
                 {
                     chon = index[0];
                     int maMon = ArrayMaMon[chon];
-                    flag = MonAn_BUS.XoaMonAn(maMon);
+                    flag = MonAn_BUS.XoaMonAn(mode,maMon);
 
                     
                 }
                 if (flag != 0)
                     DevExpress.XtraEditors.XtraMessageBox.Show("Xóa thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Loại món ăn khi còn món ăn trong Loại món ăn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //else
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Loại món ăn khi còn món ăn trong Loại món ăn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -165,7 +177,7 @@ namespace GUI.QuanLyNhaHang
         private void btnThemMonAn_Click(object sender, EventArgs e)
         {
             ThemMonAn();
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
         }
 
         public void ThemMonAn()
@@ -174,8 +186,18 @@ namespace GUI.QuanLyNhaHang
             openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
-                MonAn_BUS.ThemMonAn(openf.MonAn);
-                gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+                int flag=MonAn_BUS.ThemMonAn(mode,openf.MonAn,maNH);
+                if (flag == 0)
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Thêm Món ăn không thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    DevExpress.XtraEditors.XtraMessageBox.Show("Thêm Món ăn thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
             }
 
         }
@@ -183,7 +205,7 @@ namespace GUI.QuanLyNhaHang
         private void btnCapNhatMonAn_Click(object sender, EventArgs e)
         {
             CapNhatMonAn();
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
         }
 
         public void CapNhatMonAn()
@@ -209,7 +231,7 @@ namespace GUI.QuanLyNhaHang
 
                     chon = index[0];
                      tt = ArrayMaMon[chon];
-                    flag = MonAn_BUS.CapNhatMonAn(MonAn, tt);
+                    flag = MonAn_BUS.CapNhatMonAn(mode,MonAn, tt,maNH);
                 }
             }
             if (flag != 0)
@@ -219,11 +241,34 @@ namespace GUI.QuanLyNhaHang
             }
         }
 
-        private void btnLoad_Click(object sender, EventArgs e)
+        private void cbbDSTimKiem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MonAn_BUS.CapNhatMonAn(MonAn, tt);
-            gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+
         }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            if (cbbChiTietTK.SelectedIndex != -1)
+            {
+                string maLoai = ArrayLoaiMon[cbbChiTietTK.SelectedIndex];
+                string tenLoai = cbbChiTietTK.Text;
+                int sl=0;
+                DataTable dt = MonAn_BUS.TimTheoLoai(mode,maLoai, maNH,ref sl);
+                DevExpress.XtraEditors.XtraMessageBox.Show("Loại món '"+tenLoai+"' có số lượng: "+sl.ToString(), "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                gridMonAn.DataSource = dt ;
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            gridMonAn.DataSource = MonAn_BUS.DocMonAn(mode,maNH);
+        }
+
+        //private void btnLoad_Click(object sender, EventArgs e)
+        //{
+        //    MonAn_BUS.CapNhatMonAn_Commmit(MonAn, tt);
+        //    gridMonAn.DataSource = MonAn_BUS.DocMonAn();
+        //}
 
     }
 }

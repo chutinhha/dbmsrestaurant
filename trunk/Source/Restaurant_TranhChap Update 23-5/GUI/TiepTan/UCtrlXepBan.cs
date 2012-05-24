@@ -20,7 +20,7 @@ namespace GUI.TiepTan
             get { return mode; }
             set { mode = value; }
         }
-        int maNH = 1;
+        int maNH =1;
         DataTable tbBanAn = new DataTable();
         DateTime timeNow = new DateTime();
         DataTable tbBanDatTrongNgay = new DataTable();

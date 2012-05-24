@@ -10,6 +10,17 @@ namespace DAO
 {
    public class LoaiNhanVien_DAO
     {
+        Provider provider;
+
+        public LoaiNhanVien_DAO(SqlCommand cm)
+        {
+            provider = new Provider(cm);
+        }
+
+        public LoaiNhanVien_DAO()
+        {
+            provider = new Provider();
+        }
         public static DataTable DocLoaiNV()
         {
             Provider provider = new Provider();
@@ -21,10 +32,28 @@ namespace DAO
             return provider.ExecSelectCommand(cm);
         }
 
+        public DataTable DocLoaiNhanVien_begin()
+        {
+            //Provider provider = new Provider();
+            string sql = "begin tran";
+            sql += " select MaLoai,TenLoai from LoaiNV";
+
+            provider.cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand_OpenConnection(provider.cm);
+        }
+
+        public DataTable DocLoaiNhanVien_commit()
+        {
+            // Provider provider = new Provider();
+            string sql = "select MaLoai,TenLoai from LoaiNV commit tran";
+            provider.cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand_CloseConnection(provider.cm);
+        }
+
         public static int ThemLoaiNV(LoaiNhanVien_DTO loaiNV)
         {
             Provider provider = new Provider();
-            string sql = string.Format("insert into LoaiNV(MaLoai,TenLoai,Luong) values ('{0}','{1}',{2})", loaiNV.MaLoaiNV,loaiNV.TenLoaiNV, loaiNV.Luong);
+            string sql = string.Format("insert into LoaiNV(MaLoai,TenLoai,Luong) values ('{0}','{1}',{2})", loaiNV.MaLoaiNV, loaiNV.TenLoaiNV, loaiNV.Luong);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }

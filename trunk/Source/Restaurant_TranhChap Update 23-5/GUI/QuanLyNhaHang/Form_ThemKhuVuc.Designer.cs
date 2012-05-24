@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbbNhaHang = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txtViTri = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtTenKV = new DevExpress.XtraEditors.TextEdit();
@@ -38,28 +36,10 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbNhaHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtViTri.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKV.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbbNhaHang
-            // 
-            this.cbbNhaHang.Location = new System.Drawing.Point(155, 164);
-            this.cbbNhaHang.Name = "cbbNhaHang";
-            this.cbbNhaHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbNhaHang.Size = new System.Drawing.Size(118, 20);
-            this.cbbNhaHang.TabIndex = 17;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(55, 167);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(47, 13);
-            this.labelControl4.TabIndex = 16;
-            this.labelControl4.Text = "Nhà Hàng";
             // 
             // txtViTri
             // 
@@ -109,7 +89,7 @@
             // btnThoat
             // 
             this.btnThoat.Image = global::GUI.Properties.Resources.close_16;
-            this.btnThoat.Location = new System.Drawing.Point(186, 222);
+            this.btnThoat.Location = new System.Drawing.Point(186, 178);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(84, 29);
             this.btnThoat.TabIndex = 19;
@@ -120,7 +100,7 @@
             // 
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Image = global::GUI.Properties.Resources.add_16;
-            this.btnOK.Location = new System.Drawing.Point(65, 222);
+            this.btnOK.Location = new System.Drawing.Point(65, 178);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(83, 29);
             this.btnOK.TabIndex = 18;
@@ -132,11 +112,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(326, 292);
+            this.ClientSize = new System.Drawing.Size(326, 243);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.cbbNhaHang);
-            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.txtViTri);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.txtTenKV);
@@ -146,7 +124,6 @@
             this.Name = "Form_ThemKhuVuc";
             this.Text = "Form_ThemKhuVuc";
             this.Load += new System.EventHandler(this.Form_ThemKhuVuc_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cbbNhaHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtViTri.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenKV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaKV.Properties)).EndInit();
@@ -159,8 +136,6 @@
 
         private DevExpress.XtraEditors.SimpleButton btnThoat;
         private DevExpress.XtraEditors.SimpleButton btnOK;
-        private DevExpress.XtraEditors.ComboBoxEdit cbbNhaHang;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit txtViTri;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txtTenKV;

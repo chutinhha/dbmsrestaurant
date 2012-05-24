@@ -49,7 +49,10 @@
             this.btnCapNhatMonAn = new DevExpress.XtraEditors.SimpleButton();
             this.btnThemMonAn = new DevExpress.XtraEditors.SimpleButton();
             this.btnInDSMA = new DevExpress.XtraEditors.SimpleButton();
-            this.chkTest = new DevExpress.XtraEditors.CheckEdit();
+            this.btnTim = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.cbbChiTietTK = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridMonAn)).BeginInit();
@@ -58,7 +61,7 @@
             this.groupLoaiMA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiMonAn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiMonAn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTest.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbChiTietTK.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -67,9 +70,9 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl1.Controls.Add(this.gridMonAn);
-            this.groupControl1.Location = new System.Drawing.Point(334, 12);
+            this.groupControl1.Location = new System.Drawing.Point(334, 56);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(543, 424);
+            this.groupControl1.Size = new System.Drawing.Size(543, 380);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Danh Sách Món Ăn";
             // 
@@ -79,7 +82,7 @@
             this.gridMonAn.Location = new System.Drawing.Point(2, 22);
             this.gridMonAn.MainView = this.gridView_MonAn;
             this.gridMonAn.Name = "gridMonAn";
-            this.gridMonAn.Size = new System.Drawing.Size(539, 400);
+            this.gridMonAn.Size = new System.Drawing.Size(539, 356);
             this.gridMonAn.TabIndex = 0;
             this.gridMonAn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_MonAn});
@@ -147,12 +150,13 @@
             // 
             // groupLoaiMA
             // 
-            this.groupLoaiMA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupLoaiMA.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupLoaiMA.Controls.Add(this.gridLoaiMonAn);
-            this.groupLoaiMA.Location = new System.Drawing.Point(3, 12);
+            this.groupLoaiMA.Location = new System.Drawing.Point(3, 56);
             this.groupLoaiMA.Name = "groupLoaiMA";
-            this.groupLoaiMA.Size = new System.Drawing.Size(325, 373);
+            this.groupLoaiMA.Size = new System.Drawing.Size(325, 380);
             this.groupLoaiMA.TabIndex = 1;
             this.groupLoaiMA.Text = "Loại Món Ăn";
             // 
@@ -162,7 +166,7 @@
             this.gridLoaiMonAn.Location = new System.Drawing.Point(2, 22);
             this.gridLoaiMonAn.MainView = this.gridView_LoaiMonAn;
             this.gridLoaiMonAn.Name = "gridLoaiMonAn";
-            this.gridLoaiMonAn.Size = new System.Drawing.Size(321, 349);
+            this.gridLoaiMonAn.Size = new System.Drawing.Size(321, 356);
             this.gridLoaiMonAn.TabIndex = 0;
             this.gridLoaiMonAn.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_LoaiMonAn});
@@ -269,19 +273,52 @@
             this.btnInDSMA.TabIndex = 7;
             this.btnInDSMA.Text = "In Danh Sách";
             // 
-            // chkTest
+            // btnTim
             // 
-            this.chkTest.Location = new System.Drawing.Point(84, 389);
-            this.chkTest.Name = "chkTest";
-            this.chkTest.Properties.Caption = "Test Xung Đột";
-            this.chkTest.Size = new System.Drawing.Size(102, 19);
-            this.chkTest.TabIndex = 8;
+            this.btnTim.Location = new System.Drawing.Point(769, 18);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(75, 23);
+            this.btnTim.TabIndex = 9;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(530, 24);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(90, 13);
+            this.labelControl1.TabIndex = 10;
+            this.labelControl1.Text = "Tìm Kiếm Theo Loại";
+            // 
+            // cbbChiTietTK
+            // 
+            this.cbbChiTietTK.EditValue = "Chọn...";
+            this.cbbChiTietTK.Location = new System.Drawing.Point(637, 21);
+            this.cbbChiTietTK.Name = "cbbChiTietTK";
+            this.cbbChiTietTK.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbbChiTietTK.Size = new System.Drawing.Size(100, 20);
+            this.cbbChiTietTK.TabIndex = 11;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Image = global::GUI.Properties.Resources.refresh16;
+            this.btnRefresh.Location = new System.Drawing.Point(446, 442);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(89, 26);
+            this.btnRefresh.TabIndex = 13;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // UCtrlQLThucDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.chkTest);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.cbbChiTietTK);
+            this.Controls.Add(this.labelControl1);
+            this.Controls.Add(this.btnTim);
             this.Controls.Add(this.btnThemMonAn);
             this.Controls.Add(this.btnThemLoaiMA);
             this.Controls.Add(this.btnCapNhatMonAn);
@@ -302,8 +339,9 @@
             this.groupLoaiMA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiMonAn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiMonAn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkTest.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbbChiTietTK.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -330,7 +368,10 @@
         private DevExpress.XtraEditors.SimpleButton btnThemMonAn;
         private DevExpress.XtraEditors.SimpleButton btnInDSMA;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraEditors.CheckEdit chkTest;
+        private DevExpress.XtraEditors.SimpleButton btnTim;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbbChiTietTK;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
 
     }
 }

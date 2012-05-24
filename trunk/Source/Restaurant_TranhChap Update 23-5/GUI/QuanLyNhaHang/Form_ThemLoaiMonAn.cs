@@ -18,6 +18,12 @@ namespace GUI.QuanLyNhaHang
             get { return mode; }
             set { mode = value; }
         }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
+        }
 
         public LoaiMonAn_DTO loaiMonAn = new LoaiMonAn_DTO();
         public Form_ThemLoaiMonAn()

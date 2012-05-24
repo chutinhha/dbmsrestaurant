@@ -19,10 +19,16 @@ namespace GUI.QuanLyNhaHang
             get { return mode; }
             set { mode = value; }
         }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
+        }
 
         int[] ArrayMaKV;
         string[] ArrayLoaiBan;
-        string[] ArrayMaNH;
+        //string[] ArrayMaNH;
 
         public BanAn_DTO BanAn = new BanAn_DTO();
         public Form_ThemBanAn()
@@ -45,18 +51,18 @@ namespace GUI.QuanLyNhaHang
                 }
             }
 
-            cbbNhaHang.Properties.Items.Clear();
-            DataTable dt1 = KhuVuc_BUS.LayNhaHang();
-            if (dt.Rows.Count > 0)
-            {
-                ArrayMaNH = new string[dt1.Rows.Count];
-                for (int i = 0; i < dt1.Rows.Count; i++)
-                {
-                    DataRow dr = dt1.Rows[i];
-                    cbbNhaHang.Properties.Items.Add(dr[1]);
-                    ArrayMaNH[i] = dr[0].ToString();
-                }
-            }
+           // cbbNhaHang.Properties.Items.Clear();
+            //DataTable dt1 = KhuVuc_BUS.LayNhaHang();
+            //if (dt.Rows.Count > 0)
+            //{
+            //    ArrayMaNH = new string[dt1.Rows.Count];
+            //    for (int i = 0; i < dt1.Rows.Count; i++)
+            //    {
+            //        DataRow dr = dt1.Rows[i];
+            //        cbbNhaHang.Properties.Items.Add(dr[1]);
+            //        ArrayMaNH[i] = dr[0].ToString();
+            //    }
+            //}
 
             cbbSucChua.Properties.Items.Clear();
             DataTable dt2 = LoaiBanAn_BUS.DocLoaiBanAn();
@@ -74,10 +80,10 @@ namespace GUI.QuanLyNhaHang
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            BanAn.MaBan = int.Parse(txtMaBan.Text);
+            //BanAn.MaBan = int.Parse(txtMaBan.Text);
             BanAn.MaKhuVuc = ArrayMaKV[cbbKhuVuc.SelectedIndex];
             BanAn.LoaiBan = ArrayLoaiBan[cbbSucChua.SelectedIndex];
-            BanAn.MaNH = ArrayMaNH[cbbNhaHang.SelectedIndex];
+           // BanAn.MaNH = ArrayMaNH[cbbNhaHang.SelectedIndex];
             BanAn.TrangThai = 0;
             this.Close();
         }

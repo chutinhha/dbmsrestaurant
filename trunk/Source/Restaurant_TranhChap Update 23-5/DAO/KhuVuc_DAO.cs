@@ -27,10 +27,10 @@ namespace DAO
             return provider.ExecSelectCommand(cm);
         }
 
-        public static int ThemKhuVuc(KhuVuc_DTO KhuVuc)
+        public static int ThemKhuVuc(KhuVuc_DTO KhuVuc, string maNH)
         {
             Provider provider = new Provider();
-            string sql = string.Format("insert into KhuVuc values ({0},'{1}','{2}','{3}')", KhuVuc.MaKhuVuc, KhuVuc.TenKhuVuc, KhuVuc.ViTri, KhuVuc.MaNH);
+            string sql = string.Format("insert into KhuVuc values ({0},'{1}','{2}','{3}')", KhuVuc.MaKhuVuc, KhuVuc.TenKhuVuc, KhuVuc.ViTri, maNH);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }

@@ -121,7 +121,19 @@ namespace DAO
             }
 
         }
-       
-     
+
+        // Nghia
+        public DataTable ExecSelectCommand_Output(SqlCommand cm, string name, ref int sl)
+        {
+            DataTable table = new DataTable();
+            cm.Connection.Open();
+            SqlDataReader read = cm.ExecuteReader();
+            table.Load(read);
+            read.Close();
+            cm.Connection.Close();
+            sl = (int)cm.Parameters[name].Value;
+            return table;
+        }
+
     }
 }

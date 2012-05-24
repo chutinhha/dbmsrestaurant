@@ -10,21 +10,14 @@ namespace DAO
 {
     public class NhanVien_DAO
     {
-        public static DataTable DocNhanVien()
+        public static DataTable DocNhanVien(string maNH)
         {
             Provider provider = new Provider();
             string str_sql = "select MaNV,TenNV,TenNH,TenLoai,nv.sdt";
             str_sql += " from NhanVien nv,LoaiNV lnv,NhaHang nh";
-            str_sql += " where nv.Maloai=lnv.MaLoai and nv.MaNH=nh.MaNH";
+            str_sql += " where nv.Maloai=lnv.MaLoai and nv.MaNH=nh.MaNH and nh.MaNH=" + maNH;
             SqlCommand cm = provider.CreateCommandStringSql(str_sql);
             DataTable tb = new DataTable();
-            return provider.ExecSelectCommand(cm);
-        }
-        public static DataTable DocNhanVienTheoUsername(string username)
-        {
-            Provider provider = new Provider();
-            string str_sql = "select * from NhanVien where Username = '" + username + "'";
-            SqlCommand cm = provider.CreateCommandStringSql(str_sql);
             return provider.ExecSelectCommand(cm);
         }
 
@@ -37,6 +30,14 @@ namespace DAO
             return provider.ExecSelectCommand(cm);
         }
 
+        public static DataTable DocLoaiNhanVien_commit()
+        {
+            Provider provider = new Provider();
+            string sql = "select MaLoai,TenLoai from LoaiNV commit tran";
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
+            return provider.ExecSelectCommand_CloseConnection(cm);
+        }
+
         public static DataTable LayNhaHang()
         {
             Provider provider = new Provider();
@@ -46,10 +47,10 @@ namespace DAO
             return provider.ExecSelectCommand(cm);
         }
 
-        public static int ThemNhanVien(NhanVien_DTO NhanVien)
+        public static int ThemNhanVien(NhanVien_DTO NhanVien, string maNH)
         {
             Provider provider = new Provider();
-            string sql = string.Format("insert into NhanVien values (N'{0}','{1}','{2}',{3},{4})", NhanVien.TenNV, NhanVien.MaNH, NhanVien.MaLoaiNhanVien, NhanVien.Cmnd, NhanVien.Sdt);
+            string sql = string.Format("insert into NhanVien values (N'{0}','{1}','{2}',{3},{4}) ", NhanVien.TenNV, maNH, NhanVien.MaLoaiNhanVien, NhanVien.Cmnd, NhanVien.Sdt);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
@@ -58,7 +59,7 @@ namespace DAO
         {
             Provider provider = new Provider();
             string sql = string.Format("update NhanVien set TenNV=N'{0}',sdt={1} where MaNV={2}", NhanVien.TenNV, NhanVien.Sdt, MaNV);
-            SqlCommand cm=provider.CreateCommandStringSql(sql);
+            SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }
 
@@ -69,6 +70,16 @@ namespace DAO
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
 
+        }
+
+        //TAN
+
+        public static DataTable DocNhanVienTheoUsername(string username)
+        {
+            Provider provider = new Provider();
+            string str_sql = "select * from NhanVien where Username = '" + username + "'";
+            SqlCommand cm = provider.CreateCommandStringSql(str_sql);
+            return provider.ExecSelectCommand(cm);
         }
     }
 }

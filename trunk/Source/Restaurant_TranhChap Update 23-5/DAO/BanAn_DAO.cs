@@ -67,20 +67,20 @@ namespace DAO
             return ls;
         }
 
-        public static DataTable DocBanAn()
+        public static DataTable DocBanAn(string maNH)
         {
             Provider provider = new Provider();
-            string sql = "select MaBan,TenKhuVuc,SucChua,TenNH,TrangThai";
+            string sql = "select MaBan,TenKhuVuc,SucChua,TenNH,case(TrangThai) when 0 then N'Chưa đến ăn' else N'Đã đến ăn' end as TrangThai";
             sql += " from BanAn ba,KhuVuc kv,LoaiBan lb,NhaHang nh";
-            sql += " where ba.MaKhuVuc=kv.MaKhuVuc and ba.LoaiBan=lb.Maloai and ba.MaNH=nh.MaNH";
+            sql += " where ba.MaKhuVuc=kv.MaKhuVuc and ba.LoaiBan=lb.Maloai and ba.MaNH=nh.MaNH and nh.MaNH=" + maNH;
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecSelectCommand(cm);
         }
 
-        public static int ThemBanAn(BanAn_DTO BanAn)
+        public static int ThemBanAn(BanAn_DTO BanAn, string maNH)
         {
             Provider provider = new Provider();
-            string sql = string.Format("insert into BanAn values ({0},'{1}','{2}',{3})", BanAn.MaKhuVuc, BanAn.LoaiBan, BanAn.MaNH, BanAn.TrangThai);
+            string sql = string.Format("insert into BanAn values ({0},'{1}','{2}',{3})", BanAn.MaKhuVuc, BanAn.LoaiBan, maNH, BanAn.TrangThai);
             SqlCommand cm = provider.CreateCommandStringSql(sql);
             return provider.ExecuteInsertUpdateDelete(cm);
         }

@@ -48,6 +48,7 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupLoaiNV = new DevExpress.XtraEditors.GroupControl();
             this.btnInDSNV = new DevExpress.XtraEditors.SimpleButton();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_LoaiNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLoaiNV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupNhanVien)).BeginInit();
@@ -89,7 +90,7 @@
             // 
             this.btnThemLoaiNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnThemLoaiNV.Image = global::GUI.Properties.Resources.add_16;
-            this.btnThemLoaiNV.Location = new System.Drawing.Point(104, 442);
+            this.btnThemLoaiNV.Location = new System.Drawing.Point(116, 442);
             this.btnThemLoaiNV.Name = "btnThemLoaiNV";
             this.btnThemLoaiNV.Size = new System.Drawing.Size(60, 26);
             this.btnThemLoaiNV.TabIndex = 11;
@@ -131,9 +132,9 @@
             // 
             this.btnCapNhatLoaiNV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCapNhatLoaiNV.Image = global::GUI.Properties.Resources.save_16;
-            this.btnCapNhatLoaiNV.Location = new System.Drawing.Point(170, 442);
+            this.btnCapNhatLoaiNV.Location = new System.Drawing.Point(182, 442);
             this.btnCapNhatLoaiNV.Name = "btnCapNhatLoaiNV";
-            this.btnCapNhatLoaiNV.Size = new System.Drawing.Size(89, 26);
+            this.btnCapNhatLoaiNV.Size = new System.Drawing.Size(77, 26);
             this.btnCapNhatLoaiNV.TabIndex = 12;
             this.btnCapNhatLoaiNV.Text = "Cập Nhật";
             this.btnCapNhatLoaiNV.Click += new System.EventHandler(this.btnCapNhatLoaiNV_Click);
@@ -239,8 +240,9 @@
             // 
             // groupLoaiNV
             // 
-            this.groupLoaiNV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupLoaiNV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupLoaiNV.Controls.Add(this.gridLoaiNV);
             this.groupLoaiNV.Location = new System.Drawing.Point(3, 12);
             this.groupLoaiNV.Name = "groupLoaiNV";
@@ -258,10 +260,22 @@
             this.btnInDSNV.TabIndex = 14;
             this.btnInDSNV.Text = "In Danh Sách";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.Image = global::GUI.Properties.Resources.refresh16;
+            this.btnRefresh.Location = new System.Drawing.Point(33, 442);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(77, 26);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // UCtrlQLNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnThemNV);
             this.Controls.Add(this.btnThemLoaiNV);
             this.Controls.Add(this.btnCapNhatNV);
@@ -308,6 +322,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.GroupControl groupLoaiNV;
         private DevExpress.XtraEditors.SimpleButton btnInDSNV;
+        private DevExpress.XtraEditors.SimpleButton btnRefresh;
 
 
     }

@@ -28,33 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbbNhaHang = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtDonViTinh = new DevExpress.XtraEditors.TextEdit();
             this.txtGia = new DevExpress.XtraEditors.TextEdit();
             this.cbbLoaiMonAn = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtTenMonAn = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.lcTenMonAn = new DevExpress.XtraEditors.LabelControl();
             this.btnThoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnDongY = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.cbbNhaHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonViTinh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbLoaiMonAn.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenMonAn.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cbbNhaHang
-            // 
-            this.cbbNhaHang.Location = new System.Drawing.Point(148, 193);
-            this.cbbNhaHang.Name = "cbbNhaHang";
-            this.cbbNhaHang.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbbNhaHang.Size = new System.Drawing.Size(147, 20);
-            this.cbbNhaHang.TabIndex = 21;
             // 
             // txtDonViTinh
             // 
@@ -85,14 +73,6 @@
             this.txtTenMonAn.Name = "txtTenMonAn";
             this.txtTenMonAn.Size = new System.Drawing.Size(147, 20);
             this.txtTenMonAn.TabIndex = 17;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(52, 196);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(47, 13);
-            this.labelControl5.TabIndex = 16;
-            this.labelControl5.Text = "Nhà Hàng";
             // 
             // labelControl4
             // 
@@ -129,7 +109,7 @@
             // btnThoat
             // 
             this.btnThoat.Image = global::GUI.Properties.Resources.delete_16;
-            this.btnThoat.Location = new System.Drawing.Point(199, 255);
+            this.btnThoat.Location = new System.Drawing.Point(199, 213);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(96, 29);
             this.btnThoat.TabIndex = 23;
@@ -140,7 +120,7 @@
             // 
             this.btnDongY.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnDongY.Image = global::GUI.Properties.Resources.add_16;
-            this.btnDongY.Location = new System.Drawing.Point(52, 255);
+            this.btnDongY.Location = new System.Drawing.Point(52, 213);
             this.btnDongY.Name = "btnDongY";
             this.btnDongY.Size = new System.Drawing.Size(106, 29);
             this.btnDongY.TabIndex = 22;
@@ -152,15 +132,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(347, 329);
+            this.ClientSize = new System.Drawing.Size(347, 271);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDongY);
-            this.Controls.Add(this.cbbNhaHang);
             this.Controls.Add(this.txtDonViTinh);
             this.Controls.Add(this.txtGia);
             this.Controls.Add(this.cbbLoaiMonAn);
             this.Controls.Add(this.txtTenMonAn);
-            this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
@@ -168,7 +146,6 @@
             this.Name = "Form_ThemMonAn";
             this.Text = "Form_ThemMonAn";
             this.Load += new System.EventHandler(this.Form_ThemMonAn_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.cbbNhaHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonViTinh.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGia.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbbLoaiMonAn.Properties)).EndInit();
@@ -182,12 +159,10 @@
 
         private DevExpress.XtraEditors.SimpleButton btnThoat;
         private DevExpress.XtraEditors.SimpleButton btnDongY;
-        private DevExpress.XtraEditors.ComboBoxEdit cbbNhaHang;
         private DevExpress.XtraEditors.TextEdit txtDonViTinh;
         private DevExpress.XtraEditors.TextEdit txtGia;
         private DevExpress.XtraEditors.ComboBoxEdit cbbLoaiMonAn;
         private DevExpress.XtraEditors.TextEdit txtTenMonAn;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
