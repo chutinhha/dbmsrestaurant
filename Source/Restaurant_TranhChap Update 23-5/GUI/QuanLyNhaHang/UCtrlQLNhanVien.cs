@@ -11,13 +11,21 @@ using DTO;
 
 namespace GUI.QuanLyNhaHang
 {
+     
     public partial class UCtrlQLNhanVien : DevExpress.XtraEditors.XtraUserControl
     {
+
         int mode;
         public int Mode
         {
             get { return mode; }
             set { mode = value; }
+        }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
         }
 
         int chon;
@@ -30,9 +38,27 @@ namespace GUI.QuanLyNhaHang
         private void UCtrlQLNhanVien_Load(object sender, EventArgs e)
         {
             gridLoaiNV.DataSource = LoaiNhanVien_BUS.DocLoaiNV();
-            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien();
+            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien(maNH);
 
-            DataTable dt = NhanVien_BUS.DocNhanVien();
+            DataTable dt = NhanVien_BUS.DocNhanVien(maNH);
+            if (dt.Rows.Count > 0)
+            {
+                ArrayMaNV = new int[dt.Rows.Count];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    DataRow dr = dt.Rows[i];
+                    ArrayMaNV[i] = (int)dr[0];
+
+                }
+            }
+        }
+
+        public void LoadForm()
+        {
+            gridLoaiNV.DataSource = LoaiNhanVien_BUS.DocLoaiNV();
+            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien(maNH);
+
+            DataTable dt = NhanVien_BUS.DocNhanVien(maNH);
             if (dt.Rows.Count > 0)
             {
                 ArrayMaNV = new int[dt.Rows.Count];
@@ -120,20 +146,21 @@ namespace GUI.QuanLyNhaHang
 
         private void btnThemNV_Click(object sender, EventArgs e)
         {
+           
             Form_ThemNhanVien openForm = new Form_ThemNhanVien();
             openForm.Mode = mode;
             if (openForm.ShowDialog() == DialogResult.OK)
             {
-               NhanVien_BUS.ThemNhanVien(openForm.NhanVien);
-                gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien();
+               NhanVien_BUS.ThemNhanVien(openForm.NhanVien,maNH);
+               LoadForm();
             }
-
+            
         }
 
         private void btnCapNhatNV_Click(object sender, EventArgs e)
         {
             CapNhatNhanVien();
-            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien();
+            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien(maNH);
         }
 
         public void CapNhatNhanVien()
@@ -168,7 +195,7 @@ namespace GUI.QuanLyNhaHang
         private void btnXoaNV_Click(object sender, EventArgs e)
         {
             XoaNhanVien();
-            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien();
+            gridNhanVien.DataSource = NhanVien_BUS.DocNhanVien(maNH);
         }
 
         public void XoaNhanVien()
@@ -191,5 +218,13 @@ namespace GUI.QuanLyNhaHang
                     //DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Nhân Viên khi còn món ăn trong Loại món ăn", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoaiNhanVien_BUS LoaiNVBUS = new LoaiNhanVien_BUS();
+            gridLoaiNV.DataSource = LoaiNVBUS.DocLoaiNhanVien_begin();
+        }
+
+        
     }
 }

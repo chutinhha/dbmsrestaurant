@@ -18,6 +18,12 @@ namespace GUI.QuanLyNhaHang
             get { return mode; }
             set { mode = value; }
         }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
+        }
 
         public string[] ArrayMaBan;
         public UCtrlQLDanhSachBanAn()
@@ -29,7 +35,7 @@ namespace GUI.QuanLyNhaHang
         {
             gridLoaiBA.DataSource = LoaiBanAn_BUS.DocLoaiBanAn();
             gridKhuVuc.DataSource = KhuVuc_BUS.DocKhuVuc();
-            gridBanAn.DataSource = BanAn_BUS.DocBanAn();
+            gridBanAn.DataSource = BanAn_BUS.DocBanAn(maNH);
 
             DataTable dt = LoaiBanAn_BUS.DocLoaiBanAn();
             if (dt.Rows.Count > 0)
@@ -117,7 +123,7 @@ namespace GUI.QuanLyNhaHang
             openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
-                KhuVuc_BUS.ThemKhuVuc(openf.KhuVuc);
+                KhuVuc_BUS.ThemKhuVuc(openf.KhuVuc,maNH);
                 gridKhuVuc.DataSource = KhuVuc_BUS.DocKhuVuc();
             }
         }
@@ -181,44 +187,45 @@ namespace GUI.QuanLyNhaHang
             openf.Mode = mode;
             if (openf.ShowDialog() == DialogResult.OK)
             {
-                BanAn_BUS.ThemBanAn(openf.BanAn);
-                gridBanAn.DataSource = BanAn_BUS.DocBanAn();
+                BanAn_BUS.ThemBanAn(openf.BanAn,maNH);
+                gridBanAn.DataSource = BanAn_BUS.DocBanAn(maNH);
             }
         }
 
         private void btnCapNhatBanAn_Click(object sender, EventArgs e)
         {
             CapNhaBanAn();
-            gridBanAn.DataSource = BanAn_BUS.DocBanAn();
+            gridBanAn.DataSource = BanAn_BUS.DocBanAn(maNH);
         }
 
         public void CapNhaBanAn()
         {
-            int flag = 0;
-            int[] index = gridView_BanAn.GetSelectedRows();
-            if (index.Length > 0)
-            {
+            //int flag = 0;
+            //int[] index = gridView_BanAn.GetSelectedRows();
+            //if (index.Length > 0)
+            //{
 
-                string maBanAn = gridView_BanAn.GetRowCellValue(index[0], "MaBan").ToString();
-               // string maKV = gridView_BanAn.GetRowCellValue(index[0], "MaKhuVuc").ToString();
-                string TrangThai = gridView_BanAn.GetRowCellValue(index[0], "TrangThai").ToString();
-                if (maBanAn != null)
-                {
-                    DTO.BanAn_DTO BanAn = new DTO.BanAn_DTO();
-                   BanAn.MaBan = int.Parse(maBanAn);
-                  // BanAn.MaKhuVuc = int.Parse(maKV);
-                   BanAn.TrangThai = int.Parse(TrangThai);
-                    flag = BanAn_BUS.CapNhatBanAn(BanAn);
-                }
-            }
-            if (flag != 0)
+            //    string maBanAn = gridView_BanAn.GetRowCellValue(index[0], "MaBan").ToString();
+            //    string maKV = gridView_BanAn.GetRowCellValue(index[0], "MaKhuVuc").ToString();
+            //    string TrangThai = gridView_BanAn.GetRowCellValue(index[0], "TrangThai").ToString();
+            //    if (maBanAn != null)
+            //    {
+            //        DTO.BanAn_DTO BanAn = new DTO.BanAn_DTO();
+            //       BanAn.MaBan = int.Parse(maBanAn);
+            //      // BanAn.MaKhuVuc = int.Parse(maKV);
+            //      // BanAn.TrangThai = int.Parse(TrangThai);
+            //        flag = BanAn_BUS.CapNhatBanAn(BanAn);
+            //    }
+            //}
+            //if (flag != 0)
+            BanAn_BUS.DocBanAn(maNH);
                 DevExpress.XtraEditors.XtraMessageBox.Show("Cập nhật thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnXoaBanAn_Click(object sender, EventArgs e)
         {
             XoaBanAn();
-            gridBanAn.DataSource = BanAn_BUS.DocBanAn();
+            gridBanAn.DataSource = BanAn_BUS.DocBanAn(maNH);
         }
 
         public void XoaBanAn()
@@ -234,8 +241,8 @@ namespace GUI.QuanLyNhaHang
                 }
                 if (flag != 0)
                     DevExpress.XtraEditors.XtraMessageBox.Show("Xóa thành công", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Khu Vực khi còn Bàn Ăn thuộc Khu Vực", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //else
+                //    DevExpress.XtraEditors.XtraMessageBox.Show("Không thể xóa Khu Vực khi còn Bàn Ăn thuộc Khu Vực", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
        

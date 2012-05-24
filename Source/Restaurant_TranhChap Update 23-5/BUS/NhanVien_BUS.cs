@@ -9,9 +9,9 @@ namespace BUS
 {
     public class NhanVien_BUS
     {
-        public static DataTable DocNhanVien()
+        public static DataTable DocNhanVien(string maNH)
         {
-            return NhanVien_DAO.DocNhanVien();
+            return NhanVien_DAO.DocNhanVien(maNH);
         }
 
         public static DataTable LayLoaiNhanVien()
@@ -19,14 +19,18 @@ namespace BUS
             return NhanVien_DAO.LayLoaiNhanVien();
         }
 
+        public static DataTable DocLoaiNhanVien_commit()
+        {
+            return NhanVien_DAO.DocLoaiNhanVien_commit();
+        }
         public static DataTable LayNhaHang()
         {
             return NhanVien_DAO.LayNhaHang();
         }
 
-        public static int ThemNhanVien(NhanVien_DTO NhanVien)
+        public static int ThemNhanVien(NhanVien_DTO NhanVien, string maNH)
         {
-            return NhanVien_DAO.ThemNhanVien(NhanVien);
+            return NhanVien_DAO.ThemNhanVien(NhanVien, maNH);
         }
 
         public static int CapNhatNhanVien(NhanVien_DTO NhanVien, int MaNV)

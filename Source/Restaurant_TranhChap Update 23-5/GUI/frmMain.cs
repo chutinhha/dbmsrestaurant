@@ -86,45 +86,64 @@ namespace GUI
             //Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
             switch (nhanVien.MaLoaiNhanVien.Trim())
             {
+                    //QL Nha Hang
                 case "1":
                     rbPage_QLNhaHang.Visible = true;
                     rbPage_QLKho.Visible = true;
                     rbPage_TiepTan_ThuNgan.Visible = true;
                     rbPage_ThuNgan.Visible = true;
+
+                    UCtrl_QLNH_QLThucDon.MaNH = nhanVien.MaNH;
                     Add_UserControl(panelCtrl_Main, UCtrl_QLNH_QLThucDon);
+
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[3];
                     
                     break;
+                    //Quan ly kho
                 case "2":
                     rbPage_QLKho.Visible = true;
+
                     UCtrl_QLKho_DatHang.MaNH = nhanVien.MaNH;
                     Add_UserControl(panelCtrl_Main, UCtrl_QLKho_DatHang);
+
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[2];
                     break;
+                    //Tiep tan
                 case "3":
                     rbPage_TiepTan_ThuNgan.Visible = true;
+
                     Add_UserControl(panelCtrl_Main, UCtrl_TiepTan_XepBan);
                     UCtrl_TiepTan_XepBan.LoadForm();
+
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[0];
                     break;
+                    //Thu ngan
                 case "4":
                     rbPage_ThuNgan.Visible = true;
+
                     Add_UserControl(panelCtrl_Main, UCtrl_ThuNgan_QLBanAn);
                     UCtrl_ThuNgan_QLBanAn.load_ListBoxBanAn();
+
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[1];
                     break;
+                    //Tong quan ly
                 case "7":
                     rbPage_TongQuanLy.Visible = true;
                     rbPage_QLNhaHang.Visible = true;
                     rbPage_QLKho.Visible = true;
                     rbPage_TiepTan_ThuNgan.Visible = true;
                     rbPage_ThuNgan.Visible = true;
+
                     Add_UserControl(panelCtrl_Main, UCtrl_TongQL_DSNhaHang);
+
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[4];
                     break;
+                    //QUan tri
                 case "6":
                     rbPage_QuanTri.Visible = true;
+
                     Add_UserControl(panelCtrl_Main, UCtrl_QuanTri_QTNguoiDung);
+
                     rbControl_Main.SelectedPage = rbControl_Main.Pages[5];
                     break;
                 default: break;
@@ -249,19 +268,23 @@ namespace GUI
         #region " Quan Ly Nha Hang "
         private void barBtn_QLNhaHang_ThucDon_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UCtrl_QLNH_QLThucDon.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLNH_QLThucDon);
         }
         private void barBtn_QLNhaHang_DSNhanVien_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UCtrl_QLNH_QLNhanVien.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLNH_QLNhanVien);           
         }
 
         private void barBtn_QLNhaHang_DSBanAn_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UCtrl_QLNH_QLDSBanAn.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLNH_QLDSBanAn);
         }
         private void barBtn_QLNhaHang_ThongKeDoanhThu_ItemClick(object sender, ItemClickEventArgs e)
         {
+            UCtrl_QLNH_ThongKeDoanhThu.MaNH = nhanVien.MaNH;
             Add_UserControl(panelCtrl_Main, UCtrl_QLNH_ThongKeDoanhThu);
         }
         #endregion

@@ -20,9 +20,9 @@ namespace BUS
             return KhuVuc_DAO.LayNhaHang();
         }
 
-        public static int ThemKhuVuc(KhuVuc_DTO KhuVuc)
+        public static int ThemKhuVuc(KhuVuc_DTO KhuVuc, string maNH)
         {
-            return KhuVuc_DAO.ThemKhuVuc(KhuVuc);
+            return KhuVuc_DAO.ThemKhuVuc(KhuVuc, maNH);
         }
 
         public static int CapNhatKhuVuc(KhuVuc_DTO KhuVuc)

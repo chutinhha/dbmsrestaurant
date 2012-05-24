@@ -15,11 +15,11 @@ namespace BUS
             return LoaiMonAn_DAO.DocLoaiMonAn();
         }
 
-        //public static DataTable DocLoaiMonAn_XD()
-        //{
-        //    return LoaiMonAn_DAO.DocLoaiMonAn_XD();
-        //}
-       
+        public static DataTable DocLoaiMonAn_XD()
+        {
+            return LoaiMonAn_DAO.DocLoaiMonAn_XD();
+        }
+
 
         public static int CapNhatLoaiMonAn(LoaiMonAn_DTO loaiMonAn)
         {

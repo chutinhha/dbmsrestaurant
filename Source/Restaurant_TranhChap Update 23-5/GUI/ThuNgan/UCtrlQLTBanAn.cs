@@ -127,7 +127,7 @@ namespace GUI.ThuNgan
 
                 load_GridviewCTHD();
             }
-            catch(Exception ex){}
+            catch(Exception ){}
         }
 
         int indexChiTiet = -1;

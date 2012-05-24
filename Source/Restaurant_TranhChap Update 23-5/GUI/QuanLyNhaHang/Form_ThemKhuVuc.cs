@@ -18,8 +18,13 @@ namespace GUI.QuanLyNhaHang
             get { return mode; }
             set { mode = value; }
         }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
+        }
 
-        string[] ArrayMaNH;
         public KhuVuc_DTO KhuVuc = new KhuVuc_DTO();
         public Form_ThemKhuVuc()
         {
@@ -28,18 +33,18 @@ namespace GUI.QuanLyNhaHang
 
         private void Form_ThemKhuVuc_Load(object sender, EventArgs e)
         {
-            cbbNhaHang.Properties.Items.Clear();
-            DataTable dt = KhuVuc_BUS.LayNhaHang();
-            if (dt.Rows.Count > 0)
-            {
-                ArrayMaNH = new string[dt.Rows.Count];
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    DataRow dr = dt.Rows[i];
-                    cbbNhaHang.Properties.Items.Add(dr[1]);
-                    ArrayMaNH[i] = dr[0].ToString();
-                }
-            }
+            //cbbNhaHang.Properties.Items.Clear();
+            //DataTable dt = KhuVuc_BUS.LayNhaHang();
+            //if (dt.Rows.Count > 0)
+            //{
+            //    ArrayMaNH = new string[dt.Rows.Count];
+            //    for (int i = 0; i < dt.Rows.Count; i++)
+            //    {
+            //        DataRow dr = dt.Rows[i];
+            //        cbbNhaHang.Properties.Items.Add(dr[1]);
+            //        ArrayMaNH[i] = dr[0].ToString();
+            //    }
+            //}
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -47,7 +52,7 @@ namespace GUI.QuanLyNhaHang
             KhuVuc.MaKhuVuc = int.Parse(txtMaKV.Text);
             KhuVuc.TenKhuVuc = txtTenKV.Text;
             KhuVuc.ViTri = txtViTri.Text;
-            KhuVuc.MaNH = ArrayMaNH[cbbNhaHang.SelectedIndex];
+            //KhuVuc.MaNH = ArrayMaNH[cbbNhaHang.SelectedIndex];
             this.Close();
         }
 

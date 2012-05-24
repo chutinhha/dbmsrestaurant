@@ -124,7 +124,6 @@ namespace GUI.ThuNgan
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            float kq = 0;
             foreach(DataRow row in dtMonAnChon.Rows ){
                 int mamon = (int)row.ItemArray[0];
                 int soluong = (int)row.ItemArray[3];

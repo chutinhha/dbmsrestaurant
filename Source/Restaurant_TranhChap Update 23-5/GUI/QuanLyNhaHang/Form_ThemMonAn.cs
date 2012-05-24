@@ -19,10 +19,16 @@ namespace GUI.QuanLyNhaHang
             get { return mode; }
             set { mode = value; }
         }
+        String maNH;
+        public String MaNH
+        {
+            get { return maNH; }
+            set { maNH = value; }
+        }
 
         public MonAn_DTO MonAn = new MonAn_DTO();
         string[] ArrayMaMon;
-        string[] ArrayMaNH;
+        //string[] ArrayMaNH;
         public Form_ThemMonAn()
         {
             InitializeComponent();
@@ -31,12 +37,26 @@ namespace GUI.QuanLyNhaHang
         private void btnDongY_Click(object sender, EventArgs e)
         {
             MonAn.tenmon = txtTenMonAn.Text;
-            MonAn.Mamon = ArrayMaMon[cbbLoaiMonAn.SelectedIndex];
-            MonAn.Gia = double.Parse(txtGia.Text);
+            if (cbbLoaiMonAn.Text != "")
+            {
+                MonAn.Mamon = ArrayMaMon[cbbLoaiMonAn.SelectedIndex];
+            }
+            else
+            {
+                MonAn.Mamon = "";
+            }
+            if (txtGia.Text != "")
+            {
+                MonAn.Gia = int.Parse(txtGia.Text);
+            }
+            else
+            {
+                MonAn.Gia = 0;
+            }
             MonAn.Dvtinh = txtDonViTinh.Text;
-            MonAn.Manh = ArrayMaNH[cbbNhaHang.SelectedIndex];
+           // MonAn.Manh = ArrayMaNH[cbbNhaHang.SelectedIndex];
 
-            MonAn_BUS.ThemMonAn(MonAn);
+           // MonAn_BUS.ThemMonAn(MonAn);
 
             this.Close();
         }
@@ -44,7 +64,7 @@ namespace GUI.QuanLyNhaHang
         private void Form_ThemMonAn_Load(object sender, EventArgs e)
         {
             cbbLoaiMonAn.Properties.Items.Clear();
-            cbbNhaHang.Properties.Items.Clear();
+           // cbbNhaHang.Properties.Items.Clear();
             DataTable dt = MonAn_BUS.LayLoaiMon();
 
             if (dt.Rows.Count > 0)
@@ -58,17 +78,17 @@ namespace GUI.QuanLyNhaHang
 
                 }
             }
-            DataTable dt1 = MonAn_BUS.LayNhaHang();
-            if (dt1.Rows.Count > 0)
-            {
-                ArrayMaNH = new string[dt1.Rows.Count];
-                for (int i = 0; i < dt1.Rows.Count; i++)
-                {
-                    DataRow dr = dt1.Rows[i];
-                    cbbNhaHang.Properties.Items.Add(dr[1]);
-                    ArrayMaNH[i] = dr[0].ToString();
-                }
-            }
+            //DataTable dt1 = MonAn_BUS.LayNhaHang();
+            //if (dt1.Rows.Count > 0)
+            //{
+            //    ArrayMaNH = new string[dt1.Rows.Count];
+            //    for (int i = 0; i < dt1.Rows.Count; i++)
+            //    {
+            //        DataRow dr = dt1.Rows[i];
+            //        cbbNhaHang.Properties.Items.Add(dr[1]);
+            //        ArrayMaNH[i] = dr[0].ToString();
+            //    }
+            //}
 
         }
 
