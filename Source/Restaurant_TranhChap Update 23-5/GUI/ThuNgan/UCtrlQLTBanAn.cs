@@ -81,7 +81,7 @@ namespace GUI.ThuNgan
         {
             dtCTHD.Rows.Clear();
             if (maHD == -1) return;
-            lsCTHD = ChiTietHoaDon_BUS.SelectCTHDtheoMaHD(maHD);
+            lsCTHD = ChiTietHoaDon_BUS.SelectCTHDtheoMaHD(maHD, Mode);
             int n = lsCTHD.Count;
             double TongTienMonAn = 0;
             for (int i = 0; i < n; i++)
@@ -131,13 +131,12 @@ namespace GUI.ThuNgan
         }
 
         int indexChiTiet = -1;
-        int ChiTiet_SoLuong = 0;
+        
         private void GridView_DSMon_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (GridView_DSMon.GetSelectedRows().Length > 0)
             {
                 indexChiTiet = GridView_DSMon.GetSelectedRows()[0];
-                ChiTiet_SoLuong = (int)dtCTHD.Rows[indexChiTiet].ItemArray[4];
             }
         }
 
@@ -146,10 +145,9 @@ namespace GUI.ThuNgan
             //xoa va chen moi
             if (maHD != -1)
             {
-                ChiTiet_SoLuong++;
                 DataRow row = dtCTHD.Rows[indexChiTiet];
                 int mamon = (int)row.ItemArray[0];
-                ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, ChiTiet_SoLuong, Mode);
+                ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, 1, Mode);
                 load_GridviewCTHD();
             }
         }
@@ -158,16 +156,10 @@ namespace GUI.ThuNgan
         {
             if (maHD != -1)
             {
-                if (ChiTiet_SoLuong == 1)
-                    simpleButton5_Click(null, null);
-                else
-                {
-                    ChiTiet_SoLuong--;
-                    DataRow row = dtCTHD.Rows[indexChiTiet];
-                    int mamon = (int)row.ItemArray[0];
-                    ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, ChiTiet_SoLuong, Mode);
-                    load_GridviewCTHD();
-                }
+                DataRow row = dtCTHD.Rows[indexChiTiet];
+                int mamon = (int)row.ItemArray[0];
+                ChiTietHoaDon_BUS.UpdateSoLuongCTHD(maHD, mamon, -1, Mode);
+                load_GridviewCTHD();
             }
         }
 
