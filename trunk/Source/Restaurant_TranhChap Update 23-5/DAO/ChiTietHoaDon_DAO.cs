@@ -20,9 +20,19 @@ namespace DAO
         }
 
 
-        public List<ChiTietHoaDon_DTO> SelectCTHDtheoMaHD(int mahd)
+        public List<ChiTietHoaDon_DTO> SelectCTHDtheoMaHD(int mahd, int mode)
         {
-            SqlCommand cm = provider.CreateCommandStoreName("sp_SelectChiTietHD");
+            String store = "sp_SelectChiTietHD_0";
+            switch (mode)
+            {
+                case 0:
+                    store = "sp_SelectChiTietHD_0";
+                    break;
+                case 3:
+                    store = "sp_SelectChiTietHD_3";   //unrepeatable read
+                    break;
+            }
+            SqlCommand cm = provider.CreateCommandStoreName(store);
             cm.Parameters.Add("@mahd", SqlDbType.Int);
             cm.Parameters["@mahd"].Value = mahd;
             return ConvertToList(provider.ExecSelectCommand(cm));
@@ -83,8 +93,14 @@ namespace DAO
                 case 0:
                     store = "sp_UpdateSoLuongCTHD_0";
                     break;
+                case 1:
+                    store = "sp_UpdateSoLuongCTHD_1";   //lost update
+                    break;
                 case 2:
                     store = "sp_UpdateSoLuongCTHD_2";   //deadlock
+                    break;
+                case 3:
+                    store = "sp_UpdateSoLuongCTHD_3";
                     break;
             }
             SqlCommand cm = provider.CreateCommandStoreName(store);

@@ -11,10 +11,10 @@ namespace BUS
 {
     public class ChiTietHoaDon_BUS
     {
-        public static List<ChiTietHoaDon_DTO> SelectCTHDtheoMaHD(int mahd)
+        public static List<ChiTietHoaDon_DTO> SelectCTHDtheoMaHD(int mahd, int mode)
         {
             ChiTietHoaDon_DAO dao = new ChiTietHoaDon_DAO();
-            return dao.SelectCTHDtheoMaHD(mahd);
+            return dao.SelectCTHDtheoMaHD(mahd, mode);
         }
 
         public static void insertCTHD(int mahd, int mamon, int soluong, int mode)
